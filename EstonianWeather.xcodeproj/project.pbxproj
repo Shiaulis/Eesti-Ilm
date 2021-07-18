@@ -45,9 +45,7 @@
 		B158270B252B57150064A42C /* EstonianWeatherWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B158270E252B57150064A42C /* EstonianWeatherWidget.intentdefinition */; };
 		B158270C252B57150064A42C /* EstonianWeatherWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B158270E252B57150064A42C /* EstonianWeatherWidget.intentdefinition */; };
 		B189D17F25E40BCD007DF2AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
-		B190251125972FB400ACD2E1 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = B190251025972FB400ACD2E1 /* Rswift */; };
 		B190252E259731E500ACD2E1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190252D259731E500ACD2E1 /* R.generated.swift */; };
-		B190255625973FAE00ACD2E1 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = B190255525973FAE00ACD2E1 /* Rswift */; };
 		B190EB142586A5820025415A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190EB132586A5820025415A /* Date+Extensions.swift */; };
 		B19E6BA3260FA6FC0079D974 /* WeatherKit in Frameworks */ = {isa = PBXBuildFile; productRef = B19E6BA2260FA6FC0079D974 /* WeatherKit */; };
 		B1AFFAFA2598FC3100ACA10E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */; };
@@ -64,6 +62,7 @@
 		E05094EA2699E88700EC28C8 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05094E92699E88700EC28C8 /* RootViewModel.swift */; };
 		E05094EC2699F2AA00EC28C8 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05094EB2699F2AA00EC28C8 /* SidebarViewController.swift */; };
 		E05094EE269A2E8E00EC28C8 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05094ED269A2E8E00EC28C8 /* Tab.swift */; };
+		E0F4E1DB26A40F0D0081E42A /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = E0F4E1DA26A40F0D0081E42A /* Rswift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,8 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B190251125972FB400ACD2E1 /* Rswift in Frameworks */,
 				B189D17F25E40BCD007DF2AB /* StoreKit.framework in Frameworks */,
+				E0F4E1DB26A40F0D0081E42A /* Rswift in Frameworks */,
 				B19E6BA3260FA6FC0079D974 /* WeatherKit in Frameworks */,
 				B1D2279F25EA90660086B689 /* PurchaseKit in Frameworks */,
 			);
@@ -202,7 +201,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B190255625973FAE00ACD2E1 /* Rswift in Frameworks */,
 				097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */,
 				B13AC712260FB76800E427E5 /* WeatherKit in Frameworks */,
 				097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */,
@@ -411,9 +409,9 @@
 			);
 			name = EstonianWeather;
 			packageProductDependencies = (
-				B190251025972FB400ACD2E1 /* Rswift */,
 				B1D2279E25EA90660086B689 /* PurchaseKit */,
 				B19E6BA2260FA6FC0079D974 /* WeatherKit */,
+				E0F4E1DA26A40F0D0081E42A /* Rswift */,
 			);
 			productName = EstonianWeather;
 			productReference = 0968CD922522667A00D409FF /* EstonianWeather.app */;
@@ -469,7 +467,6 @@
 			);
 			name = EstonianWeatherWidgetExtension;
 			packageProductDependencies = (
-				B190255525973FAE00ACD2E1 /* Rswift */,
 				B13AC711260FB76800E427E5 /* WeatherKit */,
 			);
 			productName = EstonianWeatherWidgetExtension;
@@ -513,9 +510,9 @@
 			);
 			mainGroup = 0968CD892522667A00D409FF;
 			packageReferences = (
-				B190250F25972FB400ACD2E1 /* XCRemoteSwiftPackageReference "R.swift" */,
 				B1D2279D25EA90660086B689 /* XCRemoteSwiftPackageReference "PurchaseKit" */,
 				B19E6BA1260FA6FC0079D974 /* XCRemoteSwiftPackageReference "WeatherKit" */,
+				E0F4E1D926A40F0D0081E42A /* XCRemoteSwiftPackageReference "R.swift" */,
 			);
 			productRefGroup = 0968CD932522667A00D409FF /* Products */;
 			projectDirPath = "";
@@ -1092,14 +1089,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B190250F25972FB400ACD2E1 /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.0;
-			};
-		};
 		B19E6BA1260FA6FC0079D974 /* XCRemoteSwiftPackageReference "WeatherKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Shiaulis/WeatherKit";
@@ -1116,6 +1105,14 @@
 				kind = branch;
 			};
 		};
+		E0F4E1D926A40F0D0081E42A /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1123,16 +1120,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B19E6BA1260FA6FC0079D974 /* XCRemoteSwiftPackageReference "WeatherKit" */;
 			productName = WeatherKit;
-		};
-		B190251025972FB400ACD2E1 /* Rswift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B190250F25972FB400ACD2E1 /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = Rswift;
-		};
-		B190255525973FAE00ACD2E1 /* Rswift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B190250F25972FB400ACD2E1 /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = Rswift;
 		};
 		B19E6BA2260FA6FC0079D974 /* WeatherKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1143,6 +1130,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B1D2279D25EA90660086B689 /* XCRemoteSwiftPackageReference "PurchaseKit" */;
 			productName = PurchaseKit;
+		};
+		E0F4E1DA26A40F0D0081E42A /* Rswift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0F4E1D926A40F0D0081E42A /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = Rswift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
