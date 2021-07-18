@@ -54,7 +54,7 @@ final class WidgetForercastProvider: IntentTimelineProvider {
     }
 
     private func requestAndMapForecasts(for configuration: ConfigurationIntent, completion: @escaping (ForecastEntry) -> Void) {
-        async {
+        Task {
             do {
                 self.lastFetchedDisplayItems = try await self.model.forecasts()
                 completion(.init(displayItems: self.lastFetchedDisplayItems, date: Date(), configuration: configuration))

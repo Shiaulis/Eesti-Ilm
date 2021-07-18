@@ -28,7 +28,7 @@ final class ForecastListViewModel: ObservableObject {
     init(model: WeatherModel) {
         self.model = model
 
-        async { await fetchRemoteForecasts() }
+        Task { await fetchRemoteForecasts() }
         subscribeForNotifications()
     }
 
@@ -48,7 +48,7 @@ final class ForecastListViewModel: ObservableObject {
             .default
             .publisher(for: UIApplication.significantTimeChangeNotification)
             .sink { _ in
-                async { [weak self] in await self?.fetchRemoteForecasts() }
+                Task { [weak self] in await self?.fetchRemoteForecasts() }
             }
             .store(in: &self.disposables)
     }
