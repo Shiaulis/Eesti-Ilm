@@ -113,8 +113,11 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.entitlements` struct is generated, and contains static references to 1 properties.
+  /// This `R.entitlements` struct is generated, and contains static references to 3 properties.
   struct entitlements {
+    static let comAppleSecurityAppSandbox = true
+    static let comAppleSecurityNetworkClient = true
+
     struct comAppleSecurityApplicationGroups {
       static let groupShiaulisEstonianWeather = infoPlistString(path: ["com.apple.security.application-groups"], key: "group.shiaulis.EstonianWeather") ?? "group.shiaulis.EstonianWeather"
 
