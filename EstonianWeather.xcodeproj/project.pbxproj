@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,7 +28,7 @@
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698B8252A708A00FA1764 /* ForecastWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097698B7252A708A00FA1764 /* ForecastWidget.swift */; };
 		097698BB252A708C00FA1764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 097698BA252A708C00FA1764 /* Assets.xcassets */; };
-		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		09779C5E2532E87E00957B1F /* EstonianWeatherWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09779C542532E82300957B1F /* EstonianWeatherWidgetBundle.swift */; };
 		09779C642532EC8C00957B1F /* WidgetForercastProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09779C632532EC8C00957B1F /* WidgetForercastProvider.swift */; };
 		09779CCA25332E3600957B1F /* ForecastWidgetEntryVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09779CC925332E3600957B1F /* ForecastWidgetEntryVIew.swift */; };
@@ -90,15 +90,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		097698C2252A708C00FA1764 /* Embed App Extensions */ = {
+		097698C2252A708C00FA1764 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed App Extensions */,
+				097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -400,7 +400,7 @@
 				0968CD8F2522667A00D409FF /* Frameworks */,
 				0968CD902522667A00D409FF /* Resources */,
 				0968CE2E25226B2100D409FF /* SwiftLint */,
-				097698C2252A708C00FA1764 /* Embed App Extensions */,
+				097698C2252A708C00FA1764 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -480,7 +480,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					0968CD912522667A00D409FF = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -570,6 +570,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		0968CE2E25226B2100D409FF /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -584,7 +585,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		B19025162597302200ACD2E1 /* Generate R.swift */ = {
 			isa = PBXShellScriptBuildPhase;

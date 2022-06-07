@@ -1,43 +1,41 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "PurchaseKit",
-        "repositoryURL": "https://github.com/Shiaulis/PurchaseKit",
-        "state": {
-          "branch": "main",
-          "revision": "1f53cd62959ffb91b534d8c6f38f56e6da8e371c",
-          "version": null
-        }
-      },
-      {
-        "package": "R.swift.Library",
-        "repositoryURL": "https://github.com/mac-cain13/R.swift.Library",
-        "state": {
-          "branch": null,
-          "revision": "8998cfe77f4fce79ee6dfab0c88a7d551659d8fb",
-          "version": "5.4.0"
-        }
-      },
-      {
-        "package": "SWXMLHash",
-        "repositoryURL": "https://github.com/drmohundro/SWXMLHash",
-        "state": {
-          "branch": null,
-          "revision": "9183170d20857753d4f331b0ca63f73c60764bf3",
-          "version": "5.0.2"
-        }
-      },
-      {
-        "package": "WeatherKit",
-        "repositoryURL": "https://github.com/Shiaulis/WeatherKit",
-        "state": {
-          "branch": "main",
-          "revision": "9590d0c744261d8d58318da9925ac5944ea71a46",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "purchasekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Shiaulis/PurchaseKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1f53cd62959ffb91b534d8c6f38f56e6da8e371c"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "r.swift.library",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mac-cain13/R.swift.Library",
+      "state" : {
+        "revision" : "8998cfe77f4fce79ee6dfab0c88a7d551659d8fb",
+        "version" : "5.4.0"
+      }
+    },
+    {
+      "identity" : "swxmlhash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/drmohundro/SWXMLHash",
+      "state" : {
+        "revision" : "9183170d20857753d4f331b0ca63f73c60764bf3",
+        "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "weatherkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Shiaulis/WeatherKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9590d0c744261d8d58318da9925ac5944ea71a46"
+      }
+    }
+  ],
+  "version" : 2
 }
