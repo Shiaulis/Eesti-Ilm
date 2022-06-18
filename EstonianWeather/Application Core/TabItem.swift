@@ -1,5 +1,5 @@
 //
-//  Tab.swift
+//  TabItem.swift
 //  EstonianWeather
 //
 //  Created by Andrius Siaulis on 10.07.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Tab: Int, CaseIterable, Identifiable {
+enum TabItem: Int, CaseIterable, Identifiable {
 
     var id: RawValue { self.rawValue }
 

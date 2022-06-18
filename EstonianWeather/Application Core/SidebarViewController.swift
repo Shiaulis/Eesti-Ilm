@@ -9,13 +9,13 @@ import UIKit
 import Combine
 
 protocol SidebarViewModel {
-    var selectedTabPublisher: AnyPublisher<Tab, Never> { get }
-    func select(_ tab: Tab)
+    var selectedTabPublisher: AnyPublisher<TabItem, Never> { get }
+    func select(_ tab: TabItem)
 }
 
 final class SidebarViewController: UICollectionViewController {
 
-    private typealias DataSource = UICollectionViewDiffableDataSource<SidebarSection, Tab>
+    private typealias DataSource = UICollectionViewDiffableDataSource<SidebarSection, TabItem>
     private enum SidebarSection: Int { case main }
 
     // MARK: - Properties
@@ -61,7 +61,7 @@ final class SidebarViewController: UICollectionViewController {
     // MARK: - Private methods
 
     private func configureDataSource() {
-        let rowRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Tab> {
+        let rowRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TabItem> {
             cell, _, tab in
 
             var contentConfiguration = UIListContentConfiguration.sidebarSubtitleCell()
@@ -80,9 +80,9 @@ final class SidebarViewController: UICollectionViewController {
         self.dataSource.apply(snapshot(), to: .main, animatingDifferences: false)
     }
 
-    private func snapshot() -> NSDiffableDataSourceSectionSnapshot<Tab> {
-        var snapshot = NSDiffableDataSourceSectionSnapshot<Tab>()
-        let items: [Tab] = Tab.allCases
+    private func snapshot() -> NSDiffableDataSourceSectionSnapshot<TabItem> {
+        var snapshot = NSDiffableDataSourceSectionSnapshot<TabItem>()
+        let items: [TabItem] = TabItem.allCases
 
         snapshot.append(items)
         return snapshot
