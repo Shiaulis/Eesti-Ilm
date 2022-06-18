@@ -1103,8 +1103,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Shiaulis/WeatherKit";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		B1D2279D25EA90660086B689 /* XCRemoteSwiftPackageReference "PurchaseKit" */ = {

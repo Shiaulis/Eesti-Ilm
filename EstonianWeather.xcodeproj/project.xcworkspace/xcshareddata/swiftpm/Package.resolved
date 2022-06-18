@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Shiaulis/WeatherKit",
       "state" : {
-        "branch" : "main",
-        "revision" : "9590d0c744261d8d58318da9925ac5944ea71a46"
+        "revision" : "0797d775622af4ba7c04cec96d30a7ea14b5c71d",
+        "version" : "2.0.0"
       }
     }
   ],
