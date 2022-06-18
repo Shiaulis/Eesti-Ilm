@@ -10,10 +10,10 @@ import SwiftUI
 import Intents
 
 struct ForecastWidget: Widget {
-    let kind: String = "ForecastWidget"
+    let kind: String = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: WidgetForercastProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: WidgetForercastProvider()) { entry in
             EstonianWeatherWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Forecast Widget")
@@ -24,7 +24,7 @@ struct ForecastWidget: Widget {
 
 struct EstonianWeatherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        EstonianWeatherWidgetEntryView(entry: ForecastEntry(date: Date(), configuration: ConfigurationIntent()))
+        EstonianWeatherWidgetEntryView(entry: ForecastEntry(date: Date()))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

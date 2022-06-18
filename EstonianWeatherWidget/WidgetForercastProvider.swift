@@ -11,19 +11,17 @@ import WeatherKit
 
 struct ForecastEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
     let displayItems: [ForecastDisplayItem]
 
-    init(displayItems: [ForecastDisplayItem] = [], date: Date, configuration: ConfigurationIntent) {
+    init(displayItems: [ForecastDisplayItem] = [], date: Date) {
         self.displayItems = displayItems
         self.date = date
-        self.configuration = configuration
     }
 
-    static let test: ForecastEntry = .init(displayItems: [.test1, .test3, .test2, .test2], date: Date(), configuration: ConfigurationIntent())
+    static let test: ForecastEntry = .init(displayItems: [.test1, .test3, .test2, .test2], date: .now)
 }
 
-final class WidgetForercastProvider: IntentTimelineProvider {
+final class WidgetForercastProvider: TimelineProvider {
 
     private let model: WeatherModel
     private var lastFetchedDisplayItems: [ForecastDisplayItem] = []
@@ -39,28 +37,28 @@ final class WidgetForercastProvider: IntentTimelineProvider {
     }
 
     func placeholder(in context: Context) -> ForecastEntry {
-        ForecastEntry(displayItems: [.test1, .test2, .test3], date: Date(), configuration: ConfigurationIntent())
+        ForecastEntry(displayItems: [.test1, .test2, .test3], date: Date())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (ForecastEntry) -> Void) {
-        let entry = ForecastEntry(displayItems: self.lastFetchedDisplayItems, date: Date(), configuration: ConfigurationIntent())
+    func getSnapshot(in context: Context, completion: @escaping (ForecastEntry) -> Void) {
+        let entry = ForecastEntry(displayItems: self.lastFetchedDisplayItems, date: Date())
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<ForecastEntry>) -> Void) {
-        requestAndMapForecasts(for: configuration) { entry in
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ForecastEntry>) -> Void) {
+        requestAndMapForecasts { entry in
             completion(.init(entries: [entry], policy: .atEnd))
         }
     }
 
-    private func requestAndMapForecasts(for configuration: ConfigurationIntent, completion: @escaping (ForecastEntry) -> Void) {
+    private func requestAndMapForecasts(completion: @escaping (ForecastEntry) -> Void) {
         Task {
             do {
                 self.lastFetchedDisplayItems = try await self.model.forecasts()
-                completion(.init(displayItems: self.lastFetchedDisplayItems, date: Date(), configuration: configuration))
+                completion(.init(displayItems: self.lastFetchedDisplayItems, date: .now))
             }
             catch {
-                completion(.init(displayItems: [], date: Date(), configuration: configuration))
+                completion(.init(displayItems: [], date: .now))
             }
         }
     }
