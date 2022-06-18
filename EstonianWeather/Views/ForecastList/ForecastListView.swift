@@ -142,7 +142,8 @@ extension View {
     ) -> some View {
         if operatingSystems.contains(OperatingSystem.current) {
             modifier(self)
-        } else {
+        }
+        else {
             self
         }
     }

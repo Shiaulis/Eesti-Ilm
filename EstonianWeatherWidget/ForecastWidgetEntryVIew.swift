@@ -19,6 +19,9 @@ struct EstonianWeatherWidgetEntryView: View {
         case .systemMedium: return self.entry.displayItems
         case .systemLarge: return []
         case .systemExtraLarge: return []
+        case .accessoryCircular: return []
+        case .accessoryRectangular: return []
+        case .accessoryInline: return []
         @unknown default: return []
         }
     }
@@ -86,6 +89,9 @@ private struct HeaderView: View {
         case .systemMedium: return NSLocalizedString("estonian_weather_forecast", comment: "")
         case .systemLarge: return ""
         case .systemExtraLarge: return ""
+        case .accessoryCircular: return ""
+        case .accessoryRectangular: return ""
+        case .accessoryInline: return ""
         @unknown default: return ""
         }
     }
