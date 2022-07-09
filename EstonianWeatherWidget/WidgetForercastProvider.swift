@@ -8,6 +8,7 @@
 import WidgetKit
 import Combine
 import WeatherKit
+import NetworkModule
 
 struct ForecastEntry: TimelineEntry {
     let date: Date

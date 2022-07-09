@@ -8,6 +8,8 @@
 import Foundation
 import WeatherKit
 import Combine
+import NetworkModule
+import WeatherLocale
 
 final class RootViewModel {
 

@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import NetworkModule
+import WeatherLocale
 
 public final class NetwokWeatherModel: WeatherModel {
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WeatherLocale
 
 public struct Endpoint {
     static let scheme = "https"
@@ -36,7 +37,7 @@ extension Endpoint {
 
 }
 
-extension Endpoint {
+public extension Endpoint {
 
     // https://ilmateenistus.ee/ilma_andmed/xml/forecast.php?lang=rus
 
