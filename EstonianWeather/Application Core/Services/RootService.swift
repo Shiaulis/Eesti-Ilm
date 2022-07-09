@@ -15,6 +15,7 @@ import os
 final class RootService {
 
     let weatherModel: WeatherModel
+    let weatherService: WeatherService
     let userRatingService: UserRatingService
     let settingsService: SettingsService
 
@@ -25,6 +26,7 @@ final class RootService {
     init() {
         let userDefaults: UserDefaults = .standard
         self.userDefaults = userDefaults
+        self.weatherService = .init()
         self.userRatingService = .init(userDefaults: userDefaults)
         self.settingsService = .init(userDefaults: userDefaults)
         self.logger = .init(category: .rootService)
@@ -35,8 +37,12 @@ final class RootService {
             networkClient: URLSessionNetworkClient()
         )
 
+    }
+
+    func start() {
         self.userRatingService.start()
         self.settingsService.start()
+        self.weatherService.start()
     }
 
 }

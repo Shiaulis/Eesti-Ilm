@@ -12,7 +12,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let rootService: RootService = .init()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool { true }
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.rootService.start()
+        return true
+    }
 
     // MARK: UISceneSession Lifecycle
 

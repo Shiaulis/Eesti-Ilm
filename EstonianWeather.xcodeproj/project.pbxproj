@@ -44,6 +44,7 @@
 		B118051F2879A3DC0019C08F /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B118051E2879A3DC0019C08F /* WeatherKit.framework */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B11805242879A4650019C08F /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11805232879A4650019C08F /* SettingsService.swift */; };
+		B11805272879A57F0019C08F /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11805262879A57F0019C08F /* WeatherService.swift */; };
 		B13DCFD92598FDB200BC02E9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */; };
 		B13DCFF825990B0700BC02E9 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DCFF725990B0700BC02E9 /* Locale+Extensions.swift */; };
 		B189D17F25E40BCD007DF2AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
@@ -262,6 +263,7 @@
 		09F969FB25325BCB00DA94D6 /* EstonianWeatherUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EstonianWeatherUITests.xctestplan; sourceTree = "<group>"; };
 		B118051E2879A3DC0019C08F /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/WeatherKit.framework; sourceTree = DEVELOPER_DIR; };
 		B11805232879A4650019C08F /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		B11805262879A57F0019C08F /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		B13DCFF725990B0700BC02E9 /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B190252D259731E500ACD2E1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -490,8 +492,7 @@
 		097593D7254424AF00C21C6B /* Application Core */ = {
 			isa = PBXGroup;
 			children = (
-				B1F33751287997AF00DCB3FE /* RootService.swift */,
-				B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */,
+				B11805252879A56D0019C08F /* Services */,
 				E05094E32699E18400EC28C8 /* SceneDelegate.swift */,
 				E05094E52699E49700EC28C8 /* AppDelegate.swift */,
 				E05094E72699E75C00EC28C8 /* RootViewController.swift */,
@@ -499,7 +500,6 @@
 				E05094EB2699F2AA00EC28C8 /* SidebarViewController.swift */,
 				E05094ED269A2E8E00EC28C8 /* TabItem.swift */,
 				B1DBBC30285E630000A3177B /* OperatingSystem.swift */,
-				B11805232879A4650019C08F /* SettingsService.swift */,
 			);
 			path = "Application Core";
 			sourceTree = "<group>";
@@ -551,6 +551,17 @@
 				09988135256AD72C00468C58 /* AboutMeView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		B11805252879A56D0019C08F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B1F33751287997AF00DCB3FE /* RootService.swift */,
+				B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */,
+				B11805232879A4650019C08F /* SettingsService.swift */,
+				B11805262879A57F0019C08F /* WeatherService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B13DCFDE2598FE3500BC02E9 /* Class Extensions */ = {
@@ -1008,6 +1019,7 @@
 				0968CDCE252267F600D409FF /* DayPartView.swift in Sources */,
 				0968CDD1252267F600D409FF /* ForecastListView.swift in Sources */,
 				B1D283C1259D1C68005AA4C9 /* UserRatingService.swift in Sources */,
+				B11805272879A57F0019C08F /* WeatherService.swift in Sources */,
 				0968CDD2252267F600D409FF /* PlaceView.swift in Sources */,
 				0968CDCD252267F600D409FF /* SettingsView.swift in Sources */,
 				0968CDCF252267F600D409FF /* TabbarView.swift in Sources */,
