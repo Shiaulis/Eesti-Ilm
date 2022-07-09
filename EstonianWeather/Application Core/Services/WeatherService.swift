@@ -9,6 +9,6 @@ import Foundation
 
 final class WeatherService {
 
-    func start() {}
+    func start() async {}
 
 }

@@ -493,13 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				B11805252879A56D0019C08F /* Services */,
-				E05094E32699E18400EC28C8 /* SceneDelegate.swift */,
-				E05094E52699E49700EC28C8 /* AppDelegate.swift */,
-				E05094E72699E75C00EC28C8 /* RootViewController.swift */,
-				E05094E92699E88700EC28C8 /* RootViewModel.swift */,
-				E05094EB2699F2AA00EC28C8 /* SidebarViewController.swift */,
-				E05094ED269A2E8E00EC28C8 /* TabItem.swift */,
-				B1DBBC30285E630000A3177B /* OperatingSystem.swift */,
+				B11805282879AA2E0019C08F /* Root Presentation */,
 			);
 			path = "Application Core";
 			sourceTree = "<group>";
@@ -562,6 +556,20 @@
 				B11805262879A57F0019C08F /* WeatherService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B11805282879AA2E0019C08F /* Root Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E05094E32699E18400EC28C8 /* SceneDelegate.swift */,
+				E05094E52699E49700EC28C8 /* AppDelegate.swift */,
+				E05094E72699E75C00EC28C8 /* RootViewController.swift */,
+				E05094E92699E88700EC28C8 /* RootViewModel.swift */,
+				E05094EB2699F2AA00EC28C8 /* SidebarViewController.swift */,
+				E05094ED269A2E8E00EC28C8 /* TabItem.swift */,
+				B1DBBC30285E630000A3177B /* OperatingSystem.swift */,
+			);
+			path = "Root Presentation";
 			sourceTree = "<group>";
 		};
 		B13DCFDE2598FE3500BC02E9 /* Class Extensions */ = {

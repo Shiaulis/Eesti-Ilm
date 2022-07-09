@@ -9,22 +9,24 @@ import Foundation
 import SWXMLHash
 import OSLog
 
-private enum Element: String {
-
-    // forecast
-    case forecasts, forecast, night, day, phenomenon, tempmin, tempmax, text, place, name, wind, direction, speedmin, speedmax, gust, sea, peipsi
-
-    // observations
-    case observations, station, wmocode, longitude, latitude, visibility, precipitations, airpressure, relativehumidity, airtemperature
-    // swiftlint:disable identifier_name
-    case winddirection, windspeed, windspeedmax, waterlevel, waterlevel_eh2000, watertemperature, uvindex
-    // swiftlint:enable identifier_name
-    init?(_ name: String) {
-        self.init(rawValue: name)
-    }
-}
-
 public final class SWXMLResponseParser {
+
+    // swiftlint:disable identifier_name
+    fileprivate enum Element: String {
+
+        // forecast
+        case forecasts, forecast, night, day, phenomenon, tempmin, tempmax, text, place, name, wind, direction, speedmin, speedmax, gust, sea, peipsi
+
+        // observations
+        case observations, station, wmocode, longitude, latitude, visibility, precipitations, airpressure, relativehumidity, airtemperature
+        case winddirection, windspeed, windspeedmax, waterlevel, waterlevel_eh2000, watertemperature, uvindex
+
+        init?(_ name: String) {
+            self.init(rawValue: name)
+        }
+
+    }
+    // swiftlint:enable identifier_name
 
     // MARK: - Properties
 
@@ -158,7 +160,7 @@ extension SWXMLResponseParser {
 
 private extension XMLIndexer {
 
-    subscript(element: Element) -> XMLIndexer {
+    subscript(element: SWXMLResponseParser.Element) -> XMLIndexer {
         do {
             return try self.byKey(element.rawValue)
         }

@@ -21,15 +21,12 @@ final class RootService {
 
     private let userDefaults: UserDefaults
 
-    private let logger: Logger
-
     init() {
         let userDefaults: UserDefaults = .standard
         self.userDefaults = userDefaults
         self.weatherService = .init()
         self.userRatingService = .init(userDefaults: userDefaults)
         self.settingsService = .init(userDefaults: userDefaults)
-        self.logger = .init(category: .rootService)
 
         self.weatherModel = NetwokWeatherModel(
             weatherLocale: WeatherLocale(locale: .current) ?? .english,
@@ -39,10 +36,10 @@ final class RootService {
 
     }
 
-    func start() {
-        self.userRatingService.start()
-        self.settingsService.start()
-        self.weatherService.start()
+    func start() async {
+        await self.weatherService.start()
+        await self.userRatingService.start()
+        await self.settingsService.start()
     }
 
 }

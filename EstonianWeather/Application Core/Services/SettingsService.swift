@@ -15,7 +15,7 @@ final class SettingsService {
         self.userDefaults = userDefaults
     }
 
-    func start() {
+    func start() async {
         storeVersionAndBuildNumberToUserDefaults()
     }
 

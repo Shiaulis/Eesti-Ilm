@@ -18,7 +18,7 @@ final class UserRatingService {
         self.userDefaults = userDefaults
     }
 
-    func start() {
+    func start() async {
         incrementLauchCounter()
     }
 
