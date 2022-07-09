@@ -75,7 +75,7 @@ extension SWXMLResponseParser {
             weatherIconName: weatherIconName(from: indexer),
             weatherDescription: indexer[.phenomenon].element?.text,
             temperatureRange: temperatureRangeSting(from: indexer),
-            description: indexer[.text].element?.text,
+            description: indexer[.text].element?.text.replacingOccurrences(of: "Â", with: ""),
             places: []
         )
     }
