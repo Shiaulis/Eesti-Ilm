@@ -69,6 +69,8 @@
 		B1F3374728798D9D00DCB3FE /* WeatherLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3374628798D9D00DCB3FE /* WeatherLocale.swift */; };
 		B1F3374B28798DDB00DCB3FE /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B1F3374E28798E8900DCB3FE /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
+		B1F33752287997AF00DCB3FE /* RootService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F33751287997AF00DCB3FE /* RootService.swift */; };
+		B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B1F337532879988300DCB3FE /* .swiftlint.yml */; };
 		B1F58A9A2594A732004117F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0976968B252A667E00FA1764 /* Localizable.strings */; };
 		E00C451026948A1A00B73149 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C450F26948A1A00B73149 /* Bundle+Extensions.swift */; };
 		E00C45152694C75800B73149 /* Logger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C45142694C75800B73149 /* Logger+Extensions.swift */; };
@@ -256,6 +258,8 @@
 		B1F3373D28798D1D00DCB3FE /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeatherLocale.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F3374628798D9D00DCB3FE /* WeatherLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocale.swift; sourceTree = "<group>"; };
+		B1F33751287997AF00DCB3FE /* RootService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootService.swift; sourceTree = "<group>"; };
+		B1F337532879988300DCB3FE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E00C450F26948A1A00B73149 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		E00C45142694C75800B73149 /* Logger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extensions.swift"; sourceTree = "<group>"; };
 		E00C45162694CAF800B73149 /* UsedDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsedDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 		0968CD892522667A00D409FF = {
 			isa = PBXGroup;
 			children = (
+				B1F337532879988300DCB3FE /* .swiftlint.yml */,
 				0968CD942522667A00D409FF /* EstonianWeather */,
 				097698B6252A708A00FA1764 /* EstonianWeatherWidget */,
 				0968CDA62522667B00D409FF /* EstonianWeatherTests */,
@@ -458,6 +463,7 @@
 				E05094EB2699F2AA00EC28C8 /* SidebarViewController.swift */,
 				E05094ED269A2E8E00EC28C8 /* TabItem.swift */,
 				B1DBBC30285E630000A3177B /* OperatingSystem.swift */,
+				B1F33751287997AF00DCB3FE /* RootService.swift */,
 			);
 			path = "Application Core";
 			sourceTree = "<group>";
@@ -847,6 +853,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */,
 				09727670254583C100016EB0 /* LICENSE in Resources */,
 				09769696252A682800FA1764 /* Settings.bundle in Resources */,
 				0968CD9D2522667B00D409FF /* Preview Assets.xcassets in Resources */,
@@ -968,6 +975,7 @@
 				E05094E62699E49700EC28C8 /* AppDelegate.swift in Sources */,
 				E00C451026948A1A00B73149 /* Bundle+Extensions.swift in Sources */,
 				E05094EC2699F2AA00EC28C8 /* SidebarViewController.swift in Sources */,
+				B1F33752287997AF00DCB3FE /* RootService.swift in Sources */,
 				B1AFFAFA2598FC3100ACA10E /* UIColor+Extensions.swift in Sources */,
 				09A294C92569811000545CFB /* DisclaimerCell.swift in Sources */,
 				E00C45172694CAF800B73149 /* UsedDefaults+Extensions.swift in Sources */,

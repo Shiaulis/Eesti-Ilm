@@ -30,7 +30,8 @@ final class AppStoreRatingService {
     func makeAttemptToShowRating(in windowScene: UIWindowScene) {
         // Get the current bundle version for the app
         guard let currentVersion = Bundle.main.string(for: .bundleVersion) else {
-            self.logger.faultAndAssert("Expected to find a bundle version in the info dictionary")
+            self.logger.fault("Expected to find a bundle version in the info dictionary")
+            assertionFailure()
             return
         }
 

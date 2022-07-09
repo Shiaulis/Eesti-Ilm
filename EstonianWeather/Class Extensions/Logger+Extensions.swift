@@ -14,6 +14,7 @@ extension Logger {
     }
 
     enum Category: String {
+        case rootService
         case rating
         case purchase
         case weatherModel
@@ -23,8 +24,4 @@ extension Logger {
         self.init(subsystem: subsystem.rawValue, category: category.rawValue)
     }
 
-    func faultAndAssert(_ message: String) {
-        self.fault("\(message)")
-        assertionFailure(message)
-    }
 }
