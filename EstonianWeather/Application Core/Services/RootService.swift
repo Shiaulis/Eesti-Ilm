@@ -23,13 +23,18 @@ final class RootService {
 
     init() {
         let userDefaults: UserDefaults = .standard
+        let locale = WeatherLocale(locale: .current) ?? .english
         self.userDefaults = userDefaults
-        self.weatherService = .init()
+        self.weatherService = .init(
+            weatherLocale: locale,
+            responseParser: SWXMLResponseParser(logger: .init(category: .weatherModel)),
+            networkClient: URLSessionNetworkClient()
+        )
         self.userRatingService = .init(userDefaults: userDefaults)
         self.settingsService = .init(userDefaults: userDefaults)
 
         self.weatherModel = NetwokWeatherModel(
-            weatherLocale: WeatherLocale(locale: .current) ?? .english,
+            weatherLocale: locale,
             responseParser: SWXMLResponseParser(logger: .init(category: .weatherModel)),
             networkClient: URLSessionNetworkClient()
         )
