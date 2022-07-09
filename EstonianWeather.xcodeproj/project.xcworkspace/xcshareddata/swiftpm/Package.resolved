@@ -26,15 +26,6 @@
         "revision" : "4d0f62f561458cbe1f732171e625f03195151b60",
         "version" : "7.0.1"
       }
-    },
-    {
-      "identity" : "weatherkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Shiaulis/WeatherKit",
-      "state" : {
-        "revision" : "e4306d66272152c1c2f48591bd11f516f1191c78",
-        "version" : "2.0.1"
-      }
     }
   ],
   "version" : 2
