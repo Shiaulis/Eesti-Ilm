@@ -12,7 +12,7 @@ import Combine
 final class RootViewModel {
 
     // MARK: - Properties
-    @Published var selectedTab: Tab = .forecastList
+    @Published var selectedTab: TabItem = .forecastList
 
     let forecastListViewModel: ForecastListViewModel
     let settingsViewModel: SettingsViewModel
@@ -58,9 +58,9 @@ final class RootViewModel {
 
 extension RootViewModel: SidebarViewModel {
 
-    var selectedTabPublisher: AnyPublisher<Tab, Never> { self.$selectedTab.eraseToAnyPublisher() }
+    var selectedTabPublisher: AnyPublisher<TabItem, Never> { self.$selectedTab.eraseToAnyPublisher() }
 
-    func select(_ tab: Tab) {
+    func select(_ tab: TabItem) {
         self.selectedTab = tab
     }
 
@@ -68,7 +68,7 @@ extension RootViewModel: SidebarViewModel {
 
 extension RootViewModel: TabbarViewModel {
 
-    func didSwitchTo(_ tab: Tab) {
+    func didSwitchTo(_ tab: TabItem) {
         self.selectedTab = tab
     }
 
