@@ -1,5 +1,5 @@
 //
-//  AppStoreRatingService.swift
+//  UserRatingService.swift
 //  EstonianWeather
 //
 //  Created by Andrius Shiaulis on 30.12.2020.
@@ -9,7 +9,7 @@ import Foundation
 import StoreKit
 import OSLog
 
-final class AppStoreRatingService {
+final class UserRatingService {
 
     private let logger = Logger(category: .rating)
     private let userDefaults: UserDefaults
@@ -18,7 +18,11 @@ final class AppStoreRatingService {
         self.userDefaults = userDefaults
     }
 
-    func incrementLauchCounter() {
+    func start() {
+        incrementLauchCounter()
+    }
+
+    private func incrementLauchCounter() {
         // If the count has not yet been stored, this will return 0
         var count = self.userDefaults.integer(for: .processCompletedCount)
         count += 1
@@ -44,7 +48,7 @@ final class AppStoreRatingService {
             DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) {
                 SKStoreReviewController.requestReview(in: windowScene)
                 self.userDefaults.set(currentVersion, for: .lastVersionPromptedForReview)
-                self.logger.info("Made request to show rating")
+                self.logger.info("Made review request")
             }
         }
     }

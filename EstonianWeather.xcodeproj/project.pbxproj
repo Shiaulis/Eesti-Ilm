@@ -39,6 +39,11 @@
 		09E8E0AF2531928F00E2F180 /* TestableLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E8E0AE2531928F00E2F180 /* TestableLocale.swift */; };
 		09E8E0B52531A3A900E2F180 /* TestObservations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 09E8E0B42531A3A900E2F180 /* TestObservations.xml */; };
 		09F969F62532597600DA94D6 /* TestableLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E8E0AE2531928F00E2F180 /* TestableLocale.swift */; };
+		B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
+		B118051A2879A3C60019C08F /* NetworkModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B118051F2879A3DC0019C08F /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B118051E2879A3DC0019C08F /* WeatherKit.framework */; };
+		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
+		B11805242879A4650019C08F /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11805232879A4650019C08F /* SettingsService.swift */; };
 		B13DCFD92598FDB200BC02E9 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */; };
 		B13DCFF825990B0700BC02E9 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DCFF725990B0700BC02E9 /* Locale+Extensions.swift */; };
 		B189D17F25E40BCD007DF2AB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
@@ -46,7 +51,7 @@
 		B190EB142586A5820025415A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190EB132586A5820025415A /* Date+Extensions.swift */; };
 		B1AFFAFA2598FC3100ACA10E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */; };
 		B1D2279F25EA90660086B689 /* PurchaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = B1D2279E25EA90660086B689 /* PurchaseKit */; };
-		B1D283C1259D1C68005AA4C9 /* AppStoreRatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D283C0259D1C68005AA4C9 /* AppStoreRatingService.swift */; };
+		B1D283C1259D1C68005AA4C9 /* UserRatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */; };
 		B1D5854D2879898800989B14 /* WeatherKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = B1D5854C2879898800989B14 /* WeatherKit.docc */; };
 		B1D585532879898800989B14 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
 		B1D5855B2879898800989B14 /* WeatherKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B1D5854B2879898800989B14 /* WeatherKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,6 +112,20 @@
 			remoteGlobalIDString = 097698AF252A708A00FA1764;
 			remoteInfo = EstonianWeatherWidgetExtension;
 		};
+		B118051B2879A3C60019C08F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1F3373028798CDD00DCB3FE;
+			remoteInfo = NetworkModule;
+		};
+		B11805212879A3E00019C08F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1F3374328798D9D00DCB3FE;
+			remoteInfo = WeatherLocale;
+		};
 		B1D585542879898800989B14 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
@@ -161,6 +180,17 @@
 				097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B118051D2879A3C60019C08F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B118051A2879A3C60019C08F /* NetworkModule.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B1D585632879898800989B14 /* Embed Frameworks */ = {
@@ -230,6 +260,8 @@
 		09E8E0AE2531928F00E2F180 /* TestableLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableLocale.swift; sourceTree = "<group>"; };
 		09E8E0B42531A3A900E2F180 /* TestObservations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestObservations.xml; sourceTree = "<group>"; };
 		09F969FB25325BCB00DA94D6 /* EstonianWeatherUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EstonianWeatherUITests.xctestplan; sourceTree = "<group>"; };
+		B118051E2879A3DC0019C08F /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/WeatherKit.framework; sourceTree = DEVELOPER_DIR; };
+		B11805232879A4650019C08F /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		B13DCFF725990B0700BC02E9 /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B190252D259731E500ACD2E1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -238,7 +270,7 @@
 		B19AC27C2598AE61007203FB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
 		B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B1C2356425E676ED0097FEDD /* TestConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestConfiguration.storekit; sourceTree = "<group>"; };
-		B1D283C0259D1C68005AA4C9 /* AppStoreRatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreRatingService.swift; sourceTree = "<group>"; };
+		B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRatingService.swift; sourceTree = "<group>"; };
 		B1D5852B287988DC00989B14 /* SWXMLResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLResponseParser.swift; sourceTree = "<group>"; };
 		B1D5852C287988DC00989B14 /* ForecastDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDateFormatter.swift; sourceTree = "<group>"; };
 		B1D5852D287988DC00989B14 /* ResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
@@ -302,7 +334,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B118051F2879A3DC0019C08F /* WeatherKit.framework in Frameworks */,
 				097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */,
+				B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */,
+				B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */,
 				097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,7 +490,8 @@
 		097593D7254424AF00C21C6B /* Application Core */ = {
 			isa = PBXGroup;
 			children = (
-				B1D283C0259D1C68005AA4C9 /* AppStoreRatingService.swift */,
+				B1F33751287997AF00DCB3FE /* RootService.swift */,
+				B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */,
 				E05094E32699E18400EC28C8 /* SceneDelegate.swift */,
 				E05094E52699E49700EC28C8 /* AppDelegate.swift */,
 				E05094E72699E75C00EC28C8 /* RootViewController.swift */,
@@ -463,7 +499,7 @@
 				E05094EB2699F2AA00EC28C8 /* SidebarViewController.swift */,
 				E05094ED269A2E8E00EC28C8 /* TabItem.swift */,
 				B1DBBC30285E630000A3177B /* OperatingSystem.swift */,
-				B1F33751287997AF00DCB3FE /* RootService.swift */,
+				B11805232879A4650019C08F /* SettingsService.swift */,
 			);
 			path = "Application Core";
 			sourceTree = "<group>";
@@ -471,6 +507,7 @@
 		097698B1252A708A00FA1764 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B118051E2879A3DC0019C08F /* WeatherKit.framework */,
 				B189D17E25E40BCD007DF2AB /* StoreKit.framework */,
 				097698B2252A708A00FA1764 /* WidgetKit.framework */,
 				097698B4252A708A00FA1764 /* SwiftUI.framework */,
@@ -688,10 +725,13 @@
 				097698AC252A708A00FA1764 /* Sources */,
 				097698AD252A708A00FA1764 /* Frameworks */,
 				097698AE252A708A00FA1764 /* Resources */,
+				B118051D2879A3C60019C08F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B118051C2879A3C60019C08F /* PBXTargetDependency */,
+				B11805222879A3E00019C08F /* PBXTargetDependency */,
 			);
 			name = EstonianWeatherWidgetExtension;
 			packageProductDependencies = (
@@ -967,7 +1007,7 @@
 				B190EB142586A5820025415A /* Date+Extensions.swift in Sources */,
 				0968CDCE252267F600D409FF /* DayPartView.swift in Sources */,
 				0968CDD1252267F600D409FF /* ForecastListView.swift in Sources */,
-				B1D283C1259D1C68005AA4C9 /* AppStoreRatingService.swift in Sources */,
+				B1D283C1259D1C68005AA4C9 /* UserRatingService.swift in Sources */,
 				0968CDD2252267F600D409FF /* PlaceView.swift in Sources */,
 				0968CDCD252267F600D409FF /* SettingsView.swift in Sources */,
 				0968CDCF252267F600D409FF /* TabbarView.swift in Sources */,
@@ -980,6 +1020,7 @@
 				09A294C92569811000545CFB /* DisclaimerCell.swift in Sources */,
 				E00C45172694CAF800B73149 /* UsedDefaults+Extensions.swift in Sources */,
 				0968CDD0252267F600D409FF /* ForecastView.swift in Sources */,
+				B11805242879A4650019C08F /* SettingsService.swift in Sources */,
 				E00C45152694C75800B73149 /* Logger+Extensions.swift in Sources */,
 				0968CDE4252268E600D409FF /* ForecastListViewModel.swift in Sources */,
 				0968CDE6252268E600D409FF /* SettingsViewModel.swift in Sources */,
@@ -1077,6 +1118,16 @@
 			platformFilter = ios;
 			target = 097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */;
 			targetProxy = 097698BF252A708C00FA1764 /* PBXContainerItemProxy */;
+		};
+		B118051C2879A3C60019C08F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
+			targetProxy = B118051B2879A3C60019C08F /* PBXContainerItemProxy */;
+		};
+		B11805222879A3E00019C08F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1F3374328798D9D00DCB3FE /* WeatherLocale */;
+			targetProxy = B11805212879A3E00019C08F /* PBXContainerItemProxy */;
 		};
 		B1D585552879898800989B14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1361,7 +1412,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				INFOPLIST_FILE = EstonianWeatherUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1370,6 +1423,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1382,7 +1436,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				INFOPLIST_FILE = EstonianWeatherUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1391,6 +1447,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1402,6 +1459,7 @@
 		097698C3252A708C00FA1764 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = EstonianWeatherWidget/EstonianWeatherWidgetExtension.entitlements;
@@ -1415,7 +1473,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeather.EstonianWeatherWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1428,6 +1486,7 @@
 		097698C4252A708C00FA1764 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = EstonianWeatherWidget/EstonianWeatherWidgetExtension.entitlements;
@@ -1441,7 +1500,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeather.EstonianWeatherWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

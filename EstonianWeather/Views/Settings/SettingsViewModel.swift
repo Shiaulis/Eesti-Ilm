@@ -23,12 +23,12 @@ final class SettingsViewModel {
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 
     private let locale: Locale = .current
-    private let ratingService: AppStoreRatingService
+    private let ratingService: UserRatingService
     private let purchasemanager: InAppPurchaseManager
 
     // MARK: - Init
 
-    init(ratingService: AppStoreRatingService) {
+    init(ratingService: UserRatingService) {
         self.ratingService = ratingService
         self.purchasemanager = .init(
             inAppPurchaseIdentifiers: ["com.shiaulis.estonianweather.buyadrink"],
