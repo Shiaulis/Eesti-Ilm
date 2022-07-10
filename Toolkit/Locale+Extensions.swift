@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Locale {
+public extension Locale {
 
     var localizedLanguageName: String {
         guard let languageCode = self.languageCode else {

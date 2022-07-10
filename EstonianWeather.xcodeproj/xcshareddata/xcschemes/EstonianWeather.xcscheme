@@ -55,6 +55,17 @@
                ReferencedContainer = "container:EstonianWeather.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B1D585512879898800989B14"
+               BuildableName = "WeatherKitTests.xctest"
+               BlueprintName = "WeatherKitTests"
+               ReferencedContainer = "container:EstonianWeather.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

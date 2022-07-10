@@ -22,10 +22,10 @@ final class ForecastListViewModel: ObservableObject {
 
     @Published private(set) var syncStatus: SyncStatus = .refreshing
 
-    private let model: WeatherModel
+    private let model: WeatherService
     private var disposables: Set<AnyCancellable> = []
 
-    init(model: WeatherModel) {
+    init(model: WeatherService) {
         self.model = model
 
         Task { await fetchRemoteForecasts() }

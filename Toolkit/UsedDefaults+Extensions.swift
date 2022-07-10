@@ -8,7 +8,7 @@
 import Foundation
 
 // swiftlint:disable identifier_name
-extension UserDefaults {
+public extension UserDefaults {
 
     enum Keys: String {
         // used for rating service
