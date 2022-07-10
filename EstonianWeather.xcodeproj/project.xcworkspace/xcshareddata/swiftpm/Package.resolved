@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "purchasekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Shiaulis/PurchaseKit",
-      "state" : {
-        "branch" : "main",
-        "revision" : "1f53cd62959ffb91b534d8c6f38f56e6da8e371c"
-      }
-    },
-    {
       "identity" : "r.swift.library",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mac-cain13/R.swift.Library",

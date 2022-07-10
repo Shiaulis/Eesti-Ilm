@@ -57,7 +57,11 @@
 		B1C7DB90287AB0210077CC34 /* NetworkModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1C7DB94287AB0610077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
-		B1D2279F25EA90660086B689 /* PurchaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = B1D2279E25EA90660086B689 /* PurchaseKit */; };
+		B1C7DBA2287AB0FD0077CC34 /* PurchaseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B1C7DBA1287AB0FD0077CC34 /* PurchaseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1C7DBA5287AB0FD0077CC34 /* PurchaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */; };
+		B1C7DBA6287AB0FD0077CC34 /* PurchaseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B1C7DBAB287AB11E0077CC34 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7DBAA287AB11E0077CC34 /* InAppPurchaseManager.swift */; };
+		B1C7DBAC287AB1470077CC34 /* PurchaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */; };
 		B1D283C1259D1C68005AA4C9 /* UserRatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */; };
 		B1D5854D2879898800989B14 /* WeatherKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = B1D5854C2879898800989B14 /* WeatherKit.docc */; };
 		B1D585532879898800989B14 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
@@ -157,6 +161,20 @@
 			remoteGlobalIDString = B16AEA73287AAF8300E5F791;
 			remoteInfo = Toolkit;
 		};
+		B1C7DBA3287AB0FD0077CC34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1C7DB9E287AB0FD0077CC34;
+			remoteInfo = PurchaseKit;
+		};
+		B1C7DBAD287AB1470077CC34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1C7DB9E287AB0FD0077CC34;
+			remoteInfo = PurchaseKit;
+		};
 		B1D585542879898800989B14 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
@@ -251,6 +269,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B1D5855F2879898800989B14 /* WeatherKit.framework in Embed Frameworks */,
+				B1C7DBA6287AB0FD0077CC34 /* PurchaseKit.framework in Embed Frameworks */,
 				B1F3373828798CDD00DCB3FE /* NetworkModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -323,6 +342,9 @@
 		B19AC27C2598AE61007203FB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
 		B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B1C2356425E676ED0097FEDD /* TestConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestConfiguration.storekit; sourceTree = "<group>"; };
+		B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PurchaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1C7DBA1287AB0FD0077CC34 /* PurchaseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseKit.h; sourceTree = "<group>"; };
+		B1C7DBAA287AB11E0077CC34 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRatingService.swift; sourceTree = "<group>"; };
 		B1D5852B287988DC00989B14 /* SWXMLResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLResponseParser.swift; sourceTree = "<group>"; };
 		B1D5852C287988DC00989B14 /* ForecastDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDateFormatter.swift; sourceTree = "<group>"; };
@@ -362,11 +384,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1D5855E2879898800989B14 /* WeatherKit.framework in Frameworks */,
+				B1C7DBAC287AB1470077CC34 /* PurchaseKit.framework in Frameworks */,
+				B1C7DBA5287AB0FD0077CC34 /* PurchaseKit.framework in Frameworks */,
 				B1F3373728798CDD00DCB3FE /* NetworkModule.framework in Frameworks */,
 				B189D17F25E40BCD007DF2AB /* StoreKit.framework in Frameworks */,
 				E0F4E1DB26A40F0D0081E42A /* Rswift in Frameworks */,
 				B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */,
-				B1D2279F25EA90660086B689 /* PurchaseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +421,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B16AEA71287AAF8300E5F791 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1C7DB9C287AB0FD0077CC34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,6 +484,7 @@
 				B1F3373228798CDD00DCB3FE /* NetworkModule */,
 				B1F3374528798D9D00DCB3FE /* WeatherLocale */,
 				B16AEA75287AAF8300E5F791 /* Toolkit */,
+				B1C7DBA0287AB0FD0077CC34 /* PurchaseKit */,
 				097698B1252A708A00FA1764 /* Frameworks */,
 				0968CD932522667A00D409FF /* Products */,
 				0975939D254423B600C21C6B /* Root Supporting Files */,
@@ -475,6 +506,7 @@
 				B1F3373128798CDD00DCB3FE /* NetworkModule.framework */,
 				B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */,
 				B16AEA74287AAF8300E5F791 /* libToolkit.a */,
+				B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -649,6 +681,15 @@
 			path = Toolkit;
 			sourceTree = "<group>";
 		};
+		B1C7DBA0287AB0FD0077CC34 /* PurchaseKit */ = {
+			isa = PBXGroup;
+			children = (
+				B1C7DBAA287AB11E0077CC34 /* InAppPurchaseManager.swift */,
+				B1C7DBA1287AB0FD0077CC34 /* PurchaseKit.h */,
+			);
+			path = PurchaseKit;
+			sourceTree = "<group>";
+		};
 		B1D5852A287988DC00989B14 /* ResponseParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +758,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B1C7DB9A287AB0FD0077CC34 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C7DBA2287AB0FD0077CC34 /* PurchaseKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D585442879898800989B14 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -755,10 +804,11 @@
 				B1D5855D2879898800989B14 /* PBXTargetDependency */,
 				B1F3373628798CDD00DCB3FE /* PBXTargetDependency */,
 				B1C7DB99287AB0850077CC34 /* PBXTargetDependency */,
+				B1C7DBA4287AB0FD0077CC34 /* PBXTargetDependency */,
+				B1C7DBAE287AB1470077CC34 /* PBXTargetDependency */,
 			);
 			name = EstonianWeather;
 			packageProductDependencies = (
-				B1D2279E25EA90660086B689 /* PurchaseKit */,
 				E0F4E1DA26A40F0D0081E42A /* Rswift */,
 			);
 			productName = EstonianWeather;
@@ -840,6 +890,24 @@
 			productName = Toolkit;
 			productReference = B16AEA74287AAF8300E5F791 /* libToolkit.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		B1C7DB9E287AB0FD0077CC34 /* PurchaseKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1C7DBA7287AB0FD0077CC34 /* Build configuration list for PBXNativeTarget "PurchaseKit" */;
+			buildPhases = (
+				B1C7DB9A287AB0FD0077CC34 /* Headers */,
+				B1C7DB9B287AB0FD0077CC34 /* Sources */,
+				B1C7DB9C287AB0FD0077CC34 /* Frameworks */,
+				B1C7DB9D287AB0FD0077CC34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PurchaseKit;
+			productName = PurchaseKit;
+			productReference = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		B1D585482879898800989B14 /* WeatherKit */ = {
 			isa = PBXNativeTarget;
@@ -947,6 +1015,10 @@
 					B16AEA73287AAF8300E5F791 = {
 						CreatedOnToolsVersion = 14.0;
 					};
+					B1C7DB9E287AB0FD0077CC34 = {
+						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1400;
+					};
 					B1D585482879898800989B14 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -975,7 +1047,6 @@
 			);
 			mainGroup = 0968CD892522667A00D409FF;
 			packageReferences = (
-				B1D2279D25EA90660086B689 /* XCRemoteSwiftPackageReference "PurchaseKit" */,
 				E0F4E1D926A40F0D0081E42A /* XCRemoteSwiftPackageReference "R.swift" */,
 				B1D5857228798B4C00989B14 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 			);
@@ -992,6 +1063,7 @@
 				B1F3373028798CDD00DCB3FE /* NetworkModule */,
 				B1F3374328798D9D00DCB3FE /* WeatherLocale */,
 				B16AEA73287AAF8300E5F791 /* Toolkit */,
+				B1C7DB9E287AB0FD0077CC34 /* PurchaseKit */,
 			);
 		};
 /* End PBXProject section */
@@ -1033,6 +1105,13 @@
 			files = (
 				097698BB252A708C00FA1764 /* Assets.xcassets in Resources */,
 				B1F58A9A2594A732004117F9 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1C7DB9D287AB0FD0077CC34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,6 +1253,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1C7DB9B287AB0FD0077CC34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C7DBAB287AB11E0077CC34 /* InAppPurchaseManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D585452879898800989B14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1261,6 +1348,16 @@
 			isa = PBXTargetDependency;
 			target = B16AEA73287AAF8300E5F791 /* Toolkit */;
 			targetProxy = B1C7DB98287AB0850077CC34 /* PBXContainerItemProxy */;
+		};
+		B1C7DBA4287AB0FD0077CC34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1C7DB9E287AB0FD0077CC34 /* PurchaseKit */;
+			targetProxy = B1C7DBA3287AB0FD0077CC34 /* PBXContainerItemProxy */;
+		};
+		B1C7DBAE287AB1470077CC34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1C7DB9E287AB0FD0077CC34 /* PurchaseKit */;
+			targetProxy = B1C7DBAD287AB1470077CC34 /* PBXContainerItemProxy */;
 		};
 		B1D585552879898800989B14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1671,6 +1768,71 @@
 			};
 			name = Release;
 		};
+		B1C7DBA8287AB0FD0077CC34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 42;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.PurchaseKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B1C7DBA9287AB0FD0077CC34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 42;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.PurchaseKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B1D585612879898800989B14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1923,6 +2085,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B1C7DBA7287AB0FD0077CC34 /* Build configuration list for PBXNativeTarget "PurchaseKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1C7DBA8287AB0FD0077CC34 /* Debug */,
+				B1C7DBA9287AB0FD0077CC34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B1D585602879898800989B14 /* Build configuration list for PBXNativeTarget "WeatherKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1962,14 +2133,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B1D2279D25EA90660086B689 /* XCRemoteSwiftPackageReference "PurchaseKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Shiaulis/PurchaseKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		B1D5857228798B4C00989B14 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
@@ -1989,11 +2152,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B1D2279E25EA90660086B689 /* PurchaseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B1D2279D25EA90660086B689 /* XCRemoteSwiftPackageReference "PurchaseKit" */;
-			productName = PurchaseKit;
-		};
 		B1D5857328798B4C00989B14 /* SWXMLHash */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B1D5857228798B4C00989B14 /* XCRemoteSwiftPackageReference "SWXMLHash" */;
