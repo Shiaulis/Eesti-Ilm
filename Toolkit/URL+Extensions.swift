@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension URL {
+public extension URL {
 
     static let settings = URL(string: UIApplication.openSettingsURLString)!
     static let email = URL(string: "mailto:shiaulis@gmail.com")!

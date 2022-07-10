@@ -7,7 +7,7 @@
 
 import OSLog
 
-extension Logger {
+public extension Logger {
     enum Subsystem: String {
         case mainApp
         case widget

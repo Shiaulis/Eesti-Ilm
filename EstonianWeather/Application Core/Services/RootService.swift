@@ -14,7 +14,6 @@ import os
 /// Main service for the whole application. Responsible for the rest application services management
 final class RootService {
 
-    let weatherModel: WeatherModel
     let weatherService: WeatherService
     let userRatingService: UserRatingService
     let settingsService: SettingsService
@@ -27,17 +26,11 @@ final class RootService {
         self.userDefaults = userDefaults
         self.weatherService = .init(
             weatherLocale: locale,
-            responseParser: SWXMLResponseParser(logger: .init(category: .weatherModel)),
+            responseParser: SWXMLResponseParser(),
             networkClient: URLSessionNetworkClient()
         )
         self.userRatingService = .init(userDefaults: userDefaults)
         self.settingsService = .init(userDefaults: userDefaults)
-
-        self.weatherModel = NetwokWeatherModel(
-            weatherLocale: locale,
-            responseParser: SWXMLResponseParser(logger: .init(category: .weatherModel)),
-            networkClient: URLSessionNetworkClient()
-        )
 
     }
 

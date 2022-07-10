@@ -21,7 +21,7 @@ final class RootViewModel {
     // MARK: - Init
 
     init(rootService: RootService) {
-        self.forecastListViewModel = ForecastListViewModel(model: rootService.weatherModel)
+        self.forecastListViewModel = ForecastListViewModel(model: rootService.weatherService)
         self.settingsViewModel = SettingsViewModel(ratingService: rootService.userRatingService)
     }
 

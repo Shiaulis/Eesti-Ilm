@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
 
     static var yesterday: Date { Date().dayBefore }
     static var tomorrow: Date { Date().dayAfter }

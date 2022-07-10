@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
 
     static let appRose = UIColor.dynamicColor(
         light: UIColor(red: 0.90, green: 0.53, blue: 0.53, alpha: 1.00),

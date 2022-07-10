@@ -12,9 +12,6 @@ import WeatherLocale
 
 final class WeatherService {
 
-    @Published private(set) var forecasts: [ForecastDisplayItem]?
-    @Published private(set) var userError: Swift.Error?
-
     private let weatherLocale: WeatherLocale
     private let responseParser: ResponseParser
     private let networkClient: NetworkClient
@@ -25,20 +22,20 @@ final class WeatherService {
         self.networkClient = networkClient
     }
 
-    func start() async {
-        await fetch()
+    func start() async {}
+
+    func forecasts() async throws -> [ForecastDisplayItem] {
+        let (data, response) = try await self.networkClient.data(from: .forecast(for: self.weatherLocale))
+
+        try validate(response)
+        return try self.responseParser.parse(forecastData: data).get()
     }
 
-    func fetch() async {
-        do {
-            let (data, response) = try await self.networkClient.data(from: .forecast(for: self.weatherLocale))
+    func observations() async throws -> [ForecastDisplayItem] {
+        let (data, response) = try await self.networkClient.data(from: .observations())
 
-            try validate(response)
-            self.forecasts = try self.responseParser.parse(forecastData: data).get()
-        }
-        catch {
-            self.userError = error
-        }
+        try validate(response)
+        return try self.responseParser.parse(forecastData: data).get()
     }
 
     // Should validate response code as well

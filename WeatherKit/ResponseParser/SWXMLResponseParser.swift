@@ -8,6 +8,7 @@
 import Foundation
 import SWXMLHash
 import OSLog
+import Toolkit
 
 public final class SWXMLResponseParser {
 
@@ -30,15 +31,12 @@ public final class SWXMLResponseParser {
 
     // MARK: - Properties
 
-    private let logger: Logger
-    private let formatter: ForecastDateFormatter
+    private let logger: Logger = .init(category: .weatherModel)
+    private let formatter: ForecastDateFormatter = .init()
 
     // MARK: - Init
 
-    public init(logger: Logger) {
-        self.logger = logger
-        self.formatter = .init()
-    }
+    public init() {}
 }
 
 extension SWXMLResponseParser: ResponseParser {
