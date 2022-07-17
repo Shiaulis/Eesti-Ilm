@@ -653,9 +653,9 @@
 		B10EB2912883F7FF003D3CA5 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
+				B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */,
 				B10EB29F2883F8B1003D3CA5 /* Strings.strings */,
 				B10EB2A42883FC79003D3CA5 /* AppStoreDescription.strings */,
-				B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */,
 				B10EB2922883F7FF003D3CA5 /* Strings.h */,
 			);
 			path = Strings;

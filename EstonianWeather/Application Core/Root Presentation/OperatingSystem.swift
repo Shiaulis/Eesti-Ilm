@@ -29,20 +29,20 @@ enum OperatingSystem {
 
 extension View {
     /**
-    Conditionally apply modifiers depending on the target operating system.
+     Conditionally apply modifiers depending on the target operating system.
 
-    ```
-    struct ContentView: View {
-        var body: some View {
-            Text("Unicorn")
-                .font(.system(size: 10))
-                .ifOS(.macOS, .tvOS) {
-                    $0.font(.system(size: 20))
-                }
-        }
-    }
-    ```
-    */
+     ```
+     struct ContentView: View {
+         var body: some View {
+             Text("Unicorn")
+                 .font(.system(size: 10))
+                 .ifOS(.macOS, .tvOS) {
+                     $0.font(.system(size: 20))
+                 }
+         }
+     }
+     ```
+     */
     @ViewBuilder
     func ifOS<Content: View>(
         _ operatingSystems: OperatingSystem...,
