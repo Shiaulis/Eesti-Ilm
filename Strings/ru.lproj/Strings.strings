@@ -1,9 +1,9 @@
-/* 
+/*
   Localizable.strings
-  EstonianWeather
+  EstonianWeather.Strings
 
   Created by Andrius Shiaulis on 04.10.2020.
-  
+
 */
 
 "Four day forecast" = "Прогноз на 4 дня";
@@ -30,3 +30,6 @@
 "Check Estonian weather forecast." = "Проверяйте прогноз погоды в Эстонии.";
 
 "No data available" = "Данные недоступны";
+
+// Widget configuration display name
+"Forecast Widget" = "Виджет погожы";

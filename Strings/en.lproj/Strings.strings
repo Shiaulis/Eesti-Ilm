@@ -1,8 +1,8 @@
 /* 
   Localizable.strings
-  EstonianWeather
+  EstonianWeather.Strings
 
-  Created by Andrius Shiaulis on 04.10.2020.
+  Created by Andrius Shiaulis on 17.07.2022.
   
 */
 
@@ -30,3 +30,6 @@
 "Check Estonian weather forecast." = "Check Estonian weather forecast.";
 
 "No data available" = "No data available";
+
+// Widget configuration display name
+"Forecast Widget" = "Forecast Widget";

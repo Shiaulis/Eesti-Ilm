@@ -9,6 +9,7 @@
 import UIKit
 import PurchaseKit
 import OSLog
+import Strings
 
 final class SettingsViewModel {
 
@@ -18,7 +19,7 @@ final class SettingsViewModel {
 
     var currentLanguageName: String { self.locale.localizedString(forLanguageCode: self.locale.languageCode ?? "") ?? "" }
 
-    let sourceDisclaimerText: String = R.string.localizable.sourceDisclaimer()
+    let sourceDisclaimerText: String = L10n.Strings.sourceDisclaimer
     let urlDescription: String = "www.ilmateenindus.ee"
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 

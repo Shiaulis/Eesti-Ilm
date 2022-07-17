@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 import WeatherKit
+import Strings
 
 struct EstonianWeatherWidgetEntryView: View {
     let entry: ForecastEntry
@@ -71,7 +72,7 @@ private struct PlaceholderView: View {
             Spacer()
             HStack {
                 Spacer()
-                Text(NSLocalizedString("No data available", comment: ""))
+                Text(L10n.Strings.noDataAvailable)
                 Spacer()
             }
             Spacer()
@@ -85,8 +86,8 @@ private struct HeaderView: View {
 
     private var text: String {
         switch self.family {
-        case .systemSmall: return NSLocalizedString("forecast", comment: "")
-        case .systemMedium: return NSLocalizedString("estonian_weather_forecast", comment: "")
+        case .systemSmall: return L10n.Strings.forecast
+        case .systemMedium: return L10n.Strings.estonianWeatherForecast
         case .systemLarge: return ""
         case .systemExtraLarge: return ""
         case .accessoryCircular: return ""

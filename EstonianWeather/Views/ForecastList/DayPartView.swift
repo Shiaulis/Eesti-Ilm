@@ -8,12 +8,13 @@
 
 import SwiftUI
 import WeatherKit
+import Strings
 
 private extension DayPartForecastDisplayItem.DayPartType {
     var name: String {
         switch self {
-        case .day: return R.string.localizable.day()
-        case .night: return R.string.localizable.night()
+        case .day: return L10n.Strings.day
+        case .night: return L10n.Strings.night
         }
     }
 }

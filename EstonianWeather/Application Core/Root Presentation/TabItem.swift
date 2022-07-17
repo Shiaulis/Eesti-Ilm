@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Strings
 
 enum TabItem: Int, CaseIterable, Identifiable {
 
@@ -15,8 +16,8 @@ enum TabItem: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .forecastList: return R.string.localizable.forecast()
-        case .settings: return R.string.localizable.settings()
+        case .forecastList: return L10n.Strings.forecast
+        case .settings: return L10n.Strings.settings
         }
     }
 

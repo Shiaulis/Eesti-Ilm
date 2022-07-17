@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import Strings
 
 struct ForecastWidget: Widget {
     let kind: String = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"
@@ -16,8 +17,8 @@ struct ForecastWidget: Widget {
         StaticConfiguration(kind: kind, provider: WidgetForercastProvider()) { entry in
             EstonianWeatherWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Forecast Widget")
-        .description("Check Estonian weather forecast.")
+        .configurationDisplayName(L10n.Strings.forecastWidget)
+        .description(L10n.Strings.checkEstonianWeatherForecast)
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
