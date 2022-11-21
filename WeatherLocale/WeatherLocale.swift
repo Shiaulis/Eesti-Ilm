@@ -11,7 +11,7 @@ public enum WeatherLocale {
     case estonian, english, russian
 
     public init?(locale: Locale) {
-        switch locale.languageCode {
+        switch locale.language.languageCode?.identifier {
         case "en": self = .english
         case "ru": self = .russian
         case "et": self = .estonian

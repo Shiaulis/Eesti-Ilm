@@ -13,7 +13,16 @@ final class ForecastDateFormatter {
         case unableToMakeDateFromString
     }
 
-    var locale: Locale = .current
+    private let locale: Locale = .current
+
+    private lazy var relativeDateFormatter: DateFormatter = {
+        let formatter: DateFormatter = .init()
+        formatter.locale = self.locale
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
 
     func humanReadableDescription(for date: Date?) -> String? {
         guard let date = date else { return nil }
@@ -47,13 +56,7 @@ final class ForecastDateFormatter {
     }
 
     private func relativeDateDescription(for date: Date) -> String? {
-        let formatter: DateFormatter = .init()
-        formatter.locale = self.locale
-        formatter.timeStyle = .none
-        formatter.dateStyle = .short
-        formatter.doesRelativeDateFormatting = true
-
-        return formatter.string(from: date)
+        self.relativeDateFormatter.string(from: date)
     }
 
 }

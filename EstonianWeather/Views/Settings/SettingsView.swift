@@ -8,6 +8,7 @@
 
 import SwiftUI
 import PurchaseKit
+import Strings
 
 struct SettingsView: View {
 
@@ -24,7 +25,7 @@ struct SettingsView: View {
 
             Section {
                 NavigationLink(destination: AboutMeView()) {
-                    Text(R.string.localizable.aboutMeTitle())
+                    Text(L10n.Strings.aboutMeTitle)
                 }
                 List {
                     ForEach(0 ..< self.viewModel.products.count, id: \.self) { column in
@@ -45,7 +46,7 @@ struct SettingsView: View {
                 )
             }
         }
-        .navigationBarTitle(R.string.localizable.settings())
+        .navigationBarTitle(L10n.Strings.settings)
         .navigationBarTitleDisplayMode(.large)
         .onDisappear(perform: {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {

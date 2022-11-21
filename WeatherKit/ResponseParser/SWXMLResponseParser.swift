@@ -27,6 +27,7 @@ public final class SWXMLResponseParser {
         }
 
     }
+
     // swiftlint:enable identifier_name
 
     // MARK: - Properties

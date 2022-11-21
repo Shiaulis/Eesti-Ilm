@@ -14,7 +14,7 @@ enum TestableLocale: String {
     static let current: TestableLocale = .init(from: .current)
 
     private init(from locale: Locale) {
-        switch locale.languageCode {
+        switch locale.language.languageCode?.identifier {
         case "en": self = .english
         case "et": self = .estonian
         case "ru": self = .russian
@@ -22,11 +22,4 @@ enum TestableLocale: String {
         }
     }
 
-//    var appLocalization: AppLocalization {
-//        switch self {
-//        case .english: return .english
-//        case .estonian: return .estonian
-//        case .russian: return .russian
-//        }
-//    }
 }

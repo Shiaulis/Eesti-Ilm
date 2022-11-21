@@ -14,7 +14,7 @@ public extension URL {
     static let email = URL(string: "mailto:shiaulis@gmail.com")!
 
     static var sourceDisclaimerURL: URL {
-        switch Locale.current.languageCode {
+        switch Locale.current.language.languageCode?.identifier {
         case "en": return URL(string: "https://www.ilmateenistus.ee/?lang=en")!
         case "ru": return URL(string: "https://www.ilmateenistus.ee/?lang=ru")!
         case "et": return URL(string: "https://www.ilmateenistus.ee/?lang=et")!

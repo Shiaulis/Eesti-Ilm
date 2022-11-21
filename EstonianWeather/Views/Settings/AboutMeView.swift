@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Strings
 
 struct AboutMeView: View {
     var body: some View {
@@ -21,13 +22,13 @@ struct AboutMeView: View {
                         .padding()
                     Spacer()
                 }
-                Text(R.string.localizable.aboutMeDescription())
+                Text(L10n.Strings.aboutMeDescription)
                     .padding()
                 ContactMeButton()
                 Spacer()
             }
         }
-        .navigationBarTitle(R.string.localizable.aboutMeTitle())
+        .navigationBarTitle(L10n.Strings.aboutMeTitle)
     }
 }
 
@@ -35,7 +36,7 @@ private struct ContactMeButton: View {
 
     var body: some View {
         Button(action: buttonAction) {
-            Text(R.string.localizable.contactMe())
+            Text(L10n.Strings.contactMe)
         }
     }
 
@@ -48,7 +49,7 @@ struct AboutMeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AboutMeView()
-                .navigationTitle(R.string.localizable.aboutMeTitle())
+                .navigationTitle(L10n.Strings.aboutMeTitle)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

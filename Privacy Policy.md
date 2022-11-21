@@ -1,4 +1,4 @@
 # Privacy Policy
-Eesti Ilm does not collect any of your data. It only fetches weather information from the site and presents it to you.
+Eesti Ilm is owned and maintained by Andrius Shiaulis, an independent app developer based in Estonia. None of your data or personal information is collected in any way or manner. For more information please get in touch at shiaulis@gmail.com
 
-Last updated December 27, 2020.
+Last updated July 17, 2022.

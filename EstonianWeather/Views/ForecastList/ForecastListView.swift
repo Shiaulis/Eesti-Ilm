@@ -8,6 +8,7 @@
 
 import SwiftUI
 import WeatherKit
+import Strings
 
 struct ForecastListView: View {
 
@@ -21,19 +22,19 @@ struct ForecastListView: View {
         Group {
             switch self.viewModel.syncStatus {
             case .refreshing:
-                ListPlaceholder(description: R.string.localizable.loading())
+                ListPlaceholder(description: L10n.Strings.loading)
             case .ready(let displayItems):
                 list(for: displayItems)
             case .failed(let errorMessage):
                 ListPlaceholder(
-                    description: R.string.localizable.failedToSyncError() + ": " + errorMessage
+                    description: L10n.Strings.FailedToSync.error + ": " + errorMessage
                 )
             }
         }
         .ifOS(.iOS) {
             $0.refreshable { await self.viewModel.fetchRemoteForecasts() }
         }
-        .navigationTitle(R.string.localizable.fourDayForecast())
+        .navigationTitle(L10n.Strings.fourDayForecast)
         .navigationBarTitleDisplayMode(.large)
     }
 
