@@ -1,43 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "PurchaseKit",
-        "repositoryURL": "https://github.com/Shiaulis/PurchaseKit",
-        "state": {
-          "branch": "main",
-          "revision": "1f53cd62959ffb91b534d8c6f38f56e6da8e371c",
-          "version": null
-        }
-      },
-      {
-        "package": "R.swift.Library",
-        "repositoryURL": "https://github.com/mac-cain13/R.swift.Library",
-        "state": {
-          "branch": null,
-          "revision": "8998cfe77f4fce79ee6dfab0c88a7d551659d8fb",
-          "version": "5.4.0"
-        }
-      },
-      {
-        "package": "SWXMLHash",
-        "repositoryURL": "https://github.com/drmohundro/SWXMLHash",
-        "state": {
-          "branch": null,
-          "revision": "9183170d20857753d4f331b0ca63f73c60764bf3",
-          "version": "5.0.2"
-        }
-      },
-      {
-        "package": "WeatherKit",
-        "repositoryURL": "https://github.com/Shiaulis/WeatherKit",
-        "state": {
-          "branch": "main",
-          "revision": "9590d0c744261d8d58318da9925ac5944ea71a46",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "swxmlhash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/drmohundro/SWXMLHash",
+      "state" : {
+        "revision" : "4d0f62f561458cbe1f732171e625f03195151b60",
+        "version" : "7.0.1"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

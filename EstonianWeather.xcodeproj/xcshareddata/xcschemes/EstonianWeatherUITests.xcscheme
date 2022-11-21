@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1210"
+   LastUpgradeVersion = "1410"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -25,6 +25,17 @@
                BlueprintIdentifier = "0968CDAD2522667B00D409FF"
                BuildableName = "EstonianWeatherUITests.xctest"
                BlueprintName = "EstonianWeatherUITests"
+               ReferencedContainer = "container:EstonianWeather.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B1D585512879898800989B14"
+               BuildableName = "WeatherKitTests.xctest"
+               BlueprintName = "WeatherKitTests"
                ReferencedContainer = "container:EstonianWeather.xcodeproj">
             </BuildableReference>
          </TestableReference>

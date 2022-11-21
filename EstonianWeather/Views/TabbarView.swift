@@ -11,16 +11,16 @@ import Combine
 import WeatherKit
 
 protocol TabbarViewModel {
-    var selectedTab: Tab { get }
+    var selectedTab: TabItem { get }
     var forecastListViewModel: ForecastListViewModel { get }
     var settingsViewModel: SettingsViewModel { get }
 
-    func didSwitchTo(_ tab: Tab)
+    func didSwitchTo(_ tab: TabItem)
 }
 
 struct TabbarView: View {
 
-    private var selectedTabBinding: Binding<Tab> {
+    private var selectedTabBinding: Binding<TabItem> {
         .init {
             self.viewModel.selectedTab
         } set: { newTab in
@@ -36,7 +36,7 @@ struct TabbarView: View {
 
     var body: some View {
         TabView(selection: selectedTabBinding) {
-            ForEach(Tab.allCases) { tab in
+            ForEach(TabItem.allCases) { tab in
                 view(for: tab)
                     .tabItem { Label(tab.title, systemImage: tab.imageName) }
                     .tag(tab)
@@ -44,7 +44,7 @@ struct TabbarView: View {
         }
     }
 
-    private func view(for tab: Tab) -> some View {
+    private func view(for tab: TabItem) -> some View {
         NavigationView {
             switch tab {
             case .forecastList: ForecastListView(viewModel: self.viewModel.forecastListViewModel)

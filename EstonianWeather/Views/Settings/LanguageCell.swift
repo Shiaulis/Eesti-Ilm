@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Strings
 
 struct LanguageCell: View {
 
@@ -16,7 +17,7 @@ struct LanguageCell: View {
     var body: some View {
         Button(action: self.didSelected) {
             HStack {
-                Text(R.string.localizable.currentLanguage())
+                Text(L10n.Strings.currentLanguage)
                     .foregroundColor(Color(.label))
                 Spacer()
                 Text(self.currentLanguage)

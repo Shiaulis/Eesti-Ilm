@@ -9,6 +9,7 @@
 import UIKit
 import PurchaseKit
 import OSLog
+import Strings
 
 final class SettingsViewModel {
 
@@ -16,19 +17,18 @@ final class SettingsViewModel {
 
     @Published var products: [Product] = []
 
-    var currentLanguageName: String { self.locale.localizedString(forLanguageCode: self.locale.languageCode ?? "") ?? "" }
+    var currentLanguageName: String { Locale.current.localizedLanguageName }
 
-    let sourceDisclaimerText: String = R.string.localizable.sourceDisclaimer()
+    let sourceDisclaimerText: String = L10n.Strings.sourceDisclaimer
     let urlDescription: String = "www.ilmateenindus.ee"
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 
-    private let locale: Locale = .current
-    private let ratingService: AppStoreRatingService
+    private let ratingService: UserRatingService
     private let purchasemanager: InAppPurchaseManager
 
     // MARK: - Init
 
-    init(ratingService: AppStoreRatingService) {
+    init(ratingService: UserRatingService) {
         self.ratingService = ratingService
         self.purchasemanager = .init(
             inAppPurchaseIdentifiers: ["com.shiaulis.estonianweather.buyadrink"],
