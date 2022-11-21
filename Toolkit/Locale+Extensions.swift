@@ -10,7 +10,7 @@ import Foundation
 public extension Locale {
 
     var localizedLanguageName: String {
-        guard let languageCode = self.languageCode else {
+        guard let languageCode = self.language.languageCode?.identifier else {
             assertionFailure("Absense of language code is not expected")
             return ""
         }

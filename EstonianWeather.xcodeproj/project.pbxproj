@@ -60,12 +60,10 @@
 		B1C7DB94287AB0610077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DBA2287AB0FD0077CC34 /* PurchaseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B1C7DBA1287AB0FD0077CC34 /* PurchaseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1C7DBA5287AB0FD0077CC34 /* PurchaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */; };
 		B1C7DBA6287AB0FD0077CC34 /* PurchaseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1C7DBAB287AB11E0077CC34 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C7DBAA287AB11E0077CC34 /* InAppPurchaseManager.swift */; };
 		B1C7DBAC287AB1470077CC34 /* PurchaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */; };
 		B1C7DBC3287ABD860077CC34 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
-		B1C7DBC5287ABDE10077CC34 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
 		B1D283C1259D1C68005AA4C9 /* UserRatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D283C0259D1C68005AA4C9 /* UserRatingService.swift */; };
 		B1D5854D2879898800989B14 /* WeatherKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = B1D5854C2879898800989B14 /* WeatherKit.docc */; };
 		B1D585532879898800989B14 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
@@ -385,8 +383,6 @@
 				B1D5855E2879898800989B14 /* WeatherKit.framework in Frameworks */,
 				B1C7DBC3287ABD860077CC34 /* StoreKit.framework in Frameworks */,
 				B1C7DBAC287AB1470077CC34 /* PurchaseKit.framework in Frameworks */,
-				B1C7DBC5287ABDE10077CC34 /* StoreKit.framework in Frameworks */,
-				B1C7DBA5287AB0FD0077CC34 /* PurchaseKit.framework in Frameworks */,
 				B1F3373728798CDD00DCB3FE /* NetworkModule.framework in Frameworks */,
 				B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */,
 				B10EB2962883F7FF003D3CA5 /* Strings.framework in Frameworks */,
@@ -816,7 +812,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0968CDB72522667B00D409FF /* Build configuration list for PBXNativeTarget "EstonianWeather" */;
 			buildPhases = (
-				B19025162597302200ACD2E1 /* Generate R.swift */,
 				0968CD8E2522667A00D409FF /* Sources */,
 				0968CD8F2522667A00D409FF /* Frameworks */,
 				0968CD902522667A00D409FF /* Resources */,
@@ -1040,7 +1035,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					0968CD912522667A00D409FF = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -1211,27 +1206,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Adds support for Apple Silicon brew directory\nexport PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		B19025162597302200ACD2E1 /* Generate R.swift */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			name = "Generate R.swift";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$SRCROOT/Root Supporting Files/R.generated.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/rswift\" generate \"$SRCROOT/Root Supporting Files/R.generated.swift\"\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

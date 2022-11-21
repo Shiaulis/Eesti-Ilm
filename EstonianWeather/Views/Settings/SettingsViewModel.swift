@@ -17,13 +17,12 @@ final class SettingsViewModel {
 
     @Published var products: [Product] = []
 
-    var currentLanguageName: String { self.locale.localizedString(forLanguageCode: self.locale.languageCode ?? "") ?? "" }
+    var currentLanguageName: String { Locale.current.localizedLanguageName }
 
     let sourceDisclaimerText: String = L10n.Strings.sourceDisclaimer
     let urlDescription: String = "www.ilmateenindus.ee"
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 
-    private let locale: Locale = .current
     private let ratingService: UserRatingService
     private let purchasemanager: InAppPurchaseManager
 
