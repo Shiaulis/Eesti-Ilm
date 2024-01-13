@@ -8,7 +8,6 @@
 
 import SwiftUI
 import WeatherKit
-import Strings
 
 private extension DayPartForecastDisplayItem.DayPartType {
     var name: String {

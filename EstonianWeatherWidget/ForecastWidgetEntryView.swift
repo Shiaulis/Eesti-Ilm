@@ -8,7 +8,6 @@
 import SwiftUI
 import WidgetKit
 import WeatherKit
-import Strings
 
 struct EstonianWeatherWidgetEntryView: View {
     let entry: ForecastEntry
