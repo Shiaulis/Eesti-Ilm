@@ -41,11 +41,11 @@
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B11805242879A4650019C08F /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11805232879A4650019C08F /* SettingsService.swift */; };
 		B11805272879A57F0019C08F /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11805262879A57F0019C08F /* WeatherService.swift */; };
-		B155870F2B5284E200BD7A51 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = B10EB29F2883F8B1003D3CA5 /* Strings.strings */; };
 		B15587102B5284E500BD7A51 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */; };
-		B15587112B5284EA00BD7A51 /* AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = B10EB2A42883FC79003D3CA5 /* AppStoreDescription.strings */; };
 		B15587122B5284F700BD7A51 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */; };
-		B15587132B5284FA00BD7A51 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = B10EB29F2883F8B1003D3CA5 /* Strings.strings */; };
+		B15587152B5285E800BD7A51 /* AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B15587142B5285E800BD7A51 /* AppStoreDescription.xcstrings */; };
+		B15587172B5285E800BD7A51 /* Strings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B15587162B5285E800BD7A51 /* Strings.xcstrings */; };
+		B15587182B5285E800BD7A51 /* Strings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B15587162B5285E800BD7A51 /* Strings.xcstrings */; };
 		B16AEA7B287AAF9100E5F791 /* UsedDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C45162694CAF800B73149 /* UsedDefaults+Extensions.swift */; };
 		B16AEA7C287AAF9100E5F791 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A294CE2569976400545CFB /* URL+Extensions.swift */; };
 		B16AEA7D287AAF9100E5F791 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DCFF725990B0700BC02E9 /* Locale+Extensions.swift */; };
@@ -303,16 +303,13 @@
 		09E8E0AE2531928F00E2F180 /* TestableLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableLocale.swift; sourceTree = "<group>"; };
 		09E8E0B42531A3A900E2F180 /* TestObservations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestObservations.xml; sourceTree = "<group>"; };
 		09F969FB25325BCB00DA94D6 /* EstonianWeatherUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EstonianWeatherUITests.xctestplan; sourceTree = "<group>"; };
-		B10EB29E2883F8B1003D3CA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Strings.strings; sourceTree = "<group>"; };
-		B10EB2A02883F8B5003D3CA5 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/Strings.strings; sourceTree = "<group>"; };
-		B10EB2A12883F8B6003D3CA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Strings.strings; sourceTree = "<group>"; };
 		B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
-		B10EB2A52883FC79003D3CA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
-		B10EB2A62883FC79003D3CA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
 		B118051E2879A3DC0019C08F /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/WeatherKit.framework; sourceTree = DEVELOPER_DIR; };
 		B11805232879A4650019C08F /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		B11805262879A57F0019C08F /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		B13DCFF725990B0700BC02E9 /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
+		B15587142B5285E800BD7A51 /* AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppStoreDescription.xcstrings; sourceTree = "<group>"; };
+		B15587162B5285E800BD7A51 /* Strings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Strings.xcstrings; sourceTree = "<group>"; };
 		B16AEA74287AAF8300E5F791 /* libToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B190EB132586A5820025415A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -621,8 +618,8 @@
 			isa = PBXGroup;
 			children = (
 				B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */,
-				B10EB29F2883F8B1003D3CA5 /* Strings.strings */,
-				B10EB2A42883FC79003D3CA5 /* AppStoreDescription.strings */,
+				B15587162B5285E800BD7A51 /* Strings.xcstrings */,
+				B15587142B5285E800BD7A51 /* AppStoreDescription.xcstrings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -1054,12 +1051,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */,
+				B15587172B5285E800BD7A51 /* Strings.xcstrings in Resources */,
 				09727670254583C100016EB0 /* LICENSE in Resources */,
+				B15587152B5285E800BD7A51 /* AppStoreDescription.xcstrings in Resources */,
 				09769696252A682800FA1764 /* Settings.bundle in Resources */,
 				0968CD9D2522667B00D409FF /* Preview Assets.xcassets in Resources */,
 				0968CD9A2522667B00D409FF /* Assets.xcassets in Resources */,
-				B15587112B5284EA00BD7A51 /* AppStoreDescription.strings in Resources */,
-				B155870F2B5284E200BD7A51 /* Strings.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,7 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				097698BB252A708C00FA1764 /* Assets.xcassets in Resources */,
-				B15587132B5284FA00BD7A51 /* Strings.strings in Resources */,
+				B15587182B5285E800BD7A51 /* Strings.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1354,25 +1351,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B10EB29F2883F8B1003D3CA5 /* Strings.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B10EB29E2883F8B1003D3CA5 /* en */,
-				B10EB2A02883F8B5003D3CA5 /* et */,
-				B10EB2A12883F8B6003D3CA5 /* ru */,
-			);
-			name = Strings.strings;
-			sourceTree = "<group>";
-		};
-		B10EB2A42883FC79003D3CA5 /* AppStoreDescription.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B10EB2A52883FC79003D3CA5 /* en */,
-				B10EB2A62883FC79003D3CA5 /* ru */,
-			);
-			name = AppStoreDescription.strings;
-			sourceTree = "<group>";
-		};
 		B19AC27B2598AE5C007203FB /* AppStoreDescription.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1439,6 +1417,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 2.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1499,6 +1478,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 2.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1532,6 +1512,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1557,6 +1538,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1660,6 +1642,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1683,6 +1666,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
