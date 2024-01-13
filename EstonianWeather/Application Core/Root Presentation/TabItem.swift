@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Strings
 
 enum TabItem: Int, CaseIterable, Identifiable {
 

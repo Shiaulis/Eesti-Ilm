@@ -9,7 +9,6 @@
 import UIKit
 import PurchaseKit
 import OSLog
-import Strings
 
 final class SettingsViewModel {
 

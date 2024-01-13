@@ -8,7 +8,6 @@
 import WidgetKit
 import SwiftUI
 import Intents
-import Strings
 
 struct ForecastWidget: Widget {
     let kind: String = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"

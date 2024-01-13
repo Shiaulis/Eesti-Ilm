@@ -8,7 +8,6 @@
 
 import SwiftUI
 import PurchaseKit
-import Strings
 
 struct SettingsView: View {
 

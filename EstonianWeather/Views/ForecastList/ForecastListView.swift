@@ -8,7 +8,6 @@
 
 import SwiftUI
 import WeatherKit
-import Strings
 
 struct ForecastListView: View {
 
