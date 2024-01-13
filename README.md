@@ -6,17 +6,17 @@
 <h1 align="center">Eesti Ilm – Estonian weather information</h1>
 <p align="center">
 <img alt="Bitrise" src="https://img.shields.io/bitrise/291c9f9e7fd2725b?token=NMywGvBvO69pV05hYFu8pg">
-<img src="https://img.shields.io/badge/Platform-iOS%2016.0+-lightgrey.svg" alt="Platform: iOS">
+<img src="https://img.shields.io/badge/Platform-iOS%2017.0+-lightgrey.svg" alt="Platform: iOS">
 <a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-5-orange.svg?style=flat" alt="Swift"/></a>
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/shiaulis/estonianweather">
 <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/shiaulis/EstonianWeather">
 
 </p>
 <p align="center">
-<a href="https://apps.apple.com/ee/app/eesti-ilm/id1534551991"><img src="Images/appstore_badge.png" alt="Download from the AppStore" height="128"/></a>
+<a href="https://apps.apple.com/ee/app/eesti-ilm/id1534551991"><img src="Images/appstore_badge.png" alt="Download from the AppStore" height="64"/></a>
 </p>
 <p align="center">
-<a href="https://testflight.apple.com/join/CMLvzuYL"><img src="Images/testflight_badge.png" alt="Download from the TestFlight" height="128"/></a>
+<a href="https://testflight.apple.com/join/CMLvzuYL"><img src="Images/testflight_badge.png" alt="Download from the TestFlight" height="64"/></a>
 </p>
 
 <p align="center">
@@ -25,21 +25,8 @@
 
 ## About the App
 
-Eesti Ilm is a simple weather app,that shows infromation from [Estonian Weather Service](http://www.ilmateenistus.ee/?lang=en)
+Eesti Ilm is a simple weather app, that shows infromation from [Estonian Weather Service](http://www.ilmateenistus.ee/?lang=en)
 
-## App Releases
-
-### v.1.4
-Increase build target to iOS 15, major and minor code refactoring
-
-### v.1.3.1
-Fixed typo on the main screeen, launch screen improvements
-
-### v.1.3
-Replaced application icon, improved widget behaviour
-
-### v.1.2
-The very first AppStore release. Contains 4-days forecast screen + 2 widgets
 
 ## Beta Testing
 Please use [the link](https://testflight.apple.com/join/CMLvzuYL) to subscribe on app beta testing.
@@ -52,7 +39,7 @@ We looking forward to receiving your contributions. Feel free to file an issue i
 
 ## Licensing
 
-Copyright © 2021 Andrius Shiaulis.
+Copyright © 2024 Andrius Shiaulis.
 
 Licensed under the **MIT License** (the "License"); you may not use this file except in compliance with the License.
 
