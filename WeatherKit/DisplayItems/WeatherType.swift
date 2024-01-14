@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  WeatherType.swift
 //
 //
 //  Created by Andrius Shiaulis on 20.03.2021.
