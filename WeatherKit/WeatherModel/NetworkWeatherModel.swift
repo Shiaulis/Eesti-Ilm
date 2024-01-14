@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  NetworkWeatherModel.swift
 //
 //
 //  Created by Andrius Shiaulis on 06.03.2021.
@@ -10,7 +10,7 @@ import Combine
 import NetworkModule
 import WeatherLocale
 
-public final class NetwokWeatherModel: WeatherModel {
+public final class NetworkWeatherModel: WeatherModel {
 
     // MARK: - Properties
 

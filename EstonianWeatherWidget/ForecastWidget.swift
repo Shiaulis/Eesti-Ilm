@@ -13,12 +13,13 @@ struct ForecastWidget: Widget {
     let kind: String = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: WidgetForercastProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: WidgetForecastProvider()) { entry in
             EstonianWeatherWidgetEntryView(entry: entry)
         }
         .configurationDisplayName(L10n.Strings.forecastWidget)
         .description(L10n.Strings.checkEstonianWeatherForecast)
         .supportedFamilies([.systemSmall, .systemMedium])
+        .contentMarginsDisabled()
     }
 }
 

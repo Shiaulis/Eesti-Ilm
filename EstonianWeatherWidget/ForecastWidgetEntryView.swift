@@ -1,5 +1,5 @@
 //
-//  ForecastWidgetEntryVIew.swift
+//  ForecastWidgetEntryView.swift
 //  EstonianWeatherWidgetExtension
 //
 //  Created by Andrius Shiaulis on 11.10.2020.
@@ -117,25 +117,33 @@ private struct ForecastFullWeatherView: View {
 
     var body: some View {
         ZStack {
-            Color(UIColor.secondarySystemBackground)
-            VStack {
+            VStack(alignment: .center) {
                 Text(self.displayItem.naturalDateDescription)
-                    .font(.system(size: 12))
-                    .minimumScaleFactor(0.4)
-                    .lineLimit(1)
-                Spacer()
-                Image(systemName: self.displayItem.day?.weatherIconName ?? "")
-                    .font(.system(size: 60))
+                    .font(.caption)
                     .minimumScaleFactor(0.4)
                     .lineLimit(1)
                 Spacer()
                 Text(self.displayItem.day?.temperatureRange ?? "")
-                    .font(.system(size: 24))
+                    .font(.title)
                     .minimumScaleFactor(0.4)
                     .lineLimit(1)
+                    .layoutPriority(1)
+                Spacer()
+                HStack {
+                    Image(systemName: self.displayItem.day?.weatherIconName ?? "")
+                        .font(.title2)
+                        .minimumScaleFactor(0.8)
+                        .layoutPriority(1)
+                        .foregroundColor(Color(UIColor.appRose))
+                    Text(self.displayItem.day?.weatherDescription ?? "")
+                        .minimumScaleFactor(0.4)
+                        .lineLimit(2)
+                        .layoutPriority(2)
+                }
+                .layoutPriority(2)
             }
+            .padding(.init(top: 12, leading: 4, bottom: 12, trailing: 4))
             .foregroundColor(Color(.label))
-            .padding(16)
         }
     }
 }
@@ -149,26 +157,31 @@ private struct ForecastWeatherDayView: View {
 
     var body: some View {
         ZStack {
-            Color(UIColor.secondarySystemBackground)
+            Color(UIColor.systemBackground)
             VStack {
-                HStack {
-                    Text(self.displayItem.shortDateDescription)
-                        .font(.system(size: 12))
-                        .minimumScaleFactor(0.4)
-                        .lineLimit(1)
-                }
+                Text(self.displayItem.shortDateDescription)
+                    .font(.system(size: 12))
+                    .minimumScaleFactor(0.8)
                 Spacer()
-                Image(systemName: self.dayDisplayItem?.weatherIconName ?? "")
-                    .font(.system(size: 40))
-                    .minimumScaleFactor(0.4)
+                Text(self.displayItem.day?.temperatureRange ?? "")
+                    .font(.body)
+                    .minimumScaleFactor(0.6)
                     .lineLimit(1)
+                    .layoutPriority(3)
                 Spacer()
-                Text(self.dayDisplayItem?.temperatureRange ?? "")
-                    .font(.system(size: 18))
-                    .minimumScaleFactor(0.4)
-                    .lineLimit(1)
+                Image(systemName: self.displayItem.day?.weatherIconName ?? "")
+                    .font(.title2)
+                    .minimumScaleFactor(0.8)
+                    .layoutPriority(1)
+                    .foregroundColor(Color(UIColor.appRose))
+                Spacer()
+                Text(self.displayItem.day?.weatherDescription ?? "")
+                    .lineLimit(3)
+                    .font(.caption)
+                    .minimumScaleFactor(0.6)
+                    .multilineTextAlignment(.center)
             }
-            .padding(.init(top: 16, leading: 2, bottom: 16, trailing: 2))
+            .padding(.init(top: 12, leading: 4, bottom: 12, trailing: 4))
             .foregroundColor(Color(.label))
         }
     }
