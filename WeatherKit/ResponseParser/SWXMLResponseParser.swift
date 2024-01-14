@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SWXMLResponseParser.swift
 //
 //
 //  Created by Andrius Shiaulis on 06.03.2021.
