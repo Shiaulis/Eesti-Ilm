@@ -16,7 +16,7 @@
 <a href="https://apps.apple.com/ee/app/eesti-ilm/id1534551991"><img src="Images/appstore_badge.png" alt="Download from the AppStore" height="64"/></a>
 </p>
 <p align="center">
-<a href="https://testflight.apple.com/join/CMLvzuYL"><img src="Images/testflight_badge.png" alt="Download from the TestFlight" height="64"/></a>
+<a href="https://testflight.apple.com/join/xlLG9DS9"><img src="Images/testflight_badge.png" alt="Download from the TestFlight" height="64"/></a>
 </p>
 
 <p align="center">
@@ -29,13 +29,13 @@ Eesti Ilm is a simple weather app, that shows infromation from [Estonian Weather
 
 
 ## Beta Testing
-Please use [the link](https://testflight.apple.com/join/CMLvzuYL) to subscribe on app beta testing.
+Please use [the link](https://testflight.apple.com/join/xlLG9DS9) to subscribe to app beta testing.
 
 ## How to Contribute
 
 ### Development
 
-We looking forward to receiving your contributions. Feel free to file an issue if you have any ideas how the app can be improved. Your PRs are also welcomed.
+Feel free to file an issue if you have any ideas how the app can be improved. Your PRs are also welcomed.
 
 ## Licensing
 
