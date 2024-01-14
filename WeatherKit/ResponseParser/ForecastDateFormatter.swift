@@ -19,7 +19,7 @@ final class ForecastDateFormatter {
         let formatter: DateFormatter = .init()
         formatter.locale = self.locale
         formatter.timeStyle = .none
-        formatter.dateStyle = .short
+        formatter.dateStyle = .medium
         formatter.doesRelativeDateFormatting = true
         return formatter
     }()

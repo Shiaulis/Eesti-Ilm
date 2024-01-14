@@ -1,5 +1,5 @@
 //
-//  WidgetForercastProvider.swift
+//  WidgetForecastProvider.swift
 //  EstonianWeatherWidgetExtension
 //
 //  Created by Andrius Shiaulis on 11.10.2020.
@@ -22,7 +22,7 @@ struct ForecastEntry: TimelineEntry {
     static let test: ForecastEntry = .init(displayItems: [.test1, .test3, .test2, .test2], date: .now)
 }
 
-final class WidgetForercastProvider: TimelineProvider {
+final class WidgetForecastProvider: TimelineProvider {
 
     private let model: WeatherModel
     private var lastFetchedDisplayItems: [ForecastDisplayItem] = []
@@ -30,7 +30,7 @@ final class WidgetForercastProvider: TimelineProvider {
     private var disposables: Set<AnyCancellable> = []
 
     init() {
-        self.model = NetwokWeatherModel(
+        self.model = NetworkWeatherModel(
             weatherLocale: .english,
             responseParser: SWXMLResponseParser(),
             networkClient: URLSessionNetworkClient()
