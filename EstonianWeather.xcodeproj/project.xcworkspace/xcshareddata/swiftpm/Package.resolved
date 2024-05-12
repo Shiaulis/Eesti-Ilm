@@ -1,4 +1,5 @@
 {
+  "originHash" : "0bda306e8862a710abf1cc57695651b9e930ac3ed9f74473963a5e00c76bdfad",
   "pins" : [
     {
       "identity" : "swxmlhash",
@@ -10,5 +11,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
