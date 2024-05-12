@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "About me description" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -25,7 +25,7 @@
       }
     },
     "About me title" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -48,7 +48,7 @@
       }
     },
     "Check Estonian weather forecast." : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -71,7 +71,7 @@
       }
     },
     "Contact me" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -94,7 +94,7 @@
       }
     },
     "Current language" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -117,7 +117,7 @@
       }
     },
     "Day" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -140,7 +140,7 @@
       }
     },
     "Estonian Weather Forecast" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -163,7 +163,7 @@
       }
     },
     "Failed to sync. Error:" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -186,7 +186,7 @@
       }
     },
     "Forecast" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -210,7 +210,7 @@
     },
     "Forecast Widget" : {
       "comment" : "Widget configuration display name",
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -234,7 +234,7 @@
     },
     "Four day forecast" : {
       "comment" : "Localizable.strings\n  EstonianWeather.Strings\n\n  Created by Andrius Shiaulis on 17.07.2022.",
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -257,7 +257,7 @@
       }
     },
     "Loading" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -280,7 +280,7 @@
       }
     },
     "Night" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -303,7 +303,7 @@
       }
     },
     "No data available" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -326,7 +326,7 @@
       }
     },
     "Observations" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -349,7 +349,7 @@
       }
     },
     "Ready" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -372,7 +372,7 @@
       }
     },
     "Settings" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -395,7 +395,7 @@
       }
     },
     "Source disclaimer" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -418,7 +418,7 @@
       }
     },
     "Synced" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -441,7 +441,7 @@
       }
     },
     "Syncing" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -464,7 +464,7 @@
       }
     },
     "Unit testing mode" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

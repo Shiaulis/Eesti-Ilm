@@ -23,7 +23,7 @@ struct DayPartView: View {
     let item: DayPartForecastDisplayItem
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 Text(self.item.type.name)
                     .font(.title)
