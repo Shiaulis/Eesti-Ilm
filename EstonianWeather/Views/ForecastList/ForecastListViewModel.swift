@@ -15,7 +15,7 @@ import WeatherKit
 final class ForecastListViewModel: ObservableObject {
 
     enum SyncStatus {
-        case ready(dislayItems: [ForecastDisplayItem])
+        case ready(displayItems: [ForecastDisplayItem])
         case refreshing
         case failed(errorMessage: String)
     }
@@ -36,7 +36,7 @@ final class ForecastListViewModel: ObservableObject {
     func fetchRemoteForecasts() async {
         do {
             let displayItems = try await self.model.forecasts()
-            self.syncStatus = .ready(dislayItems: displayItems)
+            self.syncStatus = .ready(displayItems: displayItems)
         }
         catch {
             self.syncStatus = .failed(errorMessage: error.localizedDescription)
