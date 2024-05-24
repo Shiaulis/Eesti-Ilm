@@ -773,13 +773,13 @@
 				0968CD8E2522667A00D409FF /* Sources */,
 				0968CD8F2522667A00D409FF /* Frameworks */,
 				0968CD902522667A00D409FF /* Resources */,
-				0968CE2E25226B2100D409FF /* SwiftLint */,
 				097698C2252A708C00FA1764 /* Embed Foundation Extensions */,
 				B1D585632879898800989B14 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B17622722C0134CE0041CDD3 /* PBXTargetDependency */,
 				097698C0252A708C00FA1764 /* PBXTargetDependency */,
 				B1D5855D2879898800989B14 /* PBXTargetDependency */,
 				B1F3373628798CDD00DCB3FE /* PBXTargetDependency */,
@@ -1025,6 +1025,7 @@
 			mainGroup = 0968CD892522667A00D409FF;
 			packageReferences = (
 				B151FD952BF102B70090D9B7 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
+				B17622702C0134720041CDD3 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 0968CD932522667A00D409FF /* Products */;
 			projectDirPath = "";
@@ -1114,28 +1115,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0968CE2E25226B2100D409FF /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0968CD8E2522667A00D409FF /* Sources */ = {
@@ -1291,6 +1270,10 @@
 			isa = PBXTargetDependency;
 			target = B16AEA73287AAF8300E5F791 /* Toolkit */;
 			targetProxy = B16AEA83287AAFCE00E5F791 /* PBXContainerItemProxy */;
+		};
+		B17622722C0134CE0041CDD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B17622712C0134CE0041CDD3 /* SwiftLintBuildToolPlugin */;
 		};
 		B1C7DB92287AB0210077CC34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2102,6 +2085,14 @@
 				minimumVersion = 7.0.2;
 			};
 		};
+		B17622702C0134720041CDD3 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.55.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2109,6 +2100,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B151FD952BF102B70090D9B7 /* XCRemoteSwiftPackageReference "SWXMLHash" */;
 			productName = SWXMLHash;
+		};
+		B17622712C0134CE0041CDD3 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B17622702C0134720041CDD3 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
