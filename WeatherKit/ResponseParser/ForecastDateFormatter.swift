@@ -29,8 +29,12 @@ final class ForecastDateFormatter {
 
         var dateString = date.formatted(.dateTime.month(.wide).day(.twoDigits).locale(self.locale))
 
+        if let weekday = weekday(for: date) {
+            dateString += ", \(weekday)"
+        }
+
         if let description = textOnlyDescription(for: date) {
-            dateString += ", \(description)"
+            dateString += "\n\(description)"
         }
 
         return dateString
@@ -57,6 +61,10 @@ final class ForecastDateFormatter {
 
     private func relativeDateDescription(for date: Date) -> String? {
         self.relativeDateFormatter.string(from: date)
+    }
+
+    private func weekday(for date: Date) -> String? {
+        date.formatted(Date.FormatStyle().weekday(.wide))
     }
 
 }
