@@ -314,7 +314,6 @@
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B190EB132586A5820025415A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		B19AC27A2598AE5C007203FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
-		B19AC27C2598AE61007203FB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
 		B1AFFAF92598FC3100ACA10E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B1C2356425E676ED0097FEDD /* TestConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestConfiguration.storekit; sourceTree = "<group>"; };
 		B1C7DB9F287AB0FD0077CC34 /* PurchaseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PurchaseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1021,7 +1020,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 				et,
 			);
 			mainGroup = 0968CD892522667A00D409FF;
@@ -1356,7 +1354,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B19AC27A2598AE5C007203FB /* en */,
-				B19AC27C2598AE61007203FB /* ru */,
 			);
 			name = AppStoreDescription.strings;
 			sourceTree = "<group>";

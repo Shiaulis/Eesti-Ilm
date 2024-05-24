@@ -1,515 +1,389 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "About me description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hey 👋! My name is Andrius. I'm an iOS Developer from Estonia 🇪🇪. Besides being full-time developer and father of three I'm writing small apps like this. If you have any questions/concerns regarding the app, do not hesitate to contact me."
+  "sourceLanguage": "en",
+  "strings": {
+    "About me description": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hey 👋! My name is Andrius. I'm an iOS Developer from Estonia 🇪🇪. Besides being full-time developer and father of three I'm writing small apps like this. If you have any questions/concerns regarding the app, do not hesitate to contact me."
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tere 👋! Minu nimi on Andrius. Olen Eestis elav ja tegutsev iOSi arendaja. Lisaks täiskohaga tööle arendajana kasvatan kolme last ja vabal ajal meeldib mulle kirjutada sellised väikesi äppe. Kui teil on seoses äpiga mingeid küsimusi või muresid, võtke minuga kindlasti ühendust."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Приветствую 👋! Меня зовут Андрюс. Я — iOS разработчик из Эстонии 🇪🇪. Во время, свободное от основной работы и воспитания троих детей, я пишу маленькие приложения, такие как это. Если у вас есть какие-либо вопросы/замечания, то, пожалуйста, не стесняйтесь связаться со мной."
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tere 👋! Minu nimi on Andrius. Olen Eestis elav ja tegutsev iOSi arendaja. Lisaks täiskohaga tööle arendajana kasvatan kolme last ja vabal ajal meeldib mulle kirjutada sellised väikesi äppe. Kui teil on seoses äpiga mingeid küsimusi või muresid, võtke minuga kindlasti ühendust."
           }
         }
       }
     },
-    "About me title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About me"
+    "About me title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About me"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Minust"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обо мне"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minust"
           }
         }
       }
     },
-    "Check Estonian weather forecast." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check Estonian weather forecast."
+    "Check Estonian weather forecast.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check Estonian weather forecast."
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check Estonian weather forecast."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Проверяйте прогноз погоды в Эстонии."
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check Estonian weather forecast."
           }
         }
       }
     },
-    "Contact me" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contact me"
+    "Contact me": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact me"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Võta ühendust"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Связаться со мной"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Võta ühendust"
           }
         }
       }
     },
-    "Current language" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Current language"
+    "Current language": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current language"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Praegune keel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Текущий язык"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Praegune keel"
           }
         }
       }
     },
-    "Day" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Day"
+    "Day": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Päev"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "День"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Päev"
           }
         }
       }
     },
-    "Estonian Weather Forecast" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estonian Weather Forecast"
+    "Estonian Weather Forecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estonian Weather Forecast"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eesti Ilmaennustus"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Эстонский прогноз погоды"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eesti Ilmaennustus"
           }
         }
       }
     },
-    "Failed to sync. Error:" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed to sync. Error:"
+    "Failed to sync. Error:": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to sync. Error:"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sünkroonimine ebaõnnestus. Viga:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не удалось синхронизироваться. Ошибка:"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sünkroonimine ebaõnnestus. Viga:"
           }
         }
       }
     },
-    "Forecast" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forecast"
+    "Forecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prognoos"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прогноз"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prognoos"
           }
         }
       }
     },
-    "Forecast Widget" : {
-      "comment" : "Widget configuration display name",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forecast Widget"
+    "Forecast Widget": {
+      "comment": "Widget configuration display name",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast Widget"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forecast Widget"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Виджет погожы"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast Widget"
           }
         }
       }
     },
-    "Four day forecast" : {
-      "comment" : "Localizable.strings\n  EstonianWeather.Strings\n\n  Created by Andrius Shiaulis on 17.07.2022.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Four Day Forecast"
+    "Four day forecast": {
+      "comment": "Localizable.strings\n  EstonianWeather.Strings\n\n  Created by Andrius Shiaulis on 17.07.2022.",
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Four Day Forecast"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nelja päeva prognoos"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прогноз на 4 дня"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nelja päeva prognoos"
           }
         }
       }
     },
-    "Loading" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loading"
+    "Loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Laadimine"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Загрузка"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laadimine"
           }
         }
       }
     },
-    "Night" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Night"
+    "Night": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Öö"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ночь"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öö"
           }
         }
       }
     },
-    "No data available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No data available"
+    "No data available": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No data available"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Andmed puuduvad"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Данные недоступны"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Andmed puuduvad"
           }
         }
       }
     },
-    "Observations" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Observations"
+    "Observations": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observations"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vaatlusandmed"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Наблюдения"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaatlusandmed"
           }
         }
       }
     },
-    "Ready" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ready"
+    "Ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Valmis"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Готово"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valmis"
           }
         }
       }
     },
-    "Settings" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Settings"
+    "Settings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seaded"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Настройки"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seaded"
           }
         }
       }
     },
-    "Source disclaimer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The weather information is provided by\nEstonian Weather Service"
+    "Source disclaimer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The weather information is provided by\nEstonian Weather Service"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ilmateabe toob teieni\nRiigi Ilmateenistus"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Информация о погоде предоставлена\nНациональной Службой Погоды Эстонии"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ilmateabe toob teieni\nRiigi Ilmateenistus"
           }
         }
       }
     },
-    "Synced" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synced"
+    "Synced": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synced"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sünkroonitud"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронизировано"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sünkroonitud"
           }
         }
       }
     },
-    "Syncing" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Syncing"
+    "Syncing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sünkroonimine"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронизация"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sünkroonimine"
           }
         }
       }
     },
-    "Today" : {
-      "comment" : "Used for relative date formatting",
-      "extractionState" : "manual",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Täna"
+    "Today": {
+      "comment": "Used for relative date formatting",
+      "extractionState": "manual",
+      "localizations": {
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Täna"
           }
         }
       }
     },
-    "Tomorrow" : {
-      "comment" : "Used for relative date formatting",
-      "extractionState" : "manual",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Homme"
+    "Tomorrow": {
+      "comment": "Used for relative date formatting",
+      "extractionState": "manual",
+      "localizations": {
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homme"
           }
         }
       }
     },
-    "Unit testing mode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unit testing mode"
+    "Unit testing mode": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unit testing mode"
           }
         },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unit testing mode"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Режим модульного тестирования"
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unit testing mode"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
