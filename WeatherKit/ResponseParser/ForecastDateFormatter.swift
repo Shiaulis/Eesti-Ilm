@@ -27,10 +27,14 @@ final class ForecastDateFormatter {
     func humanReadableDescription(for date: Date?) -> String? {
         guard let date = date else { return nil }
 
-        var dateString = date.formatted(.dateTime.month(.wide).day(.twoDigits).locale(self.locale))
+        var dateString = makeShortDateString(from: date)
 
-        if let description = textOnlyDescription(for: date) {
-            dateString += ", \(description)"
+        if let weekday = weekday(for: date) {
+            dateString += ", \(weekday)"
+        }
+
+        if let description = relativeDateDescription(for: date) {
+            dateString += "\n\(description)"
         }
 
         return dateString
@@ -39,7 +43,7 @@ final class ForecastDateFormatter {
     func shortReadableDescription(for date: Date?) -> String? {
         guard let date = date else { return nil }
 
-        return relativeDateDescription(for: date)
+        return relativeDateDescription(for: date) ?? makeShortDateString(from: date)
     }
 
     func date(from string: String?) throws -> Date {
@@ -47,16 +51,26 @@ final class ForecastDateFormatter {
         return try string.dateWithDefaultStrategy()
     }
 
-    private func textOnlyDescription(for date: Date) -> String? {
-        guard let description = relativeDateDescription(for: date) else { return nil }
-        guard let firstCharacter = description.first else { return nil }
-        guard firstCharacter.isLetter else { return nil }
-
-        return description.capitalized
+    private func makeShortDateString(from date: Date) -> String {
+        date.formatted(.dateTime.month(.wide).day(.twoDigits).locale(self.locale))
     }
 
     private func relativeDateDescription(for date: Date) -> String? {
-        self.relativeDateFormatter.string(from: date)
+        let calendar = Calendar.current
+
+        if calendar.isDateInToday(date) {
+            return String(localized: "Today", table: "Strings")
+        }
+
+        if calendar.isDateInTomorrow(date) {
+            return String(localized: "Tomorrow", table: "Strings")
+        }
+
+        return nil
+    }
+
+    private func weekday(for date: Date) -> String? {
+        date.formatted(Date.FormatStyle().weekday(.wide))
     }
 
 }

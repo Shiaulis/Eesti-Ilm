@@ -11,12 +11,6 @@
             "value" : "Have an access to the weather information in Estonia. Eesti Ilm is a simple app that gives an instant information about forecasts, provided by Estonian Weather Service. Use a widget to check the weather information instantly from your home screen."
           }
         },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Получите доступ к информации о погоде в Эстонии. Eesti Ilm - это простое приложение, которое даёт доступ к актуальной информации о прогнозах, предоставленных Национальной Службой Погоды Эстонии. Используйте виджет для быстрого доступа к информации о погоде с вашего домашнего экрана."
-          }
-        }
       }
     },
     "keywords" : {
@@ -28,12 +22,6 @@
             "value" : "weather, forecast, Estonia, widget, Eesti, Ilm"
           }
         },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "погода, прогноз, Эстония, виджет, Eesti, Ilm"
-          }
-        }
       }
     }
   },
