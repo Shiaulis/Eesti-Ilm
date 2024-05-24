@@ -463,6 +463,30 @@
         }
       }
     },
+    "Today" : {
+      "comment" : "Used for relative date formatting",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Täna"
+          }
+        }
+      }
+    },
+    "Tomorrow" : {
+      "comment" : "Used for relative date formatting",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homme"
+          }
+        }
+      }
+    },
     "Unit testing mode" : {
       "extractionState" : "manual",
       "localizations" : {
