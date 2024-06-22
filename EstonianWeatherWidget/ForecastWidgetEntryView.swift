@@ -118,8 +118,8 @@ private struct ForecastFullWeatherView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .center) {
-                Text(self.displayItem.naturalDateDescription)
-                    .font(.caption)
+                Text(self.displayItem.shortDateDescription)
+                    .font(.body)
                     .minimumScaleFactor(0.4)
                     .lineLimit(1)
                 Spacer()
