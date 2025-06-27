@@ -1,19 +1,23 @@
-
-*.xcbkptlist
-
-EstonianWeather.xcodeproj/project.xcworkspace/xcuserdata/
-EstonianWeather.xcodeproj/xcuserdata/
-
+# Xcode
 *.xcuserstate
+*.xccheckout
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
 
+# Build artifacts
+build/
+DerivedData/
+*.ipa
+*.app.dSYM.zip
+*.dSYM
+*.xcframework
+
+# macOS
+.DS_Store
+
+# Fastlane
 fastlane/report.xml
-
-EstonianWeather.ipa
-
-EstonianWeather.app.dSYM.zip
-
 fastlane/Preview.html
-
-
-
-EstonianWeather/Supporting Files/Assets.xcassets/.DS_Store
+fastlane/screenshots
+fastlane/test_output
+fastlane/tmp
