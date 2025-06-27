@@ -64,7 +64,7 @@ final class SidebarViewController: UICollectionViewController {
         let rowRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TabItem> {
             cell, _, tab in
 
-            var contentConfiguration = UIListContentConfiguration.sidebarSubtitleCell()
+            var contentConfiguration = UIListContentConfiguration.subtitleCell()
             contentConfiguration.text = tab.title
             contentConfiguration.image = UIImage(systemName: tab.imageName)
             cell.contentConfiguration = contentConfiguration

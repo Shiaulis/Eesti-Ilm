@@ -452,7 +452,6 @@
 				0968CDA62522667B00D409FF /* EstonianWeatherTests */,
 				0968CDB12522667B00D409FF /* EstonianWeatherUITests */,
 				B1D5854A2879898800989B14 /* WeatherKit */,
-				B1D585582879898800989B14 /* WeatherKitTests */,
 				B1F3373228798CDD00DCB3FE /* NetworkModule */,
 				B1F3374528798D9D00DCB3FE /* WeatherLocale */,
 				B16AEA75287AAF8300E5F791 /* Toolkit */,
@@ -709,13 +708,6 @@
 				B1D5854C2879898800989B14 /* WeatherKit.docc */,
 			);
 			path = WeatherKit;
-			sourceTree = "<group>";
-		};
-		B1D585582879898800989B14 /* WeatherKitTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WeatherKitTests;
 			sourceTree = "<group>";
 		};
 		B1F3373228798CDD00DCB3FE /* NetworkModule */ = {
@@ -1488,6 +1480,9 @@
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "EstonianWeather/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1514,6 +1509,9 @@
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "EstonianWeather/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
