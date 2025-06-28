@@ -24,6 +24,7 @@ final class SettingsViewModel {
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 
     private let ratingService: UserRatingService
+    private let customerEntitlements = CustomerEntitlements()
     private let logger: Logger = .init(category: .settingsViewModel)
 
     // MARK: - Init
@@ -50,23 +51,7 @@ final class SettingsViewModel {
     func makePurchase(for product: StoreKit.Product) {
         Task {
             do {
-                self.logger.log("Purchase requested")
-                switch try await product.purchase() {
-                case .success(let verificationResult):
-                    switch verificationResult {
-                    case .verified(let transaction):
-                        self.logger.log("Purchase of \(product.displayName) successful")
-                        await transaction.finish()
-                    case .unverified(_, let verificationError):
-                        self.logger.error("Failed to verify purchase: \(verificationError, privacy: .public)")
-                    }
-                case .pending:
-                    self.logger.log("Purchase pending additional actions")
-                case .userCancelled:
-                    self.logger.log("Purchase cancelled by user")
-                @unknown default:
-                    break
-                }
+                try await self.customerEntitlements.makePurchase(for: product)
             }
             catch {
                 self.logger.log("Failed to purchase: \(error, privacy: .public)")
@@ -78,7 +63,12 @@ final class SettingsViewModel {
 
     private func fetchProducts() {
         Task {
-            self.products = try await Product.products(for: ["com.shiaulis.estonianweather.buyadrink"])
+            do {
+                self.products = try await self.customerEntitlements.fetchProducts()
+            }
+            catch {
+                self.logger.log("Failed to fetch products: \(error, privacy: .public)")
+            }
         }
     }
 }
