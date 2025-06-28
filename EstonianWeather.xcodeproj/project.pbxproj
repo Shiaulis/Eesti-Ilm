@@ -36,6 +36,7 @@
 		09E8E0AF2531928F00E2F180 /* TestableLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E8E0AE2531928F00E2F180 /* TestableLocale.swift */; };
 		09E8E0B52531A3A900E2F180 /* TestObservations.xml in Resources */ = {isa = PBXBuildFile; fileRef = 09E8E0B42531A3A900E2F180 /* TestObservations.xml */; };
 		09F969F62532597600DA94D6 /* TestableLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E8E0AE2531928F00E2F180 /* TestableLocale.swift */; };
+		A58EF8AC2E109A0100C2B169 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = A58EF8AB2E109A0100C2B169 /* Products.storekit */; };
 		B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
 		B118051F2879A3DC0019C08F /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B118051E2879A3DC0019C08F /* WeatherKit.framework */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
@@ -291,6 +292,7 @@
 		09E8E0AE2531928F00E2F180 /* TestableLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableLocale.swift; sourceTree = "<group>"; };
 		09E8E0B42531A3A900E2F180 /* TestObservations.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestObservations.xml; sourceTree = "<group>"; };
 		09F969FB25325BCB00DA94D6 /* EstonianWeatherUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EstonianWeatherUITests.xctestplan; sourceTree = "<group>"; };
+		A58EF8AB2E109A0100C2B169 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		B10EB2A22883F950003D3CA5 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		B118051E2879A3DC0019C08F /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/WeatherKit.framework; sourceTree = DEVELOPER_DIR; };
 		B11805232879A4650019C08F /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				097593D7254424AF00C21C6B /* Application Core */,
 				0968CDC5252267F600D409FF /* Views */,
 				097593BE2544244500C21C6B /* Supporting Files */,
+				A58EF8AB2E109A0100C2B169 /* Products.storekit */,
 			);
 			path = EstonianWeather;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58EF8AC2E109A0100C2B169 /* Products.storekit in Resources */,
 				B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */,
 				B15587172B5285E800BD7A51 /* Strings.xcstrings in Resources */,
 				09727670254583C100016EB0 /* LICENSE in Resources */,
