@@ -14,23 +14,24 @@ import os
 /// Main service for the whole application. Responsible for the rest application services management
 final class RootService {
 
+    // MARK: - Properties -
+
     let weatherService: WeatherService
     let userRatingService: UserRatingService
     let settingsService: SettingsService
 
-    private let userDefaults: UserDefaults
+    // MARK: - Init -
 
     init() {
-        let userDefaults: UserDefaults = .standard
         let locale = WeatherLocale(locale: .current) ?? .english
-        self.userDefaults = userDefaults
         self.weatherService = .init(
             weatherLocale: locale,
             responseParser: SWXMLResponseParser(),
             networkClient: URLSessionNetworkClient()
         )
-        self.userRatingService = .init(userDefaults: userDefaults)
-        self.settingsService = .init(userDefaults: userDefaults)
+        let keyValueStorage = KeyValueStorage(userDefaults: .standard)
+        self.userRatingService = UserRatingService(keyValueStorage: keyValueStorage)
+        self.settingsService = SettingsService(keyValueStorage: keyValueStorage)
 
     }
 

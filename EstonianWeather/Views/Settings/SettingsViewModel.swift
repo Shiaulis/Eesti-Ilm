@@ -45,7 +45,14 @@ final class SettingsViewModel {
     }
 
     func makeAttemptToShowRating(in windowScene: UIWindowScene) {
-        self.ratingService.makeAttemptToShowRating(in: windowScene)
+        Task {
+            do {
+                try await self.ratingService.makeAttemptToShowRating(in: windowScene)
+            }
+            catch {
+                self.logger.log("Failed to show rating: \(error, privacy: .public)")
+            }
+        }
     }
 
     func makePurchase(for product: StoreKit.Product) {
