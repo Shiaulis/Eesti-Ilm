@@ -63,6 +63,9 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(viewModel: SettingsViewModel(ratingService: UserRatingService(userDefaults: .standard)))
+        let keyValueStorage = KeyValueStorage()
+        let ratingService = UserRatingService(keyValueStorage: keyValueStorage)
+        let settingsViewModel = SettingsViewModel(ratingService: ratingService)
+        return SettingsView(viewModel: settingsViewModel)
     }
 }

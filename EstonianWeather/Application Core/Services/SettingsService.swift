@@ -9,23 +9,29 @@ import Foundation
 
 final class SettingsService {
 
-    private let userDefaults: UserDefaults
+    // MARK: - Properties -
 
-    init(userDefaults: UserDefaults) {
-        self.userDefaults = userDefaults
+    private let keyValueStorage: KeyValueStorage
+
+    // MARK: - Init -
+
+    init(keyValueStorage: KeyValueStorage) {
+        self.keyValueStorage = keyValueStorage
     }
+
+    // MARK: - Public API -
 
     func start() async {
-        storeVersionAndBuildNumberToUserDefaults()
+        await storeVersionAndBuildNumber()
     }
 
-    private func storeVersionAndBuildNumberToUserDefaults() {
+    private func storeVersionAndBuildNumber() async {
         if let version = Bundle.main.string(for: .bundleShortVersionString) {
-            self.userDefaults.set(version, for: .version_preference)
+            await self.keyValueStorage.set(version, for: .version_preference)
         }
 
         if let build: String = Bundle.main.string(for: .bundleVersion) {
-            self.userDefaults.set(build, for: .build_preference)
+            await self.keyValueStorage.set(build, for: .build_preference)
         }
     }
 }

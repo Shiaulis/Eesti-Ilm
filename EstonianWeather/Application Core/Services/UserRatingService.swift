@@ -11,46 +11,66 @@ import OSLog
 
 final class UserRatingService {
 
-    private let logger = Logger(category: .rating)
-    private let userDefaults: UserDefaults
+    // MARK: - Types -
 
-    init(userDefaults: UserDefaults) {
-        self.userDefaults = userDefaults
+    enum Error: Swift.Error {
+        case unableToGetCurrentVersion
     }
+
+    // MARK: - Properties -
+
+    private let logger = Logger(category: .rating)
+    private let keyValueStorage: KeyValueStorage
+
+    // MARK: - Init -
+
+    init(keyValueStorage: KeyValueStorage) {
+        self.keyValueStorage = keyValueStorage
+    }
+
+    // MARK: - Public API -
 
     func start() async {
-        incrementLauchCounter()
+        await incrementLauchCounter()
     }
 
-    private func incrementLauchCounter() {
-        // If the count has not yet been stored, this will return 0
-        var count = self.userDefaults.integer(for: .processCompletedCount)
-        count += 1
-        self.userDefaults.set(count, for: .processCompletedCount)
-
-        self.logger.debug("Application launched \(count) time(s)")
-    }
-
-    func makeAttemptToShowRating(in windowScene: UIWindowScene) {
-        // Get the current bundle version for the app
-        guard let currentVersion = Bundle.main.string(for: .bundleVersion) else {
-            self.logger.fault("Expected to find a bundle version in the info dictionary")
-            assertionFailure()
+    @MainActor
+    func makeAttemptToShowRating(in windowScene: UIWindowScene) async throws {
+        let currentVersion = try getCurrentAppVersion()
+        guard await isValidShowRatingAttempt(for: currentVersion) else {
             return
         }
 
-        let lastVersionPromptedForReview = self.userDefaults.string(for: .lastVersionPromptedForReview)
-        let count = self.userDefaults.integer(for: .processCompletedCount)
+        try await Task.sleep(for: .seconds(2))
 
-        // Has the process been completed several times and the user has not already been prompted for this version?
-        if count >= 4 && currentVersion != lastVersionPromptedForReview {
-            let twoSecondsFromNow = DispatchTime.now() + 2.0
-            DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) {
-                AppStore.requestReview(in: windowScene)
-                self.userDefaults.set(currentVersion, for: .lastVersionPromptedForReview)
-                self.logger.info("Made review request")
-            }
+        AppStore.requestReview(in: windowScene)
+        await self.keyValueStorage.set(currentVersion, for: .lastVersionPromptedForReview)
+        self.logger.log("Made request to show user rating")
+    }
+
+    // MARK: - Private API -
+
+    private func incrementLauchCounter() async {
+        // If the count has not yet been stored, this will return 0
+        var count = await self.keyValueStorage.getInteger(for: .processCompletedCount)
+        count += 1
+        await self.keyValueStorage.set(count, for: .processCompletedCount)
+        self.logger.debug("Application launched \(count) time(s)")
+    }
+
+    private func isValidShowRatingAttempt(for currentVersion: String) async -> Bool {
+        let lastVersionPromptedForReview = await self.keyValueStorage.getString(for: .lastVersionPromptedForReview)
+        let count = await self.keyValueStorage.getInteger(for: .processCompletedCount)
+
+        return count >= 4 && currentVersion != lastVersionPromptedForReview
+    }
+
+    private func getCurrentAppVersion() throws -> String {
+        guard let currentVersion = Bundle.main.string(for: .bundleVersion) else {
+            throw Error.unableToGetCurrentVersion
         }
+
+        return currentVersion
     }
 
 }
