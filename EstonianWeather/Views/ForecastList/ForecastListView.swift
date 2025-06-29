@@ -13,7 +13,7 @@ struct ForecastListView: View {
 
     // MARK: - Properties
 
-    @ObservedObject var viewModel: ForecastListViewModel
+    var viewModel: ForecastListViewModel
 
     // MARK: - Body
 

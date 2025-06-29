@@ -12,15 +12,16 @@ import CoreData
 import UIKit
 import WeatherKit
 
-final class ForecastListViewModel: ObservableObject {
+@Observable
+final class ForecastListViewModel {
 
-    enum SyncStatus {
+    enum SyncStatus: Sendable {
         case ready(displayItems: [ForecastDisplayItem])
         case refreshing
         case failed(errorMessage: String)
     }
 
-    @Published private(set) var syncStatus: SyncStatus = .refreshing
+    private(set) var syncStatus: SyncStatus = .refreshing
 
     private let model: WeatherService
     private var disposables: Set<AnyCancellable> = []
@@ -32,7 +33,6 @@ final class ForecastListViewModel: ObservableObject {
         subscribeForNotifications()
     }
 
-    @MainActor
     func fetchRemoteForecasts() async {
         do {
             let displayItems = try await self.model.forecasts()

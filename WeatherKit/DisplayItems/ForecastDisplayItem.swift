@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ForecastDisplayItem: Identifiable {
+public struct ForecastDisplayItem: Identifiable, Sendable {
     public let id = UUID()
     public let naturalDateDescription: String
     public let shortDateDescription: String
@@ -16,8 +16,8 @@ public struct ForecastDisplayItem: Identifiable {
     public let night: DayPartForecastDisplayItem?
 }
 
-public struct DayPartForecastDisplayItem: Identifiable {
-    public enum DayPartType {
+public struct DayPartForecastDisplayItem: Identifiable, Sendable {
+    public enum DayPartType: Sendable {
         case day, night
     }
 
@@ -30,7 +30,7 @@ public struct DayPartForecastDisplayItem: Identifiable {
     public let places: [PlaceDisplayItem]
 }
 
-public struct PlaceDisplayItem: Identifiable {
+public struct PlaceDisplayItem: Identifiable, Sendable {
     public let id = UUID()
     public let name: String?
     public let weatherIconName: String?

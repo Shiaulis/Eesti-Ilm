@@ -11,7 +11,6 @@ import WeatherKit
 import NetworkModule
 import os
 
-/// Main service for the whole application. Responsible for the rest application services management
 final class RootService {
 
     // MARK: - Properties -
