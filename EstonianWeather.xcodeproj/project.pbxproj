@@ -14,7 +14,6 @@
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
-		B118051F2879A3DC0019C08F /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B118051E2879A3DC0019C08F /* WeatherKit.framework */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B151FD972BF102B70090D9B7 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = B151FD962BF102B70090D9B7 /* SWXMLHash */; };
 		B16AEA82287AAFCE00E5F791 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
@@ -202,7 +201,6 @@
 		097698B2252A708A00FA1764 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		097698B4252A708A00FA1764 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		09D68CF02544AB7100F9DF78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B118051E2879A3DC0019C08F /* WeatherKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeatherKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/WeatherKit.framework; sourceTree = DEVELOPER_DIR; };
 		B16AEA74287AAF8300E5F791 /* libToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B19AC27A2598AE5C007203FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B118051F2879A3DC0019C08F /* WeatherKit.framework in Frameworks */,
 				097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */,
 				B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */,
 				B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */,
@@ -420,7 +417,6 @@
 		097698B1252A708A00FA1764 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B118051E2879A3DC0019C08F /* WeatherKit.framework */,
 				B189D17E25E40BCD007DF2AB /* StoreKit.framework */,
 				097698B2252A708A00FA1764 /* WidgetKit.framework */,
 				097698B4252A708A00FA1764 /* SwiftUI.framework */,
@@ -1086,7 +1082,7 @@
 		0968CDB82522667B00D409FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = eestiilm;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EstonianWeather/Supporting Files/EstonianWeather.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1112,7 +1108,7 @@
 		0968CDB92522667B00D409FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = eestiilm;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "EstonianWeather/Supporting Files/EstonianWeather.entitlements";
 				CODE_SIGN_STYLE = Automatic;
