@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import PurchaseKit
+import StoreKit
 import OSLog
 
+@Observable
 final class SettingsViewModel {
 
     // MARK: - Properties
 
-    @Published var products: [Product] = []
+    var products: [StoreKit.Product] = []
 
     var currentLanguageName: String { Locale.current.localizedLanguageName }
 
@@ -23,23 +24,14 @@ final class SettingsViewModel {
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 
     private let ratingService: UserRatingService
-    private let purchasemanager: InAppPurchaseManager
+    private let customerEntitlements = CustomerEntitlements()
+    private let logger: Logger = .init(category: .settingsViewModel)
 
     // MARK: - Init
 
     init(ratingService: UserRatingService) {
         self.ratingService = ratingService
-        self.purchasemanager = .init(
-            inAppPurchaseIdentifiers: ["com.shiaulis.estonianweather.buyadrink"],
-            logger: .init(category: .purchase)
-        )
-
-        self.purchasemanager.getProducts { completion in
-            switch completion {
-            case .failure(let error): assertionFailure("Failed to get products. Error: \(error.localizedDescription)")
-            case .success(let products): self.products = products
-            }
-        }
+        fetchProducts()
     }
 
     // MARK: - Public methods
@@ -56,11 +48,26 @@ final class SettingsViewModel {
         self.ratingService.makeAttemptToShowRating(in: windowScene)
     }
 
-    func makePurchase(for product: Product) {
-        self.purchasemanager.purchase(product: product) { error in
-            if let error = error {
-                assertionFailure("Error while making purchase. Error: \(error)")
-                return
+    func makePurchase(for product: StoreKit.Product) {
+        Task {
+            do {
+                try await self.customerEntitlements.makePurchase(for: product)
+            }
+            catch {
+                self.logger.log("Failed to purchase: \(error, privacy: .public)")
+            }
+        }
+    }
+
+    // MARK: - Private -
+
+    private func fetchProducts() {
+        Task {
+            do {
+                self.products = try await self.customerEntitlements.fetchProducts()
+            }
+            catch {
+                self.logger.log("Failed to fetch products: \(error, privacy: .public)")
             }
         }
     }

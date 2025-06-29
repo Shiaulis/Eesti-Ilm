@@ -18,6 +18,7 @@ public extension Logger {
         case rating
         case purchase
         case weatherModel
+        case settingsViewModel
     }
 
     init(subsystem: Subsystem = .mainApp, category: Category) {

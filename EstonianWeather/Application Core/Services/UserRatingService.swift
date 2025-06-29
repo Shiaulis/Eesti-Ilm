@@ -46,7 +46,7 @@ final class UserRatingService {
         if count >= 4 && currentVersion != lastVersionPromptedForReview {
             let twoSecondsFromNow = DispatchTime.now() + 2.0
             DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) {
-                SKStoreReviewController.requestReview(in: windowScene)
+                AppStore.requestReview(in: windowScene)
                 self.userDefaults.set(currentVersion, for: .lastVersionPromptedForReview)
                 self.logger.info("Made review request")
             }

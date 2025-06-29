@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import PurchaseKit
+import StoreKit
 
 struct SettingsView: View {
 
@@ -55,17 +55,8 @@ struct SettingsView: View {
         })
     }
 
-    private func description(for product: Product) -> String {
-        let title = product.localizedTitle
-        let priceTitle: String
-        if let localizedPrice = product.localizedPrice {
-            priceTitle = " (\(localizedPrice))"
-        }
-        else {
-            priceTitle = ""
-        }
-
-        return title + priceTitle
+    private func description(for product: StoreKit.Product) -> String {
+        product.displayName + " " + product.displayPrice
     }
 
 }
