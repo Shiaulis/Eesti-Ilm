@@ -13,6 +13,7 @@
 		097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B2252A708A00FA1764 /* WidgetKit.framework */; };
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5A13D422E11AAA1008744A0 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
 		B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B151FD972BF102B70090D9B7 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = B151FD962BF102B70090D9B7 /* SWXMLHash */; };
@@ -52,6 +53,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 097698AF252A708A00FA1764;
 			remoteInfo = EstonianWeatherWidgetExtension;
+		};
+		A5A13D442E11AAA1008744A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1D585482879898800989B14;
+			remoteInfo = WeatherKit;
 		};
 		B118051B2879A3C60019C08F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -318,6 +326,7 @@
 				B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */,
 				B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */,
 				B1C7DB94287AB0610077CC34 /* libToolkit.a in Frameworks */,
+				A5A13D422E11AAA1008744A0 /* WeatherKit.framework in Frameworks */,
 				097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +537,7 @@
 				B118051C2879A3C60019C08F /* PBXTargetDependency */,
 				B11805222879A3E00019C08F /* PBXTargetDependency */,
 				B1C7DB96287AB0610077CC34 /* PBXTargetDependency */,
+				A5A13D452E11AAA1008744A0 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A5A706C72E10A07F0046012E /* EstonianWeatherWidget */,
@@ -860,6 +870,11 @@
 			platformFilter = ios;
 			target = 097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */;
 			targetProxy = 097698BF252A708C00FA1764 /* PBXContainerItemProxy */;
+		};
+		A5A13D452E11AAA1008744A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1D585482879898800989B14 /* WeatherKit */;
+			targetProxy = A5A13D442E11AAA1008744A0 /* PBXContainerItemProxy */;
 		};
 		B118051C2879A3C60019C08F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
