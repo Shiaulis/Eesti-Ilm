@@ -1,5 +1,13 @@
-# Rules
+# Default Rules
 --disable redundantSelf
+
+# Opt-in Rules
+--enable acronyms
+--enable blankLinesAfterGuardStatements
+--enable blankLinesBetweenImports
+--enable emptyExtensions
+--enable environmentEntry
+
 # Options
 --allman false
 --elseposition nextline

@@ -47,6 +47,7 @@ final class ForecastDateFormatter {
 
     func date(from string: String?) throws -> Date {
         guard let string = string else { throw Error.unableToMakeDateFromString }
+
         return try string.dateWithDefaultStrategy()
     }
 

@@ -73,6 +73,7 @@ final class CustomerEntitlements {
             for await update in Transaction.updates {
                 guard let self else { return }
                 guard let transaction = try? await unwrapVerificationResult(update) else { continue }
+
                 await self.process(transaction)
             }
         }

@@ -73,6 +73,7 @@ enum WeatherType: String {
 
     init?(phenomenonName: String?) {
         guard let name = phenomenonName else { return nil }
+
         self.init(rawValue: name)
     }
 

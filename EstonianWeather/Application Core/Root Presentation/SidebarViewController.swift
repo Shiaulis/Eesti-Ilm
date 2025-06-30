@@ -50,10 +50,12 @@ final class SidebarViewController: UICollectionViewController, UISplitViewContro
         self.viewModel.selectedTabPublisher
             .sink { [weak self] selectedTab in
                 guard let self = self else { return }
+
                 let selectedIndexPath = selectedTab.indexPath
                 let currentSelection = self.collectionView.indexPathsForSelectedItems ?? []
                 // We need to prevent from selection of already selected row
                 guard !currentSelection.contains(selectedIndexPath) else { return }
+
                 self.collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .init(rawValue: 0))
             }
             .store(in: &self.disposables)
@@ -63,6 +65,7 @@ final class SidebarViewController: UICollectionViewController, UISplitViewContro
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedTab = self.dataSource.itemIdentifier(for: indexPath) else { return }
+
         self.viewModel.select(selectedTab)
     }
 

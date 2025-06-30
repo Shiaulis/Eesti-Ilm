@@ -40,6 +40,7 @@ final class RootViewController: UISplitViewController {
         self.viewModel.$selectedTab
             .sink { [weak self] selectedTab in
                 guard let self = self else { return }
+
                 switch selectedTab {
                 case .forecastList: self.setViewController(self.forecastListViewController(), for: .secondary)
                 case .settings: self.setViewController(self.settingsViewController(), for: .secondary)

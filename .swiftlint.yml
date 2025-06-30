@@ -106,24 +106,10 @@ custom_rules:
       - parameter
     severity: warning
 
-  empty_first_line:
-    name: "Empty First Line"
-    message: "There should be an empty line after a declaration"
-    regex: "(^[ a-zA-Z ]*(?:class) (?!(?:var|let))[ a-zA-Z:]*\\{\n *\\S+)"
-
   auto_generated_leftovers:
     name: "Empty Methods"
     message: "Delete auto-generated functions that you don't use"
     regex: 'func [^\n]*\{\n(\s*super\.[^\n]*\n(\s*\/\/[^\n]*\n)*|(\s*\/\/[^\n]*\n)+)\s*\}'
-
-# Additional rules without enforcing
-#
-# Always use `self.` to prefix access to instance variables
-# Optionally use `self.` to prefix method calls. Default to not prefixing unless really needed.
-#
-# All class type declarations should have an empty line after and before `{` and `}` respectively.
-# For enums and structs this is optional, the larger the more likely to have empty lines padding.
-#
 
 # Rule configuration
 colon:

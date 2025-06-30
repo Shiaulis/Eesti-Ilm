@@ -87,7 +87,6 @@ extension SWXMLResponseParser {
         guard let dateString = indexer.element?.attribute(by: "date")?.text else {
             return nil
         }
-
         guard let date = try? self.formatter.date(from: dateString) else {
             return nil
         }
@@ -111,6 +110,7 @@ extension SWXMLResponseParser {
     private func integerValue(from stringValue: String?) -> Int? {
         guard let stringValue = stringValue else { return nil }
         guard let integerValue = Int(stringValue) else { return nil }
+
         return integerValue
     }
 
