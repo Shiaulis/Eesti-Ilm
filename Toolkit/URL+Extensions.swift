@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 public extension URL {
-
     static let settings = URL(string: UIApplication.openSettingsURLString)!
     static let email = URL(string: "mailto:shiaulis@gmail.com")!
 
@@ -21,5 +20,4 @@ public extension URL {
         default: return URL(string: "https://www.ilmateenistus.ee/?lang=en")!
         }
     }
-
 }

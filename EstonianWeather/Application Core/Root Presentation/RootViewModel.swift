@@ -5,14 +5,14 @@
 //  Created by Andrius Siaulis on 10.07.2021.
 //
 
-import Foundation
-import WeatherKit
 import Combine
+import Foundation
 import NetworkModule
+import WeatherKit
 
 final class RootViewModel: SidebarViewModel, TabbarViewModel {
-
     // MARK: - Properties
+
     @Published var selectedTab: TabItem = .forecastList
 
     let forecastListViewModel: ForecastListViewModel
@@ -34,5 +34,4 @@ final class RootViewModel: SidebarViewModel, TabbarViewModel {
     func didSwitchTo(_ tab: TabItem) {
         self.selectedTab = tab
     }
-
 }

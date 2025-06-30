@@ -5,13 +5,12 @@
 //  Created by Andrius Shiaulis on 22.01.2020.
 //
 
-import UIKit
-import StoreKit
 import OSLog
+import StoreKit
+import UIKit
 
 @Observable
 final class SettingsViewModel {
-
     // MARK: - Properties
 
     var products: [StoreKit.Product] = []

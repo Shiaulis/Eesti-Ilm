@@ -9,7 +9,6 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-
     let rootService: RootService = .init()
 
     // swiftlint:disable:next discouraged_optional_collection
@@ -25,5 +24,4 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         .init(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
 }

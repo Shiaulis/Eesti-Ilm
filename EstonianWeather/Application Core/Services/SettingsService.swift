@@ -8,7 +8,6 @@
 import Foundation
 
 final class SettingsService {
-
     // MARK: - Properties -
 
     private let keyValueStorage: KeyValueStorage

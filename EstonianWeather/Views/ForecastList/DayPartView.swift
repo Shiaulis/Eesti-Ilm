@@ -18,7 +18,6 @@ private extension DayPartForecastDisplayItem.DayPartType {
 }
 
 struct DayPartView: View {
-
     let item: DayPartForecastDisplayItem
 
     var body: some View {
@@ -63,7 +62,6 @@ struct PrimaryForecastView: View {
                 VStack {
                     Image(systemName: self.weatherIconName)
                         .font(.largeTitle)
-
                 }
             }
         }

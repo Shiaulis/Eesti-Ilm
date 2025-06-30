@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DisclaimerCell: View {
-
     let disclaimerText: String
     let url: URL
     let urlDescription: String
@@ -51,6 +50,5 @@ struct DisclaimerCell_Previews: PreviewProvider {
             urlDescription: "https://ilmateenindus.ee"
         )
         .previewLayout(.fixed(width: 814, height: 88))
-
     }
 }

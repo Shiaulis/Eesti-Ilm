@@ -5,10 +5,10 @@
 //  Created by Andrius Shiaulis on 11.10.2020.
 //
 
-import WidgetKit
 import Combine
-import WeatherKit
 import NetworkModule
+import WeatherKit
+import WidgetKit
 
 struct ForecastEntry: TimelineEntry {
     let date: Date
@@ -23,7 +23,6 @@ struct ForecastEntry: TimelineEntry {
 }
 
 final class WidgetForecastProvider: TimelineProvider {
-
     private let model: WeatherModel
     private var lastFetchedDisplayItems: [ForecastDisplayItem] = []
 
@@ -63,5 +62,4 @@ final class WidgetForecastProvider: TimelineProvider {
             }
         }
     }
-
 }

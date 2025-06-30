@@ -5,9 +5,9 @@
 //  Created by Andrius Shiaulis on 05.10.2020.
 //
 
-import WidgetKit
-import SwiftUI
 import Intents
+import SwiftUI
+import WidgetKit
 
 struct ForecastWidget: Widget {
     let kind: String = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"

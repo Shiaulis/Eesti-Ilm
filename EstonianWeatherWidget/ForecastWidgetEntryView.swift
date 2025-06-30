@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import WidgetKit
 import WeatherKit
+import WidgetKit
 
 struct EstonianWeatherWidgetEntryView: View {
     let entry: ForecastEntry
@@ -54,7 +54,6 @@ struct EstonianWeatherWidgetEntryView: View {
                                 ForecastWeatherDayView(displayItem: displayItem)
                             }
                         }
-
                     }
                 }
             }
@@ -80,7 +79,6 @@ private struct PlaceholderView: View {
 }
 
 private struct HeaderView: View {
-
     @Environment(\.widgetFamily) private var family
 
     private var text: String {
@@ -108,7 +106,6 @@ private struct HeaderView: View {
                 Spacer()
             }
         }
-
     }
 }
 

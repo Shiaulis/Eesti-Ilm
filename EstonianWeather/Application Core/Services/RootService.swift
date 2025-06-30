@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import WeatherLocale
-import WeatherKit
 import NetworkModule
 import os
+import WeatherKit
+import WeatherLocale
 
 final class RootService {
-
     // MARK: - Properties -
 
     let weatherService: WeatherService
@@ -31,7 +30,6 @@ final class RootService {
         let keyValueStorage = KeyValueStorage(userDefaults: .standard)
         self.userRatingService = UserRatingService(keyValueStorage: keyValueStorage)
         self.settingsService = SettingsService(keyValueStorage: keyValueStorage)
-
     }
 
     func start() async {
@@ -39,5 +37,4 @@ final class RootService {
         await self.userRatingService.start()
         await self.settingsService.start()
     }
-
 }

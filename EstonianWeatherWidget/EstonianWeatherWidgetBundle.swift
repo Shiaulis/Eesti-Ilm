@@ -5,8 +5,8 @@
 //  Created by Andrius Shiaulis on 11.10.2020.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 /// All widgets should be mentioned in this method
 @main

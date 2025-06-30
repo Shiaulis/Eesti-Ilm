@@ -8,7 +8,6 @@
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
     // Assume supporting several scenes require us to have several root view models in future 🤔
     private var rootViewModel: RootViewModel!
@@ -30,5 +29,4 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = RootViewController(viewModel: self.rootViewModel)
         window.makeKeyAndVisible()
     }
-
 }

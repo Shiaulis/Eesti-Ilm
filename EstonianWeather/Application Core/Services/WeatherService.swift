@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import WeatherKit
 import NetworkModule
+import WeatherKit
 import WeatherLocale
 
 final class WeatherService {
-
     private let weatherLocale: WeatherLocale
     private let responseParser: ResponseParser
     private let networkClient: NetworkClient
@@ -40,5 +39,4 @@ final class WeatherService {
 
     // Should validate response code as well
     private func validate(_ response: URLResponse) throws {}
-
 }

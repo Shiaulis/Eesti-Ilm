@@ -8,7 +8,6 @@
 import Foundation
 
 enum WeatherType: String {
-
     // MARK: - Properties
 
     var imageName: String? {

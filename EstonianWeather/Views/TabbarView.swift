@@ -5,8 +5,8 @@
 //  Created by Andrius Shiaulis on 02.03.2020.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 import WeatherKit
 
 protocol TabbarViewModel {
@@ -18,7 +18,6 @@ protocol TabbarViewModel {
 }
 
 struct TabbarView: View {
-
     private var selectedTabBinding: Binding<TabItem> {
         .init {
             self.viewModel.selectedTab
@@ -52,5 +51,4 @@ struct TabbarView: View {
         }
         .navigationViewStyle(.stack)
     }
-
 }

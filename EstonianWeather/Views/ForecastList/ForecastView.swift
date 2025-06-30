@@ -9,7 +9,6 @@ import SwiftUI
 import WeatherKit
 
 struct ForecastView: View {
-
     private let item: ForecastDisplayItem
 
     init(item: ForecastDisplayItem) {

@@ -32,7 +32,6 @@ struct AboutMeView: View {
 }
 
 private struct ContactMeButton: View {
-
     var body: some View {
         Button(action: buttonAction) {
             Text(L10n.Strings.contactMe)

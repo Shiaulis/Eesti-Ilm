@@ -8,7 +8,6 @@
 import Foundation
 
 public extension Date {
-
     static var yesterday: Date { Date().dayBefore }
     static var tomorrow: Date { Date().dayAfter }
 
@@ -31,5 +30,4 @@ public extension Date {
     var isLastDayOfMonth: Bool {
         self.dayAfter.month != self.month
     }
-
 }

@@ -5,8 +5,8 @@
 //  Created by Andrius Siaulis on 10.07.2021.
 //
 
-import UIKit
 import Combine
+import UIKit
 
 protocol SidebarViewModel {
     var selectedTabPublisher: AnyPublisher<TabItem, Never> { get }
@@ -15,7 +15,6 @@ protocol SidebarViewModel {
 }
 
 final class SidebarViewController: UICollectionViewController, UISplitViewControllerDelegate {
-
     private typealias DataSource = UICollectionViewDiffableDataSource<SidebarSection, TabItem>
     private enum SidebarSection: Int { case main }
 
@@ -71,7 +70,6 @@ final class SidebarViewController: UICollectionViewController, UISplitViewContro
 
     private func configureDataSource() {
         let rowRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TabItem> { cell, _, tab in
-
             var contentConfiguration = UIListContentConfiguration.subtitleCell()
             contentConfiguration.text = tab.title
             contentConfiguration.image = UIImage(systemName: tab.imageName)
@@ -104,5 +102,4 @@ final class SidebarViewController: UICollectionViewController, UISplitViewContro
             return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
         }
     }
-
 }

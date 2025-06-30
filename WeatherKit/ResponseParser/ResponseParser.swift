@@ -5,15 +5,14 @@
 //  Created by Andrius Shiaulis on 06.03.2021.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 public protocol ResponseParser {
     func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error>
 }
 
 extension Publisher where Output == Data {
-
     func parseForecast(using parser: ResponseParser) -> AnyPublisher<[ForecastDisplayItem], Swift.Error> {
         self
             .tryMap { data in
@@ -21,5 +20,4 @@ extension Publisher where Output == Data {
             }
             .eraseToAnyPublisher()
     }
-
 }

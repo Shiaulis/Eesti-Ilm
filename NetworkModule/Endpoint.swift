@@ -21,11 +21,9 @@ public struct Endpoint {
         self.urlQueryItems = urlQueryItems
         self.method = method
     }
-
 }
 
 extension Endpoint {
-
     enum Method: String {
         case post = "POST"
         var string: String { self.rawValue }
@@ -34,11 +32,9 @@ extension Endpoint {
     enum Error: Swift.Error {
         case badURL
     }
-
 }
 
 public extension Endpoint {
-
     // https://ilmateenistus.ee/ilma_andmed/xml/forecast.php?lang=rus
 
     static func forecast(for locale: WeatherLocale) -> Endpoint {
@@ -67,7 +63,6 @@ private extension WeatherLocale {
 }
 
 extension Endpoint {
-
     func generateURL() throws -> URL {
         var components = URLComponents()
         components.scheme = Endpoint.scheme
@@ -81,10 +76,9 @@ extension Endpoint {
     }
 
     func generateRequest() throws -> URLRequest {
-        var request = URLRequest(url: try generateURL())
+        var request = try URLRequest(url: generateURL())
         request.httpMethod = self.method.string
         request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
         return request
     }
-
 }

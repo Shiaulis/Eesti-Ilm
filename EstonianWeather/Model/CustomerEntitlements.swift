@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import StoreKit
 import OSLog
+import StoreKit
 
 final class CustomerEntitlements {
-
     // MARK: - Types -
 
     enum Error: Swift.Error {
@@ -49,7 +48,7 @@ final class CustomerEntitlements {
     func makePurchase(for product: StoreKit.Product) async throws {
         do {
             switch try await product.purchase() {
-            case .success(let verificationResult):
+            case let .success(verificationResult):
                 let transaction = try await unwrapVerificationResult(verificationResult)
                 await self.process(transaction)
             case .pending:
@@ -81,10 +80,10 @@ final class CustomerEntitlements {
 
     private func unwrapVerificationResult(_ verificationResult: VerificationResult<Transaction>) async throws -> Transaction {
         switch verificationResult {
-        case .verified(let transaction):
+        case let .verified(transaction):
             self.logger.log("Transaction ID \(transaction.id) for \(transaction.productID) is verified")
             return transaction
-        case .unverified(let transaction, let error):
+        case let .unverified(transaction, error):
             self.logger.error("Transaction ID \(transaction.id) for \(transaction.productID) is unverified: \(error)")
             throw Error.unverifiedTransaction(id: "\(transaction.id)")
         }

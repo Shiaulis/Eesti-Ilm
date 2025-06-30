@@ -9,7 +9,6 @@ import SwiftUI
 import WeatherKit
 
 struct PlaceView: View {
-
     let place: PlaceDisplayItem
 
     var body: some View {

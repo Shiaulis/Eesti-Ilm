@@ -8,7 +8,6 @@
 import Foundation
 
 enum TabItem: Int, CaseIterable, Identifiable {
-
     var id: RawValue { self.rawValue }
 
     case forecastList, settings

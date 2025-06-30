@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct LanguageCell: View {
-
     let currentLanguage: String
     let didSelected: () -> Void
 

@@ -8,10 +8,9 @@
 import XCTest
 
 final class EstonianWeatherUITests: XCTestCase {
-
     private lazy var app = XCUIApplication()
 
-    struct ExpectedStrings {
+    enum ExpectedStrings {
         static func navigationTitle(for locale: TestableLocale) -> String {
             switch locale {
             case .english: return "4 Days Forecast"

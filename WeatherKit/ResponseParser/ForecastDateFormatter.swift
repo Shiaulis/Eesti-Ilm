@@ -8,7 +8,6 @@
 import Foundation
 
 final class ForecastDateFormatter {
-
     enum Error: Swift.Error {
         case unableToMakeDateFromString
     }
@@ -72,21 +71,19 @@ final class ForecastDateFormatter {
     private func weekday(for date: Date) -> String? {
         date.formatted(Date.FormatStyle().weekday(.wide))
     }
-
 }
 
 private extension String {
     func dateWithDefaultStrategy() throws -> Date {
-        let strategy = Date.ParseStrategy(
+        let strategy = try Date.ParseStrategy(
             format: "\(year: .defaultDigits)-\(month: .twoDigits)-\(day: .twoDigits)",
-            timeZone: try .timeZone(hoursFromGMT: 2)
+            timeZone: .timeZone(hoursFromGMT: 2)
         )
         return try Date(self, strategy: strategy)
     }
 }
 
 private extension TimeZone {
-
     enum Error: Swift.Error {
         case unableToCreateTimezone
     }

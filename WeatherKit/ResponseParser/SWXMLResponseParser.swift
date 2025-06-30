@@ -6,15 +6,13 @@
 //
 
 import Foundation
-import SWXMLHash
 import OSLog
+import SWXMLHash
 import Toolkit
 
 public final class SWXMLResponseParser {
-
     // swiftlint:disable identifier_name
     fileprivate enum Element: String {
-
         // forecast
         case forecasts, forecast, night, day, phenomenon, tempmin, tempmax, text, place, name, wind, direction, speedmin, speedmax, gust, sea, peipsi
 
@@ -25,7 +23,6 @@ public final class SWXMLResponseParser {
         init?(_ name: String) {
             self.init(rawValue: name)
         }
-
     }
 
     // swiftlint:enable identifier_name
@@ -41,7 +38,6 @@ public final class SWXMLResponseParser {
 }
 
 extension SWXMLResponseParser: ResponseParser {
-
     public func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error> {
         self.logger.debug("Parsing started")
         let xml = XMLHash.parse(forecastData)
@@ -50,13 +46,11 @@ extension SWXMLResponseParser: ResponseParser {
 
         return .success(forecasts)
     }
-
 }
 
 // MARK: - Display items from XMLIndexer
 
 extension SWXMLResponseParser {
-
     private func parseForecasts(from indexer: XMLIndexer) -> [ForecastDisplayItem] {
         indexer[.forecasts][.forecast].all.map { parseForecast(from: $0) }
     }
@@ -84,8 +78,7 @@ extension SWXMLResponseParser {
     private func place(from indexer: XMLIndexer) -> PlaceDisplayItem {
         .init(name: indexer[.name].element?.text,
               weatherIconName: weatherIconName(from: indexer),
-              temperature: indexer[.tempmin].element?.text
-        )
+              temperature: indexer[.tempmin].element?.text)
     }
 
     // MARK: - Helpers
@@ -124,10 +117,10 @@ extension SWXMLResponseParser {
     private func temperatureRangeSting(min: Int?, max: Int?) -> String? {
         let string: String
         switch (min, max) {
-        case (.none, .some(let max)): string = temperatureString(for: max)
-        case (.some(let min), .none): string = temperatureString(for: min)
+        case let (.none, .some(max)): string = temperatureString(for: max)
+        case let (.some(min), .none): string = temperatureString(for: min)
         case (.none, .none): return nil
-        case (.some(let min), .some(let max)): string = "\(temperatureString(for: min)) | \(temperatureString(for: max))"
+        case let (.some(min), .some(max)): string = "\(temperatureString(for: min)) | \(temperatureString(for: max))"
         }
 
         return string
@@ -143,22 +136,18 @@ extension SWXMLResponseParser {
             return ""
         }
     }
-
 }
 
 // MARK: - Error type
 
 extension SWXMLResponseParser {
-
     enum Error: Swift.Error {
         case elementNotFound(identifier: String)
         case forecastDateNotFound
     }
-
 }
 
 private extension XMLIndexer {
-
     subscript(element: SWXMLResponseParser.Element) -> XMLIndexer {
         do {
             return try self.byKey(element.rawValue)

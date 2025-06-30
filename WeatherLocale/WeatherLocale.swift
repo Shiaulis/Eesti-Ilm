@@ -18,5 +18,4 @@ public enum WeatherLocale {
         default: return nil
         }
     }
-
 }

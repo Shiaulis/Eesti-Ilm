@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import StoreKit
 import OSLog
+import StoreKit
 
 final class UserRatingService {
-
     // MARK: - Types -
 
     enum Error: Swift.Error {
@@ -72,5 +71,4 @@ final class UserRatingService {
 
         return currentVersion
     }
-
 }

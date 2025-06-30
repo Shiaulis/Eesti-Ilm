@@ -9,7 +9,6 @@ import SwiftUI
 import WeatherKit
 
 struct ForecastListView: View {
-
     // MARK: - Properties
 
     var viewModel: ForecastListViewModel
@@ -21,9 +20,9 @@ struct ForecastListView: View {
             switch self.viewModel.syncStatus {
             case .refreshing:
                 ListPlaceholder(description: L10n.Strings.loading)
-            case .ready(let displayItems):
+            case let .ready(displayItems):
                 list(for: displayItems)
-            case .failed(let errorMessage):
+            case let .failed(errorMessage):
                 ListPlaceholder(
                     description: L10n.Strings.FailedToSync.error + ": " + errorMessage
                 )
@@ -48,11 +47,9 @@ struct ForecastListView: View {
             }
         }
     }
-
 }
 
 struct ListPlaceholder: View {
-
     let description: String
 
     var body: some View {
@@ -71,7 +68,6 @@ struct ListPlaceholder: View {
 }
 
 struct SettingsButton: View {
-
     private let tapped: () -> Void
 
     init(_ tapped: @escaping () -> Void) {

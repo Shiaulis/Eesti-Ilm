@@ -5,12 +5,11 @@
 //  Created by Andrius Siaulis on 10.07.2021.
 //
 
-import UIKit
-import SwiftUI
 import Combine
+import SwiftUI
+import UIKit
 
 final class RootViewController: UISplitViewController {
-
     // MARK: - Properties
 
     private let viewModel: RootViewModel
@@ -79,5 +78,4 @@ final class RootViewController: UISplitViewController {
         navigation.navigationBar.prefersLargeTitles = true
         return navigation
     }
-
 }

@@ -5,11 +5,10 @@
 //  Created by Andrius Shiaulis on 22.01.2020.
 //
 
-import SwiftUI
 import StoreKit
+import SwiftUI
 
 struct SettingsView: View {
-
     let viewModel: SettingsViewModel
 
     var body: some View {
@@ -57,7 +56,6 @@ struct SettingsView: View {
     private func description(for product: StoreKit.Product) -> String {
         product.displayName + " " + product.displayPrice
     }
-
 }
 
 struct SettingsView_Previews: PreviewProvider {

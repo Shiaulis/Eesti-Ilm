@@ -5,15 +5,14 @@
 //  Created by Andrius Shiaulis on 13.01.2020.
 //
 
-import Foundation
 import Combine
 import CoreData
+import Foundation
 import UIKit
 import WeatherKit
 
 @Observable
 final class ForecastListViewModel {
-
     enum SyncStatus: Sendable {
         case ready(displayItems: [ForecastDisplayItem])
         case refreshing
@@ -51,5 +50,4 @@ final class ForecastListViewModel {
             }
             .store(in: &self.disposables)
     }
-
 }

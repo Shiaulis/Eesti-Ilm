@@ -5,13 +5,12 @@
 //  Created by Andrius Shiaulis on 06.03.2021.
 //
 
-import Foundation
 import Combine
+import Foundation
 import NetworkModule
 import WeatherLocale
 
 public final class NetworkWeatherModel: WeatherModel {
-
     // MARK: - Properties
 
     private let responseParser: ResponseParser
@@ -44,5 +43,4 @@ public final class NetworkWeatherModel: WeatherModel {
 
     // Should validate response code as well
     private func validate(_ response: URLResponse) throws {}
-
 }

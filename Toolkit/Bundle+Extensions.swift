@@ -8,7 +8,6 @@
 import Foundation
 
 public extension Bundle {
-
     enum Key: String {
         case bundleShortVersionString = "CFBundleShortVersionString"
         case bundleVersion = "CFBundleVersion"
@@ -17,5 +16,4 @@ public extension Bundle {
     func string(for key: Key) -> String? {
         self.object(forInfoDictionaryKey: key.rawValue) as? String
     }
-
 }

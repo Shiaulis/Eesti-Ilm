@@ -5,8 +5,8 @@
 //  Created by Andrius Shiaulis on 10.10.2020.
 //
 
-import Foundation
 @testable import EstonianWeather
+import Foundation
 
 enum TestableLocale: String {
     case english, estonian, russian, anyOther
@@ -21,5 +21,4 @@ enum TestableLocale: String {
         default: self = .anyOther
         }
     }
-
 }

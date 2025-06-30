@@ -24,5 +24,4 @@ public extension Logger {
     init(subsystem: Subsystem = .mainApp, category: Category) {
         self.init(subsystem: subsystem.rawValue, category: category.rawValue)
     }
-
 }

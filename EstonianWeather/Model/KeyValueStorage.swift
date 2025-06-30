@@ -9,7 +9,6 @@ import Foundation
 import OSLog
 
 final actor KeyValueStorage {
-
     // MARK: - Types -
 
     enum Key: String {
@@ -45,5 +44,4 @@ final actor KeyValueStorage {
     func set(_ string: String, for key: Key) async {
         self.userDefaults.set(string, forKey: key.rawValue)
     }
-
 }
