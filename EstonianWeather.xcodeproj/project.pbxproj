@@ -14,6 +14,7 @@
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A5A13D422E11AAA1008744A0 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
+		A5F963712E13099E00D34A94 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = A5F963702E13099E00D34A94 /* .swiftformat */; };
 		B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B151FD972BF102B70090D9B7 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = B151FD962BF102B70090D9B7 /* SWXMLHash */; };
@@ -209,6 +210,7 @@
 		097698B2252A708A00FA1764 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		097698B4252A708A00FA1764 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		09D68CF02544AB7100F9DF78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A5F963702E13099E00D34A94 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		B16AEA74287AAF8300E5F791 /* libToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B19AC27A2598AE5C007203FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 		0968CD892522667A00D409FF = {
 			isa = PBXGroup;
 			children = (
+				A5F963702E13099E00D34A94 /* .swiftformat */,
 				B1F337532879988300DCB3FE /* .swiftlint.yml */,
 				A5A706A12E10A05D0046012E /* EstonianWeather */,
 				A5A706C72E10A07F0046012E /* EstonianWeatherWidget */,
@@ -457,6 +460,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0968CDB72522667B00D409FF /* Build configuration list for PBXNativeTarget "EstonianWeather" */;
 			buildPhases = (
+				A5F962D92E13031600D34A94 /* Run Swiftformat */,
 				0968CD8E2522667A00D409FF /* Sources */,
 				0968CD8F2522667A00D409FF /* Frameworks */,
 				0968CD902522667A00D409FF /* Resources */,
@@ -737,6 +741,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5F963712E13099E00D34A94 /* .swiftformat in Resources */,
 				B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */,
 				09727670254583C100016EB0 /* LICENSE in Resources */,
 				09769696252A682800FA1764 /* Settings.bundle in Resources */,
@@ -787,6 +792,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5F962D92E13031600D34A94 /* Run Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swiftformat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n# swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0968CD8E2522667A00D409FF /* Sources */ = {
@@ -1104,6 +1131,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EstonianWeather/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "EstonianWeather/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
@@ -1130,6 +1158,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"EstonianWeather/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "EstonianWeather/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";

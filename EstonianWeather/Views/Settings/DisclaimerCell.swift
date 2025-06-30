@@ -50,7 +50,7 @@ struct DisclaimerCell_Previews: PreviewProvider {
             url: URL.sourceDisclaimerURL,
             urlDescription: "https://ilmateenindus.ee"
         )
-            .previewLayout(.fixed(width: 814, height: 88))
+        .previewLayout(.fixed(width: 814, height: 88))
 
     }
 }
