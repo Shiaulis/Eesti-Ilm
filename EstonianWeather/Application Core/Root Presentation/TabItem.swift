@@ -14,8 +14,8 @@ enum TabItem: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .forecastList: return L10n.Strings.forecast
-        case .settings: return L10n.Strings.settings
+        case .forecastList: return String(localized: "Forecast")
+        case .settings: return String(localized: "Settings")
         }
     }
 

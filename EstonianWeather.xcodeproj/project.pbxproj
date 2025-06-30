@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		09727670254583C100016EB0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0972766F254583C100016EB0 /* LICENSE */; };
-		09769696252A682800FA1764 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09769695252A682800FA1764 /* Settings.bundle */; };
 		097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B2252A708A00FA1764 /* WidgetKit.framework */; };
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -171,9 +170,7 @@
 
 /* Begin PBXFileReference section */
 		0968CD922522667A00D409FF /* EstonianWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstonianWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0968CE2425226A2B00D409FF /* EstonianWeather.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EstonianWeather.xctestplan; sourceTree = "<group>"; };
 		0972766F254583C100016EB0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		09769695252A682800FA1764 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EstonianWeatherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		097698B2252A708A00FA1764 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		097698B4252A708A00FA1764 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -181,7 +178,6 @@
 		A5F963702E13099E00D34A94 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		B16AEA74287AAF8300E5F791 /* libToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		B19AC27A2598AE5C007203FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
 		B1D585492879898800989B14 /* WeatherKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D652F7259943B40071A57E /* Privacy Policy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Privacy Policy.md"; sourceTree = "<group>"; };
 		B1F3373128798CDD00DCB3FE /* NetworkModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,13 +215,6 @@
 			);
 			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
 		};
-		A5A7071C2E10A0A80046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				AppStoreDescription.xcstrings,
-			);
-			target = 097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -235,7 +224,7 @@
 		A5A706FB2E10A0890046012E /* NetworkModule */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706FF2E10A0890046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NetworkModule; sourceTree = "<group>"; };
 		A5A707012E10A08C0046012E /* WeatherLocale */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherLocale; sourceTree = "<group>"; };
 		A5A7070A2E10A0900046012E /* Toolkit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Toolkit; sourceTree = "<group>"; };
-		A5A707152E10A0A80046012E /* Strings */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A7071C2E10A0A80046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Strings; sourceTree = "<group>"; };
+		A5F963FC2E13125300D34A94 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,11 +298,10 @@
 				A5A706ED2E10A0870046012E /* WeatherKit */,
 				A5A706FB2E10A0890046012E /* NetworkModule */,
 				A5A707012E10A08C0046012E /* WeatherLocale */,
+				A5F963FC2E13125300D34A94 /* Resources */,
 				A5A7070A2E10A0900046012E /* Toolkit */,
-				A5A707152E10A0A80046012E /* Strings */,
 				097698B1252A708A00FA1764 /* Frameworks */,
 				0968CD932522667A00D409FF /* Products */,
-				0975939D254423B600C21C6B /* Root Supporting Files */,
 				0972766F254583C100016EB0 /* LICENSE */,
 				09D68CF02544AB7100F9DF78 /* README.md */,
 				B1D652F7259943B40071A57E /* Privacy Policy.md */,
@@ -331,16 +319,6 @@
 				B16AEA74287AAF8300E5F791 /* libToolkit.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		0975939D254423B600C21C6B /* Root Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B19AC27B2598AE5C007203FB /* AppStoreDescription.strings */,
-				09769695252A682800FA1764 /* Settings.bundle */,
-				0968CE2425226A2B00D409FF /* EstonianWeather.xctestplan */,
-			);
-			path = "Root Supporting Files";
 			sourceTree = "<group>";
 		};
 		097698B1252A708A00FA1764 /* Frameworks */ = {
@@ -396,7 +374,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A5A706A12E10A05D0046012E /* EstonianWeather */,
-				A5A707152E10A0A80046012E /* Strings */,
+				A5F963FC2E13125300D34A94 /* Resources */,
 			);
 			name = EstonianWeather;
 			packageProductDependencies = (
@@ -423,7 +401,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A5A706C72E10A07F0046012E /* EstonianWeatherWidget */,
-				A5A707152E10A0A80046012E /* Strings */,
 			);
 			name = EstonianWeatherWidgetExtension;
 			packageProductDependencies = (
@@ -588,7 +565,6 @@
 				A5F963712E13099E00D34A94 /* .swiftformat in Resources */,
 				B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */,
 				09727670254583C100016EB0 /* LICENSE in Resources */,
-				09769696252A682800FA1764 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,17 +730,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		B19AC27B2598AE5C007203FB /* AppStoreDescription.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B19AC27A2598AE5C007203FB /* en */,
-			);
-			name = AppStoreDescription.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		0968CDB52522667B00D409FF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -830,6 +795,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -894,6 +860,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";

@@ -22,6 +22,9 @@ final class RootService {
 
     init() {
         let locale = WeatherLocale(locale: .current) ?? .english
+        // workaround to avoid having string definition within framework
+        SWXMLResponseParser.todayLocalizedName = String(localized: "Today")
+        SWXMLResponseParser.tomorrowLocalizedName = String(localized: "Tomorrow")
         self.weatherService = .init(
             weatherLocale: locale,
             responseParser: SWXMLResponseParser(),

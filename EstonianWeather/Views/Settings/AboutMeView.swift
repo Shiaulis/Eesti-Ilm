@@ -21,20 +21,20 @@ struct AboutMeView: View {
                         .padding()
                     Spacer()
                 }
-                Text(L10n.Strings.aboutMeDescription)
+                Text("About me description")
                     .padding()
                 ContactMeButton()
                 Spacer()
             }
         }
-        .navigationBarTitle(L10n.Strings.aboutMeTitle)
+        .navigationBarTitle("About me title")
     }
 }
 
 private struct ContactMeButton: View {
     var body: some View {
         Button(action: buttonAction) {
-            Text(L10n.Strings.contactMe)
+            Text("Contact me")
         }
     }
 
@@ -47,7 +47,7 @@ struct AboutMeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AboutMeView()
-                .navigationTitle(L10n.Strings.aboutMeTitle)
+                .navigationTitle("About me title")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

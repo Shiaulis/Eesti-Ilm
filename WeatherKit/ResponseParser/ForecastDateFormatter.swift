@@ -59,11 +59,11 @@ final class ForecastDateFormatter {
         let calendar = Calendar.current
 
         if calendar.isDateInToday(date) {
-            return String(localized: "Today", table: "Strings")
+            return SWXMLResponseParser.todayLocalizedName
         }
 
         if calendar.isDateInTomorrow(date) {
-            return String(localized: "Tomorrow", table: "Strings")
+            return SWXMLResponseParser.tomorrowLocalizedName
         }
 
         return nil

@@ -19,19 +19,19 @@ struct ForecastListView: View {
         Group {
             switch self.viewModel.syncStatus {
             case .refreshing:
-                ListPlaceholder(description: L10n.Strings.loading)
+                ListPlaceholder(description: String(localized: "Loading"))
             case let .ready(displayItems):
                 list(for: displayItems)
             case let .failed(errorMessage):
                 ListPlaceholder(
-                    description: L10n.Strings.FailedToSync.error + ": " + errorMessage
+                    description: String(localized: "Error: \(errorMessage)")
                 )
             }
         }
         .ifOS(.iOS) { view in
             view.refreshable { await self.viewModel.fetchRemoteForecasts() }
         }
-        .navigationTitle(L10n.Strings.fourDayForecast)
+        .navigationTitle(String(localized: "Forecast"))
         .navigationBarTitleDisplayMode(.large)
     }
 

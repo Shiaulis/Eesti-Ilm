@@ -70,7 +70,7 @@ private struct PlaceholderView: View {
             Spacer()
             HStack {
                 Spacer()
-                Text(L10n.Strings.noDataAvailable)
+                Text("No data available")
                 Spacer()
             }
             Spacer()
@@ -83,8 +83,8 @@ private struct HeaderView: View {
 
     private var text: String {
         switch self.family {
-        case .systemSmall: return L10n.Strings.forecast
-        case .systemMedium: return L10n.Strings.estonianWeatherForecast
+        case .systemSmall: return String(localized: "Forecast")
+        case .systemMedium: return String(localized: "Estonian Weather Forecast")
         case .systemLarge: return ""
         case .systemExtraLarge: return ""
         case .accessoryCircular: return ""

@@ -1,0 +1,50 @@
+{
+  "configurations" : [
+    {
+      "id" : "BA6B2A03-C1F4-4A44-A3C2-A04C18A31405",
+      "name" : "English locale",
+      "options" : {
+        "language" : "en"
+      }
+    },
+    {
+      "id" : "440A93DC-580D-44FD-A995-14FD3B57AB61",
+      "name" : "Russian locale",
+      "options" : {
+        "language" : "ru"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EstonianWeather.xcodeproj",
+          "identifier" : "0913814523CB7AF30092EC04",
+          "name" : "EstonianWeather"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:EstonianWeather.xcodeproj",
+      "identifier" : "0913814523CB7AF30092EC04",
+      "name" : "EstonianWeather"
+    },
+    "testExecutionOrdering" : "random",
+    "uiTestingScreenshotsLifetime" : "keepNever",
+    "userAttachmentLifetime" : "keepNever"
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "ForecastControllerTests"
+      ],
+      "target" : {
+        "containerPath" : "container:EstonianWeather.xcodeproj",
+        "identifier" : "0968CDA22522667B00D409FF",
+        "name" : "EstonianWeatherTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -16,8 +16,8 @@ struct ForecastWidget: Widget {
         StaticConfiguration(kind: kind, provider: WidgetForecastProvider()) { entry in
             EstonianWeatherWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName(L10n.Strings.forecastWidget)
-        .description(L10n.Strings.checkEstonianWeatherForecast)
+        .configurationDisplayName(String(localized: "Forecast Widget"))
+        .description(String(localized: "Check Estonian weather forecast"))
         .supportedFamilies([.systemSmall, .systemMedium])
         .contentMarginsDisabled()
     }

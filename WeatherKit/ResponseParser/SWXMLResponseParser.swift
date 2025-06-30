@@ -29,6 +29,9 @@ public final class SWXMLResponseParser {
 
     // MARK: - Properties
 
+    public static var todayLocalizedName = "Today"
+    public static var tomorrowLocalizedName = "Tomorrow"
+
     private let logger: Logger = .init(category: .weatherModel)
     private let formatter: ForecastDateFormatter = .init()
 

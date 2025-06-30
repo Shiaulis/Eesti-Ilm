@@ -22,7 +22,7 @@ struct SettingsView: View {
 
             Section {
                 NavigationLink(destination: AboutMeView()) {
-                    Text(L10n.Strings.aboutMeTitle)
+                    Text("About me title")
                 }
                 List {
                     ForEach(0 ..< self.viewModel.products.count, id: \.self) { column in
@@ -43,7 +43,7 @@ struct SettingsView: View {
                 )
             }
         }
-        .navigationBarTitle(L10n.Strings.settings)
+        .navigationBarTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
         .onDisappear(perform: {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {

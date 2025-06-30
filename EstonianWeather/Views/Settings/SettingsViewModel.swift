@@ -17,7 +17,7 @@ final class SettingsViewModel {
 
     var currentLanguageName: String { Locale.current.localizedLanguageName }
 
-    let sourceDisclaimerText: String = L10n.Strings.sourceDisclaimer
+    let sourceDisclaimerText = String(localized: "Source disclaimer")
     let urlDescription: String = "www.ilmateenindus.ee"
     let sourceDisclaimerURL: URL = .sourceDisclaimerURL
 
