@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0968CE2625226A2B00D409FF /* EstonianWeather.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 0968CE2425226A2B00D409FF /* EstonianWeather.xctestplan */; };
 		09727670254583C100016EB0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0972766F254583C100016EB0 /* LICENSE */; };
 		09769696252A682800FA1764 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09769695252A682800FA1764 /* Settings.bundle */; };
 		097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B2252A708A00FA1764 /* WidgetKit.framework */; };
@@ -23,7 +22,6 @@
 		B1C7DB94287AB0610077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DBC3287ABD860077CC34 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
-		B1D585532879898800989B14 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
 		B1D5855E2879898800989B14 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
 		B1D5855F2879898800989B14 /* WeatherKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1F3373728798CDD00DCB3FE /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
@@ -34,20 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0968CDA42522667B00D409FF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0968CD912522667A00D409FF;
-			remoteInfo = EstonianWeather;
-		};
-		0968CDAF2522667B00D409FF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0968CD912522667A00D409FF;
-			remoteInfo = EstonianWeather;
-		};
 		097698BF252A708C00FA1764 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
@@ -110,20 +94,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = B1C7DB9E287AB0FD0077CC34;
 			remoteInfo = PurchaseKit;
-		};
-		B1D585542879898800989B14 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1D585482879898800989B14;
-			remoteInfo = WeatherKit;
-		};
-		B1D585562879898800989B14 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0968CD912522667A00D409FF;
-			remoteInfo = EstonianWeather;
 		};
 		B1D5855C2879898800989B14 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -201,8 +171,6 @@
 
 /* Begin PBXFileReference section */
 		0968CD922522667A00D409FF /* EstonianWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstonianWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0968CDA32522667B00D409FF /* EstonianWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstonianWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0968CDAE2522667B00D409FF /* EstonianWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstonianWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0968CE2425226A2B00D409FF /* EstonianWeather.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EstonianWeather.xctestplan; sourceTree = "<group>"; };
 		0972766F254583C100016EB0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		09769695252A682800FA1764 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -215,7 +183,6 @@
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B19AC27A2598AE5C007203FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppStoreDescription.strings; sourceTree = "<group>"; };
 		B1D585492879898800989B14 /* WeatherKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1D585522879898800989B14 /* WeatherKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D652F7259943B40071A57E /* Privacy Policy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Privacy Policy.md"; sourceTree = "<group>"; };
 		B1F3373128798CDD00DCB3FE /* NetworkModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeatherLocale.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,27 +204,6 @@
 				Info.plist,
 			);
 			target = 097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */;
-		};
-		A5A706D92E10A0820046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 0968CDA22522667B00D409FF /* EstonianWeatherTests */;
-		};
-		A5A706DA2E10A0820046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				TestableLocale.swift,
-			);
-			target = 0968CDAD2522667B00D409FF /* EstonianWeatherUITests */;
-		};
-		A5A706E02E10A0840046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				EstonianWeatherUITests.swift,
-			);
-			target = 0968CDAD2522667B00D409FF /* EstonianWeatherUITests */;
 		};
 		A5A706F72E10A0870046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -285,8 +231,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A5A706A12E10A05D0046012E /* EstonianWeather */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706BF2E10A05D0046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EstonianWeather; sourceTree = "<group>"; };
 		A5A706C72E10A07F0046012E /* EstonianWeatherWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706CE2E10A07F0046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EstonianWeatherWidget; sourceTree = "<group>"; };
-		A5A706D32E10A0820046012E /* EstonianWeatherTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706D92E10A0820046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, A5A706DA2E10A0820046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EstonianWeatherTests; sourceTree = "<group>"; };
-		A5A706DE2E10A0840046012E /* EstonianWeatherUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706E02E10A0840046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EstonianWeatherUITests; sourceTree = "<group>"; };
 		A5A706ED2E10A0870046012E /* WeatherKit */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706F72E10A0870046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WeatherKit; sourceTree = "<group>"; };
 		A5A706FB2E10A0890046012E /* NetworkModule */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706FF2E10A0890046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NetworkModule; sourceTree = "<group>"; };
 		A5A707012E10A08C0046012E /* WeatherLocale */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherLocale; sourceTree = "<group>"; };
@@ -303,20 +247,6 @@
 				B1C7DBC3287ABD860077CC34 /* StoreKit.framework in Frameworks */,
 				B1F3373728798CDD00DCB3FE /* NetworkModule.framework in Frameworks */,
 				B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0968CDA02522667B00D409FF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0968CDAB2522667B00D409FF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,14 +281,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1D5854F2879898800989B14 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1D585532879898800989B14 /* WeatherKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B1F3372E28798CDD00DCB3FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,8 +306,6 @@
 				B1F337532879988300DCB3FE /* .swiftlint.yml */,
 				A5A706A12E10A05D0046012E /* EstonianWeather */,
 				A5A706C72E10A07F0046012E /* EstonianWeatherWidget */,
-				A5A706D32E10A0820046012E /* EstonianWeatherTests */,
-				A5A706DE2E10A0840046012E /* EstonianWeatherUITests */,
 				A5A706ED2E10A0870046012E /* WeatherKit */,
 				A5A706FB2E10A0890046012E /* NetworkModule */,
 				A5A707012E10A08C0046012E /* WeatherLocale */,
@@ -404,11 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				0968CD922522667A00D409FF /* EstonianWeather.app */,
-				0968CDA32522667B00D409FF /* EstonianWeatherTests.xctest */,
-				0968CDAE2522667B00D409FF /* EstonianWeatherUITests.xctest */,
 				097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */,
 				B1D585492879898800989B14 /* WeatherKit.framework */,
-				B1D585522879898800989B14 /* WeatherKitTests.xctest */,
 				B1F3373128798CDD00DCB3FE /* NetworkModule.framework */,
 				B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */,
 				B16AEA74287AAF8300E5F791 /* libToolkit.a */,
@@ -488,45 +405,6 @@
 			productReference = 0968CD922522667A00D409FF /* EstonianWeather.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0968CDA22522667B00D409FF /* EstonianWeatherTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0968CDBA2522667B00D409FF /* Build configuration list for PBXNativeTarget "EstonianWeatherTests" */;
-			buildPhases = (
-				0968CD9F2522667B00D409FF /* Sources */,
-				0968CDA02522667B00D409FF /* Frameworks */,
-				0968CDA12522667B00D409FF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0968CDA52522667B00D409FF /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A5A706D32E10A0820046012E /* EstonianWeatherTests */,
-			);
-			name = EstonianWeatherTests;
-			productName = EstonianWeatherTests;
-			productReference = 0968CDA32522667B00D409FF /* EstonianWeatherTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0968CDAD2522667B00D409FF /* EstonianWeatherUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0968CDBD2522667B00D409FF /* Build configuration list for PBXNativeTarget "EstonianWeatherUITests" */;
-			buildPhases = (
-				0968CDAA2522667B00D409FF /* Sources */,
-				0968CDAB2522667B00D409FF /* Frameworks */,
-				0968CDAC2522667B00D409FF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0968CDB02522667B00D409FF /* PBXTargetDependency */,
-			);
-			name = EstonianWeatherUITests;
-			productName = EstonianWeatherUITests;
-			productReference = 0968CDAE2522667B00D409FF /* EstonianWeatherUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 097698C5252A708C00FA1764 /* Build configuration list for PBXNativeTarget "EstonianWeatherWidgetExtension" */;
@@ -601,25 +479,6 @@
 			productReference = B1D585492879898800989B14 /* WeatherKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B1D585512879898800989B14 /* WeatherKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1D585642879898800989B14 /* Build configuration list for PBXNativeTarget "WeatherKitTests" */;
-			buildPhases = (
-				B1D5854E2879898800989B14 /* Sources */,
-				B1D5854F2879898800989B14 /* Frameworks */,
-				B1D585502879898800989B14 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1D585552879898800989B14 /* PBXTargetDependency */,
-				B1D585572879898800989B14 /* PBXTargetDependency */,
-			);
-			name = WeatherKitTests;
-			productName = WeatherKitTests;
-			productReference = B1D585522879898800989B14 /* WeatherKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		B1F3373028798CDD00DCB3FE /* NetworkModule */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1F3373B28798CDD00DCB3FE /* Build configuration list for PBXNativeTarget "NetworkModule" */;
@@ -675,14 +534,6 @@
 					0968CD912522667A00D409FF = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
-					0968CDA22522667B00D409FF = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = 0968CD912522667A00D409FF;
-					};
-					0968CDAD2522667B00D409FF = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = 0968CD912522667A00D409FF;
-					};
 					097698AF252A708A00FA1764 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -691,10 +542,6 @@
 					};
 					B1D585482879898800989B14 = {
 						CreatedOnToolsVersion = 14.0;
-					};
-					B1D585512879898800989B14 = {
-						CreatedOnToolsVersion = 14.0;
-						TestTargetID = 0968CD912522667A00D409FF;
 					};
 					B1F3373028798CDD00DCB3FE = {
 						CreatedOnToolsVersion = 14.0;
@@ -724,11 +571,8 @@
 			projectRoot = "";
 			targets = (
 				0968CD912522667A00D409FF /* EstonianWeather */,
-				0968CDA22522667B00D409FF /* EstonianWeatherTests */,
-				0968CDAD2522667B00D409FF /* EstonianWeatherUITests */,
 				097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */,
 				B1D585482879898800989B14 /* WeatherKit */,
-				B1D585512879898800989B14 /* WeatherKitTests */,
 				B1F3373028798CDD00DCB3FE /* NetworkModule */,
 				B1F3374328798D9D00DCB3FE /* WeatherLocale */,
 				B16AEA73287AAF8300E5F791 /* Toolkit */,
@@ -748,21 +592,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0968CDA12522667B00D409FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0968CE2625226A2B00D409FF /* EstonianWeather.xctestplan in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0968CDAC2522667B00D409FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		097698AE252A708A00FA1764 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -771,13 +600,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B1D585472879898800989B14 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1D585502879898800989B14 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -823,20 +645,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0968CD9F2522667B00D409FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0968CDAA2522667B00D409FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		097698AC252A708A00FA1764 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -852,13 +660,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B1D585452879898800989B14 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1D5854E2879898800989B14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -882,16 +683,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0968CDA52522667B00D409FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0968CD912522667A00D409FF /* EstonianWeather */;
-			targetProxy = 0968CDA42522667B00D409FF /* PBXContainerItemProxy */;
-		};
-		0968CDB02522667B00D409FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0968CD912522667A00D409FF /* EstonianWeather */;
-			targetProxy = 0968CDAF2522667B00D409FF /* PBXContainerItemProxy */;
-		};
 		097698C0252A708C00FA1764 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -940,16 +731,6 @@
 		B1C7DBAE287AB1470077CC34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			targetProxy = B1C7DBAD287AB1470077CC34 /* PBXContainerItemProxy */;
-		};
-		B1D585552879898800989B14 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1D585482879898800989B14 /* WeatherKit */;
-			targetProxy = B1D585542879898800989B14 /* PBXContainerItemProxy */;
-		};
-		B1D585572879898800989B14 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0968CD912522667A00D409FF /* EstonianWeather */;
-			targetProxy = B1D585562879898800989B14 /* PBXContainerItemProxy */;
 		};
 		B1D5855D2879898800989B14 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1175,92 +956,6 @@
 			};
 			name = Release;
 		};
-		0968CDBB2522667B00D409FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				INFOPLIST_FILE = EstonianWeatherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstonianWeather.app/EstonianWeather";
-			};
-			name = Debug;
-		};
-		0968CDBC2522667B00D409FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				INFOPLIST_FILE = EstonianWeatherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstonianWeather.app/EstonianWeather";
-			};
-			name = Release;
-		};
-		0968CDBE2522667B00D409FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				INFOPLIST_FILE = EstonianWeatherUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				TEST_TARGET_NAME = EstonianWeather;
-			};
-			name = Debug;
-		};
-		0968CDBF2522667B00D409FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				INFOPLIST_FILE = EstonianWeatherUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				TEST_TARGET_NAME = EstonianWeather;
-			};
-			name = Release;
-		};
 		097698C3252A708C00FA1764 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1401,42 +1096,6 @@
 			};
 			name = Release;
 		};
-		B1D585652879898800989B14 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.WeatherKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstonianWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EstonianWeather";
-			};
-			name = Debug;
-		};
-		B1D585662879898800989B14 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.WeatherKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstonianWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EstonianWeather";
-			};
-			name = Release;
-		};
 		B1F3373928798CDD00DCB3FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1551,24 +1210,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0968CDBA2522667B00D409FF /* Build configuration list for PBXNativeTarget "EstonianWeatherTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0968CDBB2522667B00D409FF /* Debug */,
-				0968CDBC2522667B00D409FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0968CDBD2522667B00D409FF /* Build configuration list for PBXNativeTarget "EstonianWeatherUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0968CDBE2522667B00D409FF /* Debug */,
-				0968CDBF2522667B00D409FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		097698C5252A708C00FA1764 /* Build configuration list for PBXNativeTarget "EstonianWeatherWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1592,15 +1233,6 @@
 			buildConfigurations = (
 				B1D585612879898800989B14 /* Debug */,
 				B1D585622879898800989B14 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1D585642879898800989B14 /* Build configuration list for PBXNativeTarget "WeatherKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1D585652879898800989B14 /* Debug */,
-				B1D585662879898800989B14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

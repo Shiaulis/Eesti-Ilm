@@ -7,6 +7,10 @@
 --enable blankLinesBetweenImports
 --enable emptyExtensions
 --enable environmentEntry
+--enable isEmpty
+--enable noExplicitOwnership
+--enable preferSwiftTesting
+--enable privateStateVariables
 
 # Options
 --allman false
