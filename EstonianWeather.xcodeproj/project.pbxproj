@@ -466,7 +466,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B17622722C0134CE0041CDD3 /* PBXTargetDependency */,
+				A5D79D6F2E12F920007131F4 /* PBXTargetDependency */,
 				097698C0252A708C00FA1764 /* PBXTargetDependency */,
 				B1D5855D2879898800989B14 /* PBXTargetDependency */,
 				B1F3373628798CDD00DCB3FE /* PBXTargetDependency */,
@@ -713,7 +713,7 @@
 			mainGroup = 0968CD892522667A00D409FF;
 			packageReferences = (
 				B151FD952BF102B70090D9B7 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
-				B17622702C0134720041CDD3 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				A5D79D6D2E12F8DB007131F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			productRefGroup = 0968CD932522667A00D409FF /* Products */;
 			projectDirPath = "";
@@ -876,6 +876,10 @@
 			target = B1D585482879898800989B14 /* WeatherKit */;
 			targetProxy = A5A13D442E11AAA1008744A0 /* PBXContainerItemProxy */;
 		};
+		A5D79D6F2E12F920007131F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A5D79D6E2E12F920007131F4 /* SwiftLintBuildToolPlugin */;
+		};
 		B118051C2879A3C60019C08F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
@@ -890,10 +894,6 @@
 			isa = PBXTargetDependency;
 			target = B16AEA73287AAF8300E5F791 /* Toolkit */;
 			targetProxy = B16AEA83287AAFCE00E5F791 /* PBXContainerItemProxy */;
-		};
-		B17622722C0134CE0041CDD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = B17622712C0134CE0041CDD3 /* SwiftLintBuildToolPlugin */;
 		};
 		B1C7DB92287AB0210077CC34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1597,6 +1597,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A5D79D6D2E12F8DB007131F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
 		B151FD952BF102B70090D9B7 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
@@ -1605,26 +1613,18 @@
 				minimumVersion = 7.0.2;
 			};
 		};
-		B17622702C0134720041CDD3 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/SwiftLint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.55.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A5D79D6E2E12F920007131F4 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5D79D6D2E12F8DB007131F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
 		B151FD962BF102B70090D9B7 /* SWXMLHash */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B151FD952BF102B70090D9B7 /* XCRemoteSwiftPackageReference "SWXMLHash" */;
 			productName = SWXMLHash;
-		};
-		B17622712C0134CE0041CDD3 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B17622702C0134720041CDD3 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

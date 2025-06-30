@@ -10,7 +10,7 @@ import WeatherKit
 import Combine
 import NetworkModule
 
-final class RootViewModel {
+final class RootViewModel: SidebarViewModel, TabbarViewModel {
 
     // MARK: - Properties
     @Published var selectedTab: TabItem = .forecastList
@@ -25,19 +25,11 @@ final class RootViewModel {
         self.settingsViewModel = SettingsViewModel(ratingService: rootService.userRatingService)
     }
 
-}
-
-extension RootViewModel: SidebarViewModel {
-
     var selectedTabPublisher: AnyPublisher<TabItem, Never> { self.$selectedTab.eraseToAnyPublisher() }
 
     func select(_ tab: TabItem) {
         self.selectedTab = tab
     }
-
-}
-
-extension RootViewModel: TabbarViewModel {
 
     func didSwitchTo(_ tab: TabItem) {
         self.selectedTab = tab

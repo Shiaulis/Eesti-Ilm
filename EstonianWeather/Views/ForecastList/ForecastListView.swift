@@ -3,7 +3,6 @@
 //  EstonianWeather
 //
 //  Created by Andrius Shiaulis on 12.01.2020.
-//  Copyright © 2020 Andrius Shiaulis. All rights reserved.
 //
 
 import SwiftUI
@@ -30,8 +29,8 @@ struct ForecastListView: View {
                 )
             }
         }
-        .ifOS(.iOS) {
-            $0.refreshable { await self.viewModel.fetchRemoteForecasts() }
+        .ifOS(.iOS) { view in
+            view.refreshable { await self.viewModel.fetchRemoteForecasts() }
         }
         .navigationTitle(L10n.Strings.fourDayForecast)
         .navigationBarTitleDisplayMode(.large)

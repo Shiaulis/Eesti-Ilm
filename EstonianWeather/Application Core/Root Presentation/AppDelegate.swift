@@ -12,6 +12,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let rootService: RootService = .init()
 
+    // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Task {
             await self.rootService.start()

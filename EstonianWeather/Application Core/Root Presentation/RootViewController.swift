@@ -23,6 +23,7 @@ final class RootViewController: UISplitViewController {
         super.init(style: .doubleColumn)
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

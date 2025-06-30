@@ -10,10 +10,11 @@ import Combine
 
 protocol SidebarViewModel {
     var selectedTabPublisher: AnyPublisher<TabItem, Never> { get }
+
     func select(_ tab: TabItem)
 }
 
-final class SidebarViewController: UICollectionViewController {
+final class SidebarViewController: UICollectionViewController, UISplitViewControllerDelegate {
 
     private typealias DataSource = UICollectionViewDiffableDataSource<SidebarSection, TabItem>
     private enum SidebarSection: Int { case main }
@@ -31,6 +32,7 @@ final class SidebarViewController: UICollectionViewController {
         super.init(collectionViewLayout: Self.createLayout())
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -58,11 +60,17 @@ final class SidebarViewController: UICollectionViewController {
             .store(in: &self.disposables)
     }
 
+    // MARK: - Delegate methods -
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedTab = self.dataSource.itemIdentifier(for: indexPath) else { return }
+        self.viewModel.select(selectedTab)
+    }
+
     // MARK: - Private methods
 
     private func configureDataSource() {
-        let rowRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TabItem> {
-            cell, _, tab in
+        let rowRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, TabItem> { cell, _, tab in
 
             var contentConfiguration = UIListContentConfiguration.subtitleCell()
             contentConfiguration.text = tab.title
@@ -70,8 +78,7 @@ final class SidebarViewController: UICollectionViewController {
             cell.contentConfiguration = contentConfiguration
         }
 
-        self.dataSource = DataSource(collectionView: self.collectionView) {
-            collectionView, indexPath, tab -> UICollectionViewCell in
+        self.dataSource = DataSource(collectionView: self.collectionView) { collectionView, indexPath, tab -> UICollectionViewCell in
             collectionView.dequeueConfiguredReusableCell(using: rowRegistration, for: indexPath, item: tab)
         }
     }
@@ -91,22 +98,11 @@ final class SidebarViewController: UICollectionViewController {
     // MARK: - Private static methods
 
     private static func createLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { _, layoutEnvironment -> NSCollectionLayoutSection? in
+        UICollectionViewCompositionalLayout { _, layoutEnvironment -> NSCollectionLayoutSection? in
             var configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
             configuration.showsSeparators = false
-            let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
-            return section
+            return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
         }
-
-        return layout
     }
 
-}
-
-extension SidebarViewController: UISplitViewControllerDelegate {
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedTab = self.dataSource.itemIdentifier(for: indexPath) else { return }
-        self.viewModel.select(selectedTab)
-    }
 }
