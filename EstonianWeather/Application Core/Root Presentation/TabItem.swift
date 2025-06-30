@@ -14,15 +14,15 @@ enum TabItem: Int, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .forecastList: return String(localized: "Forecast")
-        case .settings: return String(localized: "Settings")
+        case .forecastList: String(localized: "Forecast")
+        case .settings: String(localized: "Settings")
         }
     }
 
     var imageName: String {
         switch self {
-        case .forecastList: return "cloud.sun"
-        case .settings: return "gear"
+        case .forecastList: "cloud.sun"
+        case .settings: "gear"
         }
     }
 

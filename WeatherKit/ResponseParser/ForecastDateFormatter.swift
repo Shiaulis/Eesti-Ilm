@@ -12,19 +12,10 @@ final class ForecastDateFormatter {
         case unableToMakeDateFromString
     }
 
-    private let locale: Locale = .current
-
-    private lazy var relativeDateFormatter: DateFormatter = {
-        let formatter: DateFormatter = .init()
-        formatter.locale = self.locale
-        formatter.timeStyle = .none
-        formatter.dateStyle = .medium
-        formatter.doesRelativeDateFormatting = true
-        return formatter
-    }()
+    private let locale = Locale.current
 
     func humanReadableDescription(for date: Date?) -> String? {
-        guard let date = date else { return nil }
+        guard let date else { return nil }
 
         var dateString = makeShortDateString(from: date)
 
@@ -40,13 +31,13 @@ final class ForecastDateFormatter {
     }
 
     func shortReadableDescription(for date: Date?) -> String? {
-        guard let date = date else { return nil }
+        guard let date else { return nil }
 
         return relativeDateDescription(for: date) ?? makeShortDateString(from: date)
     }
 
     func date(from string: String?) throws -> Date {
-        guard let string = string else { throw Error.unableToMakeDateFromString }
+        guard let string else { throw Error.unableToMakeDateFromString }
 
         return try string.dateWithDefaultStrategy()
     }

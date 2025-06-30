@@ -11,7 +11,7 @@ public struct ForecastDisplayItem: Identifiable, Sendable {
     public let id = UUID()
     public let naturalDateDescription: String
     public let shortDateDescription: String
-    public var dayParts: [DayPartForecastDisplayItem] { [self.night, self.day].compactMap { $0 } }
+    public var dayParts: [DayPartForecastDisplayItem] { [self.night, self.day].compactMap(\.self) }
     public let day: DayPartForecastDisplayItem?
     public let night: DayPartForecastDisplayItem?
 }

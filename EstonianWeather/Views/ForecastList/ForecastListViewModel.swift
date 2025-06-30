@@ -19,7 +19,7 @@ final class ForecastListViewModel {
         case failed(errorMessage: String)
     }
 
-    private(set) var syncStatus: SyncStatus = .refreshing
+    private(set) var syncStatus = SyncStatus.refreshing
 
     private let model: WeatherService
     private var disposables: Set<AnyCancellable> = []

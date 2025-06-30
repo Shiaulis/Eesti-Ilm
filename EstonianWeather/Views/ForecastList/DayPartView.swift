@@ -11,8 +11,8 @@ import WeatherKit
 private extension DayPartForecastDisplayItem.DayPartType {
     var name: String {
         switch self {
-        case .day: return String(localized: "Day")
-        case .night: return String(localized: "Night")
+        case .day: String(localized: "Day")
+        case .night: String(localized: "Night")
         }
     }
 }

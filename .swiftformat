@@ -11,16 +11,21 @@
 --enable noExplicitOwnership
 --enable preferSwiftTesting
 --enable privateStateVariables
+--enable propertyTypes
+--enable redundantEquatable
+--enable redundantProperty
+--enable unusedPrivateDeclarations
+--enable wrapMultilineFunctionChains
 
 # Options
 --allman false
 --elseposition nextline
 --empty void
 --ifdef no-indent
---indent 4
 --nospaceoperators
 --semicolons never
 --stripunusedargs closure-only
---swiftversion 5
+--swiftversion 6
 --trimwhitespace always
 --xcodeindentation enabled
+--propertytypes inferred

@@ -15,7 +15,7 @@ struct EstonianWeatherWidgetEntryView: View {
 
     private var displayItems: [ForecastDisplayItem] {
         switch self.family {
-        case .systemSmall: return [self.entry.displayItems.first].compactMap { $0 }
+        case .systemSmall: return [self.entry.displayItems.first].compactMap(\.self)
         case .systemMedium: return self.entry.displayItems
         case .systemLarge: return []
         case .systemExtraLarge: return []
@@ -28,8 +28,8 @@ struct EstonianWeatherWidgetEntryView: View {
 
     var shouldShowSmallWidget: Bool {
         switch self.family {
-        case .systemSmall: return true
-        default: return false
+        case .systemSmall: true
+        default: false
         }
     }
 
@@ -50,7 +50,7 @@ struct EstonianWeatherWidgetEntryView: View {
                     Color(.appRose)
                     VStack(spacing: 2) {
                         HStack(spacing: 2) {
-                            ForEach(self.displayItems.compactMap { $0 }) { displayItem in
+                            ForEach(self.displayItems.compactMap(\.self)) { displayItem in
                                 ForecastWeatherDayView(displayItem: displayItem)
                             }
                         }
@@ -80,19 +80,6 @@ private struct PlaceholderView: View {
 
 private struct HeaderView: View {
     @Environment(\.widgetFamily) private var family
-
-    private var text: String {
-        switch self.family {
-        case .systemSmall: return String(localized: "Forecast")
-        case .systemMedium: return String(localized: "Estonian Weather Forecast")
-        case .systemLarge: return ""
-        case .systemExtraLarge: return ""
-        case .accessoryCircular: return ""
-        case .accessoryRectangular: return ""
-        case .accessoryInline: return ""
-        @unknown default: return ""
-        }
-    }
 
     var body: some View {
         ZStack {

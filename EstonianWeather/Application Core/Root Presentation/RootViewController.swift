@@ -37,9 +37,10 @@ final class RootViewController: UISplitViewController {
         self.preferredSplitBehavior = .tile
         self.preferredPrimaryColumnWidthFraction = 0.3
 
-        self.viewModel.$selectedTab
+        self.viewModel
+            .$selectedTab
             .sink { [weak self] selectedTab in
-                guard let self = self else { return }
+                guard let self else { return }
 
                 switch selectedTab {
                 case .forecastList: self.setViewController(self.forecastListViewController(), for: .secondary)

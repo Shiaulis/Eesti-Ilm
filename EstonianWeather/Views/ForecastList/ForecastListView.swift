@@ -82,15 +82,15 @@ struct SettingsButton: View {
 }
 
 extension Color {
-    static let topBackgroundGradient: Color = .init("topBackgroundGradient")
-    static let bottomBackgroundGradient: Color = .init("bottomBackgroundGradient")
-    static let topBarColor: Color = .init("topBarColor")
-    static let bottomBarColor: Color = .init("bottomBarColor")
+    static let topBackgroundGradient = Color("topBackgroundGradient")
+    static let bottomBackgroundGradient = Color("bottomBackgroundGradient")
+    static let topBarColor = Color("topBarColor")
+    static let bottomBarColor = Color("bottomBarColor")
 }
 
 extension UIColor {
-    static let topBackgroundGradient: UIColor = .init(.topBackgroundGradient)
-    static let bottomBackgroundGradient: UIColor = .init(.bottomBackgroundGradient)
-    static let topBarColor: UIColor = .init(.topBarColor)
-    static let bottomBarColor: UIColor = .init(.bottomBarColor)
+    static let topBackgroundGradient = UIColor(.topBackgroundGradient)
+    static let bottomBackgroundGradient = UIColor(.bottomBackgroundGradient)
+    static let topBarColor = UIColor(.topBarColor)
+    static let bottomBarColor = UIColor(.bottomBarColor)
 }

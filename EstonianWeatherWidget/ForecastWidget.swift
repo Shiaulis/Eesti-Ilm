@@ -10,7 +10,7 @@ import SwiftUI
 import WidgetKit
 
 struct ForecastWidget: Widget {
-    let kind: String = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"
+    let kind = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: WidgetForecastProvider()) { entry in

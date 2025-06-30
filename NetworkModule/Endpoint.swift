@@ -55,9 +55,9 @@ public extension Endpoint {
 private extension WeatherLocale {
     func queryItemLanguageCode() -> String {
         switch self {
-        case .english: return "eng"
-        case .estonian: return "est"
-        case .russian: return "rus"
+        case .english: "eng"
+        case .estonian: "est"
+        case .russian: "rus"
         }
     }
 }

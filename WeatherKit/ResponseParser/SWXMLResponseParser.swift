@@ -32,8 +32,8 @@ public final class SWXMLResponseParser {
     public static var todayLocalizedName = "Today"
     public static var tomorrowLocalizedName = "Tomorrow"
 
-    private let logger: Logger = .init(category: .weatherModel)
-    private let formatter: ForecastDateFormatter = .init()
+    private let logger = Logger(category: .weatherModel)
+    private let formatter = ForecastDateFormatter()
 
     // MARK: - Init
 
@@ -111,7 +111,7 @@ extension SWXMLResponseParser {
     }
 
     private func integerValue(from stringValue: String?) -> Int? {
-        guard let stringValue = stringValue else { return nil }
+        guard let stringValue else { return nil }
         guard let integerValue = Int(stringValue) else { return nil }
 
         return integerValue

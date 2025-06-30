@@ -14,10 +14,10 @@ public extension URL {
 
     static var sourceDisclaimerURL: URL {
         switch Locale.current.language.languageCode?.identifier {
-        case "en": return URL(string: "https://www.ilmateenistus.ee/?lang=en")!
-        case "ru": return URL(string: "https://www.ilmateenistus.ee/?lang=ru")!
-        case "et": return URL(string: "https://www.ilmateenistus.ee/?lang=et")!
-        default: return URL(string: "https://www.ilmateenistus.ee/?lang=en")!
+        case "en": URL(string: "https://www.ilmateenistus.ee/?lang=en")!
+        case "ru": URL(string: "https://www.ilmateenistus.ee/?lang=ru")!
+        case "et": URL(string: "https://www.ilmateenistus.ee/?lang=et")!
+        default: URL(string: "https://www.ilmateenistus.ee/?lang=en")!
         }
     }
 }

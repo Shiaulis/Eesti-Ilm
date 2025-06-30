@@ -18,12 +18,12 @@ final class SettingsViewModel {
     var currentLanguageName: String { Locale.current.localizedLanguageName }
 
     let sourceDisclaimerText = String(localized: "Source disclaimer")
-    let urlDescription: String = "www.ilmateenindus.ee"
-    let sourceDisclaimerURL: URL = .sourceDisclaimerURL
+    let urlDescription = "www.ilmateenindus.ee"
+    let sourceDisclaimerURL = URL.sourceDisclaimerURL
 
     private let ratingService: UserRatingService
     private let customerEntitlements = CustomerEntitlements()
-    private let logger: Logger = .init(category: .settingsViewModel)
+    private let logger = Logger(category: .settingsViewModel)
 
     // MARK: - Init
 

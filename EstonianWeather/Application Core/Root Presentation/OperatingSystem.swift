@@ -29,9 +29,9 @@ enum OperatingSystem {
 
 extension View {
     @ViewBuilder
-    func ifOS<Content: View>(
+    func ifOS(
         _ operatingSystems: OperatingSystem...,
-        modifier: (Self) -> Content
+        modifier: (Self) -> some View
     ) -> some View {
         if operatingSystems.contains(OperatingSystem.current) {
             modifier(self)

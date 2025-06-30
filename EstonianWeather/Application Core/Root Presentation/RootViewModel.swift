@@ -13,7 +13,7 @@ import WeatherKit
 final class RootViewModel: SidebarViewModel, TabbarViewModel {
     // MARK: - Properties
 
-    @Published var selectedTab: TabItem = .forecastList
+    @Published var selectedTab = TabItem.forecastList
 
     let forecastListViewModel: ForecastListViewModel
     let settingsViewModel: SettingsViewModel

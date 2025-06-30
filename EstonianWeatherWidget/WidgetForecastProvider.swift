@@ -19,14 +19,12 @@ struct ForecastEntry: TimelineEntry {
         self.date = date
     }
 
-    static let test: ForecastEntry = .init(displayItems: [.test1, .test3, .test2, .test2], date: .now)
+    static let test = ForecastEntry(displayItems: [.test1, .test3, .test2, .test2], date: .now)
 }
 
 final class WidgetForecastProvider: TimelineProvider {
     private let model: WeatherModel
     private var lastFetchedDisplayItems: [ForecastDisplayItem] = []
-
-    private var disposables: Set<AnyCancellable> = []
 
     init() {
         self.model = NetworkWeatherModel(

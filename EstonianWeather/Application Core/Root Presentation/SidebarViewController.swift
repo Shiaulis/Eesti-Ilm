@@ -47,9 +47,10 @@ final class SidebarViewController: UICollectionViewController, UISplitViewContro
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.clearsSelectionOnViewWillAppear = false
 
-        self.viewModel.selectedTabPublisher
+        self.viewModel
+            .selectedTabPublisher
             .sink { [weak self] selectedTab in
-                guard let self = self else { return }
+                guard let self else { return }
 
                 let selectedIndexPath = selectedTab.indexPath
                 let currentSelection = self.collectionView.indexPathsForSelectedItems ?? []
