@@ -1,6 +1,9 @@
 {
   "fill" : {
-    "automatic-gradient" : "display-p3:0.10259,0.23966,0.44830,1.00000"
+    "linear-gradient" : [
+      "display-p3:0.35765,0.55743,0.86233,1.00000",
+      "display-p3:0.90651,0.56449,0.64217,1.00000"
+    ]
   },
   "groups" : [
     {
@@ -11,7 +14,7 @@
         {
           "blend-mode" : "plus-darker",
           "fill" : {
-            "solid" : "srgb:0.57046,0.57047,0.57046,1.00000"
+            "solid" : "display-p3:0.73297,0.77261,0.81404,1.00000"
           },
           "glass" : true,
           "hidden" : false,
@@ -19,25 +22,25 @@
           "name" : "cloud",
           "opacity" : 1,
           "position" : {
-            "scale" : 1,
+            "scale" : 0.85,
             "translation-in-points" : [
-              27.5390625,
-              151.4296875
+              50.71875,
+              136.8671875
             ]
           }
         },
         {
           "blend-mode" : "normal",
           "fill" : {
-            "solid" : "srgb:1.00000,0.57637,0.00000,1.00000"
+            "solid" : "extended-srgb:1.00000,0.55294,0.15686,1.00000"
           },
           "image-name" : "sun.svg",
           "name" : "sun",
           "position" : {
             "scale" : 1,
             "translation-in-points" : [
-              -122.5,
-              -111.28125
+              -81.953125,
+              -120.0859375
             ]
           }
         }
