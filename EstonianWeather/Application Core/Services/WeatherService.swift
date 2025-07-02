@@ -27,14 +27,14 @@ final class WeatherService {
         let (data, response) = try await self.networkClient.data(from: .forecast(for: self.weatherLocale))
 
         try validate(response)
-        return try self.responseParser.parse(forecastData: data).get()
+        return try self.responseParser.parse(forecastData: data)
     }
 
     func observations() async throws -> [ForecastDisplayItem] {
         let (data, response) = try await self.networkClient.data(from: .observations())
 
         try validate(response)
-        return try self.responseParser.parse(forecastData: data).get()
+        return try self.responseParser.parse(forecastData: data)
     }
 
     // Should validate response code as well

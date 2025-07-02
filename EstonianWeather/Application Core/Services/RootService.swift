@@ -21,13 +21,11 @@ final class RootService {
     // MARK: - Init -
 
     init() {
-        let locale = WeatherLocale(locale: .current) ?? .english
-        // workaround to avoid having string definition within framework
-        SWXMLResponseParser.todayLocalizedName = String(localized: "Today")
-        SWXMLResponseParser.tomorrowLocalizedName = String(localized: "Tomorrow")
+        let locale = Locale.current
+        let weatherLocale = WeatherLocale(locale: locale) ?? .english
         self.weatherService = .init(
-            weatherLocale: locale,
-            responseParser: SWXMLResponseParser(),
+            weatherLocale: weatherLocale,
+            responseParser: SWXMLResponseParser(locale: locale),
             networkClient: URLSessionNetworkClient()
         )
         let keyValueStorage = KeyValueStorage(userDefaults: .standard)

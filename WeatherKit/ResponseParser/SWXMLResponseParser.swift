@@ -10,9 +10,11 @@ import OSLog
 import SWXMLHash
 import Toolkit
 
-public final class SWXMLResponseParser {
-    // swiftlint:disable identifier_name
-    fileprivate enum Element: String {
+public final class SWXMLResponseParser: ResponseParser {
+
+    // MARK: - Types -
+
+    enum Element: String {
         // forecast
         case forecasts, forecast, night, day, phenomenon, tempmin, tempmax, text, place, name, wind, direction, speedmin, speedmax, gust, sea, peipsi
 
@@ -25,35 +27,35 @@ public final class SWXMLResponseParser {
         }
     }
 
-    // swiftlint:enable identifier_name
+    enum Error: Swift.Error {
+        case elementNotFound(identifier: String)
+        case forecastDateNotFound
+    }
 
-    // MARK: - Properties
-
-    public static var todayLocalizedName = "Today"
-    public static var tomorrowLocalizedName = "Tomorrow"
+    // MARK: - Properties -
 
     private let logger = Logger(category: .weatherModel)
-    private let formatter = ForecastDateFormatter()
+    private let formatter: ForecastDateFormatter
 
-    // MARK: - Init
+    // MARK: - Init -
 
-    public init() {}
-}
+    public init(locale: Locale) {
+        self.formatter = .init(locale: locale)
+    }
 
-extension SWXMLResponseParser: ResponseParser {
-    public func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error> {
+    // MARK: - Public API -
+
+    public func parse(forecastData: Data) throws -> [ForecastDisplayItem] {
         self.logger.debug("Parsing started")
         let xml = XMLHash.parse(forecastData)
         let forecasts = parseForecasts(from: xml)
         self.logger.debug("Parsing finished. Parsed \(forecasts.count) forecasts")
 
-        return .success(forecasts)
+        return forecasts
     }
-}
 
-// MARK: - Display items from XMLIndexer
+    // MARK: - Private API -
 
-extension SWXMLResponseParser {
     private func parseForecasts(from indexer: XMLIndexer) -> [ForecastDisplayItem] {
         indexer[.forecasts][.forecast].all.map { parseForecast(from: $0) }
     }
@@ -83,8 +85,6 @@ extension SWXMLResponseParser {
               weatherIconName: weatherIconName(from: indexer),
               temperature: indexer[.tempmin].element?.text)
     }
-
-    // MARK: - Helpers
 
     private func dateAttribute(from indexer: XMLIndexer) -> Date? {
         guard let dateString = indexer.element?.attribute(by: "date")?.text else {
@@ -142,13 +142,6 @@ extension SWXMLResponseParser {
 }
 
 // MARK: - Error type
-
-extension SWXMLResponseParser {
-    enum Error: Swift.Error {
-        case elementNotFound(identifier: String)
-        case forecastDateNotFound
-    }
-}
 
 private extension XMLIndexer {
     subscript(element: SWXMLResponseParser.Element) -> XMLIndexer {

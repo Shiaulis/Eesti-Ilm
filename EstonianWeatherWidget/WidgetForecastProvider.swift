@@ -8,6 +8,7 @@
 import Combine
 import NetworkModule
 import WeatherKit
+import WeatherLocale
 import WidgetKit
 
 struct ForecastEntry: TimelineEntry {
@@ -27,9 +28,11 @@ final class WidgetForecastProvider: TimelineProvider {
     private var lastFetchedDisplayItems: [ForecastDisplayItem] = []
 
     init() {
+        let locale = Locale.current
+        let weatherLocale = WeatherLocale(locale: locale) ?? .english
         self.model = NetworkWeatherModel(
-            weatherLocale: .english,
-            responseParser: SWXMLResponseParser(),
+            weatherLocale: weatherLocale,
+            responseParser: SWXMLResponseParser(locale: locale),
             networkClient: URLSessionNetworkClient()
         )
     }
