@@ -7,12 +7,13 @@
 
 import Foundation
 
-final class ForecastDateFormatter {
+struct ForecastDateFormatter: Sendable {
 
     // MARK: - Types -
 
     enum Error: Swift.Error {
         case unableToMakeDateFromString
+        case unableToCreateTimezone
     }
 
     // MARK: - Properties -
@@ -52,7 +53,7 @@ final class ForecastDateFormatter {
     func date(from string: String?) throws -> Date {
         guard let string else { throw Error.unableToMakeDateFromString }
 
-        return try string.dateWithDefaultStrategy()
+        return try makeDateWithDefaultStrategy(from: string)
     }
 
     // MARK: - Private API -
@@ -65,11 +66,29 @@ final class ForecastDateFormatter {
         let calendar = Calendar.current
 
         if calendar.isDateInToday(date) {
-            return SWXMLResponseParser.todayLocalizedName
+            let formatStyle = Date.RelativeFormatStyle(
+                presentation: .named,
+                unitsStyle: .spellOut,
+                locale: self.locale,
+                calendar: calendar,
+                capitalizationContext: .beginningOfSentence
+            )
+
+            return formatStyle.format(.now)
         }
 
         if calendar.isDateInTomorrow(date) {
-            return SWXMLResponseParser.tomorrowLocalizedName
+            if let futureDay = Calendar.current.date(byAdding: .day, value: 1, to: .now) {
+                let formatStyle = Date.RelativeFormatStyle(
+                    presentation: .named,
+                    unitsStyle: .spellOut,
+                    locale: self.locale,
+                    calendar: calendar,
+                    capitalizationContext: .beginningOfSentence
+                )
+
+                return formatStyle.format(futureDay)
+            }
         }
 
         return nil
@@ -78,24 +97,17 @@ final class ForecastDateFormatter {
     private func weekday(for date: Date) -> String? {
         date.formatted(Date.FormatStyle().weekday(.wide))
     }
-}
 
-private extension String {
-    func dateWithDefaultStrategy() throws -> Date {
+    private func makeDateWithDefaultStrategy(from string: String) throws -> Date {
         let strategy = try Date.ParseStrategy(
             format: "\(year: .defaultDigits)-\(month: .twoDigits)-\(day: .twoDigits)",
-            timeZone: .timeZone(hoursFromGMT: 2)
+            timeZone: makeTimeZone(hoursFromGMT: 2)
         )
-        return try Date(self, strategy: strategy)
-    }
-}
 
-private extension TimeZone {
-    enum Error: Swift.Error {
-        case unableToCreateTimezone
+        return try Date(string, strategy: strategy)
     }
 
-    static func timeZone(hoursFromGMT: Int) throws -> TimeZone {
+    private func makeTimeZone(hoursFromGMT: Int) throws -> TimeZone {
         guard let timeZone = TimeZone(secondsFromGMT: 60 * 60 * hoursFromGMT) else {
             throw Error.unableToCreateTimezone
         }
