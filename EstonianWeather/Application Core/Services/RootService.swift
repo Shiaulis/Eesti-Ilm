@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import NetworkModule
 import os
 import WeatherKit
 import WeatherLocale
+import WeatherNetworking
 
 final class RootService {
     // MARK: - Properties -

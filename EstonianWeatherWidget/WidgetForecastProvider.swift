@@ -6,9 +6,9 @@
 //
 
 import Combine
-import NetworkModule
 import WeatherKit
 import WeatherLocale
+import WeatherNetworking
 import WidgetKit
 
 struct ForecastEntry: TimelineEntry {

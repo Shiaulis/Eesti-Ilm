@@ -7,8 +7,8 @@
 
 import Combine
 import Foundation
-import NetworkModule
 import WeatherLocale
+import WeatherNetworking
 
 public final class NetworkWeatherModel: WeatherModel {
     // MARK: - Properties

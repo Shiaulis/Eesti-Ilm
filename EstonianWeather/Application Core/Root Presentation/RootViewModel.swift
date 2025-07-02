@@ -7,8 +7,8 @@
 
 import Combine
 import Foundation
-import NetworkModule
 import WeatherKit
+import WeatherNetworking
 
 final class RootViewModel: SidebarViewModel, TabbarViewModel {
     // MARK: - Properties

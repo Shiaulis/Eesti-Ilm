@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import NetworkModule
 import WeatherKit
 import WeatherLocale
+import WeatherNetworking
 
 final class WeatherService {
     private let weatherLocale: WeatherLocale

@@ -12,20 +12,19 @@
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A5A13D422E11AAA1008744A0 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
+		A5E784772E15D49A00C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; };
+		A5E7847A2E15D4D800C83568 /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; platformFilter = ios; };
+		A5E7847D2E15D51D00C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; };
+		A5E784802E15D52B00C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; };
 		A5F963712E13099E00D34A94 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = A5F963702E13099E00D34A94 /* .swiftformat */; };
-		B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B151FD972BF102B70090D9B7 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = B151FD962BF102B70090D9B7 /* SWXMLHash */; };
 		B16AEA82287AAFCE00E5F791 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
-		B1C7DB8F287AB0210077CC34 /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
 		B1C7DB94287AB0610077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16AEA74287AAF8300E5F791 /* libToolkit.a */; };
 		B1C7DBC3287ABD860077CC34 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B189D17E25E40BCD007DF2AB /* StoreKit.framework */; };
 		B1D5855E2879898800989B14 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
 		B1D5855F2879898800989B14 /* WeatherKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B1F3373728798CDD00DCB3FE /* NetworkModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; };
-		B1F3373828798CDD00DCB3FE /* NetworkModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B1F3374B28798DDB00DCB3FE /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B1F3374E28798E8900DCB3FE /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B1F337542879988300DCB3FE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B1F337532879988300DCB3FE /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
@@ -45,12 +44,33 @@
 			remoteGlobalIDString = B1D585482879898800989B14;
 			remoteInfo = WeatherKit;
 		};
-		B118051B2879A3C60019C08F /* PBXContainerItemProxy */ = {
+		A5E784782E15D49A00C83568 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B1F3373028798CDD00DCB3FE;
-			remoteInfo = NetworkModule;
+			remoteGlobalIDString = A5E7846C2E15D44900C83568;
+			remoteInfo = WeatherNetworking;
+		};
+		A5E7847B2E15D4D800C83568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1F3374328798D9D00DCB3FE;
+			remoteInfo = WeatherLocale;
+		};
+		A5E7847E2E15D51D00C83568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5E7846C2E15D44900C83568;
+			remoteInfo = WeatherNetworking;
+		};
+		A5E784812E15D52B00C83568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5E7846C2E15D44900C83568;
+			remoteInfo = WeatherNetworking;
 		};
 		B11805212879A3E00019C08F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,13 +85,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = B16AEA73287AAF8300E5F791;
 			remoteInfo = Toolkit;
-		};
-		B1C7DB91287AB0210077CC34 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1F3373028798CDD00DCB3FE;
-			remoteInfo = NetworkModule;
 		};
 		B1C7DB95287AB0610077CC34 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -101,20 +114,6 @@
 			remoteGlobalIDString = B1D585482879898800989B14;
 			remoteInfo = WeatherKit;
 		};
-		B1F3373528798CDD00DCB3FE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1F3373028798CDD00DCB3FE;
-			remoteInfo = NetworkModule;
-		};
-		B1F3374C28798DDB00DCB3FE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1F3374328798D9D00DCB3FE;
-			remoteInfo = WeatherLocale;
-		};
 		B1F3374F28798E8900DCB3FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
@@ -136,6 +135,15 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5E7846B2E15D44900C83568 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B16AEA72287AAF8300E5F791 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,7 +160,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B1D5855F2879898800989B14 /* WeatherKit.framework in Embed Frameworks */,
-				B1F3373828798CDD00DCB3FE /* NetworkModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,12 +182,12 @@
 		097698B2252A708A00FA1764 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		097698B4252A708A00FA1764 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		09D68CF02544AB7100F9DF78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeatherNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F963702E13099E00D34A94 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B16AEA74287AAF8300E5F791 /* libToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B1D585492879898800989B14 /* WeatherKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D652F7259943B40071A57E /* Privacy Policy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Privacy Policy.md"; sourceTree = "<group>"; };
-		B1F3373128798CDD00DCB3FE /* NetworkModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeatherLocale.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F337532879988300DCB3FE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,22 +215,15 @@
 			);
 			target = B1D585482879898800989B14 /* WeatherKit */;
 		};
-		A5A706FF2E10A0890046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			publicHeaders = (
-				NetworkModule.h,
-			);
-			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A5A706A12E10A05D0046012E /* EstonianWeather */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706BF2E10A05D0046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EstonianWeather; sourceTree = "<group>"; };
 		A5A706C72E10A07F0046012E /* EstonianWeatherWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706CE2E10A07F0046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = EstonianWeatherWidget; sourceTree = "<group>"; };
 		A5A706ED2E10A0870046012E /* WeatherKit */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706F72E10A0870046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WeatherKit; sourceTree = "<group>"; };
-		A5A706FB2E10A0890046012E /* NetworkModule */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A5A706FF2E10A0890046012E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NetworkModule; sourceTree = "<group>"; };
 		A5A707012E10A08C0046012E /* WeatherLocale */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherLocale; sourceTree = "<group>"; };
 		A5A7070A2E10A0900046012E /* Toolkit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Toolkit; sourceTree = "<group>"; };
+		A5E7846E2E15D44900C83568 /* WeatherNetworking */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherNetworking; sourceTree = "<group>"; };
 		A5F963FC2E13125300D34A94 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -232,9 +232,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E784802E15D52B00C83568 /* libWeatherNetworking.a in Frameworks */,
 				B1D5855E2879898800989B14 /* WeatherKit.framework in Frameworks */,
 				B1C7DBC3287ABD860077CC34 /* StoreKit.framework in Frameworks */,
-				B1F3373728798CDD00DCB3FE /* NetworkModule.framework in Frameworks */,
 				B1C7DB97287AB0850077CC34 /* libToolkit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,11 +244,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */,
-				B11805192879A3C60019C08F /* NetworkModule.framework in Frameworks */,
 				B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */,
+				A5E7847D2E15D51D00C83568 /* libWeatherNetworking.a in Frameworks */,
 				B1C7DB94287AB0610077CC34 /* libToolkit.a in Frameworks */,
 				A5A13D422E11AAA1008744A0 /* WeatherKit.framework in Frameworks */,
 				097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5E7846A2E15D44900C83568 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5E7847A2E15D4D800C83568 /* libWeatherLocale.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,18 +271,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E784772E15D49A00C83568 /* libWeatherNetworking.a in Frameworks */,
 				B151FD972BF102B70090D9B7 /* SWXMLHash in Frameworks */,
 				B1F3374E28798E8900DCB3FE /* libWeatherLocale.a in Frameworks */,
 				B16AEA82287AAFCE00E5F791 /* libToolkit.a in Frameworks */,
-				B1C7DB8F287AB0210077CC34 /* NetworkModule.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1F3372E28798CDD00DCB3FE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1F3374B28798DDB00DCB3FE /* libWeatherLocale.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,10 +296,10 @@
 				A5A706A12E10A05D0046012E /* EstonianWeather */,
 				A5A706C72E10A07F0046012E /* EstonianWeatherWidget */,
 				A5A706ED2E10A0870046012E /* WeatherKit */,
-				A5A706FB2E10A0890046012E /* NetworkModule */,
 				A5A707012E10A08C0046012E /* WeatherLocale */,
 				A5F963FC2E13125300D34A94 /* Resources */,
 				A5A7070A2E10A0900046012E /* Toolkit */,
+				A5E7846E2E15D44900C83568 /* WeatherNetworking */,
 				097698B1252A708A00FA1764 /* Frameworks */,
 				0968CD932522667A00D409FF /* Products */,
 				0972766F254583C100016EB0 /* LICENSE */,
@@ -314,9 +314,9 @@
 				0968CD922522667A00D409FF /* EstonianWeather.app */,
 				097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */,
 				B1D585492879898800989B14 /* WeatherKit.framework */,
-				B1F3373128798CDD00DCB3FE /* NetworkModule.framework */,
 				B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */,
 				B16AEA74287AAF8300E5F791 /* libToolkit.a */,
+				A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,13 +335,6 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		B1D585442879898800989B14 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1F3372C28798CDD00DCB3FE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,9 +361,9 @@
 				A5D79D6F2E12F920007131F4 /* PBXTargetDependency */,
 				097698C0252A708C00FA1764 /* PBXTargetDependency */,
 				B1D5855D2879898800989B14 /* PBXTargetDependency */,
-				B1F3373628798CDD00DCB3FE /* PBXTargetDependency */,
 				B1C7DB99287AB0850077CC34 /* PBXTargetDependency */,
 				B1C7DBAE287AB1470077CC34 /* PBXTargetDependency */,
+				A5E784822E15D52B00C83568 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A5A706A12E10A05D0046012E /* EstonianWeather */,
@@ -394,10 +387,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				B118051C2879A3C60019C08F /* PBXTargetDependency */,
 				B11805222879A3E00019C08F /* PBXTargetDependency */,
 				B1C7DB96287AB0610077CC34 /* PBXTargetDependency */,
 				A5A13D452E11AAA1008744A0 /* PBXTargetDependency */,
+				A5E7847F2E15D51D00C83568 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A5A706C72E10A07F0046012E /* EstonianWeatherWidget */,
@@ -408,6 +401,29 @@
 			productName = EstonianWeatherWidgetExtension;
 			productReference = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		A5E7846C2E15D44900C83568 /* WeatherNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5E784712E15D44900C83568 /* Build configuration list for PBXNativeTarget "WeatherNetworking" */;
+			buildPhases = (
+				A5E784692E15D44900C83568 /* Sources */,
+				A5E7846A2E15D44900C83568 /* Frameworks */,
+				A5E7846B2E15D44900C83568 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5E7847C2E15D4D800C83568 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A5E7846E2E15D44900C83568 /* WeatherNetworking */,
+			);
+			name = WeatherNetworking;
+			packageProductDependencies = (
+			);
+			productName = WeatherNetworking;
+			productReference = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		B16AEA73287AAF8300E5F791 /* Toolkit */ = {
 			isa = PBXNativeTarget;
@@ -443,7 +459,7 @@
 			dependencies = (
 				B1F3375028798E8900DCB3FE /* PBXTargetDependency */,
 				B16AEA84287AAFCE00E5F791 /* PBXTargetDependency */,
-				B1C7DB92287AB0210077CC34 /* PBXTargetDependency */,
+				A5E784792E15D49A00C83568 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A5A706ED2E10A0870046012E /* WeatherKit */,
@@ -454,28 +470,6 @@
 			);
 			productName = WeatherKit;
 			productReference = B1D585492879898800989B14 /* WeatherKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B1F3373028798CDD00DCB3FE /* NetworkModule */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1F3373B28798CDD00DCB3FE /* Build configuration list for PBXNativeTarget "NetworkModule" */;
-			buildPhases = (
-				B1F3372C28798CDD00DCB3FE /* Headers */,
-				B1F3372D28798CDD00DCB3FE /* Sources */,
-				B1F3372E28798CDD00DCB3FE /* Frameworks */,
-				B1F3372F28798CDD00DCB3FE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1F3374D28798DDB00DCB3FE /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A5A706FB2E10A0890046012E /* NetworkModule */,
-			);
-			name = NetworkModule;
-			productName = NetworkModule;
-			productReference = B1F3373128798CDD00DCB3FE /* NetworkModule.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B1F3374328798D9D00DCB3FE /* WeatherLocale */ = {
@@ -505,7 +499,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					0968CD912522667A00D409FF = {
@@ -514,15 +508,14 @@
 					097698AF252A708A00FA1764 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
+					A5E7846C2E15D44900C83568 = {
+						CreatedOnToolsVersion = 26.0;
+					};
 					B16AEA73287AAF8300E5F791 = {
 						CreatedOnToolsVersion = 14.0;
 					};
 					B1D585482879898800989B14 = {
 						CreatedOnToolsVersion = 14.0;
-					};
-					B1F3373028798CDD00DCB3FE = {
-						CreatedOnToolsVersion = 14.0;
-						LastSwiftMigration = 1400;
 					};
 					B1F3374328798D9D00DCB3FE = {
 						CreatedOnToolsVersion = 14.0;
@@ -550,9 +543,9 @@
 				0968CD912522667A00D409FF /* EstonianWeather */,
 				097698AF252A708A00FA1764 /* EstonianWeatherWidgetExtension */,
 				B1D585482879898800989B14 /* WeatherKit */,
-				B1F3373028798CDD00DCB3FE /* NetworkModule */,
 				B1F3374328798D9D00DCB3FE /* WeatherLocale */,
 				B16AEA73287AAF8300E5F791 /* Toolkit */,
+				A5E7846C2E15D44900C83568 /* WeatherNetworking */,
 			);
 		};
 /* End PBXProject section */
@@ -576,13 +569,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B1D585472879898800989B14 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1F3372F28798CDD00DCB3FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -628,6 +614,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5E784692E15D44900C83568 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B16AEA70287AAF8300E5F791 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -636,13 +629,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B1D585452879898800989B14 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1F3372D28798CDD00DCB3FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -674,10 +660,26 @@
 			isa = PBXTargetDependency;
 			productRef = A5D79D6E2E12F920007131F4 /* SwiftLintBuildToolPlugin */;
 		};
-		B118051C2879A3C60019C08F /* PBXTargetDependency */ = {
+		A5E784792E15D49A00C83568 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
-			targetProxy = B118051B2879A3C60019C08F /* PBXContainerItemProxy */;
+			target = A5E7846C2E15D44900C83568 /* WeatherNetworking */;
+			targetProxy = A5E784782E15D49A00C83568 /* PBXContainerItemProxy */;
+		};
+		A5E7847C2E15D4D800C83568 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = B1F3374328798D9D00DCB3FE /* WeatherLocale */;
+			targetProxy = A5E7847B2E15D4D800C83568 /* PBXContainerItemProxy */;
+		};
+		A5E7847F2E15D51D00C83568 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5E7846C2E15D44900C83568 /* WeatherNetworking */;
+			targetProxy = A5E7847E2E15D51D00C83568 /* PBXContainerItemProxy */;
+		};
+		A5E784822E15D52B00C83568 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5E7846C2E15D44900C83568 /* WeatherNetworking */;
+			targetProxy = A5E784812E15D52B00C83568 /* PBXContainerItemProxy */;
 		};
 		B11805222879A3E00019C08F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -688,11 +690,6 @@
 			isa = PBXTargetDependency;
 			target = B16AEA73287AAF8300E5F791 /* Toolkit */;
 			targetProxy = B16AEA83287AAFCE00E5F791 /* PBXContainerItemProxy */;
-		};
-		B1C7DB92287AB0210077CC34 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
-			targetProxy = B1C7DB91287AB0210077CC34 /* PBXContainerItemProxy */;
 		};
 		B1C7DB96287AB0610077CC34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -712,16 +709,6 @@
 			isa = PBXTargetDependency;
 			target = B1D585482879898800989B14 /* WeatherKit */;
 			targetProxy = B1D5855C2879898800989B14 /* PBXContainerItemProxy */;
-		};
-		B1F3373628798CDD00DCB3FE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1F3373028798CDD00DCB3FE /* NetworkModule */;
-			targetProxy = B1F3373528798CDD00DCB3FE /* PBXContainerItemProxy */;
-		};
-		B1F3374D28798DDB00DCB3FE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1F3374328798D9D00DCB3FE /* WeatherLocale */;
-			targetProxy = B1F3374C28798DDB00DCB3FE /* PBXContainerItemProxy */;
 		};
 		B1F3375028798E8900DCB3FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -973,6 +960,45 @@
 			};
 			name = Release;
 		};
+		A5E784722E15D44900C83568 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5E784732E15D44900C83568 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B16AEA78287AAF8300E5F791 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -982,6 +1008,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -994,6 +1023,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
@@ -1063,75 +1095,6 @@
 			};
 			name = Release;
 		};
-		B1F3373928798CDD00DCB3FE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.NetworkModule;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B1F3373A28798CDD00DCB3FE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = NFA8F38A32;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.NetworkModule;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		B1F3374928798D9D00DCB3FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1141,6 +1104,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -1153,6 +1119,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
@@ -1186,6 +1155,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A5E784712E15D44900C83568 /* Build configuration list for PBXNativeTarget "WeatherNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5E784722E15D44900C83568 /* Debug */,
+				A5E784732E15D44900C83568 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B16AEA7A287AAF8300E5F791 /* Build configuration list for PBXNativeTarget "Toolkit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1200,15 +1178,6 @@
 			buildConfigurations = (
 				B1D585612879898800989B14 /* Debug */,
 				B1D585622879898800989B14 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1F3373B28798CDD00DCB3FE /* Build configuration list for PBXNativeTarget "NetworkModule" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1F3373928798CDD00DCB3FE /* Debug */,
-				B1F3373A28798CDD00DCB3FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
