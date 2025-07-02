@@ -1,5 +1,6 @@
 # Default Rules
 --disable redundantSelf
+--disable blankLinesAtStartOfScope
 
 # Opt-in Rules
 --enable acronyms
@@ -29,3 +30,4 @@
 --trimwhitespace always
 --xcodeindentation enabled
 --propertytypes inferred
+--lineaftermarks true
