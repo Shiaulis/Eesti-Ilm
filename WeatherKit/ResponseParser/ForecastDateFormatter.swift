@@ -8,11 +8,24 @@
 import Foundation
 
 final class ForecastDateFormatter {
+
+    // MARK: - Types -
+
     enum Error: Swift.Error {
         case unableToMakeDateFromString
     }
 
-    private let locale = Locale.current
+    // MARK: - Properties -
+
+    private let locale: Locale
+
+    // MARK: - Init -
+
+    init(locale: Locale = .current) {
+        self.locale = locale
+    }
+
+    // MARK: - Internal API -
 
     func humanReadableDescription(for date: Date?) -> String? {
         guard let date else { return nil }
@@ -41,6 +54,8 @@ final class ForecastDateFormatter {
 
         return try string.dateWithDefaultStrategy()
     }
+
+    // MARK: - Private API -
 
     private func makeShortDateString(from date: Date) -> String {
         date.formatted(.dateTime.month(.wide).day(.twoDigits).locale(self.locale))
