@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-http-types.git", from: "1.0.0")
+        .package(url: "https://github.com/apple/swift-http-types.git", from: "1.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -26,7 +26,7 @@ let package = Package(
             name: "Networking",
             dependencies: [
                 .product(name: "HTTPTypes", package: "swift-http-types"),
-                .product(name: "HTTPTypesFoundation", package: "swift-http-types")
+                .product(name: "HTTPTypesFoundation", package: "swift-http-types"),
             ]
         ),
         .testTarget(
@@ -34,7 +34,7 @@ let package = Package(
             dependencies: [
                 "Networking",
                 .product(name: "HTTPTypes", package: "swift-http-types"),
-                .product(name: "HTTPTypesFoundation", package: "swift-http-types")
+                .product(name: "HTTPTypesFoundation", package: "swift-http-types"),
             ]
         ),
     ]

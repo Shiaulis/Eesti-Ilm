@@ -5,13 +5,11 @@
 //  Created by Andrius Shiaulis on 04.07.2025.
 //
 
-
 import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 
-public nonisolated
-struct Endpoint: Sendable {
+public nonisolated struct Endpoint: Sendable {
 
     // MARK: - Types -
 
@@ -35,8 +33,8 @@ struct Endpoint: Sendable {
         case unableToMakeURLComponents
     }
 
-    nonisolated
-    public struct Host: Sendable, RawRepresentable {
+    public nonisolated
+    struct Host: Sendable, RawRepresentable {
         public typealias RawValue = String
         public let rawValue: RawValue
 

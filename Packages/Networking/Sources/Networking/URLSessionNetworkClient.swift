@@ -5,14 +5,12 @@
 //  Created by Andrius Shiaulis on 04.07.2025.
 //
 
-
 import Combine
 import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 
-public final nonisolated
-class URLSessionNetworkClient {
+public final nonisolated class URLSessionNetworkClient {
 
     // MARK: - Properties -
 
