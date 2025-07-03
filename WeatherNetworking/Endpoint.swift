@@ -6,79 +6,63 @@
 //
 
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
 import WeatherLocale
 
-public struct Endpoint {
-    static let scheme = "https"
-    static let host = "ilmateenistus.ee"
+public nonisolated
+struct Endpoint: Sendable {
 
-    let path: String
-    let urlQueryItems: [URLQueryItem]?
-    let method: Method
+    // MARK: - Types -
 
-    private init(path: String, urlQueryItems: [URLQueryItem]? = nil, method: Method = .post) {
-        self.path = path
-        self.urlQueryItems = urlQueryItems
-        self.method = method
+    public enum Scheme: String {
+        case https
     }
-}
 
-extension Endpoint {
+    public nonisolated
     enum Method: String {
-        case post = "POST"
-        var string: String { self.rawValue }
-    }
+        case get = "GET"
 
-    enum Error: Swift.Error {
-        case badURL
-    }
-}
-
-public extension Endpoint {
-    // https://ilmateenistus.ee/ilma_andmed/xml/forecast.php?lang=rus
-
-    static func forecast(for locale: WeatherLocale) -> Endpoint {
-        .init(
-            path: "/ilma_andmed/xml/forecast.php",
-            urlQueryItems: [.init(name: "lang", value: locale.queryItemLanguageCode())],
-            method: .post
-        )
-    }
-
-    // https://lmateenistus.ee/ilma_andmed/xml/observations.php
-
-    static func observations() -> Endpoint {
-        .init(path: "/ilma_andmed/xml/observations.php")
-    }
-}
-
-private extension WeatherLocale {
-    func queryItemLanguageCode() -> String {
-        switch self {
-        case .english: "eng"
-        case .estonian: "est"
-        case .russian: "rus"
+        fileprivate func makeHTTPRequestMethod() -> HTTPRequest.Method {
+            switch self {
+            case .get: .get
+            }
         }
     }
-}
 
-extension Endpoint {
-    func generateURL() throws -> URL {
-        var components = URLComponents()
-        components.scheme = Endpoint.scheme
-        components.host = Endpoint.host
-        components.path = self.path
-        components.queryItems = self.urlQueryItems
-
-        guard let url = components.url else { throw Error.badURL }
-
-        return url
+    public enum Error: Swift.Error {
+        case unableToMakeURL
+        case unableToMakeURLComponents
     }
 
-    func generateRequest() throws -> URLRequest {
-        var request = try URLRequest(url: generateURL())
-        request.httpMethod = self.method.string
-        request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        return request
+    public struct Host: Sendable, RawRepresentable {
+        public typealias RawValue = String
+        public let rawValue: RawValue
+
+        public init?(rawValue: RawValue) {
+            self.rawValue = rawValue
+        }
+    }
+
+    // MARK: - Properties -
+
+    let request: HTTPRequest
+
+    // MARK: - Init -
+
+    init(scheme: Scheme, host: Host, path: String? = nil, urlQueryItems: [URLQueryItem] = [], method: Method = .get, contentType: String? = nil) {
+
+        var request = HTTPRequest(
+            method: method.makeHTTPRequestMethod(),
+            scheme: scheme.rawValue,
+            authority: host.rawValue,
+            path: path
+        )
+
+        request.headerFields[.contentType] = contentType
+        if !urlQueryItems.isEmpty {
+            request.url?.append(queryItems: urlQueryItems)
+        }
+        self.request = request
     }
 }

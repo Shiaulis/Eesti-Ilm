@@ -11,11 +11,14 @@
 		097698B3252A708A00FA1764 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B2252A708A00FA1764 /* WidgetKit.framework */; };
 		097698B5252A708A00FA1764 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097698B4252A708A00FA1764 /* SwiftUI.framework */; };
 		097698C1252A708C00FA1764 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 097698B0252A708A00FA1764 /* EstonianWeatherWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5957F6B2E15F09E0068D210 /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = A5957F6A2E15F09E0068D210 /* HTTPTypes */; };
+		A5957F6D2E15F09E0068D210 /* HTTPTypesFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = A5957F6C2E15F09E0068D210 /* HTTPTypesFoundation */; };
 		A5A13D422E11AAA1008744A0 /* WeatherKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D585492879898800989B14 /* WeatherKit.framework */; };
 		A5E784772E15D49A00C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; };
 		A5E7847A2E15D4D800C83568 /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; platformFilter = ios; };
 		A5E7847D2E15D51D00C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; };
 		A5E784802E15D52B00C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; };
+		A5E784932E15DE3800C83568 /* libWeatherNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */; platformFilter = ios; };
 		A5F963712E13099E00D34A94 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = A5F963702E13099E00D34A94 /* .swiftformat */; };
 		B11805202879A3E00019C08F /* libWeatherLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */; };
 		B151FD972BF102B70090D9B7 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = B151FD962BF102B70090D9B7 /* SWXMLHash */; };
@@ -66,6 +69,13 @@
 			remoteInfo = WeatherNetworking;
 		};
 		A5E784812E15D52B00C83568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5E7846C2E15D44900C83568;
+			remoteInfo = WeatherNetworking;
+		};
+		A5E784912E15DE3100C83568 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0968CD8A2522667A00D409FF /* Project object */;
 			proxyType = 1;
@@ -183,6 +193,7 @@
 		097698B4252A708A00FA1764 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		09D68CF02544AB7100F9DF78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWeatherNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E784872E15DAFA00C83568 /* WeatherNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F963702E13099E00D34A94 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B16AEA74287AAF8300E5F791 /* libToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToolkit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B189D17E25E40BCD007DF2AB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -224,6 +235,7 @@
 		A5A707012E10A08C0046012E /* WeatherLocale */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherLocale; sourceTree = "<group>"; };
 		A5A7070A2E10A0900046012E /* Toolkit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Toolkit; sourceTree = "<group>"; };
 		A5E7846E2E15D44900C83568 /* WeatherNetworking */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherNetworking; sourceTree = "<group>"; };
+		A5E784882E15DAFA00C83568 /* WeatherNetworkingTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WeatherNetworkingTests; sourceTree = "<group>"; };
 		A5F963FC2E13125300D34A94 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -256,7 +268,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5957F6B2E15F09E0068D210 /* HTTPTypes in Frameworks */,
+				A5957F6D2E15F09E0068D210 /* HTTPTypesFoundation in Frameworks */,
 				A5E7847A2E15D4D800C83568 /* libWeatherLocale.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5E784842E15DAFA00C83568 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5E784932E15DE3800C83568 /* libWeatherNetworking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +322,7 @@
 				A5F963FC2E13125300D34A94 /* Resources */,
 				A5A7070A2E10A0900046012E /* Toolkit */,
 				A5E7846E2E15D44900C83568 /* WeatherNetworking */,
+				A5E784882E15DAFA00C83568 /* WeatherNetworkingTests */,
 				097698B1252A708A00FA1764 /* Frameworks */,
 				0968CD932522667A00D409FF /* Products */,
 				0972766F254583C100016EB0 /* LICENSE */,
@@ -317,6 +340,7 @@
 				B1F3374428798D9D00DCB3FE /* libWeatherLocale.a */,
 				B16AEA74287AAF8300E5F791 /* libToolkit.a */,
 				A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */,
+				A5E784872E15DAFA00C83568 /* WeatherNetworkingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -420,10 +444,36 @@
 			);
 			name = WeatherNetworking;
 			packageProductDependencies = (
+				A5957F6A2E15F09E0068D210 /* HTTPTypes */,
+				A5957F6C2E15F09E0068D210 /* HTTPTypesFoundation */,
 			);
 			productName = WeatherNetworking;
 			productReference = A5E7846D2E15D44900C83568 /* libWeatherNetworking.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		A5E784862E15DAFA00C83568 /* WeatherNetworkingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5E7848E2E15DAFA00C83568 /* Build configuration list for PBXNativeTarget "WeatherNetworkingTests" */;
+			buildPhases = (
+				A56A47C22E1707F200290011 /* Run Swiftformat */,
+				A5E784832E15DAFA00C83568 /* Sources */,
+				A5E784842E15DAFA00C83568 /* Frameworks */,
+				A5E784852E15DAFA00C83568 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5E784922E15DE3100C83568 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A5E784882E15DAFA00C83568 /* WeatherNetworkingTests */,
+			);
+			name = WeatherNetworkingTests;
+			packageProductDependencies = (
+			);
+			productName = WeatherNetworkingTests;
+			productReference = A5E784872E15DAFA00C83568 /* WeatherNetworkingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B16AEA73287AAF8300E5F791 /* Toolkit */ = {
 			isa = PBXNativeTarget;
@@ -511,6 +561,9 @@
 					A5E7846C2E15D44900C83568 = {
 						CreatedOnToolsVersion = 26.0;
 					};
+					A5E784862E15DAFA00C83568 = {
+						CreatedOnToolsVersion = 26.0;
+					};
 					B16AEA73287AAF8300E5F791 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -535,6 +588,7 @@
 			packageReferences = (
 				B151FD952BF102B70090D9B7 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				A5D79D6D2E12F8DB007131F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				A5957F692E15F09E0068D210 /* XCRemoteSwiftPackageReference "swift-http-types" */,
 			);
 			productRefGroup = 0968CD932522667A00D409FF /* Products */;
 			projectDirPath = "";
@@ -546,6 +600,7 @@
 				B1F3374328798D9D00DCB3FE /* WeatherLocale */,
 				B16AEA73287AAF8300E5F791 /* Toolkit */,
 				A5E7846C2E15D44900C83568 /* WeatherNetworking */,
+				A5E784862E15DAFA00C83568 /* WeatherNetworkingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -568,6 +623,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5E784852E15DAFA00C83568 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D585472879898800989B14 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +640,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A56A47C22E1707F200290011 /* Run Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swiftformat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n# swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\"\n";
+		};
 		A5F962D92E13031600D34A94 /* Run Swiftformat */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -615,6 +696,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A5E784692E15D44900C83568 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5E784832E15DAFA00C83568 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -680,6 +768,12 @@
 			isa = PBXTargetDependency;
 			target = A5E7846C2E15D44900C83568 /* WeatherNetworking */;
 			targetProxy = A5E784812E15D52B00C83568 /* PBXContainerItemProxy */;
+		};
+		A5E784922E15DE3100C83568 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = A5E7846C2E15D44900C83568 /* WeatherNetworking */;
+			targetProxy = A5E784912E15DE3100C83568 /* PBXContainerItemProxy */;
 		};
 		B11805222879A3E00019C08F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -974,8 +1068,6 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -993,8 +1085,53 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A5E7848F2E15DAFA00C83568 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.WeatherNetworkingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5E784902E15DAFA00C83568 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.WeatherNetworkingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1164,6 +1301,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A5E7848E2E15DAFA00C83568 /* Build configuration list for PBXNativeTarget "WeatherNetworkingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5E7848F2E15DAFA00C83568 /* Debug */,
+				A5E784902E15DAFA00C83568 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B16AEA7A287AAF8300E5F791 /* Build configuration list for PBXNativeTarget "Toolkit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1194,6 +1340,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A5957F692E15F09E0068D210 /* XCRemoteSwiftPackageReference "swift-http-types" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-http-types.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
 		A5D79D6D2E12F8DB007131F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
@@ -1213,6 +1367,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A5957F6A2E15F09E0068D210 /* HTTPTypes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5957F692E15F09E0068D210 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypes;
+		};
+		A5957F6C2E15F09E0068D210 /* HTTPTypesFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5957F692E15F09E0068D210 /* XCRemoteSwiftPackageReference "swift-http-types" */;
+			productName = HTTPTypesFoundation;
+		};
 		A5D79D6E2E12F920007131F4 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A5D79D6D2E12F8DB007131F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;

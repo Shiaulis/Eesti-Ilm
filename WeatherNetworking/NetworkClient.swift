@@ -7,24 +7,26 @@
 
 import Combine
 import Foundation
+import HTTPTypes
+import HTTPTypesFoundation
 
-public protocol NetworkClient {
-    func data(from endpoint: Endpoint) async throws -> (Data, URLResponse)
-}
+public final nonisolated
+class URLSessionNetworkClient {
 
-public final class URLSessionNetworkClient: NSObject {
-    private let urlSession = URLSession.shared
-}
+    // MARK: - Properties -
 
-extension URLSessionNetworkClient: NetworkClient {
-    public func data(from endpoint: Endpoint) async throws -> (Data, URLResponse) {
-        let request = try endpoint.generateRequest()
-        return try await self.urlSession.data(for: request)
+    private let urlSession: URLSession
+
+    // MARK: - Init -
+
+    public init(urlSession: URLSession) {
+        self.urlSession = urlSession
     }
 
-    public enum Error: Swift.Error {
-        case noDataFoundInResponse
-        case dataTaskError(urlError: URLError)
-        case notSupportedIOSVersion
+    // MARK: - Public API -
+
+    public func fetchResponse(for endpoint: Endpoint) async throws -> Response {
+        let (body, response) = try await self.urlSession.data(for: endpoint.request)
+        return .init(data: body, response: response)
     }
 }
