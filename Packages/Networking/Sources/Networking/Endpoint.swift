@@ -9,59 +9,26 @@ import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 
-public nonisolated struct Endpoint: Sendable {
+public enum EndpointScheme: String {
+    case https
+}
 
-    // MARK: - Types -
+public enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+}
 
-    public enum Scheme: String {
-        case https
-    }
-
-    public nonisolated
-    enum Method: String {
-        case get = "GET"
-
-        fileprivate func makeHTTPRequestMethod() -> HTTPRequest.Method {
-            switch self {
-            case .get: .get
-            }
-        }
-    }
-
-    public enum Error: Swift.Error {
-        case unableToMakeURL
-        case unableToMakeURLComponents
-    }
-
-    public nonisolated
-    struct Host: Sendable, RawRepresentable {
-        public typealias RawValue = String
-        public let rawValue: RawValue
-
-        public init?(rawValue: RawValue) {
-            self.rawValue = rawValue
-        }
-    }
+public nonisolated protocol Endpoint: Sendable {
 
     // MARK: - Properties -
 
-    let request: HTTPRequest
+    var scheme: EndpointScheme { get }
+    var httpMethod: HTTPMethod { get }
+    var host: String { get }
+    var path: String? { get }
+    var urlQueryItems: [URLQueryItem] { get }
+    var contentType: String? { get }
 
-    // MARK: - Init -
-
-    public init(scheme: Scheme, host: Host, path: String? = nil, urlQueryItems: [URLQueryItem] = [], method: Method = .get, contentType: String? = nil) {
-
-        var request = HTTPRequest(
-            method: method.makeHTTPRequestMethod(),
-            scheme: scheme.rawValue,
-            authority: host.rawValue,
-            path: path
-        )
-
-        request.headerFields[.contentType] = contentType
-        if !urlQueryItems.isEmpty {
-            request.url?.append(queryItems: urlQueryItems)
-        }
-        self.request = request
-    }
 }

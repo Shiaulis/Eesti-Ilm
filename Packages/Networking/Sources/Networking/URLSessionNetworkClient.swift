@@ -25,7 +25,35 @@ public final nonisolated class URLSessionNetworkClient {
     // MARK: - Public API -
 
     public func fetchResponse(for endpoint: Endpoint) async throws -> Response {
-        let (body, response) = try await self.urlSession.data(for: endpoint.request)
+        let request = try await self.makeHTTPRequest(for: endpoint)
+        let (body, response) = try await self.urlSession.data(for: request)
         return .init(data: body, response: response)
+    }
+
+    // MARK: - Private API -
+
+    func makeHTTPRequest(for endpoint: Endpoint) async throws -> HTTPRequest {
+        var request = HTTPRequest(
+            method: makeRequestMethod(from: endpoint.httpMethod),
+            scheme: endpoint.scheme.rawValue,
+            authority: endpoint.host,
+            path: endpoint.path
+        )
+
+        request.headerFields[.contentType] = endpoint.contentType
+        if !endpoint.urlQueryItems.isEmpty {
+            request.url?.append(queryItems: endpoint.urlQueryItems)
+        }
+
+        return request
+    }
+
+    private func makeRequestMethod(from endpointMethod: HTTPMethod) -> HTTPRequest.Method {
+        switch endpointMethod {
+        case .get: return .get
+        case .post: return .post
+        case .put: return .put
+        case .delete: return .delete
+        }
     }
 }
