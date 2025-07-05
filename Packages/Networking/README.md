@@ -1,4 +1,5 @@
 # Networking
+[![Swift CI](https://github.com/shiaulis/networking/actions/workflows/build_and_test_main.yml/badge.svg)](https://github.com/shiaulis/networking/actions/workflows/build_and_test_main.yml)
 A lightweight Swift Package providing a foundational layer for making network requests using the new `HTTPTypes` and `URLSession`. This package focuses on simplicity and clear separation of concerns, making it easy to define endpoints and execute requests. The package utilizes all new concurrency features introduced in Swift 6.2 for asynchronous code
 
 ## Main Components
