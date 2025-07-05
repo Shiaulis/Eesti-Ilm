@@ -14,19 +14,23 @@ public final nonisolated class URLSessionNetworkClient {
 
     // MARK: - Properties -
 
-    private let urlSession: URLSession
+    private let connectionProvider: NetworkConnectionProvider
 
     // MARK: - Init -
 
-    public init(urlSession: URLSession) {
-        self.urlSession = urlSession
+    public convenience init(urlSession: URLSession) {
+        self.init(connectionProvider: urlSession)
+    }
+
+    init(connectionProvider: NetworkConnectionProvider) {
+        self.connectionProvider = connectionProvider
     }
 
     // MARK: - Public API -
 
     public func fetchResponse(for endpoint: Endpoint) async throws -> Response {
         let request = try await self.makeHTTPRequest(for: endpoint)
-        let (body, response) = try await self.urlSession.data(for: request)
+        let (body, response) = try await self.connectionProvider.data(for: request)
         return .init(data: body, response: response)
     }
 

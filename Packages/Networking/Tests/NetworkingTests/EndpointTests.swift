@@ -11,78 +11,93 @@ import HTTPTypesFoundation
 @testable import Networking
 import Testing
 
-struct EndpointTests {
+// https://api.openweathermap.org/data/2.5/weather?q=Tallinn&appid=YOUR_API_KEY
+private struct OpenWeatherMapEndpoint: Endpoint {
+    var scheme: EndpointScheme = .https
+    var httpMethod: HTTPMethod = .get
+    var host: String = "api.openweathermap.org"
+    var path: String? = "/data/2.5/weather"
+    var urlQueryItems: [URLQueryItem]
+    var contentType: String? = "application/json"
+}
+
+private class MockNetworkConnectionProvider: NetworkConnectionProvider {
+    var receivedRequest: HTTPRequest?
+
+    func data(for request: HTTPRequest) async throws -> (Data, HTTPResponse) {
+        self.receivedRequest = request
+        return (Data(), HTTPResponse.init(status: .accepted))
+    }
+}
+
+final class EndpointTests {
+
+    private let sut: URLSessionNetworkClient
+    private let connectionProvider = MockNetworkConnectionProvider()
+    private var defaultEndpoint = OpenWeatherMapEndpoint(urlQueryItems: [])
+
+    init() {
+        self.sut = URLSessionNetworkClient(connectionProvider: connectionProvider)
+    }
 
     // MARK: - Tests -
 
+    @Test func whenDefaultEnpoint_requestContainsCorrectURL() async throws {
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        #expect(receivedRequest.url?.absoluteString == "https://api.openweathermap.org/data/2.5/weather")
+    }
+
     @Test func whenCorrectScheme_requestContainsCorrectScheme() async throws {
-        let scheme = Endpoint.Scheme.https
-        let request = try makeRequest(scheme: scheme)
-        #expect(request.scheme == scheme.rawValue)
-    }
-
-    @Test func whenCorrectHost_requestContainsCorrectHost() async throws {
-        let host = Endpoint.Host(rawValue: "host")!
-        let request = try makeRequest(host: host)
-        #expect(request.authority == host.rawValue)
-    }
-
-    @Test func whenCorrectPath_requestContainsCorrectPath() async throws {
-        let path = "/test"
-        let request = try makeRequest(path: path)
-        #expect(request.path == path)
-    }
-
-    @Test func whenCorrectQueryParameters_requestContainsCorrectQueryParameters() async throws {
-        let urlQueryItems: [URLQueryItem] = [
-            .init(name: "key", value: "value"),
-        ]
-        let request = try makeRequest(urlQueryItems: urlQueryItems)
-        let url = try #require(request.url)
-        let urlComponents = try #require(URLComponents(string: url.absoluteString))
-        #expect(urlComponents.queryItems?.first == urlQueryItems.first)
+        let targetScheme: EndpointScheme = .ftp
+        self.defaultEndpoint.scheme = targetScheme
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        #expect(receivedRequest.scheme == targetScheme.rawValue)
     }
 
     @Test func whenCorrectMethod_requestContainsCorrectMethod() async throws {
-        let method = Endpoint.Method.get
-        let request = try makeRequest(method: method)
-        #expect(request.method.rawValue == method.rawValue)
+        let targetMethod: HTTPMethod = .post
+        self.defaultEndpoint.httpMethod = targetMethod
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        #expect(receivedRequest.method.rawValue == targetMethod.rawValue)
+    }
+
+    @Test func whenCorrectHost_requestContainsCorrectHost() async throws {
+        let targetHost: String = "api.wikipedia.org"
+        self.defaultEndpoint.host = targetHost
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        #expect(receivedRequest.url?.host == targetHost)
+    }
+
+    @Test func whenCorrectPath_requestContainsCorrectPath() async throws {
+        let targetPath: String = "/ftp/private"
+        self.defaultEndpoint.path = targetPath
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        #expect(receivedRequest.url?.path == targetPath)
+    }
+
+    @Test func whenCorrectQueryParameters_requestContainsCorrectQueryParameters() async throws {
+        let targetUrlQueryItems: [URLQueryItem] = [
+            .init(name: "lang", value: "eng"),
+            .init(name: "q", value: "Tallinn")
+        ]
+        self.defaultEndpoint.urlQueryItems = targetUrlQueryItems
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        let urlComponents = try #require(URLComponents(string: receivedRequest.url?.absoluteString ?? ""))
+        #expect(urlComponents.queryItems == targetUrlQueryItems)
     }
 
     @Test func whenCorrectContentType_requestContainsCorrectContentType() async throws {
-        let contentType = "application/json"
-        let request = try makeRequest(contentType: contentType)
-        #expect(request.headerFields.first?.value == contentType)
+        let targetContentType: String = "application/xml"
+        self.defaultEndpoint.contentType = targetContentType
+        let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedRequest = try #require(self.connectionProvider.receivedRequest)
+        #expect(receivedRequest.headerFields[.contentType] == targetContentType)
     }
 
-    @Test func whenCorrectComponents_requestFullURLCorrect() async throws {
-        // https://ilmateenistus.ee/ilma_andmed/xml/forecast.php?lang=eng
-        let request = try makeRequest(
-            scheme: .https,
-            host: .init(rawValue: "ilmateenistus.ee")!,
-            path: "/ilma_andmed/xml/forecast.php",
-            urlQueryItems: [.init(name: "lang", value: "eng")]
-        )
-        #expect(request.url?.absoluteString == "https://ilmateenistus.ee/ilma_andmed/xml/forecast.php?lang=eng")
-    }
-
-    // MARK: - Private API -
-
-    private func makeRequest(
-        scheme: Endpoint.Scheme = .https,
-        host: Endpoint.Host = .init(rawValue: "host")!,
-        path: String = "/test",
-        urlQueryItems: [URLQueryItem] = [],
-        method: Endpoint.Method = .get,
-        contentType: String? = nil
-    ) throws -> HTTPRequest {
-        Endpoint(
-            scheme: scheme,
-            host: host,
-            path: path,
-            urlQueryItems: urlQueryItems,
-            method: method,
-            contentType: contentType
-        ).request
-    }
 }

@@ -9,11 +9,11 @@ import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 
-public enum EndpointScheme: String {
-    case https
+public enum EndpointScheme: String, Sendable {
+    case https, ftp
 }
 
-public enum HTTPMethod: String {
+public enum HTTPMethod: String, Sendable {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
