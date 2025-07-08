@@ -13,7 +13,7 @@ struct EstonianWeatherApp: App {
     let weatherService = WeatherService()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WeatherForecastView(forecasts: .sampleForecasts)
         }
     }
 }

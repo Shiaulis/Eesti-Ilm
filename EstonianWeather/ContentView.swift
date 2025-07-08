@@ -7,18 +7,357 @@
 
 import SwiftUI
 
-struct ContentView: View {
+extension Array where Element == Forecast {
+
+    static let sampleForecasts: [Forecast] = [
+        Forecast(
+            date: "2025-07-09",
+            night: DayPart(
+                phenomenon: "Fog",
+                minimalTemperature: 9,
+                maximalTemperature: 15,
+                text: "Muutliku pilvisusega ilm. Mandril sajab kohati hoovihma.",
+                places: [
+                    Place(name: "Harku", phenomenon: "Clear", minimalTemperature: 12, maximalTemperature: nil),
+                    Place(name: "Jõhvi", phenomenon: "Few clouds", minimalTemperature: 11, maximalTemperature: nil),
+                    Place(name: "Tartu", phenomenon: "Light shower", minimalTemperature: 12, maximalTemperature: nil),
+                    Place(name: "Pärnu", phenomenon: "Mist", minimalTemperature: 15, maximalTemperature: nil)
+                ],
+                winds: [
+                    Wind(name: "Kuusiku", direction: "Northerly winds", minimalSpeed: 1, maximalSpeed: 4, gust: ""),
+                    Wind(name: "Väike-Maarja", direction: "Northerly winds", minimalSpeed: 1, maximalSpeed: 4, gust: "")
+                ],
+                sea: "Ilmaprognoos Läänemere kohta 24 tunniks. Nähtavus hea.",
+                lake: "Puhub põhjakaare tuul 1-6 m/s. Laine kõrgus 0,3-0,9 m."
+            ),
+            day: DayPart(
+                phenomenon: "Fog",
+                minimalTemperature: 9,
+                maximalTemperature: 15,
+                text: "Muutliku pilvisusega ilm. Mandril sajab kohati hoovihma.",
+                places: [
+                    Place(name: "Harku", phenomenon: "Clear", minimalTemperature: 12, maximalTemperature: nil),
+                    Place(name: "Jõhvi", phenomenon: "Few clouds", minimalTemperature: 11, maximalTemperature: nil),
+                    Place(name: "Tartu", phenomenon: "Light shower", minimalTemperature: 12, maximalTemperature: nil),
+                    Place(name: "Pärnu", phenomenon: "Mist", minimalTemperature: 15, maximalTemperature: nil)
+                ],
+                winds: [
+                    Wind(name: "Kuusiku", direction: "Northerly winds", minimalSpeed: 1, maximalSpeed: 4, gust: ""),
+                    Wind(name: "Väike-Maarja", direction: "Northerly winds", minimalSpeed: 1, maximalSpeed: 4, gust: "")
+                ],
+                sea: "Ilmaprognoos Läänemere kohta 24 tunniks. Nähtavus hea.",
+                lake: "Puhub põhjakaare tuul 1-6 m/s. Laine kõrgus 0,3-0,9 m."
+            )
+        ),
+        Forecast(
+            date: "2025-07-10",
+            night: DayPart(
+                phenomenon: "Moderate shower",
+                minimalTemperature: 11,
+                maximalTemperature: 16,
+                text: "Pilves selgimistega ilm. Mitmel pool sajab vihma.",
+                places: nil,
+                winds: nil,
+                sea: nil,
+                lake: nil
+            ),
+            day: DayPart(
+                phenomenon: "Moderate shower",
+                minimalTemperature: 11,
+                maximalTemperature: 16,
+                text: "Pilves selgimistega ilm. Mitmel pool sajab vihma.",
+                places: nil,
+                winds: nil,
+                sea: nil,
+                lake: nil
+            )
+        ),
+        Forecast(
+            date: "2025-07-11",
+            night: DayPart(
+                phenomenon: "Light shower",
+                minimalTemperature: 12,
+                maximalTemperature: 16,
+                text: "Pilves selgimistega ilm. Mitmel pool sajab hoovihma.",
+                places: nil,
+                winds: nil,
+                sea: nil,
+                lake: nil
+            ),
+            day: DayPart(
+                phenomenon: "Light shower",
+                minimalTemperature: 12,
+                maximalTemperature: 16,
+                text: "Pilves selgimistega ilm. Mitmel pool sajab hoovihma.",
+                places: nil,
+                winds: nil,
+                sea: nil,
+                lake: nil
+            )
+        )
+    ]
+}
+
+// MARK: - Data Models
+struct Forecast {
+    let date: String
+    let night: DayPart
+    let day: DayPart
+}
+
+struct DayPart {
+    let phenomenon: String
+    let minimalTemperature: Int
+    let maximalTemperature: Int
+    let text: String
+    let places: [Place]?
+    let winds: [Wind]?
+    let sea: String?
+    let lake: String?
+}
+
+struct Place {
+    let name: String
+    let phenomenon: String
+    let minimalTemperature: Int?
+    let maximalTemperature: Int?
+}
+
+struct Wind {
+    let name: String
+    let direction: String
+    let minimalSpeed: Int
+    let maximalSpeed: Int
+    let gust: String?
+}
+
+// MARK: - Main Weather View
+struct WeatherForecastView: View {
+    let forecasts: [Forecast]
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    ForEach(forecasts.indices, id: \.self) { index in
+                        ForecastDayView(forecast: forecasts[index])
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Weather Forecast")
+            .navigationBarTitleDisplayMode(.large)
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+// MARK: - Single Day Forecast View
+struct ForecastDayView: View {
+    let forecast: Forecast
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Date Header
+            HStack {
+                Text(formattedDate(forecast.date))
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                Spacer()
+                Text("\(forecast.day.minimalTemperature)°–\(forecast.day.maximalTemperature)°")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
+            }
+
+            // Night and Day Parts
+            HStack(spacing: 16) {
+                DayPartView(dayPart: forecast.night, title: "Night")
+
+                Divider()
+
+                DayPartView(dayPart: forecast.day, title: "Day")
+            }
+
+            // Places if available
+            if let places = forecast.day.places, !places.isEmpty {
+                PlacesView(places: places)
+            }
+
+            // Winds if available
+            if let winds = forecast.day.winds, !winds.isEmpty {
+                WindsView(winds: winds)
+            }
+
+            // Sea conditions if available
+            if let sea = forecast.day.sea, !sea.isEmpty {
+                SeaConditionsView(text: sea)
+            }
+        }
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 1)
+    }
+
+    private func formattedDate(_ dateString: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = formatter.date(from: dateString) {
+            formatter.dateFormat = "EEEE, MMM d"
+            return formatter.string(from: date)
+        }
+
+        return dateString
+    }
+}
+
+// MARK: - Day Part View (Night/Day)
+struct DayPartView: View {
+    let dayPart: DayPart
+    let title: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
+
+            Text(dayPart.phenomenon)
+                .font(.body)
+                .foregroundColor(.primary)
+
+            Text("\(dayPart.minimalTemperature)°–\(dayPart.maximalTemperature)°")
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(.blue)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: - Places View
+struct PlacesView: View {
+    let places: [Place]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Local Conditions")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
+
+            LazyVGrid(columns: [
+                GridItem(.flexible()),
+                GridItem(.flexible())
+            ], spacing: 8) {
+                ForEach(places.indices, id: \.self) { index in
+                    PlaceView(place: places[index])
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Individual Place View
+struct PlaceView: View {
+    let place: Place
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(place.name)
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundColor(.primary)
+
+            Text(place.phenomenon)
+                .font(.caption2)
+                .foregroundColor(.secondary)
+
+            if let temp = place.minimalTemperature {
+                Text("\(temp)°")
+                    .font(.caption)
+                    .foregroundColor(.blue)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(8)
+        .background(Color(.systemGray6))
+        .cornerRadius(8)
+    }
+}
+
+// MARK: - Winds View
+struct WindsView: View {
+    let winds: [Wind]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Wind Conditions")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
+
+            ForEach(winds.indices, id: \.self) { index in
+                WindView(wind: winds[index])
+            }
+        }
+    }
+}
+
+// MARK: - Individual Wind View
+struct WindView: View {
+    let wind: Wind
+
+    var body: some View {
+        HStack {
+            Text(wind.name)
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundColor(.primary)
+
+            Spacer()
+
+            Text(wind.direction)
+                .font(.caption2)
+                .foregroundColor(.secondary)
+
+            Text("\(wind.minimalSpeed)-\(wind.maximalSpeed) m/s")
+                .font(.caption)
+                .foregroundColor(.green)
+        }
+        .padding(.vertical, 2)
+    }
+}
+
+// MARK: - Sea Conditions View
+struct SeaConditionsView: View {
+    let text: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Sea Conditions")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundColor(.secondary)
+
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.primary)
+                .lineLimit(nil)
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(8)
+    }
+}
+
+// MARK: - Preview with Dummy Data
+struct WeatherForecastView_Previews: PreviewProvider {
+    static var previews: some View {
+        WeatherForecastView(forecasts: .sampleForecasts)
+    }
+
+
 }
