@@ -7,6 +7,52 @@
 
 import SwiftUI
 
+// MARK: - Color Palette
+struct WeatherColors {
+    // Primary gradient colors (inspired by app icon)
+    static let primaryBlue = Color(red: 0.4, green: 0.7, blue: 1.0)      // Bright blue from icon top
+    static let primaryIndigo = Color(red: 0.5, green: 0.4, blue: 0.9)    // Purple-blue from icon middle
+    static let primaryPink = Color(red: 0.9, green: 0.5, blue: 0.7)      // Pink from icon bottom
+
+    // Weather phenomenon colors
+    static let sunOrange = Color(red: 1.0, green: 0.6, blue: 0.2)        // Sun orange from icon
+    static let cloudGray = Color(red: 0.85, green: 0.85, blue: 0.9)      // Cloud white-gray from icon
+    static let rainCyan = Color(red: 0.3, green: 0.7, blue: 0.9)         // Rain blue
+    static let fogGray = Color(red: 0.7, green: 0.7, blue: 0.8)          // Fog gray
+    static let mistLavender = Color(red: 0.8, green: 0.75, blue: 0.9)    // Mist lavender
+
+    // UI accent colors
+    static let temperatureBlue = Color(red: 0.2, green: 0.6, blue: 0.95) // Temperature readings
+    static let windCyan = Color(red: 0.2, green: 0.8, blue: 0.9)         // Wind speed
+    static let locationGreen = Color(red: 0.3, green: 0.8, blue: 0.5)    // Location markers
+
+    // UI backgrounds
+    static let cardBackground = Color(.systemBackground)
+    static let sectionBackground = Color(.systemGray6)
+    static let dividerColor = Color(.separator)
+
+    // Text colors
+    static let primaryText = Color.primary
+    static let secondaryText = Color.secondary
+
+    // Background gradients
+    static var appGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [primaryBlue, primaryPink]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    static var headerGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [primaryBlue, primaryIndigo]),
+            startPoint: .leading,
+            endPoint: .trailing
+        )
+    }
+}
+
 extension Array where Element == Forecast {
 
     static let sampleForecasts: [Forecast] = [
@@ -145,6 +191,7 @@ struct WeatherForecastView: View {
                 }
                 .padding()
             }
+            .background(WeatherColors.appGradient.ignoresSafeArea())
             .navigationTitle("Weather Forecast")
             .navigationBarTitleDisplayMode(.large)
         }
@@ -157,23 +204,28 @@ struct ForecastDayView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            // Date Header
+            // Date Header with gradient background
             HStack {
                 Text(formattedDate(forecast.date))
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
+                    .fontWeight(.semibold)
                 Spacer()
                 Text("\(forecast.day.minimalTemperature)°–\(forecast.day.maximalTemperature)°")
                     .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundColor(.primary)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
             }
+            .padding()
+            .background(Color(.gray).opacity(0.2))
+            .cornerRadius(12)
 
             // Night and Day Parts
             HStack(spacing: 16) {
                 DayPartView(dayPart: forecast.night, title: "Night")
 
                 Divider()
+                    .background(WeatherColors.dividerColor)
 
                 DayPartView(dayPart: forecast.day, title: "Day")
             }
@@ -194,9 +246,9 @@ struct ForecastDayView: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 1)
+        .background(WeatherColors.cardBackground.opacity(0.5))
+        .cornerRadius(16)
+        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 
     private func formattedDate(_ dateString: String) -> String {
@@ -218,22 +270,22 @@ struct DayPartView: View {
     let title: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .center, spacing: 8) {
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .foregroundColor(.secondary)
+                .foregroundColor(WeatherColors.secondaryText)
 
             Text(dayPart.phenomenon)
                 .font(.body)
-                .foregroundColor(.primary)
+                .foregroundColor(WeatherColors.primaryText)
 
             Text("\(dayPart.minimalTemperature)°–\(dayPart.maximalTemperature)°")
                 .font(.title3)
                 .fontWeight(.semibold)
-                .foregroundColor(.blue)
+                .foregroundColor(WeatherColors.temperatureBlue)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
@@ -246,7 +298,7 @@ struct PlacesView: View {
             Text("Local Conditions")
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .foregroundColor(.secondary)
+                .foregroundColor(WeatherColors.secondaryText)
 
             LazyVGrid(columns: [
                 GridItem(.flexible()),
@@ -257,6 +309,9 @@ struct PlacesView: View {
                 }
             }
         }
+        .padding()
+        .background(WeatherColors.sectionBackground)
+        .cornerRadius(12)
     }
 }
 
@@ -269,21 +324,21 @@ struct PlaceView: View {
             Text(place.name)
                 .font(.caption)
                 .fontWeight(.medium)
-                .foregroundColor(.primary)
+                .foregroundColor(WeatherColors.primaryText)
 
             Text(place.phenomenon)
                 .font(.caption2)
-                .foregroundColor(.secondary)
+                .foregroundColor(WeatherColors.secondaryText)
 
             if let temp = place.minimalTemperature {
                 Text("\(temp)°")
                     .font(.caption)
-                    .foregroundColor(.blue)
+                    .foregroundColor(WeatherColors.temperatureBlue)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(8)
-        .background(Color(.systemGray6))
+        .background(WeatherColors.cardBackground)
         .cornerRadius(8)
     }
 }
@@ -297,12 +352,15 @@ struct WindsView: View {
             Text("Wind Conditions")
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .foregroundColor(.secondary)
+                .foregroundColor(WeatherColors.secondaryText)
 
             ForEach(winds.indices, id: \.self) { index in
                 WindView(wind: winds[index])
             }
         }
+        .padding()
+        .background(WeatherColors.sectionBackground)
+        .cornerRadius(12)
     }
 }
 
@@ -315,17 +373,17 @@ struct WindView: View {
             Text(wind.name)
                 .font(.caption)
                 .fontWeight(.medium)
-                .foregroundColor(.primary)
+                .foregroundColor(WeatherColors.primaryText)
 
             Spacer()
 
             Text(wind.direction)
                 .font(.caption2)
-                .foregroundColor(.secondary)
+                .foregroundColor(WeatherColors.secondaryText)
 
             Text("\(wind.minimalSpeed)-\(wind.maximalSpeed) m/s")
                 .font(.caption)
-                .foregroundColor(.green)
+                .foregroundColor(WeatherColors.windCyan)
         }
         .padding(.vertical, 2)
     }
@@ -340,15 +398,15 @@ struct SeaConditionsView: View {
             Text("Sea Conditions")
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .foregroundColor(.secondary)
+                .foregroundColor(WeatherColors.secondaryText)
 
             Text(text)
                 .font(.caption)
-                .foregroundColor(.primary)
+                .foregroundColor(WeatherColors.primaryText)
                 .lineLimit(nil)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(WeatherColors.sectionBackground)
         .cornerRadius(8)
     }
 }
@@ -358,6 +416,4 @@ struct WeatherForecastView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherForecastView(forecasts: .sampleForecasts)
     }
-
-
 }
