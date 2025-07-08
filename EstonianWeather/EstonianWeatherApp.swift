@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import WeatherCore
 
 @main
 struct EstonianWeatherApp: App {
+    let weatherService = WeatherService()
     var body: some Scene {
         WindowGroup {
             ContentView()

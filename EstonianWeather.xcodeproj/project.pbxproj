@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A5384D912E174033006BE100 /* SECURITY.md in Resources */ = {isa = PBXBuildFile; fileRef = A5384D792E174033006BE100 /* SECURITY.md */; };
+		A5A928072E1DB1D900977ACC /* WeatherCore in Frameworks */ = {isa = PBXBuildFile; productRef = A5A928062E1DB1D900977ACC /* WeatherCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A928072E1DB1D900977ACC /* WeatherCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +80,7 @@
 			);
 			name = EstonianWeather;
 			packageProductDependencies = (
+				A5A928062E1DB1D900977ACC /* WeatherCore */,
 			);
 			productName = EstonianWeather;
 			productReference = A5384D312E173FC5006BE100 /* EstonianWeather.app */;
@@ -108,6 +111,9 @@
 			);
 			mainGroup = A5384D282E173FC5006BE100;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A5A928052E1DB1D900977ACC /* XCRemoteSwiftPackageReference "weatherCore" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A5384D322E173FC5006BE100 /* Products */;
 			projectDirPath = "";
@@ -372,6 +378,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A5A928052E1DB1D900977ACC /* XCRemoteSwiftPackageReference "weatherCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Shiaulis/weatherCore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5A928062E1DB1D900977ACC /* WeatherCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5A928052E1DB1D900977ACC /* XCRemoteSwiftPackageReference "weatherCore" */;
+			productName = WeatherCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A5384D292E173FC5006BE100 /* Project object */;
 }

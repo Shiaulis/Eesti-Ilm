@@ -1,0 +1,42 @@
+{
+  "originHash" : "71f3bc341ece0c8e62e7be98c10afd9e95fc4c37ae695239b3470e297ad112f9",
+  "pins" : [
+    {
+      "identity" : "networking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Shiaulis/networking.git",
+      "state" : {
+        "revision" : "87f98ef9737d7e2c4bf6ca99d048e7d3855c92ea",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "swift-http-types",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-http-types.git",
+      "state" : {
+        "revision" : "a0a57e949a8903563aba4615869310c0ebf14c03",
+        "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "swxmlhash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/drmohundro/SWXMLHash.git",
+      "state" : {
+        "revision" : "a853604c9e9a83ad9954c7e3d2a565273982471f",
+        "version" : "7.0.2"
+      }
+    },
+    {
+      "identity" : "weathercore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Shiaulis/weatherCore",
+      "state" : {
+        "revision" : "c8ed0a6859ffded60ba86b8ce18f570088de0b02",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
