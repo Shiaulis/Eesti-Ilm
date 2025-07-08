@@ -7,18 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A5384D7F2E174033006BE100 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A5384D722E174033006BE100 /* README.md */; };
 		A5384D912E174033006BE100 /* SECURITY.md in Resources */ = {isa = PBXBuildFile; fileRef = A5384D792E174033006BE100 /* SECURITY.md */; };
-		A5384D972E174033006BE100 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A5384D702E174033006BE100 /* LICENSE */; };
-		A5384D9E2E174033006BE100 /* Privacy Policy.md in Resources */ = {isa = PBXBuildFile; fileRef = A5384D712E174033006BE100 /* Privacy Policy.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A5384D312E173FC5006BE100 /* EstonianWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstonianWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5384D612E174033006BE100 /* BuildTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BuildTools; sourceTree = "<group>"; };
-		A5384D702E174033006BE100 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		A5384D712E174033006BE100 /* Privacy Policy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Privacy Policy.md"; sourceTree = "<group>"; };
-		A5384D722E174033006BE100 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5384D792E174033006BE100 /* SECURITY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SECURITY.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -26,16 +19,6 @@
 		A5384D332E173FC5006BE100 /* EstonianWeather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = EstonianWeather;
-			sourceTree = "<group>";
-		};
-		A5384D602E174033006BE100 /* AppStore */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AppStore;
-			sourceTree = "<group>";
-		};
-		A5384D6F2E174033006BE100 /* Images */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Images;
 			sourceTree = "<group>";
 		};
 		A5384D782E174033006BE100 /* Resources */ = {
@@ -59,12 +42,6 @@
 		A5384D282E173FC5006BE100 = {
 			isa = PBXGroup;
 			children = (
-				A5384D602E174033006BE100 /* AppStore */,
-				A5384D612E174033006BE100 /* BuildTools */,
-				A5384D6F2E174033006BE100 /* Images */,
-				A5384D702E174033006BE100 /* LICENSE */,
-				A5384D712E174033006BE100 /* Privacy Policy.md */,
-				A5384D722E174033006BE100 /* README.md */,
 				A5384D782E174033006BE100 /* Resources */,
 				A5384D792E174033006BE100 /* SECURITY.md */,
 				A5384D332E173FC5006BE100 /* EstonianWeather */,
@@ -97,8 +74,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A5384D332E173FC5006BE100 /* EstonianWeather */,
-				A5384D602E174033006BE100 /* AppStore */,
-				A5384D6F2E174033006BE100 /* Images */,
 				A5384D782E174033006BE100 /* Resources */,
 			);
 			name = EstonianWeather;
@@ -148,10 +123,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5384D7F2E174033006BE100 /* README.md in Resources */,
 				A5384D912E174033006BE100 /* SECURITY.md in Resources */,
-				A5384D972E174033006BE100 /* LICENSE in Resources */,
-				A5384D9E2E174033006BE100 /* Privacy Policy.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
