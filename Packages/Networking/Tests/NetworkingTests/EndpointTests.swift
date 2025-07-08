@@ -11,24 +11,7 @@ import HTTPTypesFoundation
 @testable import Networking
 import Testing
 
-// https://api.openweathermap.org/data/2.5/weather?q=Tallinn&appid=YOUR_API_KEY
-private struct OpenWeatherMapEndpoint: Endpoint {
-    var scheme: EndpointScheme = .https
-    var httpMethod: HTTPMethod = .get
-    var host: String = "api.openweathermap.org"
-    var path: String? = "/data/2.5/weather"
-    var urlQueryItems: [URLQueryItem]
-    var contentType: String? = "application/json"
-}
 
-private class MockNetworkConnectionProvider: NetworkConnectionProvider {
-    var receivedRequest: HTTPRequest?
-
-    func data(for request: HTTPRequest) async throws -> (Data, HTTPResponse) {
-        self.receivedRequest = request
-        return (Data(), HTTPResponse.init(status: .accepted))
-    }
-}
 
 final class EndpointTests {
 
@@ -98,6 +81,12 @@ final class EndpointTests {
         let _ = try await self.sut.fetchResponse(for: self.defaultEndpoint)
         let receivedRequest = try #require(self.connectionProvider.receivedRequest)
         #expect(receivedRequest.headerFields[.contentType] == targetContentType)
+    }
+
+    @Test func whenCorrectEndpoint_responseContainsCorrectEndpoint() async throws {
+        let receivedResponse: Response = try await self.sut.fetchResponse(for: self.defaultEndpoint)
+        let receivedEndpoint = try #require(receivedResponse.endpoint as? OpenWeatherMapEndpoint)
+        #expect(self.defaultEndpoint == receivedEndpoint)
     }
 
 }

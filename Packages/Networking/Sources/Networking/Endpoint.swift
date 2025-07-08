@@ -20,7 +20,7 @@ public enum HTTPMethod: String, Sendable {
     case delete = "DELETE"
 }
 
-public nonisolated protocol Endpoint: Sendable {
+public nonisolated protocol Endpoint: Sendable, Hashable {
 
     // MARK: - Properties -
 
