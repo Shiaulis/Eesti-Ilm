@@ -27,7 +27,7 @@ public final nonisolated class WeatherService  {
     public convenience init() {
         self.init(
             networkClient: URLSessionNetworkClient(urlSession: .shared),
-            forecastsParser: SWXMLHashXMLParser()
+            forecastsParser: SWXMLHashXMLParser(),
         )
     }
 
@@ -39,7 +39,9 @@ public final nonisolated class WeatherService  {
             let data = try await self.networkClient.getForecastData(for: language)
             let forecasts = try await self.forecastsParser.decodeForecasts(from: data)
             self.logger.log("Receieved \(forecasts.count) forecasts")
-            return []
+            let configurations: [ForecastConfiguration] = try .from(forecasts: forecasts)
+            self.logger.log("Parsed \(configurations.count) forecast configurations")
+            return configurations
         }
         catch {
             self.logger.log("Failed to fetch or parse forecasts: \(error, privacy: .public)")
