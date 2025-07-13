@@ -6,14 +6,20 @@
 //
 
 import SwiftUI
-import WeatherCore
 
 @main
 struct EstonianWeatherApp: App {
-    let weatherService = WeatherService()
     var body: some Scene {
         WindowGroup {
-            WeatherForecastView(forecasts: .sampleForecasts)
+            TabView {
+                Tab("Forecasts", systemImage: "sun.haze.fill") {
+                    ForecastListView()
+                }
+                Tab("About", systemImage: "info.circle") {
+                    AboutView()
+                }
+            }
+            .tabViewStyle(.sidebarAdaptable)
         }
     }
 }

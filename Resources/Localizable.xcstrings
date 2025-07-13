@@ -1,28 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld-%lld m/s" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld-%2$lld m/s"
-          }
-        }
-      }
-    },
-    "%lld°" : {
+    "About" : {
 
-    },
-    "%lld°–%lld°" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld°–%2$lld°"
-          }
-        }
-      }
     },
     "About me description" : {
       "comment" : "A short description about the user.",
@@ -127,6 +107,15 @@
         }
       }
     },
+    "Forecasts" : {
+
+    },
+    "Hello, world!" : {
+
+    },
+    "Hello, World!" : {
+
+    },
     "Loading" : {
       "comment" : "Text displayed while loading data.",
       "extractionState" : "stale",
@@ -140,9 +129,6 @@
         }
       }
     },
-    "Local Conditions" : {
-
-    },
     "Night" : {
       "comment" : "A label displayed above the night forecast.",
       "extractionState" : "stale",
@@ -155,9 +141,6 @@
           }
         }
       }
-    },
-    "Sea Conditions" : {
-
     },
     "Settings" : {
       "comment" : "Title of the settings tab item.",
@@ -190,12 +173,6 @@
           }
         }
       }
-    },
-    "Weather Forecast" : {
-
-    },
-    "Wind Conditions" : {
-
     }
   },
   "version" : "1.1"
