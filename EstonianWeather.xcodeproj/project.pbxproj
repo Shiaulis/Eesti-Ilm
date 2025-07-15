@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A5384D912E174033006BE100 /* SECURITY.md in Resources */ = {isa = PBXBuildFile; fileRef = A5384D792E174033006BE100 /* SECURITY.md */; };
 		A5A928072E1DB1D900977ACC /* WeatherCore in Frameworks */ = {isa = PBXBuildFile; productRef = A5A928062E1DB1D900977ACC /* WeatherCore */; };
-		A5BACEDE2E241510009CBBD3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BACEDD2E241510009CBBD3 /* WidgetKit.framework */; };
-		A5BACEE02E241510009CBBD3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5BACEDF2E241510009CBBD3 /* SwiftUI.framework */; };
 		A5BACEF12E241511009CBBD3 /* EstonianWeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5BACEDB2E241510009CBBD3 /* EstonianWeatherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -40,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		A5384D312E173FC5006BE100 /* EstonianWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstonianWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5384D792E174033006BE100 /* SECURITY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SECURITY.md; sourceTree = "<group>"; };
 		A5BACEDB2E241510009CBBD3 /* EstonianWeatherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EstonianWeatherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BACEDD2E241510009CBBD3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A5BACEDF2E241510009CBBD3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -60,11 +56,6 @@
 		A5384D332E173FC5006BE100 /* EstonianWeather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = EstonianWeather;
-			sourceTree = "<group>";
-		};
-		A5384D782E174033006BE100 /* Resources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		A5BACEE12E241510009CBBD3 /* EstonianWeatherWidget */ = {
@@ -90,8 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5BACEE02E241510009CBBD3 /* SwiftUI.framework in Frameworks */,
-				A5BACEDE2E241510009CBBD3 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,8 +90,6 @@
 		A5384D282E173FC5006BE100 = {
 			isa = PBXGroup;
 			children = (
-				A5384D782E174033006BE100 /* Resources */,
-				A5384D792E174033006BE100 /* SECURITY.md */,
 				A5384D332E173FC5006BE100 /* EstonianWeather */,
 				A5BACEE12E241510009CBBD3 /* EstonianWeatherWidget */,
 				A5BACEDC2E241510009CBBD3 /* Frameworks */,
@@ -147,7 +134,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A5384D332E173FC5006BE100 /* EstonianWeather */,
-				A5384D782E174033006BE100 /* Resources */,
 			);
 			name = EstonianWeather;
 			packageProductDependencies = (
@@ -226,7 +212,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5384D912E174033006BE100 /* SECURITY.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 3.0;
@@ -381,6 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 3.0;
@@ -403,7 +390,6 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -445,7 +431,6 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -481,19 +466,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EstonianWeatherWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = EstonianWeatherWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeather.EstonianWeatherWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -501,7 +482,6 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -512,19 +492,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NFA8F38A32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EstonianWeatherWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = EstonianWeatherWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeather.EstonianWeatherWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -532,7 +508,6 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
