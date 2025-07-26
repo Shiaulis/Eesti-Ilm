@@ -12,7 +12,7 @@
       "hidden" : false,
       "layers" : [
         {
-          "blend-mode" : "plus-darker",
+          "blend-mode" : "multiply",
           "fill" : {
             "solid" : "display-p3:0.73297,0.77261,0.81404,1.00000"
           },

@@ -12,7 +12,5 @@ import SwiftUI
 struct EstonianWeatherWidgetBundle: WidgetBundle {
     var body: some Widget {
         EstonianWeatherWidget()
-        EstonianWeatherWidgetControl()
-        EstonianWeatherWidgetLiveActivity()
     }
 }
