@@ -10,7 +10,7 @@ import WidgetKit
 import SwiftUI
 
 struct EstonianWeatherWidgetEntryView : View {
-    var entry: ForecastTimelineProvider.Entry
+    let entry: ForecastTimelineProvider.Entry
 
     var body: some View {
         VStack {

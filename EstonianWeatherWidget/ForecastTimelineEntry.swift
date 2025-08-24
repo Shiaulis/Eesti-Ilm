@@ -9,5 +9,5 @@ import WidgetKit
 
 struct ForecastTimelineEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationAppIntent
+    let configuration: ForecastIntent
 }

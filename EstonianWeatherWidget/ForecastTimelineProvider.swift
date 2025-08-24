@@ -10,14 +10,14 @@ import WidgetKit
 
 struct ForecastTimelineProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> ForecastTimelineEntry {
-        ForecastTimelineEntry(date: Date(), configuration: ConfigurationAppIntent())
+        ForecastTimelineEntry(date: Date(), configuration: ForecastIntent())
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> ForecastTimelineEntry {
+    func snapshot(for configuration: ForecastIntent, in context: Context) async -> ForecastTimelineEntry {
         ForecastTimelineEntry(date: Date(), configuration: configuration)
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<ForecastTimelineEntry> {
+    func timeline(for configuration: ForecastIntent, in context: Context) async -> Timeline<ForecastTimelineEntry> {
         var entries: [ForecastTimelineEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
