@@ -22,7 +22,7 @@
       "kind": "remote",
       "repository": "https://github.com/drmohundro/SWXMLHash.git",
       "version": {
-        "up-to-next-major-version": "7.0.0",
+        "up-to-next-major-version": "8.0.0",
       },
     },
   ],
