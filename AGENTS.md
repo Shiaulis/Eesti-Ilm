@@ -104,5 +104,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 ## Git workflow
 
 - One branch per Linear ticket in the EES team, named with the ticket's git branch name.
-- Open a PR against `master`. The owner reviews and merges on GitHub.
+- Coding agents commit, push, open PRs, and comment on GitHub as the `telbin-bot` machine account (never approve or directly merge PRs).
+- Open agent PRs against `master` as a draft (`gh pr create --draft`) while iterating on CI or review feedback; mark ready (`gh pr ready`) once checks pass and comments are resolved so `@Shiaulis` gets a single review request via `CODEOWNERS`.
+- Enabling squash auto-merge (`gh pr merge --auto --squash`) is allowed only before `@Shiaulis` has approved (when `Protect master` requires `@Shiaulis`'s approval, so GitHub cannot merge immediately); never run `gh pr merge` on an already-approved PR.
 - Never push to `master`. Never create or push tags.
