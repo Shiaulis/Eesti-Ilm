@@ -24,6 +24,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             name: UIScene.willConnectNotification,
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.sceneDidDisconnect(_:)),
+            name: UIScene.didDisconnectNotification,
+            object: nil
+        )
         return true
     }
 
@@ -50,8 +56,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let sceneDelegate = SceneDelegate()
-        self.adoptedSceneDelegates.append(sceneDelegate)
+        self.adoptedSceneDelegates[ObjectIdentifier(windowScene)] = sceneDelegate
         windowScene.delegate = sceneDelegate
         sceneDelegate.installWindow(in: windowScene)
+    }
+
+    @objc private func sceneDidDisconnect(_ notification: Notification) {
+        guard let scene = notification.object as? UIScene else {
+            return
+        }
+
+        self.adoptedSceneDelegates[ObjectIdentifier(scene)] = nil
     }
 }
