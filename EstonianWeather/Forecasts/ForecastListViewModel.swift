@@ -5,6 +5,7 @@
 
 import Foundation
 import Observation
+import UIKit
 import WeatherCore
 
 @MainActor
@@ -20,20 +21,48 @@ final class ForecastListViewModel {
 
     private let languageProvider: () -> WeatherLanguage
     private let fetchForecasts: (WeatherLanguage) async throws -> [ForecastConfiguration]
+    private let now: () -> Date
+    private let calendar: Calendar
+    private var lastLoadDate: Date?
     private var loadTask: Task<Void, Never>?
+    private var timeChangeTask: Task<Void, Never>?
 
     init(
         languageProvider: @escaping () -> WeatherLanguage = { .current },
         fetchForecasts: @escaping (WeatherLanguage) async throws -> [ForecastConfiguration] = { language in
             try await WeatherService().getForecasts(for: language)
-        }
+        },
+        now: @escaping () -> Date = { .now },
+        calendar: Calendar = .current,
+        significantTimeChanges: AsyncStream<Void> = ForecastListViewModel.makeSignificantTimeChangeStream()
     ) {
         self.languageProvider = languageProvider
         self.fetchForecasts = fetchForecasts
+        self.now = now
+        self.calendar = calendar
+        self.timeChangeTask = Task { [weak self] in
+            for await _ in significantTimeChanges {
+                await self?.refresh()
+            }
+        }
+    }
+
+    isolated deinit {
+        self.timeChangeTask?.cancel()
     }
 
     func loadIfNeeded() async {
         guard case .loading = self.state else {
+            return
+        }
+
+        await self.refresh()
+    }
+
+    func refreshIfStale() async {
+        guard let lastLoadDate = self.lastLoadDate,
+              !self.calendar.isDate(lastLoadDate, inSameDayAs: self.now())
+        else {
             return
         }
 
@@ -52,6 +81,7 @@ final class ForecastListViewModel {
         let task = Task { @MainActor in
             do {
                 self.state = try await .loaded(self.fetchForecasts(language))
+                self.lastLoadDate = self.now()
             }
             catch {
                 self.state = .failed(error.localizedDescription)
@@ -60,5 +90,20 @@ final class ForecastListViewModel {
         }
         self.loadTask = task
         await task.value
+    }
+
+    static func makeSignificantTimeChangeStream() -> AsyncStream<Void> {
+        AsyncStream { continuation in
+            let task = Task {
+                for await _ in NotificationCenter.default.notifications(named: UIApplication.significantTimeChangeNotification) {
+                    continuation.yield()
+                }
+                continuation.finish()
+            }
+
+            continuation.onTermination = { _ in
+                task.cancel()
+            }
+        }
     }
 }

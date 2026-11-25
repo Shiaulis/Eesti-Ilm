@@ -8,6 +8,7 @@ import WeatherCore
 
 struct ForecastListView: View {
     @Environment(\.locale) private var locale
+    @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel: ForecastListViewModel
 
     private let preferredLocalizations: [String]
@@ -38,6 +39,13 @@ struct ForecastListView: View {
         }
         .task {
             await self.viewModel.loadIfNeeded()
+        }
+        .task(id: self.scenePhase) {
+            guard self.scenePhase == .active else {
+                return
+            }
+
+            await self.viewModel.refreshIfStale()
         }
     }
 

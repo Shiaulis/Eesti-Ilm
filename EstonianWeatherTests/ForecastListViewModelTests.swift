@@ -210,6 +210,165 @@ struct ForecastListViewModelTests {
         #expect(fetchCount == 1)
     }
 
+    @Test
+    @MainActor
+    func significantTimeChangeRefreshesForecasts() async {
+        let firstForecast = self.makeSampleForecast()
+        let secondForecast = self.makeSampleForecast()
+        var responses: [[ForecastConfiguration]] = [[firstForecast], [secondForecast]]
+        var fetchCount = 0
+        let (stream, continuation) = AsyncStream.makeStream(of: Void.self)
+        defer { continuation.finish() }
+
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                fetchCount += 1
+                return responses.removeFirst()
+            },
+            significantTimeChanges: stream
+        )
+
+        await viewModel.loadIfNeeded()
+        #expect(fetchCount == 1)
+
+        continuation.yield()
+        while case let .loaded(forecasts) = viewModel.state, forecasts.first?.id != secondForecast.id {
+            await Task.yield()
+        }
+
+        #expect(fetchCount == 2)
+        guard case let .loaded(forecasts) = viewModel.state else {
+            Issue.record("Expected state to be .loaded")
+            return
+        }
+
+        #expect(forecasts.first?.id == secondForecast.id)
+    }
+
+    @Test
+    @MainActor
+    func significantTimeChangeCoalescesWithInFlightLoad() async {
+        let gate = Gate()
+        var fetchCount = 0
+        let (stream, continuation) = AsyncStream.makeStream(of: Void.self)
+        defer { continuation.finish() }
+
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                fetchCount += 1
+                await gate.wait()
+                return [self.makeSampleForecast()]
+            },
+            significantTimeChanges: stream
+        )
+
+        let loadTask = Task { @MainActor in
+            await viewModel.loadIfNeeded()
+        }
+        while fetchCount == 0 {
+            await Task.yield()
+        }
+
+        continuation.yield()
+        await Task.yield()
+
+        gate.open()
+        await loadTask.value
+
+        #expect(fetchCount == 1)
+    }
+
+    @Test
+    @MainActor
+    func refreshIfStaleDoesNothingBeforeInitialLoad() async {
+        var fetchCount = 0
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                fetchCount += 1
+                return [self.makeSampleForecast()]
+            }
+        )
+
+        await viewModel.refreshIfStale()
+
+        #expect(fetchCount == 0)
+        guard case .loading = viewModel.state else {
+            Issue.record("Expected state to remain .loading")
+            return
+        }
+    }
+
+    @Test
+    @MainActor
+    func refreshIfStaleDoesNotRefetchOnSameCalendarDay() async {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+        var currentDate = Date(timeIntervalSince1970: 1_764_064_800) // 2025-11-25 10:00:00 UTC
+        var fetchCount = 0
+
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                fetchCount += 1
+                return [self.makeSampleForecast()]
+            },
+            now: { currentDate },
+            calendar: calendar
+        )
+
+        await viewModel.loadIfNeeded()
+        #expect(fetchCount == 1)
+
+        currentDate = Date(timeIntervalSince1970: 1_764_115_140) // 2025-11-25 23:59:00 UTC
+        await viewModel.refreshIfStale()
+
+        #expect(fetchCount == 1)
+    }
+
+    @Test
+    @MainActor
+    func refreshIfStaleRefreshesOnLaterCalendarDay() async {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+        var currentDate = Date(timeIntervalSince1970: 1_764_114_600) // 2025-11-25 23:50:00 UTC
+        let firstForecast = self.makeSampleForecast()
+        let secondForecast = self.makeSampleForecast()
+        var responses: [[ForecastConfiguration]] = [[firstForecast], [secondForecast]]
+        var fetchCount = 0
+
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                fetchCount += 1
+                return responses.removeFirst()
+            },
+            now: { currentDate },
+            calendar: calendar
+        )
+
+        await viewModel.loadIfNeeded()
+        #expect(fetchCount == 1)
+
+        currentDate = Date(timeIntervalSince1970: 1_764_115_500) // 2025-11-26 00:05:00 UTC
+        await viewModel.refreshIfStale()
+
+        #expect(fetchCount == 2)
+        guard case let .loaded(forecasts) = viewModel.state else {
+            Issue.record("Expected state to be .loaded")
+            return
+        }
+
+        #expect(forecasts.first?.id == secondForecast.id)
+
+        // Subsequent active check on the same day should not refetch again.
+        currentDate = Date(timeIntervalSince1970: 1_764_144_000) // 2025-11-26 08:00:00 UTC
+        await viewModel.refreshIfStale()
+        #expect(fetchCount == 2)
+    }
+
     // MARK: - Helpers
 
     private func makeSampleForecast() -> ForecastConfiguration {
