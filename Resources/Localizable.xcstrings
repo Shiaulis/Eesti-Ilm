@@ -52,17 +52,6 @@
         }
       }
     },
-    "Could not load tips: %@" : {
-      "comment" : "Error message shown when tip products fail to load. The argument is the underlying error message.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toetusvalikute laadimine ebaõnnestus: %@"
-          }
-        }
-      }
-    },
     "Current language" : {
       "comment" : "Row label in Settings showing the app's active language.",
       "localizations" : {
@@ -133,17 +122,6 @@
         }
       }
     },
-    "Loading tips…" : {
-      "comment" : "Loading indicator label in the Tip jar section.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Laadin toetusvalikuid…"
-          }
-        }
-      }
-    },
     "Night" : {
       "comment" : "Label for the nighttime forecast.",
       "localizations" : {
@@ -173,50 +151,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avab rakenduse seaded keele muutmiseks"
-          }
-        }
-      }
-    },
-    "Product is currently unavailable." : {
-      "comment" : "Error message when a selected tip product cannot be found.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toode pole praegu saadaval."
-          }
-        }
-      }
-    },
-    "Purchase could not be verified." : {
-      "comment" : "Error message when a StoreKit transaction fails verification.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ostu ei õnnestunud kinnitada."
-          }
-        }
-      }
-    },
-    "Purchase failed: %@" : {
-      "comment" : "Error message shown when a tip purchase fails. The argument is the underlying error message.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ost ebaõnnestus: %@"
-          }
-        }
-      }
-    },
-    "Purchase is pending approval." : {
-      "comment" : "Status message shown when a tip purchase is pending approval.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ost ootab kinnitamist."
           }
         }
       }
@@ -257,61 +191,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ilmateabe toob teieni\nKeskkonnaagentuur"
-          }
-        }
-      }
-    },
-    "Thank you for your support!" : {
-      "comment" : "Confirmation message shown after a successful tip purchase.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aitäh toetuse eest!"
-          }
-        }
-      }
-    },
-    "Tip jar" : {
-      "comment" : "Section header for the in-app tip jar in Settings.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toeta arendajat"
-          }
-        }
-      }
-    },
-    "Tips are currently unavailable." : {
-      "comment" : "Empty state message when no tip products are available.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toetusvalikud pole praegu saadaval."
-          }
-        }
-      }
-    },
-    "Try again" : {
-      "comment" : "Button title to retry loading tip products.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proovi uuesti"
-          }
-        }
-      }
-    },
-    "Unable to load tips right now." : {
-      "comment" : "Error message when tip products fail to load.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toetusvalikuid ei õnnestunud praegu laadida."
           }
         }
       }
