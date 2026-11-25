@@ -41,6 +41,42 @@
         }
       }
     },
+    "Clear" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Selge"
+          }
+        }
+      }
+    },
+    "Cloudy" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pilves"
+          }
+        }
+      }
+    },
+    "Cloudy with clear spells" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pilves selgimistega"
+          }
+        }
+      }
+    },
     "Contact me" : {
       "comment" : "Button label allowing users to contact the developer.",
       "localizations" : {
@@ -74,6 +110,18 @@
         }
       }
     },
+    "Drifting snow" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pinnatuisk"
+          }
+        }
+      }
+    },
     "Eesti Ilm" : {
       "comment" : "App name used as the widget configuration title.",
       "shouldTranslate" : false
@@ -85,6 +133,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Viga: %@"
+          }
+        }
+      }
+    },
+    "Few clouds" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vähene pilvisus"
+          }
+        }
+      }
+    },
+    "Fog" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Udu"
           }
         }
       }
@@ -111,6 +183,150 @@
         }
       }
     },
+    "Hail" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Rahe"
+          }
+        }
+      }
+    },
+    "Heavy rain" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tugev vihm"
+          }
+        }
+      }
+    },
+    "Heavy shower" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tugev hoogvihm"
+          }
+        }
+      }
+    },
+    "Heavy snow" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tugev lumesadu"
+          }
+        }
+      }
+    },
+    "Heavy snow shower" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tugev hooglumi"
+          }
+        }
+      }
+    },
+    "Heavy snowfall" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Tugev lumesadu"
+          }
+        }
+      }
+    },
+    "Light rain" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nõrk vihm"
+          }
+        }
+      }
+    },
+    "Light shower" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nõrk hoogvihm"
+          }
+        }
+      }
+    },
+    "Light sleet" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nõrk lörtsisadu"
+          }
+        }
+      }
+    },
+    "Light snow" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nõrk lumesadu"
+          }
+        }
+      }
+    },
+    "Light snow shower" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nõrk hooglumi"
+          }
+        }
+      }
+    },
+    "Light snowfall" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Nõrk lumesadu"
+          }
+        }
+      }
+    },
     "Loading" : {
       "comment" : "Text displayed while loading weather data.",
       "localizations" : {
@@ -118,6 +334,90 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Laadimine"
+          }
+        }
+      }
+    },
+    "Mist" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Uduvine"
+          }
+        }
+      }
+    },
+    "Moderate rain" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mõõdukas vihm"
+          }
+        }
+      }
+    },
+    "Moderate shower" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mõõdukas hoogvihm"
+          }
+        }
+      }
+    },
+    "Moderate sleet" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mõõdukas lörtsisadu"
+          }
+        }
+      }
+    },
+    "Moderate snow" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mõõdukas lumesadu"
+          }
+        }
+      }
+    },
+    "Moderate snow shower" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mõõdukas hooglumi"
+          }
+        }
+      }
+    },
+    "Moderate snowfall" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Mõõdukas lumesadu"
           }
         }
       }
@@ -155,6 +455,30 @@
         }
       }
     },
+    "Overcast" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lauspilves"
+          }
+        }
+      }
+    },
+    "Partly cloudy" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Osaliselt pilves"
+          }
+        }
+      }
+    },
     "Retry" : {
       "comment" : "Button label allowing users to retry loading forecasts after an error.",
       "localizations" : {
@@ -166,6 +490,18 @@
         }
       }
     },
+    "Risk of glaze" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Jäiteoht"
+          }
+        }
+      }
+    },
     "Settings" : {
       "comment" : "Navigation title for the Settings screen.",
       "localizations" : {
@@ -173,6 +509,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seaded"
+          }
+        }
+      }
+    },
+    "Snowstorm" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lumetuisk"
           }
         }
       }
@@ -191,6 +539,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ilmateabe toob teieni\nKeskkonnaagentuur"
+          }
+        }
+      }
+    },
+    "Sunny" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Päikesepaisteline"
+          }
+        }
+      }
+    },
+    "Thunder" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Äike"
+          }
+        }
+      }
+    },
+    "Thunderstorm" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Äikesevihm"
+          }
+        }
+      }
+    },
+    "Variable clouds" : {
+      "comment" : "Weather phenomenon name used for icon accessibility labels.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Vahelduv pilvisus"
           }
         }
       }

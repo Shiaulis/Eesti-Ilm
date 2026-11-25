@@ -57,4 +57,54 @@ struct WeatherPhenomenonIconTests {
         #expect(WeatherPhenomenonIcon.symbolName(for: phenomenon) == WeatherPhenomenonIcon.defaultSymbolName)
         #expect(WeatherPhenomenonIcon.defaultSymbolName == "cloud")
     }
+
+    @Test(arguments: [
+        ("Clear", "Clear"),
+        ("Sunny", "Sunny"),
+        ("Few clouds", "Few clouds"),
+        ("Variable clouds", "Variable clouds"),
+        ("Cloudy with clear spells", "Cloudy with clear spells"),
+        ("Partly cloudy", "Partly cloudy"),
+        ("Cloudy", "Cloudy"),
+        ("Overcast", "Overcast"),
+        ("Light snow shower", "Light snow shower"),
+        ("Moderate snow shower", "Moderate snow shower"),
+        ("Heavy snow shower", "Heavy snow shower"),
+        ("Light snow", "Light snow"),
+        ("Moderate snow", "Moderate snow"),
+        ("Heavy snow", "Heavy snow"),
+        ("Light snowfall", "Light snowfall"),
+        ("Moderate snowfall", "Moderate snowfall"),
+        ("Heavy snowfall", "Heavy snowfall"),
+        ("Snowstorm", "Snowstorm"),
+        ("Drifting snow", "Drifting snow"),
+        ("Light shower", "Light shower"),
+        ("Moderate shower", "Moderate shower"),
+        ("Heavy shower", "Heavy shower"),
+        ("Light rain", "Light rain"),
+        ("Moderate rain", "Moderate rain"),
+        ("Heavy rain", "Heavy rain"),
+        ("Light sleet", "Light sleet"),
+        ("Moderate sleet", "Moderate sleet"),
+        ("Risk of glaze", "Risk of glaze"),
+        ("Hail", "Hail"),
+        ("Mist", "Mist"),
+        ("Fog", "Fog"),
+        ("Thunder", "Thunder"),
+        ("Thunderstorm", "Thunderstorm"),
+    ])
+    func knownPhenomenaMapToExpectedLocalizationKeys(phenomenon: String, expectedKey: String) {
+        #expect(WeatherPhenomenonIcon.localizationKey(for: phenomenon) == expectedKey)
+    }
+
+    @Test
+    func localizationKeyMappingIsCaseInsensitiveAndTrimsWhitespace() {
+        #expect(WeatherPhenomenonIcon.localizationKey(for: "  few clouds \n") == "Few clouds")
+        #expect(WeatherPhenomenonIcon.localizationKey(for: "HEAVY RAIN") == "Heavy rain")
+    }
+
+    @Test(arguments: ["", "   \n", "Unknown phenomenon", "Volcanic ash"])
+    func unknownOrBlankPhenomenaReturnRawStringAsLocalizationKeyFallback(phenomenon: String) {
+        #expect(WeatherPhenomenonIcon.localizationKey(for: phenomenon) == phenomenon)
+    }
 }
