@@ -10,7 +10,7 @@ final class ForecastListViewController: UIViewController {
     private let viewModel: ForecastListViewModel
     private let disclaimerURL: URL?
     private var forecastsByID = [UUID: ForecastConfiguration]()
-    private var sceneActivationTask: Task<Void, Never>?
+    private var sceneActivationObserver: (any NSObjectProtocol)?
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.makeLayout())
     private lazy var dataSource = self.makeDataSource()
@@ -36,7 +36,9 @@ final class ForecastListViewController: UIViewController {
     }
 
     isolated deinit {
-        self.sceneActivationTask?.cancel()
+        if let sceneActivationObserver {
+            NotificationCenter.default.removeObserver(sceneActivationObserver)
+        }
     }
 
     // MARK: - Lifecycle
@@ -60,16 +62,15 @@ final class ForecastListViewController: UIViewController {
         self.view.addSubview(self.collectionView)
 
         // Replaces the SwiftUI `.task(id: scenePhase)`: refresh when the app becomes active on a later day.
-        self.sceneActivationTask = Task { [weak self] in
-            for await notification in NotificationCenter.default.notifications(named: UIScene.didActivateNotification) {
-                guard let self,
-                      let scene = notification.object as? UIWindowScene,
-                      scene === self.viewIfLoaded?.window?.windowScene
-                else {
-                    continue
-                }
-
-                await self.viewModel.refreshIfStale()
+        self.sceneActivationObserver = NotificationCenter.default.addObserver(
+            forName: UIScene.didActivateNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            // Only the scene (a main-actor type) leaves the notification, which is not `Sendable`.
+            let scene = notification.object as? UIWindowScene
+            MainActor.assumeIsolated {
+                self?.sceneDidActivate(scene)
             }
         }
     }
@@ -102,6 +103,16 @@ final class ForecastListViewController: UIViewController {
     }
 
     // MARK: - State
+
+    private func sceneDidActivate(_ scene: UIWindowScene?) {
+        guard let scene, scene === self.viewIfLoaded?.window?.windowScene else {
+            return
+        }
+
+        Task {
+            await self.viewModel.refreshIfStale()
+        }
+    }
 
     private func refresh() async {
         await self.viewModel.refresh()

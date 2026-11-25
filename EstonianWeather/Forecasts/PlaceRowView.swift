@@ -36,9 +36,10 @@ final class PlaceRowView: UIView {
         self.iconView.isAccessibilityElement = true
         self.iconView.accessibilityTraits = .image
         self.iconView.accessibilityLabel = ForecastFormatter.phenomenonText(for: place.phenomenon)
-        // Only the name wraps. Hugging stays just below required so the icon column cap can still win.
+        // Only the name wraps. The priorities stay just below required so the icon column cap can still win;
+        // `updateIconColumn()` makes the compression resistance required where the cap is lifted.
         self.iconView.setContentHuggingPriority(UILayoutPriority.required - 1, for: .horizontal)
-        self.iconView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        self.iconView.setContentCompressionResistancePriority(UILayoutPriority.required - 1, for: .horizontal)
 
         self.temperatureLabel.font = .scaled(textStyle: .subheadline, monospacedDigits: true)
         self.temperatureLabel.adjustsFontForContentSizeCategory = true
@@ -85,6 +86,11 @@ final class PlaceRowView: UIView {
         let width = UIFontMetrics(forTextStyle: .body).scaledValue(for: Self.iconColumnWidth, compatibleWith: self.traitCollection)
         self.iconMinimumWidth.constant = width
         self.iconMaximumWidth.constant = width
-        self.iconMaximumWidth.isActive = !self.traitCollection.preferredContentSizeCategory.isAccessibilityCategory
+        let isAccessibilityCategory = self.traitCollection.preferredContentSizeCategory.isAccessibilityCategory
+        self.iconMaximumWidth.isActive = !isAccessibilityCategory
+        self.iconView.setContentCompressionResistancePriority(
+            isAccessibilityCategory ? .required : UILayoutPriority.required - 1,
+            for: .horizontal
+        )
     }
 }
