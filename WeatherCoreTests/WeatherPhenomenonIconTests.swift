@@ -1,10 +1,10 @@
 //
 //  WeatherPhenomenonIconTests.swift
-//  EstonianWeatherTests
+//  WeatherCoreTests
 //
 
-@testable import EstonianWeather
 import Testing
+@testable import WeatherCore
 
 struct WeatherPhenomenonIconTests {
     @Test(arguments: [
@@ -29,6 +29,8 @@ struct WeatherPhenomenonIconTests {
         ("Light sleet", "cloud.sleet"),
         ("Moderate sleet", "cloud.sleet"),
         ("Light snow", "cloud.snow"),
+        ("Moderate snow", "cloud.snow"),
+        ("Heavy snow", "cloud.snow"),
         ("Light snowfall", "cloud.snow"),
         ("Moderate snowfall", "cloud.snow"),
         ("Heavy snowfall", "cloud.snow"),
@@ -51,7 +53,8 @@ struct WeatherPhenomenonIconTests {
     }
 
     @Test(arguments: ["", "   \n", "Unknown phenomenon", "Volcanic ash"])
-    func unknownOrBlankPhenomenaReturnNil(phenomenon: String) {
-        #expect(WeatherPhenomenonIcon.symbolName(for: phenomenon) == nil)
+    func unknownOrBlankPhenomenaReturnDefaultSymbol(phenomenon: String) {
+        #expect(WeatherPhenomenonIcon.symbolName(for: phenomenon) == WeatherPhenomenonIcon.defaultSymbolName)
+        #expect(WeatherPhenomenonIcon.defaultSymbolName == "cloud")
     }
 }

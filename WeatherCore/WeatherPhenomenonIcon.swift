@@ -1,21 +1,23 @@
 //
 //  WeatherPhenomenonIcon.swift
-//  EstonianWeather
+//  WeatherCore
 //
 
 import Foundation
 
-nonisolated enum WeatherPhenomenonIcon {
-    static func symbolName(for phenomenon: String) -> String? {
+/// Maps the phenomenon text of the ilmateenistus.ee forecast to an SF Symbol name.
+///
+/// The app and the widget share this mapping so the same weather shows the same symbol everywhere.
+public enum WeatherPhenomenonIcon {
+    /// The symbol used when the phenomenon is blank or not recognized.
+    public static let defaultSymbolName = "cloud"
+
+    /// Returns the SF Symbol name for a phenomenon. Matching ignores case and surrounding whitespace.
+    public static func symbolName(for phenomenon: String) -> String {
         let normalized = phenomenon
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
-
-        guard !normalized.isEmpty else {
-            return nil
-        }
-
-        return self.symbolMap[normalized]
+        return self.symbolMap[normalized] ?? self.defaultSymbolName
     }
 
     private static let symbolMap: [String: String] = [
@@ -30,21 +32,23 @@ nonisolated enum WeatherPhenomenonIcon {
         "light snow shower": "cloud.snow",
         "moderate snow shower": "cloud.snow",
         "heavy snow shower": "cloud.snow",
+        "light snow": "cloud.snow",
+        "moderate snow": "cloud.snow",
+        "heavy snow": "cloud.snow",
+        "light snowfall": "cloud.snow",
+        "moderate snowfall": "cloud.snow",
+        "heavy snowfall": "cloud.snow",
+        "snowstorm": "cloud.snow",
+        "drifting snow": "cloud.snow",
         "light shower": "cloud.drizzle",
         "moderate shower": "cloud.rain",
         "heavy shower": "cloud.heavyrain",
         "light rain": "cloud.drizzle",
         "moderate rain": "cloud.rain",
         "heavy rain": "cloud.heavyrain",
-        "risk of glaze": "thermometer.snowflake",
         "light sleet": "cloud.sleet",
         "moderate sleet": "cloud.sleet",
-        "light snow": "cloud.snow",
-        "light snowfall": "cloud.snow",
-        "moderate snowfall": "cloud.snow",
-        "heavy snowfall": "cloud.snow",
-        "snowstorm": "cloud.snow",
-        "drifting snow": "cloud.snow",
+        "risk of glaze": "thermometer.snowflake",
         "hail": "cloud.hail",
         "mist": "cloud.fog",
         "fog": "cloud.fog",

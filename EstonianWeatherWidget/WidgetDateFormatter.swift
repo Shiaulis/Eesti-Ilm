@@ -1,47 +1,11 @@
 //
-//  WeatherPhenomenonIcon.swift
+//  WidgetDateFormatter.swift
 //  EstonianWeatherWidget
 //
 //  Created by Andrius Shiaulis on 25.11.2026.
 //
 
 import Foundation
-
-enum WeatherPhenomenonIcon {
-    static func systemImageName(for phenomenon: String) -> String {
-        switch phenomenon {
-        case "Clear", "Sunny":
-            "sun.max"
-        case "Few clouds", "Variable clouds", "Cloudy with clear spells", "Partly cloudy":
-            "cloud.sun"
-        case "Cloudy", "Overcast":
-            "smoke"
-        case "Light snow shower", "Moderate snow shower", "Heavy snow shower",
-             "Light snow", "Moderate snow", "Heavy snow",
-             "Light snowfall", "Moderate snowfall", "Heavy snowfall",
-             "Snowstorm", "Drifting snow":
-            "cloud.snow"
-        case "Light shower", "Light rain":
-            "cloud.drizzle"
-        case "Moderate shower", "Moderate rain":
-            "cloud.rain"
-        case "Heavy shower", "Heavy rain":
-            "cloud.heavyrain"
-        case "Risk of glaze":
-            "thermometer.snowflake"
-        case "Light sleet", "Moderate sleet":
-            "cloud.sleet"
-        case "Hail":
-            "cloud.hail"
-        case "Mist", "Fog":
-            "cloud.fog"
-        case "Thunder", "Thunderstorm":
-            "cloud.bolt"
-        default:
-            "cloud"
-        }
-    }
-}
 
 enum WidgetDateFormatter {
     static func smallDateText(for date: Date, calendar: Calendar = .current, locale: Locale = .current) -> String {
