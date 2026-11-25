@@ -1,5 +1,5 @@
 <p align="center">
-<img src="ReleaseRelatedInfo/Images/playstore.png" alt="Eesti Ilm app icon" height="128" width="128">
+<img src="ReleaseRelatedInfo/Images/app_icon.png" alt="Eesti Ilm app icon" height="128" width="128">
 </p>
 <h1 align="center">Eesti Ilm – Estonian weather forecast</h1>
 <p align="center">
