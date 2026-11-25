@@ -39,7 +39,7 @@ struct ForecastTimelineProvider: TimelineProvider {
                 completion(ForecastTimelineEntry(date: .now, forecasts: forecasts))
             }
             catch {
-                completion(.preview)
+                completion(.empty)
             }
         }
     }

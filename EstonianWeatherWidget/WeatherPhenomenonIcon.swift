@@ -17,6 +17,7 @@ enum WeatherPhenomenonIcon {
         case "Cloudy", "Overcast":
             "smoke"
         case "Light snow shower", "Moderate snow shower", "Heavy snow shower",
+             "Light snow", "Moderate snow", "Heavy snow",
              "Light snowfall", "Moderate snowfall", "Heavy snowfall",
              "Snowstorm", "Drifting snow":
             "cloud.snow"
@@ -35,7 +36,7 @@ enum WeatherPhenomenonIcon {
         case "Mist", "Fog":
             "cloud.fog"
         case "Thunder", "Thunderstorm":
-            "wind"
+            "cloud.bolt"
         default:
             "cloud"
         }
@@ -64,6 +65,7 @@ enum WidgetDateFormatter {
         }
 
         let formatStyle = Date.RelativeFormatStyle(
+            allowedFields: [.day],
             presentation: .named,
             unitsStyle: .spellOut,
             locale: locale,
