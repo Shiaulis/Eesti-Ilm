@@ -111,4 +111,12 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 - Coding agents commit, push, open PRs, and comment on GitHub as the `telbin-bot` machine account (never approve or directly merge PRs).
 - Open agent PRs against `master` as a draft (`gh pr create --draft`) while iterating on CI or review feedback; mark ready (`gh pr ready`) once checks pass and comments are resolved so `@Shiaulis` gets a single review request via `CODEOWNERS`.
 - Enabling squash auto-merge (`gh pr merge --auto --squash`) is allowed only before `@Shiaulis` has approved (when `Protect master` requires `@Shiaulis`'s approval, so GitHub cannot merge immediately); never run `gh pr merge` on an already-approved PR.
+- Every PR, human or agent, follows `.github/pull_request_template.md` exactly: same sections, same order, no other sections. Agents fill them like this:
+  - Ticket: the Linear link.
+  - Motivation: why the change is needed, the problem or bug, in 1-2 sentences.
+  - Explanation: why it was done this way, plus trade-offs, in 1-3 sentences.
+  - AI: the agent, model and workflow, in 1 sentence.
+  - Testing: only what needs testing on a device, no commands or CI results; if nothing, write "Testing on device not needed."
+- Dependabot PRs are exempt from the template and keep their own description.
+- PR descriptions do not end with the "Generated with Claude Code" line.
 - Never push to `master`. Never create or push tags.
