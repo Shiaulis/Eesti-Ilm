@@ -122,10 +122,6 @@
         }
       }
     },
-    "Eesti Ilm" : {
-      "comment" : "App name used as the widget configuration title.",
-      "shouldTranslate" : false
-    },
     "Error: %@" : {
       "comment" : "Placeholder text shown when forecasts fail to load. The argument is the error message.",
       "localizations" : {
