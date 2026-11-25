@@ -49,7 +49,7 @@ private struct SmallForecastView: View {
 
             Spacer(minLength: 4)
 
-            Image(systemName: WeatherPhenomenonIcon.systemImageName(for: self.forecast.day.phenomenon))
+            Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.forecast.day.phenomenon))
                 .font(.system(size: 48))
                 .symbolRenderingMode(.hierarchical)
                 .minimumScaleFactor(0.5)
@@ -95,7 +95,7 @@ private struct ForecastDayColumnView: View {
 
             Spacer(minLength: 4)
 
-            Image(systemName: WeatherPhenomenonIcon.systemImageName(for: self.forecast.day.phenomenon))
+            Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.forecast.day.phenomenon))
                 .font(.system(size: 34))
                 .symbolRenderingMode(.hierarchical)
                 .minimumScaleFactor(0.5)

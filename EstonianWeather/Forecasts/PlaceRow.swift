@@ -16,12 +16,10 @@ struct PlaceRow: View {
 
             Spacer()
 
-            if let symbolName = WeatherPhenomenonIcon.symbolName(for: self.place.phenomenon) {
-                Image(systemName: symbolName)
-                    .symbolRenderingMode(.multicolor)
-                    .frame(width: 22)
-                    .accessibilityLabel(self.place.phenomenon)
-            }
+            Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.place.phenomenon))
+                .symbolRenderingMode(.multicolor)
+                .frame(width: 22)
+                .accessibilityLabel(self.place.phenomenon)
 
             if let temperatureText = ForecastFormatter.placeTemperatureText(for: self.place.temperature) {
                 Text(temperatureText)

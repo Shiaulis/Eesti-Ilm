@@ -34,12 +34,10 @@ struct DayPartView: View {
                     .font(.title2.weight(.medium))
                     .monospacedDigit()
 
-                if let symbolName = WeatherPhenomenonIcon.symbolName(for: self.dayPart.phenomenon) {
-                    Image(systemName: symbolName)
-                        .symbolRenderingMode(.multicolor)
-                        .font(.title)
-                        .accessibilityLabel(self.dayPart.phenomenon)
-                }
+                Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.dayPart.phenomenon))
+                    .symbolRenderingMode(.multicolor)
+                    .font(.title)
+                    .accessibilityLabel(self.dayPart.phenomenon)
             }
 
             Text(self.dayPart.description)
