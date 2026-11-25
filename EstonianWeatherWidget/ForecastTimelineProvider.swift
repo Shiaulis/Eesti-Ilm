@@ -5,7 +5,6 @@
 //  Created by Andrius Shiaulis on 26.07.2025.
 //
 
-
 import WidgetKit
 
 struct ForecastTimelineProvider: AppIntentTimelineProvider {
@@ -16,9 +15,9 @@ struct ForecastTimelineProvider: AppIntentTimelineProvider {
     func snapshot(for configuration: ForecastIntent, in context: Context) async -> ForecastTimelineEntry {
         ForecastTimelineEntry(date: Date(), configuration: configuration)
     }
-    
+
     func timeline(for configuration: ForecastIntent, in context: Context) async -> Timeline<ForecastTimelineEntry> {
-        var entries: [ForecastTimelineEntry] = []
+        var entries = [ForecastTimelineEntry]()
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()

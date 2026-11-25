@@ -26,7 +26,7 @@
 --nospaceoperators
 --semicolons never
 --stripunusedargs closure-only
---swiftversion 6
+--swiftversion 6.0
 --trimwhitespace always
 --xcodeindentation enabled
 --propertytypes inferred

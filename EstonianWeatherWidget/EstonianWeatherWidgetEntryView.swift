@@ -5,11 +5,10 @@
 //  Created by Andrius Shiaulis on 26.07.2025.
 //
 
-
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
-struct EstonianWeatherWidgetEntryView : View {
+struct EstonianWeatherWidgetEntryView: View {
     let entry: ForecastTimelineProvider.Entry
 
     var body: some View {
