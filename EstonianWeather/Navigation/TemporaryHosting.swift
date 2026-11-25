@@ -20,14 +20,14 @@ enum TemporaryHosting {
     }
 }
 
-/// TEMPORARY (EES-89): pushes the SwiftUI About me screen onto the UIKit navigation stack,
-/// because `NavigationLink` needs a SwiftUI navigation container.
+/// TEMPORARY (EES-89): pushes the About me screen onto the UIKit navigation stack
+/// until Settings is rewritten in UIKit.
 private final class SettingsHostingController: UIHostingController<SettingsView> {
     init() {
         super.init(rootView: SettingsView())
         self.rootView = SettingsView(showAboutMe: { [weak self] in
             self?.navigationController?.pushViewController(
-                UIHostingController(rootView: AboutMeView()),
+                AboutMeViewController(),
                 animated: true
             )
         })
