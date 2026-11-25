@@ -99,6 +99,7 @@ jobs:
             -testPlan EstonianWeather \
             -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
             -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
+            -enableCodeCoverage NO \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Upload test results on failure
