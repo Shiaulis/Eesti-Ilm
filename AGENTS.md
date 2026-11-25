@@ -118,5 +118,6 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   - AI: the agent, model and workflow, in 1 sentence.
   - Testing: only what needs testing on a device, no commands or CI results; if nothing, write "Testing on device not needed."
 - Dependabot PRs are exempt from the template and keep their own description.
+- The PR description contains only the template: CodeRabbit's summary goes into its walkthrough comment (`high_level_summary_in_walkthrough` in `.coderabbit.yaml`), not the description.
 - PR descriptions do not end with the "Generated with Claude Code" line.
 - Never push to `master`. Never create or push tags.
