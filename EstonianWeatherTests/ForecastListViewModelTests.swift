@@ -124,23 +124,41 @@ struct ForecastListViewModelTests {
 
     @Test
     @MainActor
-    func cancelledLoadKeepsLoadingStateAndAllowsRetry() async {
+    func cancelledCallerDoesNotLeaveOverlappingLoadStuck() async {
+        let gate = Gate()
+        var fetchCount = 0
+
         let viewModel = ForecastListViewModel(
             languageProvider: { .english },
             fetchForecasts: { _ in
-                try await Task.sleep(for: .seconds(60))
-                return []
+                fetchCount += 1
+                await gate.wait()
+                try Task.checkCancellation()
+                return [self.makeSampleForecast()]
             }
         )
 
-        let task = Task { @MainActor in
+        let first = Task { @MainActor in
             await viewModel.loadIfNeeded()
         }
-        task.cancel()
-        await task.value
+        while fetchCount == 0 {
+            await Task.yield()
+        }
 
-        guard case .loading = viewModel.state else {
-            Issue.record("Expected cancelled load to keep state .loading")
+        // The view disappears (cancelling its task) and reappears while the fetch is still running.
+        first.cancel()
+        let second = Task { @MainActor in
+            await viewModel.loadIfNeeded()
+        }
+        await Task.yield()
+
+        gate.open()
+        await first.value
+        await second.value
+
+        #expect(fetchCount == 1)
+        guard case .loaded = viewModel.state else {
+            Issue.record("Expected state to be .loaded after overlapping cancelled load")
             return
         }
     }
@@ -222,5 +240,25 @@ struct ForecastListViewModelTests {
                 ]
             )
         )
+    }
+}
+
+@MainActor
+private final class Gate {
+    private var continuation: CheckedContinuation<Void, Never>?
+    private var isOpen = false
+
+    func wait() async {
+        guard !self.isOpen else {
+            return
+        }
+
+        await withCheckedContinuation { self.continuation = $0 }
+    }
+
+    func open() {
+        self.isOpen = true
+        self.continuation?.resume()
+        self.continuation = nil
     }
 }

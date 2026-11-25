@@ -20,7 +20,7 @@ final class ForecastListViewModel {
 
     private let languageProvider: () -> WeatherLanguage
     private let fetchForecasts: (WeatherLanguage) async throws -> [ForecastConfiguration]
-    private var isFetching = false
+    private var loadTask: Task<Void, Never>?
 
     init(
         languageProvider: @escaping () -> WeatherLanguage = { .current },
@@ -41,25 +41,24 @@ final class ForecastListViewModel {
     }
 
     func refresh() async {
-        guard !self.isFetching else {
+        // Overlapping callers join the load in flight. The fetch runs in a task owned by the model,
+        // so cancelling a caller (e.g. the view's `.task`) cannot abort it or leave the state stale.
+        if let loadTask = self.loadTask {
+            await loadTask.value
             return
         }
 
-        self.isFetching = true
-        defer { self.isFetching = false }
-
-        do {
-            let language = self.languageProvider()
-            let forecasts = try await self.fetchForecasts(language)
-            self.state = .loaded(forecasts)
-        }
-        catch {
-            // A cancelled load (e.g. the view disappeared) is not a failure: keep the previous state.
-            guard !Task.isCancelled else {
-                return
+        let language = self.languageProvider()
+        let task = Task { @MainActor in
+            do {
+                self.state = try await .loaded(self.fetchForecasts(language))
             }
-
-            self.state = .failed(error.localizedDescription)
+            catch {
+                self.state = .failed(error.localizedDescription)
+            }
+            self.loadTask = nil
         }
+        self.loadTask = task
+        await task.value
     }
 }
