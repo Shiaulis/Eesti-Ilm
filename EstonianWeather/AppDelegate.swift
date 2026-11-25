@@ -11,7 +11,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     let ratingService = UserRatingService()
 
     /// Scene delegates adopted for sessions restored from the SwiftUI build. `UIScene.delegate` is weak.
-    private var adoptedSceneDelegates = [SceneDelegate]()
+    private var adoptedSceneDelegates = [ObjectIdentifier: SceneDelegate]()
 
     func application(
         _ application: UIApplication,
