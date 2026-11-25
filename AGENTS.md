@@ -27,7 +27,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 
 ## Build, test, format
 
-Run from the repo root. These are exactly what CI runs.
+Run from the repo root. CI runs the lint and test commands; the build command is a quicker local check.
 
 ```sh
 swiftformat --lint .
@@ -41,14 +41,16 @@ xcodebuild build -project EstonianWeather.xcodeproj -scheme EstonianWeather -des
 xcodebuild test -project EstonianWeather.xcodeproj -scheme EstonianWeather -testPlan EstonianWeather -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest' CODE_SIGNING_ALLOWED=NO
 ```
 
+CI runs the same test command but picks the newest iPhone simulator available on the runner instead of `iPhone 18 Pro`. Locally, use any installed iPhone simulator.
+
 To fix formatting, run `swiftformat .` and commit the result separately from other changes.
 
 ## CI
 
-`.github/workflows/ci.yml` runs on every pull request and on pushes to `master`, on a GitHub-hosted macOS runner with Xcode 27.x selected explicitly. It has two jobs:
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `master`. It has two jobs:
 
-- `lint`: `swiftformat --lint .`
-- `build-and-test`: the `xcodebuild build` and `xcodebuild test` commands above
+- `lint` (`macos-latest`): installs SwiftFormat with Homebrew and runs `swiftformat --lint .`
+- `build-and-test` (GitHub's `xcode-27` image): selects Xcode 27.2 with `xcode-select`, picks the newest available iPhone simulator, and runs the `xcodebuild test` command above (which also builds the app and widget)
 
 ## App
 

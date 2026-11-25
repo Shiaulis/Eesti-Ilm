@@ -48,7 +48,7 @@ To run on a physical device, select your own development team under *Signing & C
 
 ## Tests and formatting
 
-These are the same commands CI runs.
+CI runs the format check and the tests. The build command is a quicker local check.
 
 Format check:
 
@@ -64,7 +64,7 @@ Build:
 xcodebuild build -project EstonianWeather.xcodeproj -scheme EstonianWeather -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO
 ```
 
-Test (needs an iPhone 18 Pro simulator):
+Test (use any installed iPhone simulator; CI picks the newest one available):
 
 ```sh
 xcodebuild test -project EstonianWeather.xcodeproj -scheme EstonianWeather -testPlan EstonianWeather -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest' CODE_SIGNING_ALLOWED=NO
