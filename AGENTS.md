@@ -25,7 +25,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | `WeatherCoreTests/` | Unit test target `WeatherCoreTests` (Swift Testing) |
 | `Resources/` | `Localizable.xcstrings`, test plan `EstonianWeather.xctestplan`, `Settings.bundle` |
 | `ReleaseRelatedInfo/` | README images, icon sources, App Store screenshots |
-| `fastlane/` | Fastfile and App Store metadata (`fastlane/metadata/`) |
+| `fastlane/` | Fastfile, App Store metadata (`fastlane/metadata/`) and screenshots (`fastlane/screenshots/`) |
 | `.github/workflows/ci.yml` | CI |
 | `.github/dependabot.yml` | Dependabot version updates |
 | `.swiftformat` | Formatting rules |
@@ -102,9 +102,12 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   ```sh
   bundle install
   bundle exec fastlane metadata
+  bundle exec fastlane screenshots
   ```
 
   `fastlane metadata` uploads `fastlane/metadata/` to App Store Connect. It authenticates with `APP_STORE_CONNECT_API_KEY_KEY_ID`, `APP_STORE_CONNECT_API_KEY_ISSUER_ID` and `APP_STORE_CONNECT_API_KEY_KEY` from the environment.
+
+  `fastlane screenshots` uploads `fastlane/screenshots/en-US/` (iPhone 6.9" 1320x2868 and iPad 13" 2064x2752, JPEG, plain screenshots without captions) and replaces the existing ones. Never run either lane unless the owner asks.
 
 ## Git workflow
 
