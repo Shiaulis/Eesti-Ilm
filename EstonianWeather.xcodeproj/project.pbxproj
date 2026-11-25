@@ -243,7 +243,7 @@
 			mainGroup = A5384D282E173FC5006BE100;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A5A928052E1DB1D900977ACC /* XCRemoteSwiftPackageReference "weatherCore" */,
+				A5A928052E1DB1D900977ACC /* XCLocalSwiftPackageReference "Packages/WeatherCore" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A5384D322E173FC5006BE100 /* Products */;
@@ -653,21 +653,16 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A5A928052E1DB1D900977ACC /* XCRemoteSwiftPackageReference "weatherCore" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Shiaulis/weatherCore";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		A5A928052E1DB1D900977ACC /* XCLocalSwiftPackageReference "Packages/WeatherCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/WeatherCore;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		A5A928062E1DB1D900977ACC /* WeatherCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A5A928052E1DB1D900977ACC /* XCRemoteSwiftPackageReference "weatherCore" */;
 			productName = WeatherCore;
 		};
 /* End XCSwiftPackageProductDependency section */

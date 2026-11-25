@@ -1,15 +1,6 @@
 {
-  "originHash" : "71f3bc341ece0c8e62e7be98c10afd9e95fc4c37ae695239b3470e297ad112f9",
+  "originHash" : "28680d7f30a5bdbc473a981761acc0c804f60647822ec3252a21c6d705f3fa29",
   "pins" : [
-    {
-      "identity" : "networking",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Shiaulis/networking.git",
-      "state" : {
-        "revision" : "87f98ef9737d7e2c4bf6ca99d048e7d3855c92ea",
-        "version" : "0.3.0"
-      }
-    },
     {
       "identity" : "swift-http-types",
       "kind" : "remoteSourceControl",
@@ -26,15 +17,6 @@
       "state" : {
         "revision" : "a853604c9e9a83ad9954c7e3d2a565273982471f",
         "version" : "7.0.2"
-      }
-    },
-    {
-      "identity" : "weathercore",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Shiaulis/weatherCore",
-      "state" : {
-        "revision" : "147f6f576e665e4a44e593c142990cc782befe08",
-        "version" : "0.2.0"
       }
     }
   ],

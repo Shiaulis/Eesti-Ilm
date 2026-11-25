@@ -1,15 +1,6 @@
 {
-  "originHash" : "838934bd36748df9d7844de39f70121bc5da1ade7ed7b9e5563d4656ae69b4a4",
+  "originHash" : "3a4ca08cfefc5add033af3e27ad318049b3ca4d74321992090861a683a472c78",
   "pins" : [
-    {
-      "identity" : "networking",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Shiaulis/networking.git",
-      "state" : {
-        "revision" : "87f98ef9737d7e2c4bf6ca99d048e7d3855c92ea",
-        "version" : "0.3.0"
-      }
-    },
     {
       "identity" : "swift-http-types",
       "kind" : "remoteSourceControl",
