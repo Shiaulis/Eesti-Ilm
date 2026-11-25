@@ -16,7 +16,8 @@ Please provide as much detail as possible, including:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.x     | :white_check_mark: |
+| 3.x     | :white_check_mark: |
+| < 3.0   | :x:                |
 
 Users are strongly encouraged to keep their application updated to the latest available version to ensure they receive all security enhancements and fixes. Older versions may not receive security patches.
 
@@ -37,4 +38,4 @@ While the app handles no personal data, we adhere to general secure development 
 
 We may update this Security Policy from time to time. We will post any changes on this page.
 
-**Last updated: July 4, 2025**
+**Last updated: November 25, 2026**
