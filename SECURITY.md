@@ -2,9 +2,11 @@
 
 ## Reporting a Vulnerability
 
-We take security seriously and appreciate responsible disclosure of vulnerabilities. If you discover a security issue with Eesti Ilm, please report it to us as soon as possible by sending an email to:
+We take security seriously and appreciate responsible disclosure of vulnerabilities. If you discover a security issue with Eesti Ilm, please report it privately using GitHub Private Vulnerability Reporting:
 
-**shiaulis@gmail.com**
+**https://github.com/Shiaulis/Eesti-Ilm/security/advisories/new**
+
+You can also find it under the **Security** tab of the repository. Please do not open a public issue for a vulnerability.
 
 Please provide as much detail as possible, including:
 * A clear description of the vulnerability.
@@ -14,12 +16,7 @@ Please provide as much detail as possible, including:
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 3.x     | :white_check_mark: |
-| < 3.0   | :x:                |
-
-Users are strongly encouraged to keep their application updated to the latest available version to ensure they receive all security enhancements and fixes. Older versions may not receive security patches.
+Only the latest version of Eesti Ilm available on the App Store receives security fixes. Users are strongly encouraged to keep the app updated.
 
 ## Data Security and Personal Information
 
