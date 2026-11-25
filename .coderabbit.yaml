@@ -22,7 +22,11 @@ reviews:
         SwiftFormat with the repo's .swiftformat is the only style authority: do not comment on formatting or naming style.
         Focus on correctness, concurrency safety, error handling and API design. New tests use Swift Testing.
     - path: "**/*.xcodeproj/**"
-      instructions: "Check deployment targets stay at iOS 27.0 and signing stays automatic. Do not suggest Xcode UI-only changes."
+      instructions: >-
+        The project file is project.xcproj in Xcode's JSON project format (Xcode 27+), not project.pbxproj.
+        It is JSON5-like (comments and trailing commas are valid), so do not flag them and do not suggest strict-JSON tooling such as jq.
+        Target and product "id" values are referenced by the shared schemes and the test plan, so flag changes to them.
+        Check deployment targets stay at iOS 27.0 and signing stays automatic. Do not suggest Xcode UI-only changes.
     - path: ".github/workflows/**"
       instructions: "CI runs on the GitHub-hosted xcode-27 image with Xcode 27.2 selected explicitly. Commands must match AGENTS.md."
     - path: "fastlane/metadata/**"
