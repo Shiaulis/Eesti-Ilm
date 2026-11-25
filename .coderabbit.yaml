@@ -27,7 +27,7 @@ reviews:
       instructions: "CI runs on the GitHub-hosted xcode-27 image with Xcode 27.2 selected explicitly. Commands must match AGENTS.md."
     - path: "fastlane/metadata/**"
       instructions: >-
-        App Store Connect metadata, locales en-US and et only.
+        App Store Connect metadata, locale en-US only (App Store Connect has no Estonian).
         Limits: name and subtitle 30 characters, keywords 100, promotional text 170, description 4000.
     - path: "**/*.md"
       instructions: "Docs must match the actual commands, file paths and versions in the repo."
