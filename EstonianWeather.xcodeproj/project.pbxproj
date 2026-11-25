@@ -19,6 +19,13 @@
 			remoteGlobalIDString = A5BACEDA2E241510009CBBD3;
 			remoteInfo = EstonianWeatherWidgetExtension;
 		};
+		A5E1A0062F0A100000ABC001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5384D292E173FC5006BE100 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5384D302E173FC5006BE100;
+			remoteInfo = EstonianWeather;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +47,7 @@
 		A5BACEDB2E241510009CBBD3 /* EstonianWeatherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EstonianWeatherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5BACEDD2E241510009CBBD3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A5BACEDF2E241510009CBBD3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A5E1A0012F0A100000ABC001 /* EstonianWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EstonianWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -66,6 +74,11 @@
 			path = EstonianWeatherWidget;
 			sourceTree = "<group>";
 		};
+		A5E1A0022F0A100000ABC001 /* EstonianWeatherTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EstonianWeatherTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +97,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5E1A0042F0A100000ABC001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +112,7 @@
 			children = (
 				A5384D332E173FC5006BE100 /* EstonianWeather */,
 				A5BACEE12E241510009CBBD3 /* EstonianWeatherWidget */,
+				A5E1A0022F0A100000ABC001 /* EstonianWeatherTests */,
 				A5BACEDC2E241510009CBBD3 /* Frameworks */,
 				A5384D322E173FC5006BE100 /* Products */,
 			);
@@ -102,6 +123,7 @@
 			children = (
 				A5384D312E173FC5006BE100 /* EstonianWeather.app */,
 				A5BACEDB2E241510009CBBD3 /* EstonianWeatherWidgetExtension.appex */,
+				A5E1A0012F0A100000ABC001 /* EstonianWeatherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +187,29 @@
 			productReference = A5BACEDB2E241510009CBBD3 /* EstonianWeatherWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		A5E1A0082F0A100000ABC001 /* EstonianWeatherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5E1A0092F0A100000ABC001 /* Build configuration list for PBXNativeTarget "EstonianWeatherTests" */;
+			buildPhases = (
+				A5E1A0032F0A100000ABC001 /* Sources */,
+				A5E1A0042F0A100000ABC001 /* Frameworks */,
+				A5E1A0052F0A100000ABC001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5E1A0072F0A100000ABC001 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A5E1A0022F0A100000ABC001 /* EstonianWeatherTests */,
+			);
+			name = EstonianWeatherTests;
+			packageProductDependencies = (
+			);
+			productName = EstonianWeatherTests;
+			productReference = A5E1A0012F0A100000ABC001 /* EstonianWeatherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -180,6 +225,10 @@
 					};
 					A5BACEDA2E241510009CBBD3 = {
 						CreatedOnToolsVersion = 26.0;
+					};
+					A5E1A0082F0A100000ABC001 = {
+						CreatedOnToolsVersion = 27.2;
+						TestTargetID = A5384D302E173FC5006BE100;
 					};
 				};
 			};
@@ -203,6 +252,7 @@
 			targets = (
 				A5384D302E173FC5006BE100 /* EstonianWeather */,
 				A5BACEDA2E241510009CBBD3 /* EstonianWeatherWidgetExtension */,
+				A5E1A0082F0A100000ABC001 /* EstonianWeatherTests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,6 +266,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A5BACED92E241510009CBBD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5E1A0052F0A100000ABC001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,6 +296,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5E1A0032F0A100000ABC001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -246,6 +310,11 @@
 			isa = PBXTargetDependency;
 			target = A5BACEDA2E241510009CBBD3 /* EstonianWeatherWidgetExtension */;
 			targetProxy = A5BACEEF2E241511009CBBD3 /* PBXContainerItemProxy */;
+		};
+		A5E1A0072F0A100000ABC001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5384D302E173FC5006BE100 /* EstonianWeather */;
+			targetProxy = A5E1A0062F0A100000ABC001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -306,7 +375,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -368,7 +437,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eesti Ilm";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 3.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -509,6 +578,40 @@
 			};
 			name = Release;
 		};
+		A5E1A00A2F0A100000ABC001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstonianWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EstonianWeather";
+			};
+			name = Debug;
+		};
+		A5E1A00B2F0A100000ABC001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NFA8F38A32;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shiaulis.EstonianWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EstonianWeather.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EstonianWeather";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,6 +638,15 @@
 			buildConfigurations = (
 				A5BACEF42E241511009CBBD3 /* Debug */,
 				A5BACEF52E241511009CBBD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5E1A0092F0A100000ABC001 /* Build configuration list for PBXNativeTarget "EstonianWeatherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5E1A00A2F0A100000ABC001 /* Debug */,
+				A5E1A00B2F0A100000ABC001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

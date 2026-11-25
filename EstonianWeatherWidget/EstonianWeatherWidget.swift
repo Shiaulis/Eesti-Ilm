@@ -5,11 +5,11 @@
 //  Created by Andrius Shiaulis on 13.07.2025.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct EstonianWeatherWidget: Widget {
-    let kind: String = "Eesti Ilm"
+    let kind = "Eesti Ilm"
     let provider = ForecastTimelineProvider()
 
     var body: some WidgetConfiguration {
@@ -26,7 +26,6 @@ struct EstonianWeatherWidget: Widget {
 } timeline: {
     ForecastTimelineEntry(date: .now, configuration: .init())
 }
-
 
 #Preview(as: .systemMedium) {
     EstonianWeatherWidget()
