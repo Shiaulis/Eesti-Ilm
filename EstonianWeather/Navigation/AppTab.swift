@@ -3,7 +3,7 @@
 //  EstonianWeather
 //
 
-import SwiftUI
+import Foundation
 
 nonisolated enum AppTab: String, CaseIterable, Identifiable, Hashable, Sendable {
     case forecasts
