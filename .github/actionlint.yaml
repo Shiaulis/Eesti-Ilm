@@ -1,0 +1,4 @@
+# `xcode-27` is a GitHub-hosted runner label (public preview) that actionlint does not know yet.
+self-hosted-runner:
+  labels:
+    - xcode-27

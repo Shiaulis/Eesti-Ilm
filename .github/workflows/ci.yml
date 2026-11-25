@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  lint:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SwiftFormat
+        run: brew install swiftformat
+
+      - name: Lint
+        run: swiftformat --lint .
+
+  build-and-test:
+    # GitHub's Xcode 27 image (public preview). Its default Xcode is 27.1, so 27.2 is selected below.
+    runs-on: xcode-27
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 27.2
+        run: |
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          xcodebuild -version
+
+      - name: Pick newest iPhone simulator
+        id: simulator
+        run: |
+          name="$(python3 - <<'PY'
+          import json, subprocess
+
+          def simctl(*args):
+              return json.loads(subprocess.check_output(["xcrun", "simctl", "list", *args, "-j"]))
+
+          def version(text):
+              return tuple(int(part) for part in text.split("."))
+
+          runtimes = [r for r in simctl("runtimes")["runtimes"]
+                      if r.get("platform") == "iOS" and r.get("isAvailable")]
+          newest = max(version(r["version"]) for r in runtimes)
+          newest_ids = {r["identifier"] for r in runtimes if version(r["version"]) == newest}
+
+          devices = simctl("devices", "available")["devices"]
+          available = {d["deviceTypeIdentifier"]
+                       for runtime, items in devices.items() if runtime in newest_ids
+                       for d in items}
+
+          # `simctl list devicetypes` lists the newest models first.
+          for device_type in simctl("devicetypes")["devicetypes"]:
+              if device_type.get("productFamily") == "iPhone" and device_type["identifier"] in available:
+                  print(device_type["name"])
+                  break
+          else:
+              raise SystemExit("No iPhone simulator found for the newest iOS runtime")
+          PY
+          )"
+          echo "Using simulator: $name"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+
+      - name: Build and test
+        run: |
+          xcodebuild test \
+            -project EstonianWeather.xcodeproj \
+            -scheme EstonianWeather \
+            -testPlan EstonianWeather \
+            -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
+            CODE_SIGNING_ALLOWED=NO
