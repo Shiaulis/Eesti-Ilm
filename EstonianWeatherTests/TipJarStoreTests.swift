@@ -154,6 +154,17 @@ struct TipJarStoreTests {
         #expect(store.banner == .thankYou(productName: product.displayName))
     }
 
+    @Test func deallocatingStoreCancelsTransactionObservation() {
+        let client = LongRunningObservationClient()
+        var store: TipJarStore? = TipJarStore(client: client)
+        store?.startObservingTransactions()
+        #expect(!client.observationTask.isCancelled)
+
+        store = nil
+
+        #expect(client.observationTask.isCancelled)
+    }
+
     // MARK: - Localization
 
     @Test func tipJarStringsResolveForActiveTestPlanLocale() throws {
@@ -244,5 +255,25 @@ private final class MockTipJarClient: TipJarClient, Sendable {
 
     func emitVerifiedTransaction(productID: String) async {
         await self.state.emit(productID)
+    }
+}
+
+private final class LongRunningObservationClient: TipJarClient, Sendable {
+    let observationTask = Task<Void, Never> {
+        try? await Task.sleep(for: .seconds(60))
+    }
+
+    func fetchProducts(ids _: [String]) async throws -> [TipProduct] {
+        []
+    }
+
+    func purchase(productID _: String) async throws -> TipPurchaseOutcome {
+        .cancelled
+    }
+
+    func observeTransactionUpdates(
+        onVerifiedTransaction _: @escaping @Sendable (String) async -> Void
+    ) -> Task<Void, Never> {
+        self.observationTask
     }
 }

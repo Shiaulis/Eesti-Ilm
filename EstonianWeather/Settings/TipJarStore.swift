@@ -137,19 +137,36 @@ final nonisolated class StoreKitTipJarClient: TipJarClient, Sendable {
         onVerifiedTransaction: @escaping @Sendable (String) async -> Void
     ) -> Task<Void, Never> {
         Task { [logger] in
+            // Handle transactions left unfinished from a previous launch, then keep listening.
+            for await result in Transaction.unfinished {
+                guard !Task.isCancelled else {
+                    return
+                }
+
+                await Self.handle(result, logger: logger, onVerifiedTransaction: onVerifiedTransaction)
+            }
+
             for await result in Transaction.updates {
                 guard !Task.isCancelled else {
                     break
                 }
 
-                switch result {
-                case let .verified(transaction):
-                    await transaction.finish()
-                    await onVerifiedTransaction(transaction.productID)
-                case let .unverified(_, error):
-                    logger.error("Ignoring unverified transaction update: \(error.localizedDescription)")
-                }
+                await Self.handle(result, logger: logger, onVerifiedTransaction: onVerifiedTransaction)
             }
+        }
+    }
+
+    private static func handle(
+        _ result: VerificationResult<Transaction>,
+        logger: Logger,
+        onVerifiedTransaction: @Sendable (String) async -> Void
+    ) async {
+        switch result {
+        case let .verified(transaction):
+            await transaction.finish()
+            await onVerifiedTransaction(transaction.productID)
+        case let .unverified(_, error):
+            logger.error("Ignoring unverified transaction update: \(error.localizedDescription)")
         }
     }
 
@@ -192,6 +209,11 @@ final class TipJarStore {
     ) {
         self.client = client
         self.productIDs = productIDs
+    }
+
+    isolated deinit {
+        // An unstructured Task keeps running when its handle is dropped.
+        self.transactionUpdatesTask?.cancel()
     }
 
     func startObservingTransactions() {

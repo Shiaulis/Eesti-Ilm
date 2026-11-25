@@ -8,11 +8,15 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.locale) private var locale
     @Environment(\.openURL) private var openURL
-    @State private var tipJarStore = TipJarStore()
 
+    private let tipJarStore: TipJarStore
     private let preferredLocalizations: [String]
 
-    init(preferredLocalizations: [String] = Bundle.main.preferredLocalizations) {
+    init(
+        tipJarStore: TipJarStore,
+        preferredLocalizations: [String] = Bundle.main.preferredLocalizations
+    ) {
+        self.tipJarStore = tipJarStore
         self.preferredLocalizations = preferredLocalizations
     }
 
@@ -26,7 +30,6 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
         .task {
-            self.tipJarStore.startObservingTransactions()
             await self.tipJarStore.loadProducts()
         }
     }
@@ -83,14 +86,14 @@ struct SettingsView: View {
 
 #Preview("English") {
     NavigationStack {
-        SettingsView(preferredLocalizations: ["en"])
+        SettingsView(tipJarStore: TipJarStore(), preferredLocalizations: ["en"])
     }
     .environment(\.locale, Locale(identifier: "en_US"))
 }
 
 #Preview("Estonian") {
     NavigationStack {
-        SettingsView(preferredLocalizations: ["et"])
+        SettingsView(tipJarStore: TipJarStore(), preferredLocalizations: ["et"])
     }
     .environment(\.locale, Locale(identifier: "et_EE"))
 }
