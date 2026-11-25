@@ -83,7 +83,7 @@ struct DayPartView: View {
         Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.dayPart.phenomenon))
             .symbolRenderingMode(.multicolor)
             .font(.title)
-            .accessibilityLabel(self.dayPart.phenomenon)
+            .accessibilityLabel(ForecastFormatter.phenomenonText(for: self.dayPart.phenomenon))
     }
 }
 

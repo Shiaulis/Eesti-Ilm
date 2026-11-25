@@ -45,6 +45,11 @@ nonisolated enum ForecastFormatter {
         temperature?.formattedTemperature
     }
 
+    static func phenomenonText(for phenomenon: String) -> String {
+        let key = WeatherPhenomenonIcon.localizationKey(for: phenomenon)
+        return String(localized: String.LocalizationValue(key))
+    }
+
     // MARK: - Private
 
     private static func relativeDescription(

@@ -32,6 +32,9 @@ struct LocalizationTests {
             #expect(String(localized: "Settings") == "Seaded")
             #expect(String(localized: .aboutMeDescription).hasPrefix("Tere"))
             #expect(String(localized: .sourceDisclaimer).contains("Keskkonnaagentuur"))
+            #expect(ForecastFormatter.phenomenonText(for: "Few clouds") == "Vähene pilvisus")
+            #expect(ForecastFormatter.phenomenonText(for: "  heavy rain \n") == "Tugev vihm")
+            #expect(ForecastFormatter.phenomenonText(for: "Volcanic ash") == "Volcanic ash")
         }
         else {
             #expect(Bundle.main.preferredLocalizations.first == "en")
@@ -39,6 +42,9 @@ struct LocalizationTests {
             #expect(String(localized: "Settings") == "Settings")
             #expect(String(localized: .aboutMeDescription).hasPrefix("Hey"))
             #expect(String(localized: .sourceDisclaimer).contains("Estonian Environment Agency"))
+            #expect(ForecastFormatter.phenomenonText(for: "Few clouds") == "Few clouds")
+            #expect(ForecastFormatter.phenomenonText(for: "  heavy rain \n") == "Heavy rain")
+            #expect(ForecastFormatter.phenomenonText(for: "Volcanic ash") == "Volcanic ash")
         }
     }
 
