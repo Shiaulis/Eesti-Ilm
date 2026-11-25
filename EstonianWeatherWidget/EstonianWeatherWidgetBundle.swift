@@ -5,8 +5,8 @@
 //  Created by Andrius Shiaulis on 13.07.2025.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 @main
 struct EstonianWeatherWidgetBundle: WidgetBundle {

@@ -8,10 +8,10 @@
       }
     },
     {
-      "id" : "440A93DC-580D-44FD-A995-14FD3B57AB61",
-      "name" : "Russian locale",
+      "id" : "5E6F0B2C-8E1D-4F3A-9C7B-2D4A6E8F1B3C",
+      "name" : "Estonian locale",
       "options" : {
-        "language" : "ru"
+        "language" : "et"
       }
     }
   ],
@@ -20,14 +20,14 @@
       "targets" : [
         {
           "containerPath" : "container:EstonianWeather.xcodeproj",
-          "identifier" : "0913814523CB7AF30092EC04",
+          "identifier" : "A5384D302E173FC5006BE100",
           "name" : "EstonianWeather"
         }
       ]
     },
     "targetForVariableExpansion" : {
       "containerPath" : "container:EstonianWeather.xcodeproj",
-      "identifier" : "0913814523CB7AF30092EC04",
+      "identifier" : "A5384D302E173FC5006BE100",
       "name" : "EstonianWeather"
     },
     "testExecutionOrdering" : "random",
@@ -36,12 +36,9 @@
   },
   "testTargets" : [
     {
-      "skippedTests" : [
-        "ForecastControllerTests"
-      ],
       "target" : {
         "containerPath" : "container:EstonianWeather.xcodeproj",
-        "identifier" : "0968CDA22522667B00D409FF",
+        "identifier" : "A5E1A0082F0A100000ABC001",
         "name" : "EstonianWeatherTests"
       }
     }
