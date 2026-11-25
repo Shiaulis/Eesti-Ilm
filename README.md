@@ -104,6 +104,7 @@ Release tooling is [fastlane](https://fastlane.tools), run through Bundler. The 
 ```sh
 bundle install
 bundle exec fastlane metadata
+bundle exec fastlane screenshots
 ```
 
 `fastlane metadata` uploads the App Store metadata in [`fastlane/metadata/`](fastlane/metadata/) (`en-US` only, because App Store Connect has no Estonian listing; the app itself is localized in English and Estonian). It authenticates with an App Store Connect API key read from these environment variables:
@@ -111,6 +112,8 @@ bundle exec fastlane metadata
 - `APP_STORE_CONNECT_API_KEY_KEY_ID`
 - `APP_STORE_CONNECT_API_KEY_ISSUER_ID`
 - `APP_STORE_CONNECT_API_KEY_KEY`
+
+`fastlane screenshots` uploads the App Store screenshots in [`fastlane/screenshots/en-US/`](fastlane/screenshots/en-US/) (iPhone 6.9" at 1320x2868 and iPad 13" at 2064x2752, three each; file names sort in display order) and replaces the screenshots already on the App Store version. It uses the same API key.
 
 Never commit the key or its values.
 

@@ -25,4 +25,24 @@ platform :ios do
       skip_app_version_update: version.nil?
     )
   end
+
+  desc "Upload App Store screenshots from fastlane/screenshots, replacing the existing ones"
+  desc "(no metadata, no binary; run fastlane metadata for the text)"
+  lane :screenshots do
+    app_store_connect_api_key(
+      key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY_ID"),
+      issuer_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ISSUER_ID"),
+      key_content: ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY")
+    )
+
+    deliver(
+      skip_binary_upload: true,
+      skip_metadata: true,
+      overwrite_screenshots: true,
+      force: true,
+      screenshots_path: "./fastlane/screenshots",
+      run_precheck_before_submit: false,
+      skip_app_version_update: true
+    )
+  end
 end
