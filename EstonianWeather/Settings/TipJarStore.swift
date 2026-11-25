@@ -12,7 +12,7 @@ import StoreKit
 
 nonisolated enum TipJarConfiguration {
     /// Reuse the consumable product ID from 2.1.0.
-    /// App Store Connect availability will be verified after Apple Developer membership renewal (EES-20).
+    /// App Store Connect availability is checked as part of the first submission (EES-20).
     static let productIDs = [
         "com.shiaulis.estonianweather.buyadrink",
     ]

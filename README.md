@@ -101,9 +101,6 @@ Third-party dependencies, managed through Swift Package Manager in `EstonianWeat
 
 ## Releasing
 
-> [!IMPORTANT]
-> The Apple Developer membership is currently lapsed. Until it is renewed, nothing can be signed for distribution or uploaded to App Store Connect. Builds through Xcode Cloud and TestFlight are planned after the renewal.
-
 Release tooling is [fastlane](https://fastlane.tools), run through Bundler. The Ruby version is pinned in [`.ruby-version`](.ruby-version).
 
 ```sh
