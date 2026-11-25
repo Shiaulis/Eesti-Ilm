@@ -221,6 +221,17 @@
         }
       }
     },
+    "Retry" : {
+      "comment" : "Button label allowing users to retry loading forecasts after an error.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proovi uuesti"
+          }
+        }
+      }
+    },
     "Settings" : {
       "comment" : "Navigation title for the Settings screen.",
       "localizations" : {
