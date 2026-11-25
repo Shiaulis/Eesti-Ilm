@@ -104,5 +104,6 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 ## Git workflow
 
 - One branch per Linear ticket in the EES team, named with the ticket's git branch name.
+- Coding agents commit, push, open PRs, and comment on GitHub as the `telbin-bot` machine account (never approve or merge PRs).
 - Open a PR against `master`. The owner reviews and merges on GitHub.
 - Never push to `master`. Never create or push tags.
