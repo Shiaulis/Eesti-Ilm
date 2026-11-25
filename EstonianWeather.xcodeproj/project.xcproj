@@ -27,7 +27,19 @@
     },
   ],
   "files": [
-    { "kind": "folder", "path": "EstonianWeather", "target-membership": [ "EstonianWeather" ] },
+    {
+      "kind": "folder",
+      "path": "EstonianWeather",
+      "target-membership": [ "EstonianWeather" ],
+      "membership-exceptions": [
+        {
+          "target": "EstonianWeather",
+          "exclusions": [
+            "Info.plist",
+          ],
+        },
+      ],
+    },
     {
       "kind": "folder",
       "path": "EstonianWeatherWidget",
@@ -143,10 +155,9 @@
         "DEVELOPMENT_TEAM": "NFA8F38A32",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_FILE": "EstonianWeather/Info.plist",
         "INFOPLIST_KEY_ITSAppUsesNonExemptEncryption": "NO",
         "INFOPLIST_KEY_LSApplicationCategoryType": "public.app-category.weather",
-        "INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]": "YES",
-        "INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]": "YES",
         "INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]": "YES",
         "INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]": "YES",
         "INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]": "YES",

@@ -10,9 +10,15 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
 
     private let preferredLocalizations: [String]
+    private let showAboutMe: () -> Void
 
-    init(preferredLocalizations: [String] = Bundle.main.preferredLocalizations) {
+    /// `showAboutMe` is temporary: the UIKit navigation controller pushes the About me screen until EES-89.
+    init(
+        preferredLocalizations: [String] = Bundle.main.preferredLocalizations,
+        showAboutMe: @escaping () -> Void = {}
+    ) {
         self.preferredLocalizations = preferredLocalizations
+        self.showAboutMe = showAboutMe
     }
 
     var body: some View {
@@ -41,10 +47,16 @@ struct SettingsView: View {
 
     private var aboutAndSupportSection: some View {
         Section {
-            NavigationLink {
-                AboutMeView()
-            } label: {
-                Text("About me")
+            Button(action: self.showAboutMe) {
+                HStack {
+                    Text("About me")
+                        .foregroundStyle(.primary)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                        .accessibilityHidden(true)
+                }
             }
         }
     }
