@@ -10,6 +10,6 @@ struct WeatherServiceTests {
 
     @Test
     func example() async throws {
-        let _ = try await self.sut.getForecasts(for: .estonian)
+        _ = try await self.sut.getForecasts(for: .estonian)
     }
 }

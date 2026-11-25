@@ -1,0 +1,33 @@
+# Default Rules
+--disable redundantSelf
+--disable blankLinesAtStartOfScope
+
+# Opt-in Rules
+--enable acronyms
+--enable blankLinesAfterGuardStatements
+--enable blankLinesBetweenImports
+--enable emptyExtensions
+--enable environmentEntry
+--enable isEmpty
+--enable noExplicitOwnership
+--enable preferSwiftTesting
+--enable privateStateVariables
+--enable propertyTypes
+--enable redundantEquatable
+--enable redundantProperty
+--enable unusedPrivateDeclarations
+--enable wrapMultilineFunctionChains
+
+# Options
+--allman false
+--elseposition nextline
+--empty void
+--ifdef no-indent
+--nospaceoperators
+--semicolons never
+--stripunusedargs closure-only
+--swiftversion 6
+--trimwhitespace always
+--xcodeindentation enabled
+--propertytypes inferred
+--lineaftermarks true

@@ -1,4 +1,4 @@
-// swift-tools-version: 6.2
+// swift-tools-version: 6.4
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "WeatherCore",
     platforms: [
-        .iOS(.v18),
+        .iOS(.v27),
         .macOS(.v26),
     ],
     products: [
@@ -18,14 +18,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Shiaulis/networking.git", from: "0.1.0"),
-        .package(url: "https://github.com/drmohundro/SWXMLHash.git", from: "7.0.0")
+        .package(url: "https://github.com/drmohundro/SWXMLHash.git", from: "7.0.0"),
     ],
     targets: [
         .target(
             name: "WeatherCore",
             dependencies: [
                 .product(name: "Networking", package: "networking"),
-                .product(name: "SWXMLHash", package: "SWXMLHash")
+                .product(name: "SWXMLHash", package: "SWXMLHash"),
             ]
         ),
         .testTarget(

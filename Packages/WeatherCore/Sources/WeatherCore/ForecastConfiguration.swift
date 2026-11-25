@@ -8,12 +8,13 @@
 import Foundation
 
 // MARK: - Main Configuration
+
 public struct ForecastConfiguration: Sendable, Identifiable {
     public let id: UUID
     public let date: Date
     public let night: DayPartConfiguration
     public let day: DayPartConfiguration
-    
+
     public init(
         id: UUID = UUID(),
         date: Date,
@@ -28,6 +29,7 @@ public struct ForecastConfiguration: Sendable, Identifiable {
 }
 
 // MARK: - Day Part Configuration
+
 public struct DayPartConfiguration: Sendable, Identifiable {
     public let id: UUID
     public let phenomenon: String
@@ -37,7 +39,7 @@ public struct DayPartConfiguration: Sendable, Identifiable {
     public let winds: [WindConfiguration]
     public let seaCondition: String?
     public let lakeCondition: String?
-    
+
     public init(
         id: UUID = UUID(),
         phenomenon: String,
@@ -60,25 +62,26 @@ public struct DayPartConfiguration: Sendable, Identifiable {
 }
 
 // MARK: - Temperature Range
+
 public struct TemperatureRange: Sendable, Equatable {
     public let minimum: Int
     public let maximum: Int
-    
+
     public init(minimum: Int, maximum: Int) {
         self.minimum = minimum
         self.maximum = maximum
     }
-    
+
     /// Formatted temperature range string (e.g., "15° - 22°")
     public var formattedRange: String {
         "\(minimum)° - \(maximum)°"
     }
-    
+
     /// Average temperature
     public var average: Int {
         (minimum + maximum) / 2
     }
-    
+
     /// Temperature range span
     public var span: Int {
         maximum - minimum
@@ -86,12 +89,13 @@ public struct TemperatureRange: Sendable, Equatable {
 }
 
 // MARK: - Place Configuration
+
 public struct PlaceConfiguration: Sendable, Identifiable {
     public let id: UUID
     public let name: String
     public let phenomenon: String
     public let temperatureRange: TemperatureRange?
-    
+
     public init(
         id: UUID = UUID(),
         name: String,
@@ -106,13 +110,14 @@ public struct PlaceConfiguration: Sendable, Identifiable {
 }
 
 // MARK: - Wind Configuration
+
 public struct WindConfiguration: Sendable, Identifiable {
     public let id: UUID
     public let name: String
     public let direction: String
     public let speedRange: SpeedRange
     public let gustDescription: String?
-    
+
     public init(
         id: UUID = UUID(),
         name: String,
@@ -129,20 +134,21 @@ public struct WindConfiguration: Sendable, Identifiable {
 }
 
 // MARK: - Speed Range
+
 public struct SpeedRange: Sendable, Equatable {
     public let minimum: Int
     public let maximum: Int
-    
+
     public init(minimum: Int, maximum: Int) {
         self.minimum = minimum
         self.maximum = maximum
     }
-    
+
     /// Formatted speed range string (e.g., "10-15 m/s")
     public var formattedRange: String {
         "\(minimum)-\(maximum) m/s"
     }
-    
+
     /// Average speed
     public var average: Int {
         (minimum + maximum) / 2

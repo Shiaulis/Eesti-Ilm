@@ -8,11 +8,12 @@
 import Foundation
 
 // MARK: - Conversion Extensions
+
 extension ForecastConfiguration {
     /// Creates a ForecastConfiguration from a server Forecast model
     init(from forecast: Forecast, dateFormatter: ForecastDateFormatter = ForecastDateFormatter()) throws {
         let parsedDate = try dateFormatter.date(from: forecast.date)
-        
+
         self.init(
             date: parsedDate,
             night: DayPartConfiguration(from: forecast.night),
@@ -42,14 +43,13 @@ extension DayPartConfiguration {
 extension PlaceConfiguration {
     /// Creates a PlaceConfiguration from a server Place model
     init(from place: Place) {
-        let temperatureRange: TemperatureRange?
-        
-        if let minTemp = place.minimalTemperature, let maxTemp = place.maximalTemperature {
-            temperatureRange = TemperatureRange(minimum: minTemp, maximum: maxTemp)
-        } else {
-            temperatureRange = nil
+        let temperatureRange: TemperatureRange? = if let minTemp = place.minimalTemperature, let maxTemp = place.maximalTemperature {
+            TemperatureRange(minimum: minTemp, maximum: maxTemp)
         }
-        
+        else {
+            nil
+        }
+
         self.init(
             name: place.name,
             phenomenon: place.phenomenon,
@@ -74,10 +74,11 @@ extension WindConfiguration {
 }
 
 // MARK: - Batch Conversion
-extension Array where Element == ForecastConfiguration {
+
+extension [ForecastConfiguration] {
     /// Creates an array of ForecastConfiguration from server Forecast models
     static func from(
-        forecasts: [Forecast], 
+        forecasts: [Forecast],
         dateFormatter: ForecastDateFormatter = ForecastDateFormatter()
     ) throws -> [ForecastConfiguration] {
         try forecasts.map { forecast in

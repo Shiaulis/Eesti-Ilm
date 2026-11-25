@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ForecastsParser.swift
 //  WeatherCore
 //
 //  Created by Andrius Shiaulis on 06.07.2025.
@@ -11,7 +11,6 @@ import SWXMLHash
 nonisolated protocol ForecastsParser {
 
     func decodeForecasts(from xmlData: Data) async throws -> [Forecast]
-
 }
 
 nonisolated struct SWXMLHashXMLParser: ForecastsParser {
@@ -29,4 +28,3 @@ nonisolated struct SWXMLHashXMLParser: ForecastsParser {
         return try xml["forecasts"]["forecast"].value()
     }
 }
-

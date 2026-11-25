@@ -9,7 +9,7 @@ import Foundation
 import Networking
 import OSLog
 
-public final nonisolated class WeatherService  {
+public final nonisolated class WeatherService {
 
     // MARK: - Properties -
 
@@ -23,11 +23,11 @@ public final nonisolated class WeatherService  {
         self.networkClient = networkClient
         self.forecastsParser = forecastsParser
     }
-    
+
     public convenience init() {
         self.init(
             networkClient: URLSessionNetworkClient(urlSession: .shared),
-            forecastsParser: SWXMLHashXMLParser(),
+            forecastsParser: SWXMLHashXMLParser()
         )
     }
 

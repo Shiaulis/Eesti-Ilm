@@ -77,18 +77,16 @@ struct ForecastDateFormatter: Sendable {
             return formatStyle.format(.now)
         }
 
-        if calendar.isDateInTomorrow(date) {
-            if let futureDay = Calendar.current.date(byAdding: .day, value: 1, to: .now) {
-                let formatStyle = Date.RelativeFormatStyle(
-                    presentation: .named,
-                    unitsStyle: .spellOut,
-                    locale: self.locale,
-                    calendar: calendar,
-                    capitalizationContext: .beginningOfSentence
-                )
+        if calendar.isDateInTomorrow(date), let futureDay = Calendar.current.date(byAdding: .day, value: 1, to: .now) {
+            let formatStyle = Date.RelativeFormatStyle(
+                presentation: .named,
+                unitsStyle: .spellOut,
+                locale: self.locale,
+                calendar: calendar,
+                capitalizationContext: .beginningOfSentence
+            )
 
-                return formatStyle.format(futureDay)
-            }
+            return formatStyle.format(futureDay)
         }
 
         return nil
