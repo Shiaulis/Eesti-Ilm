@@ -20,6 +20,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
+        self.installWindow(in: windowScene)
+    }
+
+    func installWindow(in windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = RootTabBarController()
         window.makeKeyAndVisible()
