@@ -9,14 +9,15 @@ import SwiftUI
 import WidgetKit
 
 struct EstonianWeatherWidget: Widget {
-    let kind = "Eesti Ilm"
-    let provider = ForecastTimelineProvider()
+    let kind = "com.shiaulis.EstonianWeather.EstonianWeatherWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ForecastIntent.self, provider: self.provider) { entry in
+        StaticConfiguration(kind: self.kind, provider: ForecastTimelineProvider()) { entry in
             EstonianWeatherWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .configurationDisplayName("Forecast Widget")
+        .description("Check Estonian weather forecast.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
@@ -24,11 +25,13 @@ struct EstonianWeatherWidget: Widget {
 #Preview(as: .systemSmall) {
     EstonianWeatherWidget()
 } timeline: {
-    ForecastTimelineEntry(date: .now, configuration: .init())
+    ForecastTimelineEntry.preview
+    ForecastTimelineEntry.empty
 }
 
 #Preview(as: .systemMedium) {
     EstonianWeatherWidget()
 } timeline: {
-    ForecastTimelineEntry(date: .now, configuration: .init())
+    ForecastTimelineEntry.preview
+    ForecastTimelineEntry.empty
 }

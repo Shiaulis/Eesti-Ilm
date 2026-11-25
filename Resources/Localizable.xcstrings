@@ -30,6 +30,17 @@
         }
       }
     },
+    "Check Estonian weather forecast." : {
+      "comment" : "Widget description shown in the widget gallery.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaata Eesti ilmaprognoosi."
+          }
+        }
+      }
+    },
     "Contact me" : {
       "comment" : "Button label allowing users to contact the developer.",
       "localizations" : {
@@ -78,6 +89,17 @@
         }
       }
     },
+    "Forecast Widget" : {
+      "comment" : "Widget display name shown in the widget gallery.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilmaprognoosi vidin"
+          }
+        }
+      }
+    },
     "Forecasts" : {
       "comment" : "Title of the Forecasts tab.",
       "localizations" : {
@@ -107,6 +129,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öö"
+          }
+        }
+      }
+    },
+    "No data available" : {
+      "comment" : "Placeholder text shown in the widget when forecast data is unavailable.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andmed puuduvad"
           }
         }
       }
