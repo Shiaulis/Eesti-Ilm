@@ -12,9 +12,9 @@ public nonisolated struct Response: Sendable {
 
     // MARK: - Types -
 
-    public struct Status: Sendable {
+    public struct Status: Sendable, Equatable {
 
-        public enum Kind {
+        public enum Kind: Sendable {
             /// The status code is outside the range of 100...599.
             case invalid
             /// The status code is informational (1xx) and the response is not final.
@@ -32,19 +32,24 @@ public nonisolated struct Response: Sendable {
         public let code: Int
         public let reason: String
 
-        var kind: Kind {
+        public var kind: Kind {
             switch code {
             case 100 ..< 200: .informational
             case 200 ..< 300: .successful
             case 300 ..< 400: .redirection
             case 400 ..< 500: .clientError
+            case 500 ..< 600: .serverError
             default: .invalid
             }
         }
 
+        init(code: Int, reason: String = "") {
+            self.code = code
+            self.reason = reason
+        }
+
         init(from responseStatus: HTTPResponse.Status) {
-            self.code = responseStatus.code
-            self.reason = responseStatus.reasonPhrase
+            self.init(code: responseStatus.code, reason: responseStatus.reasonPhrase)
         }
     }
 
