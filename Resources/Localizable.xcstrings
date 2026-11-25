@@ -52,6 +52,17 @@
         }
       }
     },
+    "Current language" : {
+      "comment" : "Row label in Settings showing the app's active language.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Praegune keel"
+          }
+        }
+      }
+    },
     "Day" : {
       "comment" : "Label for the daytime forecast.",
       "localizations" : {
@@ -107,6 +118,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öö"
+          }
+        }
+      }
+    },
+    "Opens app settings to change the language" : {
+      "comment" : "Accessibility hint for the Current language row in Settings.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avab rakenduse seaded keele muutmiseks"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "Navigation title for the Settings screen.",
+      "localizations" : {
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seaded"
           }
         }
       }
