@@ -9,6 +9,9 @@ import WeatherCore
 struct PlaceRow: View {
     let place: PlaceConfiguration
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ScaledMetric(relativeTo: .body) private var iconColumnWidth: CGFloat = 22
+
     var body: some View {
         HStack(spacing: 12) {
             Text(self.place.name)
@@ -18,7 +21,10 @@ struct PlaceRow: View {
 
             Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.place.phenomenon))
                 .symbolRenderingMode(.multicolor)
-                .frame(width: 22)
+                .frame(
+                    minWidth: self.iconColumnWidth,
+                    maxWidth: self.dynamicTypeSize.isAccessibilitySize ? nil : self.iconColumnWidth
+                )
                 .accessibilityLabel(self.place.phenomenon)
 
             if let temperatureText = ForecastFormatter.placeTemperatureText(for: self.place.temperature) {
