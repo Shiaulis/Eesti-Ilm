@@ -57,7 +57,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 `.github/workflows/ci.yml` runs on every pull request and on pushes to `master`. It has two jobs:
 
 - `lint` (`macos-latest`): installs `actionlint` with Homebrew to lint workflows, downloads a pinned SwiftFormat release, and runs `swiftformat --lint .` over the whole repo
-- `build-and-test` (GitHub's `xcode-27` image): selects Xcode 27.2 with `xcode-select`, picks the newest available iPhone simulator, and runs the `xcodebuild test` command above (which builds the app, widget, and frameworks, and runs all three test bundles)
+- `build-and-test` (GitHub's `xcode-27` image): selects Xcode 27.2 with `xcode-select`, picks the newest available iPhone simulator and starts booting it, then runs the `xcodebuild test` command above as `build-for-testing` followed by `test-without-building` (which builds the app, widget, and frameworks, and runs all three test bundles) so the boot overlaps the build
 
 ## App
 

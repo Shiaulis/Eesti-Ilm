@@ -60,7 +60,7 @@ jobs:
       - name: Pick newest iPhone simulator
         id: simulator
         run: |
-          name="$(python3 - <<'PY'
+          result="$(python3 - <<'PY'
           import json, subprocess
 
           def simctl(*args):
@@ -75,29 +75,58 @@ jobs:
           newest_ids = {r["identifier"] for r in runtimes if version(r["version"]) == newest}
 
           devices = simctl("devices", "available")["devices"]
-          available = {d["deviceTypeIdentifier"]
-                       for runtime, items in devices.items() if runtime in newest_ids
-                       for d in items}
+          available = {}
+          for runtime, items in devices.items():
+              if runtime in newest_ids:
+                  for d in items:
+                      available.setdefault(d["deviceTypeIdentifier"], d["udid"])
 
           # `simctl list devicetypes` lists the newest models first.
           for device_type in simctl("devicetypes")["devicetypes"]:
               if device_type.get("productFamily") == "iPhone" and device_type["identifier"] in available:
-                  print(device_type["name"])
+                  print(device_type["name"], available[device_type["identifier"]], sep="\t")
                   break
           else:
               raise SystemExit("No iPhone simulator found for the newest iOS runtime")
           PY
           )"
-          echo "Using simulator: $name"
+          IFS=$'\t' read -r name udid <<< "$result"
+          echo "Using simulator: $name ($udid)"
           echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
 
-      - name: Build and test
+      - name: Start booting the simulator
+        # Returns once the boot has started, so it overlaps the build below.
         run: |
-          xcodebuild test \
+          udid="${{ steps.simulator.outputs.udid }}"
+          if ! output="$(xcrun simctl boot "$udid" 2>&1)"; then
+            echo "$output"
+            case "$output" in
+              *"current state: Booted"*) ;;
+              *) exit 1 ;;
+            esac
+          fi
+
+      - name: Build for testing
+        run: |
+          xcodebuild build-for-testing \
             -project EstonianWeather.xcodeproj \
             -scheme EstonianWeather \
             -testPlan EstonianWeather \
-            -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
+            -destination "platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}" \
+            -enableCodeCoverage NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Wait for the simulator to boot
+        run: xcrun simctl bootstatus "${{ steps.simulator.outputs.udid }}" -b
+
+      - name: Test without building
+        run: |
+          xcodebuild test-without-building \
+            -project EstonianWeather.xcodeproj \
+            -scheme EstonianWeather \
+            -testPlan EstonianWeather \
+            -destination "platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}" \
             -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
             -enableCodeCoverage NO \
             CODE_SIGNING_ALLOWED=NO
