@@ -101,7 +101,7 @@ jobs:
         run: |
           xcodebuild test \
             -clonedSourcePackagesDirPath "${{ runner.temp }}/SourcePackages" \
-            -disableAutomaticPackageResolution \
+            -onlyUsePackageVersionsFromResolvedFile \
             -project EstonianWeather.xcodeproj \
             -scheme EstonianWeather \
             -testPlan EstonianWeather \
