@@ -36,8 +36,9 @@ final class PlaceRowView: UIView {
         self.iconView.isAccessibilityElement = true
         self.iconView.accessibilityTraits = .image
         self.iconView.accessibilityLabel = ForecastFormatter.phenomenonText(for: place.phenomenon)
-        self.iconView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        self.iconView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        // Only the name wraps. Hugging stays just below required so the icon column cap can still win.
+        self.iconView.setContentHuggingPriority(UILayoutPriority.required - 1, for: .horizontal)
+        self.iconView.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         self.temperatureLabel.font = .scaled(textStyle: .subheadline, monospacedDigits: true)
         self.temperatureLabel.adjustsFontForContentSizeCategory = true

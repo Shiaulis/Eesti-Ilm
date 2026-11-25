@@ -46,7 +46,7 @@ final class ForecastListViewController: UIViewController {
 
         self.collectionView.backgroundColor = .systemGroupedBackground
         self.collectionView.alwaysBounceVertical = true
-        self.collectionView.delegate = self
+        self.collectionView.allowsSelection = false
         self.collectionView.refreshControl = UIRefreshControl(
             frame: .zero,
             primaryAction: UIAction { [weak self] _ in
@@ -61,8 +61,15 @@ final class ForecastListViewController: UIViewController {
 
         // Replaces the SwiftUI `.task(id: scenePhase)`: refresh when the app becomes active on a later day.
         self.sceneActivationTask = Task { [weak self] in
-            for await _ in NotificationCenter.default.notifications(named: UIScene.didActivateNotification) {
-                await self?.viewModel.refreshIfStale()
+            for await notification in NotificationCenter.default.notifications(named: UIScene.didActivateNotification) {
+                guard let self,
+                      let scene = notification.object as? UIWindowScene,
+                      scene === self.viewIfLoaded?.window?.windowScene
+                else {
+                    continue
+                }
+
+                await self.viewModel.refreshIfStale()
             }
         }
     }
@@ -70,8 +77,10 @@ final class ForecastListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        Task {
-            await self.viewModel.loadIfNeeded()
+        // Also covers a day change while this tab was not on screen when the scene activated.
+        Task { [weak self] in
+            await self?.viewModel.loadIfNeeded()
+            await self?.viewModel.refreshIfStale()
         }
     }
 
@@ -193,12 +202,6 @@ final class ForecastListViewController: UIViewController {
         case .disclaimer:
             nil
         }
-    }
-}
-
-extension ForecastListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        false
     }
 }
 

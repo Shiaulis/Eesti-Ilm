@@ -56,7 +56,7 @@ final class DayPartContentView: UIView, UIContentView {
         self.setUpViews()
         self.apply()
 
-        self.registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (view: Self, _) in
+        self.registerForTraitChanges([UITraitPreferredContentSizeCategory.self, UITraitDisplayScale.self]) { (view: Self, _) in
             view.updateHeaderLayout()
         }
     }
@@ -64,6 +64,13 @@ final class DayPartContentView: UIView, UIContentView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+
+        // `displayScale` is 0 until the view is in a window.
+        self.updateHeaderLayout()
     }
 
     // MARK: - Setup
@@ -75,7 +82,7 @@ final class DayPartContentView: UIView, UIContentView {
 
         self.temperatureLabel.font = .scaled(textStyle: .title2, weight: .medium, monospacedDigits: true)
         self.temperatureLabel.adjustsFontForContentSizeCategory = true
-        self.temperatureLabel.setContentHuggingPriority(.required, for: .horizontal)
+        self.temperatureLabel.numberOfLines = 0
         self.temperatureLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         self.iconView.contentMode = .scaleAspectFit
@@ -164,9 +171,12 @@ final class DayPartContentView: UIView, UIContentView {
         self.temperatureLabel.removeFromSuperview()
 
         if self.traitCollection.preferredContentSizeCategory.isAccessibilityCategory {
+            // In the vertical stack the label stretches to the full width, so it must not insist on hugging.
+            self.temperatureLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             self.headerStack.addArrangedSubview(self.temperatureLabel)
         }
         else {
+            self.temperatureLabel.setContentHuggingPriority(.required, for: .horizontal)
             self.titleRow.insertArrangedSubview(self.temperatureLabel, at: 1)
         }
     }
