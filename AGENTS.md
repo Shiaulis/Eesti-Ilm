@@ -65,7 +65,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 - Embedding: the app links and embeds `Networking.framework` and `WeatherCore.framework` once in `EstonianWeather.app/Frameworks/`. The widget extension links `WeatherCore` (and `Networking` transitively) and loads them from the host app via `@executable_path/../../Frameworks` without embedding a second copy.
 - Bundle id: `com.shiaulis.EstonianWeather` (widget: `com.shiaulis.EstonianWeather.EstonianWeatherWidget`, frameworks: `com.shiaulis.Networking`, `com.shiaulis.WeatherCore`). App Store id: 1534551991.
 - The project file is `EstonianWeather.xcodeproj/project.xcproj`, Xcode's JSON project format (there is no `project.pbxproj`). Edit it directly: files, targets, build settings and packages are listed by name and path. It is JSON5-like (comments, trailing commas), so strict JSON tools such as `jq` cannot parse it. Keep the existing `id` values of targets and products: the shared schemes and `Resources/EstonianWeather.xctestplan` reference them. Do not convert the project back to `project.pbxproj`.
-- Signing is automatic. The Apple Developer membership is lapsed, so distribution signing, archiving for the App Store and uploads are not possible until it is renewed. Xcode Cloud (TestFlight) is planned after the renewal.
+- Signing is automatic. TestFlight builds through Xcode Cloud and the first App Store submission are tracked in EES-20.
 
 ## Localization
 
@@ -87,6 +87,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 - No new third-party dependencies without the owner's approval.
 - Keep changes scoped to the ticket. No drive-by refactoring.
 - Never commit secrets or personal data (API keys, Apple ID, private emails, phone numbers).
+- Never mention the owner's Apple Developer account, membership or its status in files, commit messages, PR descriptions or comments.
 
 ## Dependencies and releases
 
@@ -103,7 +104,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   bundle exec fastlane metadata
   ```
 
-  `fastlane metadata` uploads `fastlane/metadata/` to App Store Connect. It authenticates with `APP_STORE_CONNECT_API_KEY_KEY_ID`, `APP_STORE_CONNECT_API_KEY_ISSUER_ID` and `APP_STORE_CONNECT_API_KEY_KEY` from the environment. Uploads fail until the membership is renewed.
+  `fastlane metadata` uploads `fastlane/metadata/` to App Store Connect. It authenticates with `APP_STORE_CONNECT_API_KEY_KEY_ID`, `APP_STORE_CONNECT_API_KEY_ISSUER_ID` and `APP_STORE_CONNECT_API_KEY_KEY` from the environment.
 
 ## Git workflow
 
