@@ -13,18 +13,8 @@ struct EstonianWeatherApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                Tab("Forecasts", systemImage: "sun.haze.fill") {
-                    ForecastListView()
-                }
-                Tab("About", systemImage: "info.circle") {
-                    NavigationStack {
-                        SettingsView()
-                    }
-                }
-            }
-            .tabViewStyle(.sidebarAdaptable)
-            .userRatingPrompt(using: self.ratingService)
+            RootNavigationView()
+                .userRatingPrompt(using: self.ratingService)
         }
     }
 }

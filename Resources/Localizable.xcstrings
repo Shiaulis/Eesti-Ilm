@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "About" : {
-      "comment" : "Title of the About tab.",
-      "localizations" : {
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Teave"
-          }
-        }
-      }
-    },
     "About me" : {
       "comment" : "Title displayed at the top of the About screen.",
       "localizations" : {
