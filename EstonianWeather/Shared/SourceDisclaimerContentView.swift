@@ -26,6 +26,9 @@ final class SourceDisclaimerContentView: UIView, UIContentView {
         }
     }
 
+    /// A fixed identifier makes `addAction` replace the previous handler when a reused cell is reconfigured.
+    private static let openLinkActionIdentifier = UIAction.Identifier("SourceDisclaimerContentView.openLink")
+
     private let disclaimerLabel = UILabel()
     private let linkButton = UIButton(type: .system)
 
@@ -78,7 +81,7 @@ final class SourceDisclaimerContentView: UIView, UIContentView {
         }
         self.linkButton.configuration = buttonConfiguration
         self.linkButton.addAction(
-            UIAction { _ in
+            UIAction(identifier: Self.openLinkActionIdentifier) { _ in
                 UIApplication.shared.open(configuration.url)
             },
             for: .primaryActionTriggered
