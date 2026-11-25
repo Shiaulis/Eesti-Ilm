@@ -18,7 +18,9 @@ struct EstonianWeatherApp: App {
                     ForecastListView()
                 }
                 Tab("About", systemImage: "info.circle") {
-                    AboutView()
+                    NavigationStack {
+                        SettingsView()
+                    }
                 }
             }
             .tabViewStyle(.sidebarAdaptable)
