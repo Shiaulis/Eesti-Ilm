@@ -25,6 +25,7 @@ struct PlaceRow: View {
                     minWidth: self.iconColumnWidth,
                     maxWidth: self.dynamicTypeSize.isAccessibilitySize ? nil : self.iconColumnWidth
                 )
+                .fixedSize()
                 .accessibilityLabel(self.place.phenomenon)
 
             if let temperatureText = ForecastFormatter.placeTemperatureText(for: self.place.temperature) {
