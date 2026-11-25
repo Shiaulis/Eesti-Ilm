@@ -30,8 +30,13 @@ public final nonisolated class URLSessionNetworkClient {
 
     public func fetchResponse(for endpoint: any Endpoint) async throws -> Response {
         let request = try await self.makeHTTPRequest(for: endpoint)
-        let (body, response) = try await self.connectionProvider.data(for: request)
-        return .init(endpoint: endpoint, data: body, response: response)
+        let (body, httpResponse) = try await self.connectionProvider.data(for: request)
+        let response = Response(endpoint: endpoint, data: body, response: httpResponse)
+        guard response.status.kind == .successful else {
+            throw NetworkError.unsuccessfulResponse(response)
+        }
+
+        return response
     }
 
     // MARK: - Private API -

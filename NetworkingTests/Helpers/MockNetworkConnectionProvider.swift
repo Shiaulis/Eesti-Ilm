@@ -21,6 +21,14 @@ final class MockNetworkConnectionProvider: NetworkConnectionProvider {
         if let error {
             throw error
         }
-        return (self.data ?? .init(), HTTPResponse(status: .init(code: status?.code ?? 0, reasonPhrase: status?.reason ?? "")))
+
+        let httpStatus: HTTPResponse.Status = if let status {
+            .init(code: status.code, reasonPhrase: status.reason)
+        }
+        else {
+            .ok
+        }
+
+        return (self.data ?? .init(), HTTPResponse(status: httpStatus))
     }
 }
