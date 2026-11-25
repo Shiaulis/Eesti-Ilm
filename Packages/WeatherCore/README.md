@@ -81,4 +81,4 @@ swiftformat --lint .
 ```
 
 `swift test` calls the live ilmateenistus.ee feed, so it needs network access.
-See [AGENTS.md](AGENTS.md) for the repo layout, conventions and release flow.
+See [AGENTS.md](../../AGENTS.md) for the repo layout, conventions and release flow.

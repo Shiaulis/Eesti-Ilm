@@ -71,7 +71,7 @@ catch {
 ```
 
 ## Development
-Build, test and format commands, CI and conventions are described in [AGENTS.md](AGENTS.md).
+Build, test and format commands, CI and conventions are described in [AGENTS.md](../../AGENTS.md).
 
 ## Contributing
 Contributions are welcome. Open an issue or a pull request against `master`.
