@@ -33,7 +33,7 @@ final class ForecastListViewModel {
             try await WeatherService().getForecasts(for: language)
         },
         now: @escaping () -> Date = { .now },
-        calendar: Calendar = .current,
+        calendar: Calendar = .autoupdatingCurrent,
         significantTimeChanges: AsyncStream<Void> = ForecastListViewModel.makeSignificantTimeChangeStream()
     ) {
         self.languageProvider = languageProvider
@@ -79,9 +79,10 @@ final class ForecastListViewModel {
 
         let language = self.languageProvider()
         let task = Task { @MainActor in
+            let requestDate = self.now()
             do {
                 self.state = try await .loaded(self.fetchForecasts(language))
-                self.lastLoadDate = self.now()
+                self.lastLoadDate = requestDate
             }
             catch {
                 self.state = .failed(error.localizedDescription)

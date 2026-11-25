@@ -369,6 +369,47 @@ struct ForecastListViewModelTests {
         #expect(fetchCount == 2)
     }
 
+    @Test
+    @MainActor
+    func refreshRecordsRequestStartDateAcrossMidnight() async {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0) ?? .gmt
+        var currentDate = Date(timeIntervalSince1970: 1_764_115_195) // 2025-11-25 23:59:55 UTC
+        let gate = Gate()
+        var fetchCount = 0
+
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                fetchCount += 1
+                if fetchCount == 1 {
+                    await gate.wait()
+                }
+                return [self.makeSampleForecast()]
+            },
+            now: { currentDate },
+            calendar: calendar
+        )
+
+        let loadTask = Task { @MainActor in
+            await viewModel.loadIfNeeded()
+        }
+        while fetchCount == 0 {
+            await Task.yield()
+        }
+
+        // Midnight passes while the initial fetch is in flight.
+        currentDate = Date(timeIntervalSince1970: 1_764_115_205) // 2025-11-26 00:00:05 UTC
+        gate.open()
+        await loadTask.value
+
+        #expect(fetchCount == 1)
+
+        // Because the first request started before midnight, the foreground check on the new day refreshes.
+        await viewModel.refreshIfStale()
+        #expect(fetchCount == 2)
+    }
+
     // MARK: - Helpers
 
     private func makeSampleForecast() -> ForecastConfiguration {
