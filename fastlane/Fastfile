@@ -9,12 +9,16 @@ platform :ios do
       key_content: ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY")
     )
 
+    # App Store Connect has no Estonian localization yet, so deliver rejects
+    # the `et` folder and aborts the whole upload. Skip unsupported folders:
+    # en-US uploads, and the Estonian text stays in the repo until Apple adds `et`.
     deliver(
       skip_binary_upload: true,
       skip_screenshots: true,
       force: true,
       metadata_path: "./fastlane/metadata",
-      run_precheck_before_submit: false
+      run_precheck_before_submit: false,
+      ignore_language_directory_validation: true
     )
   end
 end
