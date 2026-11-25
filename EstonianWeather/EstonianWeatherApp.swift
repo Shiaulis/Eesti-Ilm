@@ -11,6 +11,10 @@ import SwiftUI
 struct EstonianWeatherApp: App {
     private let ratingService = UserRatingService()
 
+    init() {
+        SettingsConfiguration.publishVersionToSettingsBundle()
+    }
+
     var body: some Scene {
         WindowGroup {
             RootNavigationView()

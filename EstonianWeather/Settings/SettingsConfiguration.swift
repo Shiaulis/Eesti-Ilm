@@ -10,6 +10,20 @@ nonisolated enum SettingsConfiguration {
     static let contactEmail = "shiaulis@gmail.com"
     static let sourceDisclaimerHost = "www.ilmateenistus.ee"
 
+    /// Publishes the app version and build to the values shown by `Settings.bundle` in iOS Settings.
+    static func publishVersionToSettingsBundle(
+        bundle: Bundle = .main,
+        defaults: UserDefaults = .standard
+    ) {
+        let info = bundle.infoDictionary
+        if let version = info?["CFBundleShortVersionString"] as? String {
+            defaults.set(version, forKey: "version_preference")
+        }
+        if let build = info?["CFBundleVersion"] as? String {
+            defaults.set(build, forKey: "build_preference")
+        }
+    }
+
     @MainActor
     static var appSettingsURL: URL? {
         self.appSettingsURL(from: UIApplication.openSettingsURLString)
