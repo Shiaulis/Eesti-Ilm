@@ -42,13 +42,13 @@ cd Eesti-Ilm
 open EstonianWeather.xcodeproj
 ```
 
-Xcode resolves the Swift packages on first open. Select the `EstonianWeather` scheme, pick an iOS simulator and press Run (⌘R).
+Xcode resolves the local packages in `Packages/` and their third-party dependencies on first open. Select the `EstonianWeather` scheme, pick an iOS simulator and press Run (⌘R).
 
 To run on a physical device, select your own development team under *Signing & Capabilities* for both targets. Signing is automatic.
 
 ## Tests and formatting
 
-CI runs the format check and the tests. The build command is a quicker local check.
+CI runs the format check, the app tests and the package tests. The build command is a quicker local check.
 
 Format check:
 
@@ -70,7 +70,14 @@ Test (use any installed iPhone simulator; CI picks the newest one available):
 xcodebuild test -project EstonianWeather.xcodeproj -scheme EstonianWeather -testPlan EstonianWeather -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest' CODE_SIGNING_ALLOWED=NO
 ```
 
-Tests use [Swift Testing](https://developer.apple.com/documentation/testing) and live in the `EstonianWeatherTests` target.
+Package tests (WeatherCore's test calls the live ilmateenistus.ee feed, so it needs network access):
+
+```sh
+swift test --package-path Packages/Networking
+swift test --package-path Packages/WeatherCore
+```
+
+Tests use [Swift Testing](https://developer.apple.com/documentation/testing). App tests live in the `EstonianWeatherTests` target, package tests in each package's `Tests/` folder.
 
 CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) for every pull request and every push to `master`.
 
@@ -81,6 +88,8 @@ CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml
 | `EstonianWeather/` | The app target: SwiftUI views for the forecast list and the About screen |
 | `EstonianWeatherWidget/` | The home-screen widget extension (`EstonianWeatherWidgetExtension`) |
 | `EstonianWeatherTests/` | Unit tests (Swift Testing) |
+| `Packages/WeatherCore/` | Local Swift package: fetches the forecast and parses the XML feed |
+| `Packages/Networking/` | Local Swift package: HTTP layer used by WeatherCore |
 | `Resources/` | Shared resources: `Localizable.xcstrings`, the `EstonianWeather` test plan, `Settings.bundle` |
 | `ReleaseRelatedInfo/` | README images, app icon sources and App Store screenshots |
 | `fastlane/` | Release tooling and App Store metadata (`fastlane/metadata/`) |
@@ -89,13 +98,11 @@ CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml
 
 ## Dependencies
 
-Dependencies are managed with Swift Package Manager inside the Xcode project.
+The app links `WeatherCore` from the local package in [`Packages/WeatherCore`](Packages/WeatherCore), which depends on [`Packages/Networking`](Packages/Networking) by path. Both used to be separate repos (weatherCore and networking) and were moved here with their git history. They are not versioned or tagged: a change to them goes in the same pull request as the app change that needs it.
 
-- [weatherCore](https://github.com/Shiaulis/weatherCore): fetches the forecast and parses the XML feed.
-  - [networking](https://github.com/Shiaulis/networking): HTTP layer used by weatherCore.
-- Third-party, pulled in by the packages above: [SWXMLHash](https://github.com/drmohundro/SWXMLHash) and [swift-http-types](https://github.com/apple/swift-http-types).
+`Packages/` is temporary. Both modules will become framework targets in the Xcode project (EES-30).
 
-weatherCore and networking are maintained by the same author. A change there is merged, tagged as `X.Y.Z`, and then the version is bumped here.
+Third-party dependencies, pulled in by the packages through Swift Package Manager: [SWXMLHash](https://github.com/drmohundro/SWXMLHash) and [swift-http-types](https://github.com/apple/swift-http-types).
 
 ## Releasing
 
