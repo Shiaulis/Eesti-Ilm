@@ -28,7 +28,7 @@ The app is localized in English and Estonian.
 
 ## Requirements
 
-- macOS with Xcode 27.2 or later
+- macOS with Xcode 27.2 or later. The project file uses Xcode's JSON project format (`EstonianWeather.xcodeproj/project.xcproj`), which Xcode 26 and earlier cannot open
 - iOS 27.0 or later (device or simulator)
 - Swift 6 (ships with Xcode)
 - [SwiftFormat](https://github.com/nicklockwood/SwiftFormat), for formatting: `brew install swiftformat`

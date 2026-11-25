@@ -6,7 +6,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 
 ## Requirements
 
-- Xcode 27.2 or later, Swift 6 language mode
+- Xcode 27.2 or later, Swift 6 language mode. The project uses Xcode's JSON project format (`project.xcproj`), which Xcode 26 and earlier cannot open
 - Minimum deployment target: iOS 27.0
 - SwiftFormat from Homebrew: `brew install swiftformat`
 - For releases only: Ruby (version in `.ruby-version`) and Bundler
@@ -15,7 +15,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 
 | Path | Contents |
 | --- | --- |
-| `EstonianWeather.xcodeproj` | Xcode project. Schemes: `EstonianWeather`, `EstonianWeatherWidgetExtension` |
+| `EstonianWeather.xcodeproj` | Xcode project. Project file `project.xcproj` (JSON format). Schemes: `EstonianWeather`, `EstonianWeatherWidgetExtension` |
 | `EstonianWeather/` | App target `EstonianWeather` (SwiftUI) |
 | `EstonianWeatherWidget/` | Widget extension target `EstonianWeatherWidgetExtension` |
 | `EstonianWeatherTests/` | Test target `EstonianWeatherTests` (Swift Testing) |
@@ -72,6 +72,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 - Bundle id: `com.shiaulis.EstonianWeather` (widget: `com.shiaulis.EstonianWeather.EstonianWeatherWidget`). App Store id: 1534551991.
 - The app is localized in English and Estonian only. Strings live in `Resources/Localizable.xcstrings`. Do not add other languages.
 - App Store metadata lives in `fastlane/metadata/` and is `en-US` only, because App Store Connect has no Estonian listing. Do not add an `et` metadata folder.
+- The project file is `EstonianWeather.xcodeproj/project.xcproj`, Xcode's JSON project format (there is no `project.pbxproj`). Edit it directly: files, targets, build settings and packages are listed by name and path. It is JSON5-like (comments, trailing commas), so strict JSON tools such as `jq` cannot parse it. Keep the existing `id` values of targets and products: the shared schemes and `Resources/EstonianWeather.xctestplan` reference them. Do not convert the project back to `project.pbxproj`.
 - Signing is automatic. The Apple Developer membership is lapsed, so distribution signing, archiving for the App Store and uploads are not possible until it is renewed. Xcode Cloud (TestFlight) is planned after the renewal.
 
 ## Conventions
