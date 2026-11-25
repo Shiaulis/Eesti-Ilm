@@ -2,7 +2,9 @@
 language: en-US
 reviews:
   profile: chill
-  request_changes_workflow: true
+  request_changes_workflow: false
+  commit_status: true
+  fail_commit_status: true
   high_level_summary: true
   poem: false
   review_status: true
