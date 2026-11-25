@@ -1,5 +1,0 @@
-# actionlint does not know the GitHub-hosted `xcode-27` preview image label yet.
-# Remove this file once actionlint lists it among its built-in labels.
-self-hosted-runner:
-  labels:
-    - xcode-27
