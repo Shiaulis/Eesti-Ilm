@@ -78,7 +78,7 @@ CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml
 
 | Path | Contents |
 | --- | --- |
-| `EstonianWeather/` | The app target: SwiftUI views for the forecast list and the About screen |
+| `EstonianWeather/` | The app target: SwiftUI views for the forecast list and Settings |
 | `EstonianWeatherWidget/` | The home-screen widget extension (`EstonianWeatherWidgetExtension`) |
 | `EstonianWeatherTests/` | App unit tests (Swift Testing) |
 | `WeatherCore/` | Dynamic framework target: fetches the forecast and parses the XML feed |
@@ -87,7 +87,7 @@ CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml
 | `NetworkingTests/` | Unit tests for `Networking` (Swift Testing) |
 | `Resources/` | Shared resources: `Localizable.xcstrings`, the `EstonianWeather` test plan, `Settings.bundle` |
 | `ReleaseRelatedInfo/` | README images, app icon sources and App Store screenshots |
-| `fastlane/` | Release tooling and App Store metadata (`fastlane/metadata/`) |
+| `fastlane/` | Release tooling, App Store metadata (`fastlane/metadata/`) and screenshots (`fastlane/screenshots/`) |
 | `.github/workflows/ci.yml` | CI workflow |
 | `.swiftformat` | SwiftFormat configuration |
 
