@@ -43,17 +43,13 @@ extension DayPartConfiguration {
 extension PlaceConfiguration {
     /// Creates a PlaceConfiguration from a server Place model
     init(from place: Place) {
-        let temperatureRange: TemperatureRange? = if let minTemp = place.minimalTemperature, let maxTemp = place.maximalTemperature {
-            TemperatureRange(minimum: minTemp, maximum: maxTemp)
-        }
-        else {
-            nil
-        }
-
         self.init(
             name: place.name,
             phenomenon: place.phenomenon,
-            temperatureRange: temperatureRange
+            temperature: PlaceTemperature(
+                minimum: place.minimalTemperature,
+                maximum: place.maximalTemperature
+            )
         )
     }
 }
