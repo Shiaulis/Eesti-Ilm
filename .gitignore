@@ -14,8 +14,8 @@ DerivedData/
 
 # Swift Package Manager (Packages/*)
 .build/
-.swiftpm/configuration/registries.json
-.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+**/.swiftpm/configuration/registries.json
+**/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 xcuserdata/
 .netrc
 
