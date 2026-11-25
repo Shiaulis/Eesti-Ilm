@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   upload:
-    # The API key secrets live in this environment. It allows only `master` and needs the owner's approval for each run.
+    # The API key secrets live in this environment. It allows only `master`.
     environment: testflight
     # GitHub's Xcode 27 image (public preview). Its default Xcode is 27.1, so 27.2 is selected below.
     runs-on: xcode-27
