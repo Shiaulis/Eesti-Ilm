@@ -4,6 +4,7 @@ on:
   pull_request:
   push:
     branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,17 +13,36 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+env:
+  SWIFTFORMAT_VERSION: 0.64.7
+  SWIFTFORMAT_SHA256: e82e224325cbd3403fc7b68caf6c917926dc106de3af875fca4b87e3c4634038
+
 jobs:
   lint:
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install actionlint
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: brew install actionlint
+
+      - name: Lint workflows
+        run: actionlint -config-file .github/actionlint.yaml
 
       - name: Install SwiftFormat
-        run: brew install swiftformat
+        run: |
+          curl -fsSL "https://github.com/nicklockwood/SwiftFormat/releases/download/${SWIFTFORMAT_VERSION}/swiftformat.zip" -o "${{ runner.temp }}/swiftformat.zip"
+          echo "${SWIFTFORMAT_SHA256}  ${{ runner.temp }}/swiftformat.zip" | shasum -a 256 -c -
+          unzip -q "${{ runner.temp }}/swiftformat.zip" -d "${{ runner.temp }}/bin"
+          chmod +x "${{ runner.temp }}/bin/swiftformat"
+          echo "${{ runner.temp }}/bin" >> "$GITHUB_PATH"
+          "${{ runner.temp }}/bin/swiftformat" --version
 
-      - name: Lint
+      - name: Lint Swift
         run: swiftformat --lint .
 
   build-and-test:
@@ -30,7 +50,7 @@ jobs:
     runs-on: xcode-27
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Select Xcode 27.2
         run: |
@@ -78,4 +98,13 @@ jobs:
             -scheme EstonianWeather \
             -testPlan EstonianWeather \
             -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
+            -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
             CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload test results on failure
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: xcodebuild-test-results
+          path: ${{ runner.temp }}/TestResults.xcresult
+          if-no-files-found: ignore
