@@ -28,7 +28,6 @@ final class AboutMeViewController: UIViewController {
     )
     private let photoImageView = UIImageView()
     private let descriptionLabel = UILabel()
-    private var contactButton: UIButton?
 
     init(
         contactURL: URL? = SettingsConfiguration.contactURL(),
@@ -103,7 +102,6 @@ final class AboutMeViewController: UIViewController {
         self.photoImageView.image = photoImage
         self.photoImageView.contentMode = .scaleAspectFit
         self.photoImageView.layer.cornerRadius = Layout.photoCornerRadius
-        self.photoImageView.layer.cornerCurve = .continuous
         self.photoImageView.clipsToBounds = true
         self.photoImageView.isAccessibilityElement = false
 
@@ -160,9 +158,7 @@ final class AboutMeViewController: UIViewController {
             }
         )
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
 
-        self.contactButton = button
         self.contentStack.addArrangedSubview(button)
 
         NSLayoutConstraint.activate([
