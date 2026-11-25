@@ -12,7 +12,7 @@ DerivedData/
 *.dSYM
 *.xcframework
 
-# Swift Package Manager (Packages/*)
+# Swift Package Manager
 .build/
 **/.swiftpm/configuration/registries.json
 **/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata

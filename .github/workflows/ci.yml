@@ -25,29 +25,6 @@ jobs:
       - name: Lint
         run: swiftformat --lint .
 
-  packages:
-    name: packages (${{ matrix.package }})
-    # Same Xcode 27 image as build-and-test; the packages build and test on the macOS host.
-    runs-on: xcode-27
-    timeout-minutes: 30
-    strategy:
-      fail-fast: false
-      matrix:
-        package: [Networking, WeatherCore]
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Select Xcode 27.2
-        run: |
-          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
-          swift --version
-
-      - name: Build
-        run: swift build --package-path Packages/${{ matrix.package }}
-
-      - name: Test
-        run: swift test --package-path Packages/${{ matrix.package }}
-
   build-and-test:
     # GitHub's Xcode 27 image (public preview). Its default Xcode is 27.1, so 27.2 is selected below.
     runs-on: xcode-27
