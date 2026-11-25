@@ -109,7 +109,7 @@ bundle install
 bundle exec fastlane metadata
 ```
 
-`fastlane metadata` uploads the App Store metadata in [`fastlane/metadata/`](fastlane/metadata/) (locales `en-US` and `et`). It authenticates with an App Store Connect API key read from these environment variables:
+`fastlane metadata` uploads the App Store metadata in [`fastlane/metadata/`](fastlane/metadata/) (`en-US` only, because App Store Connect has no Estonian listing; the app itself is localized in English and Estonian). It authenticates with an App Store Connect API key read from these environment variables:
 
 - `APP_STORE_CONNECT_API_KEY_KEY_ID`
 - `APP_STORE_CONNECT_API_KEY_ISSUER_ID`

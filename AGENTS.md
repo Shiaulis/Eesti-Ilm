@@ -54,8 +54,8 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 
 - Targets: app `EstonianWeather` and widget extension `EstonianWeatherWidgetExtension`.
 - Bundle id: `com.shiaulis.EstonianWeather` (widget: `com.shiaulis.EstonianWeather.EstonianWeatherWidget`). App Store id: 1534551991.
-- Localizations: English and Estonian only. Strings live in `Resources/Localizable.xcstrings`. Do not add other languages.
-- App Store metadata lives in `fastlane/metadata/` (locales `en-US` and `et`).
+- The app is localized in English and Estonian only. Strings live in `Resources/Localizable.xcstrings`. Do not add other languages.
+- App Store metadata lives in `fastlane/metadata/` and is `en-US` only, because App Store Connect has no Estonian listing. Do not add an `et` metadata folder.
 - Signing is automatic. The Apple Developer membership is lapsed, so distribution signing, archiving for the App Store and uploads are not possible until it is renewed. Xcode Cloud (TestFlight) is planned after the renewal.
 
 ## Conventions
