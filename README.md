@@ -22,8 +22,6 @@ Features:
 - A forecast list for the coming days.
 - A home-screen widget (small and medium sizes).
 
-The 3.0 interface is being rebuilt, so on `master` both screens are still placeholders.
-
 The app is localized in English and Estonian.
 
 ## Requirements
