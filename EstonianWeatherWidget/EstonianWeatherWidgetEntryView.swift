@@ -40,26 +40,32 @@ private struct SmallForecastView: View {
     let forecast: ForecastConfiguration
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             Text(WidgetDateFormatter.smallDateText(for: self.forecast.date))
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
 
-            Spacer(minLength: 4)
+            Spacer(minLength: 2)
 
             Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.forecast.day.phenomenon))
-                .font(.system(size: 48))
+                .font(.system(size: 36))
                 .symbolRenderingMode(.hierarchical)
                 .minimumScaleFactor(0.5)
 
-            Spacer(minLength: 4)
+            Spacer(minLength: 2)
 
             Text(self.forecast.day.temperatureRange.formattedRange)
                 .font(.title2.weight(.semibold))
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
+
+            Text(self.forecast.day.phenomenon)
+                .font(.caption)
+                .minimumScaleFactor(0.5)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -86,26 +92,32 @@ private struct ForecastDayColumnView: View {
     let forecast: ForecastConfiguration
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 4) {
             Text(WidgetDateFormatter.mediumDateText(for: self.forecast.date))
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
 
-            Spacer(minLength: 4)
+            Spacer(minLength: 2)
 
             Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.forecast.day.phenomenon))
-                .font(.system(size: 34))
+                .font(.system(size: 28))
                 .symbolRenderingMode(.hierarchical)
                 .minimumScaleFactor(0.5)
 
-            Spacer(minLength: 4)
+            Spacer(minLength: 2)
 
             Text(self.forecast.day.temperatureRange.formattedRange)
                 .font(.callout.weight(.semibold))
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
+
+            Text(self.forecast.day.phenomenon)
+                .font(.caption2)
+                .minimumScaleFactor(0.6)
+                .lineLimit(3)
+                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 4)
