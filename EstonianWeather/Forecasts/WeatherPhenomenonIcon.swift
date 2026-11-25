@@ -48,7 +48,7 @@ nonisolated enum WeatherPhenomenonIcon {
         "hail": "cloud.hail",
         "mist": "cloud.fog",
         "fog": "cloud.fog",
-        "thunder": "wind",
-        "thunderstorm": "wind",
+        "thunder": "cloud.bolt",
+        "thunderstorm": "cloud.bolt",
     ]
 }

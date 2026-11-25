@@ -14,15 +14,13 @@ nonisolated enum ForecastFormatter {
         now: Date = .now
     ) -> String {
         let monthDay = date.formatted(
-            .dateTime
+            Date.FormatStyle(locale: locale, calendar: calendar, timeZone: calendar.timeZone)
                 .month(.wide)
                 .day(.twoDigits)
-                .locale(locale)
         )
         let weekday = date.formatted(
-            .dateTime
+            Date.FormatStyle(locale: locale, calendar: calendar, timeZone: calendar.timeZone)
                 .weekday(.wide)
-                .locale(locale)
         )
 
         var title = "\(monthDay), \(weekday)"

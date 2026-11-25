@@ -37,8 +37,8 @@ struct WeatherPhenomenonIconTests {
         ("Hail", "cloud.hail"),
         ("Mist", "cloud.fog"),
         ("Fog", "cloud.fog"),
-        ("Thunder", "wind"),
-        ("Thunderstorm", "wind"),
+        ("Thunder", "cloud.bolt"),
+        ("Thunderstorm", "cloud.bolt"),
     ])
     func knownPhenomenaMapToExpectedSFSymbols(phenomenon: String, expectedSymbol: String) {
         #expect(WeatherPhenomenonIcon.symbolName(for: phenomenon) == expectedSymbol)

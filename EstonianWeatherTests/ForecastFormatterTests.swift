@@ -54,6 +54,28 @@ struct ForecastFormatterTests {
     }
 
     @Test
+    func sectionTitleUsesTimeZoneOfSuppliedCalendar() throws {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = try #require(TimeZone(secondsFromGMT: -10 * 3600))
+
+        // 23:30 on 25 November in UTC-10 is already 26 November in UTC and in most other zones.
+        let now = try #require(
+            calendar.date(from: DateComponents(year: 2026, month: 11, day: 25, hour: 23, minute: 30))
+        )
+
+        let title = ForecastFormatter.sectionTitle(
+            for: now,
+            locale: Locale(identifier: "en_US"),
+            calendar: calendar,
+            now: now
+        )
+
+        #expect(title.contains("25"))
+        #expect(title.contains("Wednesday"))
+        #expect(title.hasSuffix("\nToday"))
+    }
+
+    @Test
     func sectionTitleSupportsEstonianLocale() throws {
         var calendar = Calendar(identifier: .gregorian)
         let timeZone = try #require(TimeZone(secondsFromGMT: 2 * 3600))

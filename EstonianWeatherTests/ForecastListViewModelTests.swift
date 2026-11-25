@@ -124,6 +124,29 @@ struct ForecastListViewModelTests {
 
     @Test
     @MainActor
+    func cancelledLoadKeepsLoadingStateAndAllowsRetry() async {
+        let viewModel = ForecastListViewModel(
+            languageProvider: { .english },
+            fetchForecasts: { _ in
+                try await Task.sleep(for: .seconds(60))
+                return []
+            }
+        )
+
+        let task = Task { @MainActor in
+            await viewModel.loadIfNeeded()
+        }
+        task.cancel()
+        await task.value
+
+        guard case .loading = viewModel.state else {
+            Issue.record("Expected cancelled load to keep state .loading")
+            return
+        }
+    }
+
+    @Test
+    @MainActor
     func refreshReplacesLoadedForecasts() async {
         let firstForecast = self.makeSampleForecast()
         let secondForecast = self.makeSampleForecast()

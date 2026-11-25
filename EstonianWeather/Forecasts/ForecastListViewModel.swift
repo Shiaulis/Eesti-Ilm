@@ -54,6 +54,11 @@ final class ForecastListViewModel {
             self.state = .loaded(forecasts)
         }
         catch {
+            // A cancelled load (e.g. the view disappeared) is not a failure: keep the previous state.
+            guard !Task.isCancelled else {
+                return
+            }
+
             self.state = .failed(error.localizedDescription)
         }
     }
