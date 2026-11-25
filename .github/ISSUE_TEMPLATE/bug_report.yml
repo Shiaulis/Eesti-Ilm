@@ -1,0 +1,44 @@
+name: Bug report
+description: Something in Eesti Ilm does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Eesti Ilm is maintained by one person, so a short, clear report helps a lot.
+        For security problems, see the security policy instead of opening an issue.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the app
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version and build
+      description: Shown in the app, or under Eesti Ilm in iOS Settings.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Device and iOS version
+      placeholder: iPhone 17, iOS 27.0
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or logs
+      description: Optional. Please do not include personal data.
