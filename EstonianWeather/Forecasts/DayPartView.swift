@@ -19,25 +19,36 @@ struct DayPartView: View {
         }
     }
 
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let kind: Kind
     let dayPart: DayPartConfiguration
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .center, spacing: 12) {
-                Text(self.kind.title)
-                    .font(.title2.weight(.semibold))
+            if self.dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(alignment: .center, spacing: 12) {
+                        self.titleLabel
 
-                Spacer()
+                        Spacer()
 
-                Text(ForecastFormatter.temperatureRangeText(for: self.dayPart.temperatureRange))
-                    .font(.title2.weight(.medium))
-                    .monospacedDigit()
+                        self.phenomenonIcon
+                    }
 
-                Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.dayPart.phenomenon))
-                    .symbolRenderingMode(.multicolor)
-                    .font(.title)
-                    .accessibilityLabel(self.dayPart.phenomenon)
+                    self.temperatureLabel
+                }
+            }
+            else {
+                HStack(alignment: .center, spacing: 12) {
+                    self.titleLabel
+
+                    Spacer()
+
+                    self.temperatureLabel
+
+                    self.phenomenonIcon
+                }
             }
 
             Text(self.dayPart.description)
@@ -55,6 +66,24 @@ struct DayPartView: View {
             }
         }
         .padding(.vertical, 4)
+    }
+
+    private var titleLabel: some View {
+        Text(self.kind.title)
+            .font(.title2.weight(.semibold))
+    }
+
+    private var temperatureLabel: some View {
+        Text(ForecastFormatter.temperatureRangeText(for: self.dayPart.temperatureRange))
+            .font(.title2.weight(.medium))
+            .monospacedDigit()
+    }
+
+    private var phenomenonIcon: some View {
+        Image(systemName: WeatherPhenomenonIcon.symbolName(for: self.dayPart.phenomenon))
+            .symbolRenderingMode(.multicolor)
+            .font(.title)
+            .accessibilityLabel(self.dayPart.phenomenon)
     }
 }
 
