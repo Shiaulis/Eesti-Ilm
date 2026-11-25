@@ -15,6 +15,12 @@ DerivedData/
 # macOS
 .DS_Store
 
-# swiftformat
-BuildTools/.swiftpm
-BuildTools/.build
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/test_output/
+fastlane/README.md
+
+# Ruby / Bundler
+.bundle/
+vendor/bundle/
