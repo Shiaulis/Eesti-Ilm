@@ -2,7 +2,7 @@
 
 ## Overview
 
-Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Estonian Environment Agency's weather service ([ilmateenistus.ee](https://www.ilmateenistus.ee)) in a forecast list and a home-screen widget. This repo is the top of a chain of repos with the same owner: **Eesti-Ilm** → [weatherCore](https://github.com/Shiaulis/weatherCore) (forecast fetching and XML parsing) → [networking](https://github.com/Shiaulis/networking) (HTTP layer). The project is being revived: version 3.0 is in development and the app is temporarily not on the App Store.
+Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Estonian Environment Agency's weather service ([ilmateenistus.ee](https://www.ilmateenistus.ee)) in a forecast list and a home-screen widget. Everything lives in this repo: the app links the local package `WeatherCore` (forecast fetching and XML parsing), which depends on the local package `Networking` (HTTP layer). Both were separate repos (weatherCore, networking) and were moved into `Packages/` with their history. The project is being revived: version 3.0 is in development and the app is temporarily not on the App Store.
 
 ## Requirements
 
@@ -19,6 +19,8 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | `EstonianWeather/` | App target `EstonianWeather` (SwiftUI) |
 | `EstonianWeatherWidget/` | Widget extension target `EstonianWeatherWidgetExtension` |
 | `EstonianWeatherTests/` | Test target `EstonianWeatherTests` (Swift Testing) |
+| `Packages/WeatherCore/` | Local Swift package `WeatherCore`, linked by the app target. Depends on `../Networking` and SWXMLHash |
+| `Packages/Networking/` | Local Swift package `Networking`. Depends on swift-http-types |
 | `Resources/` | `Localizable.xcstrings`, test plan `EstonianWeather.xctestplan`, `Settings.bundle` |
 | `ReleaseRelatedInfo/` | README images, icon sources, App Store screenshots |
 | `fastlane/` | Fastfile and App Store metadata (`fastlane/metadata/`) |
@@ -43,13 +45,25 @@ xcodebuild test -project EstonianWeather.xcodeproj -scheme EstonianWeather -test
 
 CI runs the same test command but picks the newest iPhone simulator available on the runner instead of `iPhone 18 Pro`. Locally, use any installed iPhone simulator.
 
+Packages (CI runs both commands for each package):
+
+```sh
+swift build --package-path Packages/Networking
+swift test --package-path Packages/Networking
+swift build --package-path Packages/WeatherCore
+swift test --package-path Packages/WeatherCore
+```
+
+WeatherCore's test calls the live ilmateenistus.ee feed, so it needs network access.
+
 To fix formatting, run `swiftformat .` and commit the result separately from other changes.
 
 ## CI
 
-`.github/workflows/ci.yml` runs on every pull request and on pushes to `master`. It has two jobs:
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `master`. It has three jobs:
 
-- `lint` (`macos-latest`): installs SwiftFormat with Homebrew and runs `swiftformat --lint .`
+- `lint` (`macos-latest`): installs SwiftFormat with Homebrew and runs `swiftformat --lint .` over the whole repo, packages included
+- `packages` (GitHub's `xcode-27` image, one run per package): selects Xcode 27.2 and runs `swift build` and `swift test` for `Packages/Networking` and `Packages/WeatherCore`
 - `build-and-test` (GitHub's `xcode-27` image): selects Xcode 27.2 with `xcode-select`, picks the newest available iPhone simulator, and runs the `xcodebuild test` command above (which also builds the app and widget)
 
 ## App
@@ -71,9 +85,10 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 
 ## Dependencies and releases
 
-- Swift packages, resolved by Xcode: `weatherCore` → `networking` (both owned), plus third-party `SWXMLHash` and `swift-http-types`.
-- A change to an owned package flows like this: merge its PR → the owner or coordinator tags `X.Y.Z` → bump the version in this project.
-- Tags are plain `X.Y.Z`, no `v` prefix. Releases so far: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0. Version 3.0 is in progress.
+- Local packages: the app project references `Packages/WeatherCore`; WeatherCore depends on Networking with `.package(path: "../Networking")`. They are not versioned or tagged: change them in the same PR as the app code that needs the change.
+- `Packages/` is interim. Both modules will become framework targets in the Xcode project (EES-30). Keep package changes minimal until then.
+- Third-party packages, resolved by Swift Package Manager: `SWXMLHash` (WeatherCore) and `swift-http-types` (Networking). Pins are in `EstonianWeather.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved` and in each package's `Package.resolved`.
+- App release tags are plain `X.Y.Z`, no `v` prefix. Releases so far: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0. Version 3.0 is in progress.
 - Release tooling is fastlane via Bundler:
 
   ```sh
