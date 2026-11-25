@@ -28,7 +28,13 @@ final class RootTabBarController: UITabBarController {
     }
 
     private static func makeNavigationController(for tab: AppTab) -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: TemporaryHosting.rootViewController(for: tab))
+        let rootViewController: UIViewController = switch tab {
+        case .forecasts:
+            ForecastListViewController()
+        case .settings:
+            SettingsViewController()
+        }
+        let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.prefersLargeTitles = true
         return navigationController
     }
