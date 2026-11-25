@@ -9,9 +9,14 @@ struct SettingsView: View {
     @Environment(\.locale) private var locale
     @Environment(\.openURL) private var openURL
 
+    private let tipJarStore: TipJarStore
     private let preferredLocalizations: [String]
 
-    init(preferredLocalizations: [String] = Bundle.main.preferredLocalizations) {
+    init(
+        tipJarStore: TipJarStore,
+        preferredLocalizations: [String] = Bundle.main.preferredLocalizations
+    ) {
+        self.tipJarStore = tipJarStore
         self.preferredLocalizations = preferredLocalizations
     }
 
@@ -19,10 +24,14 @@ struct SettingsView: View {
         Form {
             self.languageSection
             self.aboutAndSupportSection
+            TipJarSection(store: self.tipJarStore)
             self.disclaimerSection
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
+        .task {
+            await self.tipJarStore.loadProducts()
+        }
     }
 
     // MARK: - Sections
@@ -77,14 +86,14 @@ struct SettingsView: View {
 
 #Preview("English") {
     NavigationStack {
-        SettingsView(preferredLocalizations: ["en"])
+        SettingsView(tipJarStore: TipJarStore(), preferredLocalizations: ["en"])
     }
     .environment(\.locale, Locale(identifier: "en_US"))
 }
 
 #Preview("Estonian") {
     NavigationStack {
-        SettingsView(preferredLocalizations: ["et"])
+        SettingsView(tipJarStore: TipJarStore(), preferredLocalizations: ["et"])
     }
     .environment(\.locale, Locale(identifier: "et_EE"))
 }

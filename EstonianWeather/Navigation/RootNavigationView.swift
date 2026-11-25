@@ -8,6 +8,8 @@ import SwiftUI
 struct RootNavigationView: View {
     @State private var selectedTab = AppTab.defaultTab
 
+    let tipJarStore: TipJarStore
+
     var body: some View {
         TabView(selection: self.$selectedTab) {
             ForEach(AppTab.allCases) { tab in
@@ -33,17 +35,17 @@ struct RootNavigationView: View {
         case .forecasts:
             ForecastListView()
         case .settings:
-            SettingsView()
+            SettingsView(tipJarStore: self.tipJarStore)
         }
     }
 }
 
 #Preview("iPhone") {
-    RootNavigationView()
+    RootNavigationView(tipJarStore: TipJarStore())
         .environment(\.horizontalSizeClass, .compact)
 }
 
 #Preview("iPad") {
-    RootNavigationView()
+    RootNavigationView(tipJarStore: TipJarStore())
         .environment(\.horizontalSizeClass, .regular)
 }
