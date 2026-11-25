@@ -5,8 +5,7 @@ reviews:
   request_changes_workflow: false
   commit_status: true
   fail_commit_status: true
-  high_level_summary: true
-  high_level_summary_in_walkthrough: true
+  high_level_summary: false
   poem: false
   review_status: true
   collapse_walkthrough: true
