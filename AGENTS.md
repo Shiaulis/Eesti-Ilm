@@ -68,7 +68,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 - Embedding: the app links and embeds `Networking.framework` and `WeatherCore.framework` once in `EstonianWeather.app/Frameworks/`. The widget extension links `WeatherCore` (and `Networking` transitively) and loads them from the host app via `@executable_path/../../Frameworks` without embedding a second copy.
 - Bundle id: `com.shiaulis.EstonianWeather` (widget: `com.shiaulis.EstonianWeather.EstonianWeatherWidget`, frameworks: `com.shiaulis.Networking`, `com.shiaulis.WeatherCore`). App Store id: 1534551991.
 - The project file is `EstonianWeather.xcodeproj/project.xcproj`, Xcode's JSON project format (there is no `project.pbxproj`). Edit it directly: files, targets, build settings and packages are listed by name and path. It is JSON5-like (comments, trailing commas), so strict JSON tools such as `jq` cannot parse it. Keep the existing `id` values of targets and products: the shared schemes and `Resources/EstonianWeather.xctestplan` reference them. Do not convert the project back to `project.pbxproj`.
-- Signing is automatic. TestFlight builds through Xcode Cloud and the first App Store submission are tracked in EES-20. The `beta` lane and `testflight.yml` (EES-85) are an alternative way to upload TestFlight builds from GitHub Actions, using cloud-managed signing: no certificates, profiles or `match` in the repo.
+- Signing is automatic. TestFlight builds upload only from GitHub Actions, through the `TestFlight` workflow (`testflight.yml`) and the `beta` lane (EES-85), using cloud-managed signing: no certificates, profiles or `match` in the repo. Xcode Cloud is not used. The first App Store submission is tracked in EES-20.
 
 ## Localization
 
