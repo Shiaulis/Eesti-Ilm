@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct EstonianWeatherApp: App {
+    private let ratingService = UserRatingService()
+
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -20,6 +22,7 @@ struct EstonianWeatherApp: App {
                 }
             }
             .tabViewStyle(.sidebarAdaptable)
+            .userRatingPrompt(using: self.ratingService)
         }
     }
 }
