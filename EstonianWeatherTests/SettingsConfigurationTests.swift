@@ -10,6 +10,20 @@ import UIKit
 
 struct SettingsConfigurationTests {
 
+    // MARK: - Settings Bundle Version
+
+    @Test func publishVersionToSettingsBundleWritesVersionAndBuild() throws {
+        let suiteName = "SettingsConfigurationTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        SettingsConfiguration.publishVersionToSettingsBundle(bundle: .main, defaults: defaults)
+
+        let info = Bundle.main.infoDictionary
+        #expect(defaults.string(forKey: "version_preference") == info?["CFBundleShortVersionString"] as? String)
+        #expect(defaults.string(forKey: "build_preference") == info?["CFBundleVersion"] as? String)
+    }
+
     // MARK: - Current Language Display Name
 
     @Test func currentLanguageDisplayNameResolvesEnglish() {
