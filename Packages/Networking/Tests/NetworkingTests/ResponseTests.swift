@@ -1,5 +1,5 @@
 //
-//  EndpointTests.swift
+//  ResponseTests.swift
 //  Networking
 //
 //  Created by Andrius Shiaulis on 04.07.2025.
@@ -10,8 +10,6 @@ import HTTPTypes
 import HTTPTypesFoundation
 @testable import Networking
 import Testing
-
-
 
 final class ResponseTests {
 
@@ -32,7 +30,7 @@ final class ResponseTests {
     }
 
     @Test func whenConnectionProviderReturnsData_responseContainsCorrectData() async throws {
-        let expectedData: Data = Data()
+        let expectedData = Data()
         self.connectionProvider.data = expectedData
 
         let receivedResponse: Response = try await self.sut.fetchResponse(for: self.defaultEndpoint)
@@ -48,5 +46,4 @@ final class ResponseTests {
             try await self.sut.fetchResponse(for: self.defaultEndpoint)
         }
     }
-
 }

@@ -1,65 +1,80 @@
 # Networking
-[![Swift CI](https://github.com/shiaulis/networking/actions/workflows/build_and_test_main.yml/badge.svg)](https://github.com/shiaulis/networking/actions/workflows/build_and_test_main.yml)
-A lightweight Swift Package providing a foundational layer for making network requests using the new `HTTPTypes` and `URLSession`. This package focuses on simplicity and clear separation of concerns, making it easy to define endpoints and execute requests. The package utilizes all new concurrency features introduced in Swift 6.2 for asynchronous code
+[![CI](https://github.com/Shiaulis/networking/actions/workflows/ci.yml/badge.svg)](https://github.com/Shiaulis/networking/actions/workflows/ci.yml)
+
+A lightweight Swift package for making network requests with [`HTTPTypes`](https://github.com/apple/swift-http-types) and `URLSession`. You describe a request as an `Endpoint` value and execute it with `URLSessionNetworkClient` using Swift concurrency (`async`/`await`). The package is written in Swift 6 language mode with strict concurrency checking.
 
 ## Main Components
-- **`Endpoint` Protocol:** Define your API endpoints with properties like scheme, HTTP method, host, path, query items, and content type.
-- **`URLSessionNetworkClient`:** A client built on `URLSession` for executing network requests based on your `Endpoint`definitions.
+- **`Endpoint` protocol:** describes a request: `scheme` (`EndpointScheme`: `.https`, `.ftp`), `httpMethod` (`HTTPMethod`: `.get`, `.post`, `.put`, `.delete`), `host`, optional `path`, `urlQueryItems` and optional `contentType`. Conforming types must be `Sendable` and `Hashable`.
+- **`URLSessionNetworkClient`:** builds an `HTTPRequest` from an `Endpoint`, runs it on the `URLSession` you pass in, and returns a `Response`.
+- **`Response`:** the originating `endpoint`, the raw body `data`, and a `status` with the HTTP status `code` and `reason` phrase.
 
 ## Requirements
-- iOS 18.0+ / macOS 26.0+   
+- iOS 27.0+ / macOS 26.0+
+- Xcode 27.2+ (Swift tools version 6.4)
 
 ## Installation
-You can add `Networking` to your project using Swift Package Manager.
-1. In Xcode, open your project.
-2. Navigate to **File > Add Packages...**.
-3. Enter the repository URL: `https://github.com/sheiaulis/Networking.git`.
-4. Choose the desired version.
+Add `Networking` with Swift Package Manager.
+
+In `Package.swift`:
+```swift
+dependencies: [
+    .package(url: "https://github.com/Shiaulis/networking.git", from: "0.4.0"),
+],
+targets: [
+    .target(
+        name: "YourTarget",
+        dependencies: [
+            .product(name: "Networking", package: "networking"),
+        ]
+    ),
+]
+```
+
+In Xcode: **File > Add Package Dependencies...**, enter `https://github.com/Shiaulis/networking.git` and choose version `0.4.0` or later.
 
 ## Usage
 
 ### 1. Define Your Endpoint
-Start by creating a struct or class that conforms to the `Endpoint` protocol.
+Create a type that conforms to `Endpoint`.
 ```swift
 import Foundation
 import Networking
-import HTTPTypes
 
 struct GitHubUserEndpoint: Endpoint {
-    var scheme: EndpointScheme = .https
-    var httpMethod: HTTPMethod = .get
-    var host: String = "api.github.com"
-    var path: String? = "/users"
-    var urlQueryItems: [URLQueryItem] = []
-    var contentType: String? = "application/json"
+    let username: String
+
+    var scheme: EndpointScheme { .https }
+    var httpMethod: HTTPMethod { .get }
+    var host: String { "api.github.com" }
+    var path: String? { "/users/\(username)" }
+    var urlQueryItems: [URLQueryItem] { [] }
+    var contentType: String? { "application/json" }
 }
 ```
 
 ### 2. Make a Network Request
-Instantiate `URLSessionNetworkClient` and use it to fetch responses for your defined endpoints.
-
-Swift
-
+Create a `URLSessionNetworkClient` and fetch a response for your endpoint.
 ```swift
 import Foundation
 import Networking
 
-Task {
-    let client = URLSessionNetworkClient(urlSession: .shared)
-    let usersEndpoint = GitHubUserEndpoint(username: "octocat")
-    do {
-        let response = try await client.fetchResponse(for: userEndpoint)
-        // Process response.data
-        print("Successfully fetched users!")
-    } 
-    catch {
-        print("Error fetching user: \(error)")
-    }
+let client = URLSessionNetworkClient(urlSession: .shared)
+let endpoint = GitHubUserEndpoint(username: "octocat")
+
+do {
+    let response = try await client.fetchResponse(for: endpoint)
+    print("Status \(response.status.code), \(response.data.count) bytes")
+}
+catch {
+    print("Request failed: \(error)")
 }
 ```
 
+## Development
+Build, test and format commands, CI and conventions are described in [AGENTS.md](AGENTS.md).
+
 ## Contributing
-Contributions are welcome! If you have suggestions for improvements, new features, or bug fixes, feel free to open an issue or submit a pull request.
+Contributions are welcome. Open an issue or a pull request against `master`.
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.

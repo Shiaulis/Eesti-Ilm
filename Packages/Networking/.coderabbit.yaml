@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: true
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches: ["master"]
+  path_filters:
+    - "!**/Package.resolved"
+    - "!Gemfile.lock"
+    - "!**/*.xcassets/**"
+  path_instructions:
+    - path: "**/*.swift"
+      instructions: >-
+        Swift 6 language mode with strict concurrency, minimum iOS 27.
+        SwiftFormat with the repo's .swiftformat is the only style authority: do not comment on formatting or naming style.
+        Focus on correctness, concurrency safety, error handling and API design. New tests use Swift Testing.
+    - path: ".github/workflows/**"
+      instructions: "CI runs on the GitHub-hosted xcode-27 image with Xcode 27.2 selected explicitly. Commands must match AGENTS.md."
+    - path: "**/*.md"
+      instructions: "Docs must match the actual commands, file paths and versions in the repo."
+  tools:
+    swiftlint:
+      enabled: false
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns: ["AGENTS.md"]
+chat:
+  auto_reply: true

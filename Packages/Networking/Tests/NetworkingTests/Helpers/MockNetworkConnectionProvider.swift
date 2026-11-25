@@ -6,8 +6,8 @@
 //
 
 import Foundation
-@testable import Networking
 import HTTPTypes
+@testable import Networking
 
 final class MockNetworkConnectionProvider: NetworkConnectionProvider {
     var receivedRequest: HTTPRequest?
@@ -18,7 +18,9 @@ final class MockNetworkConnectionProvider: NetworkConnectionProvider {
     func data(for request: HTTPRequest) async throws -> (Data, HTTPResponse) {
         self.receivedRequest = request
 
-        if let error { throw error }
+        if let error {
+            throw error
+        }
         return (self.data ?? .init(), HTTPResponse(status: .init(code: status?.code ?? 0, reasonPhrase: status?.reason ?? "")))
     }
 }

@@ -34,11 +34,11 @@ public nonisolated struct Response: Sendable {
 
         var kind: Kind {
             switch code {
-            case 100..<200: return .informational
-            case 200..<300: return .successful
-            case 300..<400: return .redirection
-            case 400..<500: return .clientError
-            default: return .invalid
+            case 100 ..< 200: .informational
+            case 200 ..< 300: .successful
+            case 300 ..< 400: .redirection
+            case 400 ..< 500: .clientError
+            default: .invalid
             }
         }
 

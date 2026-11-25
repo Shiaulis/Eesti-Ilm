@@ -54,10 +54,10 @@ public final nonisolated class URLSessionNetworkClient {
 
     private func makeRequestMethod(from endpointMethod: HTTPMethod) -> HTTPRequest.Method {
         switch endpointMethod {
-        case .get: return .get
-        case .post: return .post
-        case .put: return .put
-        case .delete: return .delete
+        case .get: .get
+        case .post: .post
+        case .put: .put
+        case .delete: .delete
         }
     }
 }

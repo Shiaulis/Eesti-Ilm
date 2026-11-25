@@ -30,5 +30,4 @@ public nonisolated protocol Endpoint: Sendable, Hashable {
     var path: String? { get }
     var urlQueryItems: [URLQueryItem] { get }
     var contentType: String? { get }
-
 }
