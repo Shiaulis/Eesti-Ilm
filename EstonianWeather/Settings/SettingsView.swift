@@ -8,6 +8,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.locale) private var locale
     @Environment(\.openURL) private var openURL
+    @State private var tipJarStore = TipJarStore()
 
     private let preferredLocalizations: [String]
 
@@ -19,10 +20,15 @@ struct SettingsView: View {
         Form {
             self.languageSection
             self.aboutAndSupportSection
+            TipJarSection(store: self.tipJarStore)
             self.disclaimerSection
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
+        .task {
+            self.tipJarStore.startObservingTransactions()
+            await self.tipJarStore.loadProducts()
+        }
     }
 
     // MARK: - Sections

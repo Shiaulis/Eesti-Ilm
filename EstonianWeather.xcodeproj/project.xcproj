@@ -66,6 +66,7 @@
             "EstonianWeather/resources",
           ],
         },
+        { "path": "TipJar.storekit" },
         { "path": "EstonianWeather.xctestplan" },
       ],
     },
