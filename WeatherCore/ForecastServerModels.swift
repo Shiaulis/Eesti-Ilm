@@ -17,7 +17,7 @@ struct Forecast: XMLObjectDeserialization, Decodable {
         try Self(
             date: element.value(ofAttribute: CodingKeys.date.stringValue),
             night: element[CodingKeys.night.stringValue].value(),
-            day: element[CodingKeys.night.stringValue].value()
+            day: element[CodingKeys.day.stringValue].value()
         )
     }
 }
