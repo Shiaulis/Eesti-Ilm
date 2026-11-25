@@ -50,7 +50,7 @@ struct AboutMeViewControllerTests {
         let button = try #require(self.subviews(ofType: UIButton.self, in: controller.view).first)
         #expect(button.configuration?.title == String(localized: "Contact me"))
 
-        button.sendActions(for: .touchUpInside)
+        button.sendActions(for: .primaryActionTriggered)
         #expect(openedURL == expectedURL)
     }
 
