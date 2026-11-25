@@ -91,6 +91,12 @@ jobs:
           echo "Using simulator: $name"
           echo "name=$name" >> "$GITHUB_OUTPUT"
 
+      # A cold simulator boot takes minutes on the runner and xcodebuild only starts it after the build.
+      # Starting it now lets it boot while the app and test bundles compile. Not fatal: xcodebuild boots it itself otherwise.
+      - name: Start simulator boot
+        run: |
+          xcrun simctl boot "${{ steps.simulator.outputs.name }}" || echo "::warning::Could not pre-boot the simulator; xcodebuild will boot it"
+
       - name: Build and test
         run: |
           xcodebuild test \
@@ -99,6 +105,7 @@ jobs:
             -testPlan EstonianWeather \
             -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
             -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
+            -enableCodeCoverage NO \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Upload test results on failure
