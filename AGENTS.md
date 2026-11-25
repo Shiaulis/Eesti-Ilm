@@ -27,6 +27,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | `ReleaseRelatedInfo/` | README images, icon sources, App Store screenshots |
 | `fastlane/` | Fastfile and App Store metadata (`fastlane/metadata/`) |
 | `.github/workflows/ci.yml` | CI |
+| `.github/dependabot.yml` | Dependabot version updates |
 | `.swiftformat` | Formatting rules |
 
 ## Build, test, format
@@ -91,6 +92,9 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 
 - `Networking` and `WeatherCore` are framework targets inside `EstonianWeather.xcodeproj`. They are not versioned or tagged separately: change them in the same PR as the app code that needs the change.
 - Third-party packages, resolved by Swift Package Manager as remote dependencies in `EstonianWeather.xcodeproj`: `SWXMLHash` (`WeatherCore`) and `swift-http-types` (`Networking`, `NetworkingTests`). Pins are in `EstonianWeather.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`.
+- Dependabot version updates are configured in `.github/dependabot.yml`: monthly, one grouped PR per ecosystem, for `github-actions` (keeps the SHA pins and their version comments in `ci.yml`) and `bundler` (`Gemfile`, `Gemfile.lock`). Dependabot PRs open against `master` and go through the same required checks and `@Shiaulis` review as any other PR. They are exempt from the PR template (Dependabot writes its own PR body and cannot fill in template sections), so do not edit their descriptions to match it.
+- Dependabot cannot see the Swift packages: its `swift` ecosystem only reads `Package.swift`, and the packages are declared in the Xcode project. Check `SWXMLHash` and `swift-http-types` by hand (for example before each release): compare the pins in `Package.resolved` with the latest releases, then update them in a ticket-scoped PR.
+- Secret scanning and push protection are enabled on the repo (GitHub settings, not files in the repo).
 - App release tags are plain `X.Y.Z`, no `v` prefix. Releases so far: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0. Version 3.0 is in progress.
 - Release tooling is fastlane via Bundler:
 
