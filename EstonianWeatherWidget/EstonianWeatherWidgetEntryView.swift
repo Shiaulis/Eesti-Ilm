@@ -13,7 +13,7 @@ struct EstonianWeatherWidgetEntryView: View {
 
     var body: some View {
         VStack {
-            Text("Time:")
+            Text(verbatim: "Time:")
             Text(entry.date, style: .time)
         }
     }
