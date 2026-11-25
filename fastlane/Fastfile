@@ -45,4 +45,58 @@ platform :ios do
       skip_app_version_update: true
     )
   end
+
+  desc "Archive the EstonianWeather scheme (app + widget) and upload it to TestFlight"
+  desc "Signs with Xcode automatic signing and cloud-managed certificates through the App Store Connect API key"
+  desc "(no certificates, profiles or match); the build number is the latest TestFlight build number + 1"
+  lane :beta do
+    key_id = ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY_ID")
+    issuer_id = ENV.fetch("APP_STORE_CONNECT_API_KEY_ISSUER_ID")
+    key_content = ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY")
+
+    api_key = app_store_connect_api_key(
+      key_id: key_id,
+      issuer_id: issuer_id,
+      key_content: key_content
+    )
+
+    build_number = latest_testflight_build_number(api_key: api_key) + 1
+    UI.message("Building with build number #{build_number}")
+
+    # xcodebuild reads the key from a file, so write it to a temp file for the
+    # duration of the build and always delete it afterwards.
+    Dir.mktmpdir("asc-api-key") do |dir|
+      key_path = File.join(dir, "AuthKey_#{key_id}.p8")
+      File.write(key_path, key_content, perm: 0o600)
+
+      signing_args = [
+        "-allowProvisioningUpdates",
+        "-authenticationKeyPath", key_path,
+        "-authenticationKeyID", key_id,
+        "-authenticationKeyIssuerID", issuer_id
+      ]
+
+      build_app(
+        project: "EstonianWeather.xcodeproj",
+        scheme: "EstonianWeather",
+        configuration: "Release",
+        destination: "generic/platform=iOS",
+        export_options: {
+          method: "app-store-connect",
+          signingStyle: "automatic"
+        },
+        # Automatic signing: Xcode creates and fetches the certificate and profiles.
+        skip_profile_detection: true,
+        xcargs: [*signing_args, "CURRENT_PROJECT_VERSION=#{build_number}"].shelljoin,
+        export_xcargs: signing_args.shelljoin,
+        output_directory: "build",
+        clean: true
+      )
+    end
+
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
+  end
 end
