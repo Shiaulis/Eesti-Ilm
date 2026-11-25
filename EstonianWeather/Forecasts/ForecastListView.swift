@@ -10,6 +10,6 @@ import SwiftUI
 
 struct ForecastListView: View {
     var body: some View {
-        Text("Hello, world!")
+        Text(verbatim: "Hello, world!")
     }
 }

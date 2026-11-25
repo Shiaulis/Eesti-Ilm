@@ -7,7 +7,7 @@
   "localizations": {
     "development": "en",
     "supported": [
-      "Base",
+      "en",
       "et",
     ],
   },
@@ -48,6 +48,27 @@
     { "kind": "folder", "path": "NetworkingTests", "target-membership": [ "NetworkingTests" ] },
     { "kind": "folder", "path": "WeatherCore", "target-membership": [ "WeatherCore" ] },
     { "kind": "folder", "path": "WeatherCoreTests", "target-membership": [ "WeatherCoreTests" ] },
+    {
+      "kind": "group",
+      "name": "Resources",
+      "path": "Resources",
+      "children": [
+        {
+          "path": "Localizable.xcstrings",
+          "target-membership": [
+            "EstonianWeather/resources",
+            "EstonianWeatherWidgetExtension/resources",
+          ],
+        },
+        {
+          "path": "Settings.bundle",
+          "target-membership": [
+            "EstonianWeather/resources",
+          ],
+        },
+        { "path": "EstonianWeather.xctestplan" },
+      ],
+    },
     {
       "kind": "group",
       "name": "Frameworks",
