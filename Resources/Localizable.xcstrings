@@ -250,13 +250,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The weather information is provided by\nEstonian Weather Service"
+            "value" : "The weather information is provided by\nEstonian Environment Agency"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ilmateabe toob teieni\nRiigi Ilmateenistus"
+            "value" : "Ilmateabe toob teieni\nKeskkonnaagentuur"
           }
         }
       }

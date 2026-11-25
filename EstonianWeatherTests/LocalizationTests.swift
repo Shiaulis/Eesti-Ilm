@@ -31,14 +31,14 @@ struct LocalizationTests {
             #expect(String(localized: "Forecasts") == "Prognoosid")
             #expect(String(localized: "Settings") == "Seaded")
             #expect(String(localized: .aboutMeDescription).hasPrefix("Tere"))
-            #expect(String(localized: .sourceDisclaimer).contains("Ilmateenistus"))
+            #expect(String(localized: .sourceDisclaimer).contains("Keskkonnaagentuur"))
         }
         else {
             #expect(Bundle.main.preferredLocalizations.first == "en")
             #expect(String(localized: "Forecasts") == "Forecasts")
             #expect(String(localized: "Settings") == "Settings")
             #expect(String(localized: .aboutMeDescription).hasPrefix("Hey"))
-            #expect(String(localized: .sourceDisclaimer).contains("Estonian Weather Service"))
+            #expect(String(localized: .sourceDisclaimer).contains("Estonian Environment Agency"))
         }
     }
 
