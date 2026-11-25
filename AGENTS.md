@@ -96,7 +96,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 - Dependabot version updates are configured in `.github/dependabot.yml`: monthly, one grouped PR per ecosystem, for `github-actions` (keeps the SHA pins and their version comments in `ci.yml`) and `bundler` (`Gemfile`, `Gemfile.lock`). Dependabot PRs open against `master` and go through the same required checks and `@Shiaulis` review as any other PR. They are exempt from the PR template (Dependabot writes its own PR body and cannot fill in template sections), so do not edit their descriptions to match it.
 - Dependabot cannot see the Swift packages: its `swift` ecosystem only reads `Package.swift`, and the packages are declared in the Xcode project. Check `SWXMLHash` and `swift-http-types` by hand (for example before each release): compare the pins in `Package.resolved` with the latest releases, then update them in a ticket-scoped PR.
 - Secret scanning and push protection are enabled on the repo (GitHub settings, not files in the repo).
-- App release tags are plain `X.Y.Z`, no `v` prefix. Releases so far: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0, plus 2.1.1 and 2.2, which shipped but were never tagged. Version 2.3 is in progress.
+- App release tags are plain `X.Y.Z`, no `v` prefix. Releases so far: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0, 2.1.1, 2.2.0. Version 2.3 is in progress.
 - Release tooling is fastlane via Bundler:
 
   ```sh
