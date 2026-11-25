@@ -90,22 +90,79 @@ public struct TemperatureRange: Sendable, Equatable {
 
 // MARK: - Place Configuration
 
-public struct PlaceConfiguration: Sendable, Identifiable {
+public struct PlaceConfiguration: Sendable, Identifiable, Equatable {
     public let id: UUID
     public let name: String
     public let phenomenon: String
-    public let temperatureRange: TemperatureRange?
+    public let temperature: PlaceTemperature?
 
     public init(
         id: UUID = UUID(),
         name: String,
         phenomenon: String,
-        temperatureRange: TemperatureRange? = nil
+        temperature: PlaceTemperature? = nil
     ) {
         self.id = id
         self.name = name
         self.phenomenon = phenomenon
-        self.temperatureRange = temperatureRange
+        self.temperature = temperature
+    }
+}
+
+// MARK: - Place Temperature
+
+public enum PlaceTemperature: Sendable, Equatable {
+    case minimum(Int)
+    case maximum(Int)
+    case range(TemperatureRange)
+
+    public init?(minimum: Int?, maximum: Int?) {
+        switch (minimum, maximum) {
+        case let (min?, max?):
+            self = .range(TemperatureRange(minimum: min, maximum: max))
+        case let (min?, nil):
+            self = .minimum(min)
+        case let (nil, max?):
+            self = .maximum(max)
+        case (nil, nil):
+            return nil
+        }
+    }
+
+    /// Lower temperature bound, when available
+    public var minimum: Int? {
+        switch self {
+        case let .minimum(value): value
+        case .maximum: nil
+        case let .range(range): range.minimum
+        }
+    }
+
+    /// Upper temperature bound, when available
+    public var maximum: Int? {
+        switch self {
+        case .minimum: nil
+        case let .maximum(value): value
+        case let .range(range): range.maximum
+        }
+    }
+
+    /// Full temperature range when both bounds are available
+    public var range: TemperatureRange? {
+        switch self {
+        case let .range(range): range
+        case .minimum, .maximum: nil
+        }
+    }
+
+    /// Formatted temperature string (e.g., "-2°", "7°", or "15° - 22°")
+    public var formattedTemperature: String {
+        switch self {
+        case let .minimum(value), let .maximum(value):
+            "\(value)°"
+        case let .range(range):
+            range.formattedRange
+        }
     }
 }
 
