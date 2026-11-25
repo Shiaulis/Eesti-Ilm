@@ -5,32 +5,62 @@
 //  Created by Andrius Shiaulis on 26.07.2025.
 //
 
+import Foundation
+import WeatherCore
 import WidgetKit
 
-struct ForecastTimelineProvider: AppIntentTimelineProvider {
+struct ForecastTimelineProvider: TimelineProvider {
+    private static let successRefreshInterval: TimeInterval = 60 * 60
+    private static let failureRetryInterval: TimeInterval = 15 * 60
+
+    private let fetchForecasts: @Sendable () async throws -> [ForecastConfiguration]
+
+    init(fetchForecasts: @escaping @Sendable () async throws -> [ForecastConfiguration] = {
+        try await WeatherService().getForecasts(for: .current)
+    }) {
+        self.fetchForecasts = fetchForecasts
+    }
+
     func placeholder(in context: Context) -> ForecastTimelineEntry {
-        ForecastTimelineEntry(date: Date(), configuration: ForecastIntent())
+        .placeholder
     }
 
-    func snapshot(for configuration: ForecastIntent, in context: Context) async -> ForecastTimelineEntry {
-        ForecastTimelineEntry(date: Date(), configuration: configuration)
-    }
-
-    func timeline(for configuration: ForecastIntent, in context: Context) async -> Timeline<ForecastTimelineEntry> {
-        var entries = [ForecastTimelineEntry]()
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = ForecastTimelineEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+    func getSnapshot(in context: Context, completion: @escaping (ForecastTimelineEntry) -> Void) {
+        if context.isPreview {
+            completion(.preview)
+            return
         }
 
-        return Timeline(entries: entries, policy: .atEnd)
+        let fetchForecasts = self.fetchForecasts
+        nonisolated(unsafe) let completion = completion
+        Task {
+            do {
+                let forecasts = try await fetchForecasts()
+                completion(ForecastTimelineEntry(date: .now, forecasts: forecasts))
+            }
+            catch {
+                completion(.empty)
+            }
+        }
     }
 
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ForecastTimelineEntry>) -> Void) {
+        let fetchForecasts = self.fetchForecasts
+        nonisolated(unsafe) let completion = completion
+        Task {
+            do {
+                let forecasts = try await fetchForecasts()
+                let now = Date.now
+                let entry = ForecastTimelineEntry(date: now, forecasts: forecasts)
+                let nextUpdate = now.addingTimeInterval(Self.successRefreshInterval)
+                completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
+            }
+            catch {
+                let now = Date.now
+                let entry = ForecastTimelineEntry(date: now, forecasts: [])
+                let nextRetry = now.addingTimeInterval(Self.failureRetryInterval)
+                completion(Timeline(entries: [entry], policy: .after(nextRetry)))
+            }
+        }
+    }
 }
