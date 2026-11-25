@@ -10,12 +10,6 @@
 <a href="https://github.com/Shiaulis/Eesti-Ilm/graphs/contributors"><img src="https://img.shields.io/github/contributors/Shiaulis/Eesti-Ilm" alt="GitHub contributors"></a>
 </p>
 
-<p align="center">
-<img src="ReleaseRelatedInfo/Images/app_preview.png" alt="Eesti Ilm screenshot" width="600">
-<br>
-<sub>Screenshot of version 2.x</sub>
-</p>
-
 > [!NOTE]
 > **Status:** Eesti Ilm is being revived. Version 3.0 is in development, and the app is temporarily not available on the App Store.
 
