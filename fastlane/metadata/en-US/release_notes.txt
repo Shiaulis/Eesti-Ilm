@@ -1,0 +1,3 @@
+Eesti Ilm 3.0 is a fresh start, rebuilt for the latest iOS.
+• Forecasts from the Estonian Environment Agency's weather service
+• New Home Screen widget in small and medium sizes

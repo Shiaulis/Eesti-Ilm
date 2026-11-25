@@ -1,0 +1,28 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload App Store metadata from fastlane/metadata (no binary, no screenshots)"
+  desc "Pass version:X.Y.Z to create or select that editable App Store version first;"
+  desc "without it, the metadata goes to the existing editable version and no version is changed"
+  lane :metadata do |options|
+    version = options[:version]
+
+    app_store_connect_api_key(
+      key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY_ID"),
+      issuer_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ISSUER_ID"),
+      key_content: ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY")
+    )
+
+    deliver(
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      force: true,
+      metadata_path: "./fastlane/metadata",
+      run_precheck_before_submit: false,
+      # Only an explicit version may create or change the App Store version,
+      # never one read from a stray *.ipa in the repo root.
+      app_version: version,
+      skip_app_version_update: version.nil?
+    )
+  end
+end
