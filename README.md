@@ -11,7 +11,7 @@
 </p>
 
 > [!NOTE]
-> **Status:** Eesti Ilm is being revived. Version 3.0 is in development, and the app is temporarily not available on the App Store.
+> **Status:** Eesti Ilm is being revived. Version 2.3 is in development, and the app is temporarily not available on the App Store.
 
 ## About
 
@@ -114,7 +114,7 @@ bundle exec fastlane metadata
 
 Never commit the key or its values.
 
-Versions are tagged as plain `X.Y.Z` (no `v` prefix). Earlier releases: 1.2.0, 1.3.1, 1.4.0, 2.0.0 and 2.1.0. Version 3.0 is in progress.
+Versions are tagged as plain `X.Y.Z` (no `v` prefix). Earlier releases: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0, 2.1.1 and 2.2.0. Version 2.3 is in progress.
 
 ## Contributing
 
