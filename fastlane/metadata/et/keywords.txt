@@ -1,0 +1,1 @@
+ilm,ilmaprognoos,prognoos,Eesti,vidin,ilmateenistus,temperatuur,vihm,Tallinn,Tartu,weather

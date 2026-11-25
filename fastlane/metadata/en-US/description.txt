@@ -1,0 +1,10 @@
+Eesti Ilm gives you instant access to the weather forecast for Estonia in a simple, clean app.
+
+Forecasts come from the weather service of the Estonian Environment Agency (ilmateenistus.ee), the official source of weather information in Estonia.
+
+Features:
+• Weather forecasts for Estonia from the national weather service
+• Home Screen widget in small and medium sizes to check the weather at a glance
+• No account, no ads, no personal data collected
+
+Eesti Ilm is an independent app and is not affiliated with the Estonian Environment Agency.

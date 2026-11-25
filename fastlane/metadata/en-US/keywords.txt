@@ -1,0 +1,1 @@
+weather,forecast,Estonia,Eesti,ilm,widget,ilmateenistus,prognoos,Tallinn,Tartu,temperature,rain
