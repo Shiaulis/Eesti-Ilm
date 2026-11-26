@@ -148,7 +148,7 @@ final class DayPartContentView: UIView, UIContentView {
         self.titleLabel.text = configuration.kind.title
         self.temperatureLabel.text = ForecastFormatter.temperatureRangeText(for: dayPart.temperatureRange)
         self.iconView.image = UIImage(systemName: WeatherPhenomenonIcon.symbolName(for: dayPart.phenomenon))
-        self.iconView.accessibilityLabel = ForecastFormatter.phenomenonText(for: dayPart.phenomenon)
+        self.iconView.accessibilityLabel = WeatherPhenomenonIcon.localizedName(for: dayPart.phenomenon)
         self.descriptionLabel.text = dayPart.description
 
         for view in self.placesStack.arrangedSubviews {

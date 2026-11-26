@@ -30,6 +30,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | `.github/workflows/testflight.yml` | Manual TestFlight upload |
 | `.github/dependabot.yml` | Dependabot version updates |
 | `.swiftformat` | Formatting rules |
+| `crowdin.yml` | Crowdin configuration for `Resources/Localizable.xcstrings` (Crowdin not connected yet, EES-28) |
 
 ## Build, test, format
 
@@ -80,6 +81,15 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   - Long texts only (paragraphs such as the About me bio or data-source disclaimer): use a hand-picked manual key in `Resources/Localizable.xcstrings` with Xcode's generated symbol (`STRING_CATALOG_GENERATE_SYMBOLS = YES`), e.g. `Text(.aboutMeDescription)`.
   - Use `Text(verbatim: ...)` for non-translatable placeholder text or literals that should not be extracted.
   - Do not add SwiftGen, R.swift, or `.strings` files.
+- String rules:
+  - Every new string gets a translator comment, in code (`String(localized:comment:)`, `Text(_:comment:)`) or in the catalog. The comment names the UI element and explains each placeholder. Translators see it as context.
+  - Do not build sentences by joining translated pieces. Use one string with placeholders, so translators can reorder the words.
+  - Plurals are variations in the String Catalog, not `if count == 1` in code.
+  - Text that is not translated (numbers, temperatures, dates, names) uses `Text(verbatim:)` or formatted values (`FormatStyle`), not catalog strings.
+  - Use plain `String(localized:)` and `Text`. Use `LocalizedStringResource` only where an API requires it, such as App Intents.
+  - Weather phenomenon names come from the feed in English. Show them through `WeatherPhenomenonIcon.localizedName(for:)`, which looks them up in the catalog.
+- `StringCatalogTests` fails when a translatable string in `Resources/Localizable.xcstrings` has no translator comment or no Estonian translation (any state; some Estonian phenomenon names are `needs_review` on purpose).
+- `crowdin.yml` describes the String Catalog for Crowdin (EES-28). Crowdin is not connected yet.
 - `Resources/Settings.bundle` is included in the `EstonianWeather` app target only (shows Version and Build in iOS Settings) and stays English only (iOS requires a `.strings` file there).
 - App Store metadata lives in `fastlane/metadata/` and is `en-US` only, because App Store Connect has no Estonian listing. Do not add an `et` metadata folder.
 

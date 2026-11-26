@@ -1,0 +1,20 @@
+# Crowdin configuration for the app's String Catalog (EES-28). Crowdin is not connected yet.
+#
+# Only Resources/Localizable.xcstrings goes to Crowdin. Settings.bundle (English only)
+# and fastlane/metadata (en-US only) stay out of it.
+
+project_id_env: CROWDIN_PROJECT_ID
+api_token_env: CROWDIN_PERSONAL_TOKEN
+preserve_hierarchy: true
+
+files:
+  # A String Catalog is multilingual: one file holds English and every translation,
+  # so source and translation point to the same file.
+  # Do not set `dest`: the Crowdin CLI has a known bug with it for multilingual files.
+  # English is the source language and must not be a target language in the Crowdin
+  # project: downloading it as a target replaced the source text.
+  # Crowdin writes every project language into the file, so add a new language in Xcode
+  # and in the Crowdin project together. Today Estonian (et) is the only target.
+  - source: /Resources/Localizable.xcstrings
+    translation: /Resources/Localizable.xcstrings
+    multilingual: true

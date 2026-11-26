@@ -61,7 +61,7 @@ private struct SmallForecastView: View {
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
 
-            Text(self.forecast.day.phenomenon)
+            Text(WeatherPhenomenonIcon.localizedName(for: self.forecast.day.phenomenon))
                 .font(.caption)
                 .minimumScaleFactor(0.5)
                 .lineLimit(2)
@@ -113,7 +113,7 @@ private struct ForecastDayColumnView: View {
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
 
-            Text(self.forecast.day.phenomenon)
+            Text(WeatherPhenomenonIcon.localizedName(for: self.forecast.day.phenomenon))
                 .font(.caption2)
                 .minimumScaleFactor(0.6)
                 .lineLimit(3)
