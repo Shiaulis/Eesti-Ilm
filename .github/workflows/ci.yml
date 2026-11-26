@@ -102,15 +102,14 @@ jobs:
           SIMULATOR_UDID: ${{ steps.simulator.outputs.udid }}
         run: nohup xcrun simctl bootstatus "$SIMULATOR_UDID" -b > "$RUNNER_TEMP/simulator-boot.log" 2>&1 &
 
+      # A generic destination, so the build doesn't wait for the booting simulator.
       - name: Build for testing
-        env:
-          SIMULATOR_UDID: ${{ steps.simulator.outputs.udid }}
         run: |
           xcodebuild build-for-testing \
             -project EstonianWeather.xcodeproj \
             -scheme EstonianWeather \
             -testPlan EstonianWeather \
-            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
+            -destination "generic/platform=iOS Simulator" \
             -enableCodeCoverage NO \
             CODE_SIGNING_ALLOWED=NO
 
