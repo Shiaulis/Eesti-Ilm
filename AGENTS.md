@@ -16,7 +16,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | Path | Contents |
 | --- | --- |
 | `EstonianWeather.xcodeproj` | Xcode project (`project.xcproj`, JSON format). Schemes: `EstonianWeather`, `EstonianWeatherWidgetExtension` |
-| `EstonianWeather/` | App target `EstonianWeather` (SwiftUI) |
+| `EstonianWeather/` | App target `EstonianWeather` (UIKit, programmatic, no storyboards; scene-based lifecycle) |
 | `EstonianWeatherWidget/` | Widget extension target `EstonianWeatherWidgetExtension` |
 | `EstonianWeatherTests/` | App unit test target `EstonianWeatherTests` (Swift Testing) |
 | `Networking/` | Dynamic framework target `Networking` (`Endpoint`, `URLSessionNetworkClient`, `Response`, built on `swift-http-types`) |
@@ -65,6 +65,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 ## App
 
 - Targets: app `EstonianWeather`, widget extension `EstonianWeatherWidgetExtension`, dynamic frameworks `Networking` and `WeatherCore`, and unit test bundles `EstonianWeatherTests`, `NetworkingTests`, and `WeatherCoreTests`.
+- UI frameworks: `EstonianWeather` is UIKit-only (programmatic, no storyboards; `AppDelegate`/`SceneDelegate` lifecycle), with `EstonianWeather/Info.plist` as a partial Info.plist merged with the generated one to declare the scene manifest. `EstonianWeatherWidgetExtension` uses SwiftUI because WidgetKit requires it.
 - Embedding: the app links and embeds `Networking.framework` and `WeatherCore.framework` once in `EstonianWeather.app/Frameworks/`. The widget extension links `WeatherCore` (and `Networking` transitively) and loads them from the host app via `@executable_path/../../Frameworks` without embedding a second copy.
 - Bundle id: `com.shiaulis.EstonianWeather` (widget: `com.shiaulis.EstonianWeather.EstonianWeatherWidget`, frameworks: `com.shiaulis.Networking`, `com.shiaulis.WeatherCore`). App Store id: 1534551991.
 - The project file is `EstonianWeather.xcodeproj/project.xcproj`, Xcode's JSON project format (there is no `project.pbxproj`). Edit it directly: files, targets, build settings and packages are listed by name and path. It is JSON5-like (comments, trailing commas), so strict JSON tools such as `jq` cannot parse it. Keep the existing `id` values of targets and products: the shared schemes and `Resources/EstonianWeather.xctestplan` reference them. Do not convert the project back to `project.pbxproj`.

@@ -78,8 +78,8 @@ CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml
 
 | Path | Contents |
 | --- | --- |
-| `EstonianWeather/` | The app target: SwiftUI views for the forecast list and Settings |
-| `EstonianWeatherWidget/` | The home-screen widget extension (`EstonianWeatherWidgetExtension`) |
+| `EstonianWeather/` | The app target: UIKit view controllers for the forecast list and Settings |
+| `EstonianWeatherWidget/` | The home-screen widget extension (`EstonianWeatherWidgetExtension`, SwiftUI) |
 | `EstonianWeatherTests/` | App unit tests (Swift Testing) |
 | `WeatherCore/` | Dynamic framework target: fetches the forecast and parses the XML feed |
 | `WeatherCoreTests/` | Unit tests for `WeatherCore` (Swift Testing) |
