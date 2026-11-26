@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eesti Ilm Design Book</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --page: #FAF5F1; --card: #FFFFFF; --ink: #1E1A2B; --muted: #625A6E; --line: #ECE4DD; --chip: #F3ECE6;
+  --accent: #B0452C; --on-accent: #FFFFFF; --good: #1d7a45; --ok: #8a5a00; --bad: #b42318;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #15121C; --card: #201B29; --ink: #F4EEF3; --muted: #ABA2B5; --line: #2E2738; --chip: #2A2433;
+    --accent: #F2936F; --on-accent: #15121C; --good: #57d38c; --ok: #f2c04b; --bad: #ff8a80;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #15121C; --card: #201B29; --ink: #F4EEF3; --muted: #ABA2B5; --line: #2E2738; --chip: #2A2433;
+  --accent: #F2936F; --on-accent: #15121C; --good: #57d38c; --ok: #f2c04b; --bad: #ff8a80;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, sans-serif; }
+main { max-width: 1120px; margin: 0 auto; padding: 32px 16px 80px; }
+h1 { font: 700 clamp(34px, 6vw, 60px)/1.02 ui-rounded, "SF Pro Rounded", system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; }
+h2 { font: 700 30px/1.15 ui-rounded, "SF Pro Rounded", system-ui, sans-serif; margin: 72px 0 6px; letter-spacing: -0.01em; }
+h3 { font-size: 18px; margin: 26px 0 6px; }
+p { margin: 0 0 12px; }
+.lead { color: var(--muted); font-size: 18px; max-width: 760px; }
+.muted { color: var(--muted); } .small { font-size: 13px; }
+code { font: 13px/1.4 ui-monospace, "SF Mono", Menlo, monospace; background: var(--chip); padding: 1px 5px; border-radius: 5px; }
+pre { font: 12.5px/1.5 ui-monospace, "SF Mono", Menlo, monospace; background: var(--chip); padding: 14px 16px; border-radius: 14px; overflow-x: auto; margin: 10px 0; }
+a { color: var(--accent); }
+.num { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--on-accent); align-items: center; justify-content: center; font: 700 15px ui-rounded, system-ui; margin-right: 10px; vertical-align: 4px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); vertical-align: 2px; margin-left: 6px; text-transform: uppercase; letter-spacing: .04em; }
+.tag.prop { background: var(--accent); color: var(--on-accent); }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; margin-top: 16px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.grid2 .panel, .grid3 .panel { margin: 0; }
+.theme-toggle { position: fixed; top: 12px; right: 12px; z-index: 5; background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+nav.toc a { color: var(--ink); text-decoration: none; background: var(--card); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; }
+.table-wrap { overflow-x: auto; }
+.sw { display: inline-block; width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(127,127,127,.3); vertical-align: middle; margin-right: 6px; }
+.pair { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; height: 26px; border-radius: 7px; font-weight: 600; padding: 0 8px; border: 1px solid rgba(127,127,127,.25); }
+.lvl { font-weight: 700; font-size: 11.5px; } .lvl.aaa, .lvl.aa { color: var(--good); } .lvl.large { color: var(--ok); } .lvl.fail { color: var(--bad); }
+
+/* cover */
+.cover { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; margin-top: 10px; }
+.cover img { width: min(260px, 60vw); height: auto; }
+@media (max-width: 720px) { .cover { grid-template-columns: 1fr; } }
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 22px; }
+.principles .panel { margin: 0; padding: 18px; }
+.principles b { display: block; font-size: 16px; margin-bottom: 4px; }
+
+/* icon */
+.looks { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 14px; }
+.looks figure { margin: 0; text-align: center; font-size: 12px; color: var(--muted); }
+.stage { border-radius: 18px; padding: 10px; }
+.stage img { width: 100%; height: auto; display: block; }
+.stage.light { background: linear-gradient(160deg, #e6e2dc, #f4ece6); } .stage.dark { background: #000; }
+.stage.tl { background: #e9e6e2; } .stage.photo { background: linear-gradient(160deg, #7c8f9e, #c99476 55%, #4c5f45); }
+.sizes { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+.sizes figure { margin: 0; text-align: center; font-size: 11.5px; color: var(--muted); }
+.construct { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 22px; align-items: start; }
+@media (max-width: 760px) { .construct { grid-template-columns: 1fr; } }
+.construct svg { width: 100%; height: auto; border-radius: 22%; background: linear-gradient(180deg, #3B2C5A, #F29E7A); }
+.dodont { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 12px; }
+.dodont figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; }
+.dodont img { width: 100%; max-width: 150px; display: block; margin: 0 auto 8px; border-radius: 16px; }
+.dodont .stage { max-width: 170px; margin: 0 auto 8px; }
+.dodont figcaption { font-size: 13px; }
+.do { color: var(--good); font-weight: 700; } .dont { color: var(--bad); font-weight: 700; }
+
+/* symbols */
+.symgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.sym { border-radius: 14px; padding: 10px 8px; text-align: center; font-size: 11px; border: 1px solid var(--line); }
+.sym img { width: 54px; height: 54px; display: block; margin: 0 auto 4px; }
+.sym.l { background: #FFFFFF; color: #625A6E; } .sym.d { background: #201B29; color: #ABA2B5; }
+.sym code { background: none; padding: 0; font-size: 10.5px; color: inherit; }
+
+/* mockups */
+.mockups { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; align-items: flex-start; margin-top: 16px; }
+.phone { width: 280px; border-radius: 42px; padding: 10px; background: #0a0a0a; }
+.screen { border-radius: 33px; overflow: hidden; background: var(--m-bg); color: var(--m-text); height: 580px; display: flex; flex-direction: column; font-family: system-ui, -apple-system, sans-serif; }
+.statusbar { height: 34px; display: flex; justify-content: space-between; align-items: center; padding: 6px 22px 0; font-size: 12px; font-weight: 600; }
+.island { width: 76px; height: 20px; background: #000; border-radius: 999px; }
+.ltitle { font-size: 30px; font-weight: 700; padding: 4px 18px 4px; }
+.shead { font-size: 15px; font-weight: 600; padding: 10px 20px 6px; }
+.mcard { background: var(--m-surface); margin: 0 14px 10px; border-radius: 18px; padding: 10px 16px; }
+.trow { display: flex; align-items: center; gap: 10px; }
+.trow .title { flex: 1; font-size: 19px; font-weight: 600; }
+.trow img { width: 30px; height: 30px; }
+.temp { font: 500 19px ui-rounded, "SF Pro Rounded", system-ui; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.temp .sep { color: var(--m-secondary); font-weight: 400; }
+.desc { font-size: 12.5px; line-height: 1.35; margin: 7px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.hr { height: 1px; background: var(--m-line); margin: 6px 0; }
+.place { display: flex; align-items: center; justify-content: space-between; font-size: 13px; padding: 3px 0; }
+.place .t { display: flex; align-items: center; gap: 6px; font: 600 13px ui-rounded, system-ui; font-variant-numeric: tabular-nums; }
+.place img { width: 18px; height: 18px; }
+.tabbar { margin: auto 22px 12px; height: 54px; border-radius: 999px; background: var(--m-glass); display: flex; justify-content: space-around; align-items: center; border: 1px solid var(--m-line); font-size: 10px; font-weight: 600; }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--m-secondary); } .tab.on { color: var(--m-tint); }
+.tab svg { width: 22px; height: 22px; }
+.mlabel { text-align: center; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.widget { border-radius: 24px; padding: 14px; color: #fff; background: linear-gradient(160deg, #3B2C5A, #9C4A62); font-family: system-ui, -apple-system, sans-serif; }
+.widget.s { width: 164px; height: 164px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.widget.m { width: 344px; height: 164px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; text-align: center; }
+.widget .cap { font-size: 12px; opacity: .85; }
+.widget .big { font: 600 22px ui-rounded, system-ui; font-variant-numeric: tabular-nums; }
+.widget .mid { font: 600 16px ui-rounded, system-ui; font-variant-numeric: tabular-nums; }
+.widget .c2 { font-size: 11px; opacity: .85; }
+.anatomy { font-size: 13.5px; }
+.anatomy td:first-child { font-weight: 600; white-space: nowrap; }
+
+/* type */
+.tscale td.sample { font-variant-numeric: tabular-nums; }
+.slider { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 10px 0; }
+.slider input { width: min(360px, 100%); }
+
+/* website */
+.site { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: #FAF5F1; color: #1E1A2B; font-family: system-ui, -apple-system, sans-serif; }
+.site .hero { background: linear-gradient(160deg, #3B2C5A, #B0566B 60%, #F29E7A); color: #fff; padding: 30px 26px; display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.site .hero img { width: 92px; height: 92px; }
+.site .hero h4 { font: 700 30px/1.1 ui-rounded, system-ui; margin: 0 0 6px; }
+.site .btn { display: inline-block; background: #fff; color: #3B2C5A; font-weight: 700; padding: 9px 16px; border-radius: 999px; font-size: 14px; margin-top: 8px; }
+.site .body { padding: 18px 26px; font-size: 14px; }
+.site .body a { color: #B0452C; }
+
+.files li { margin: 4px 0; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--page); padding: 8px 14px; border-radius: 999px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.show { opacity: 1; }
+
+@page { size: A4; margin: 12mm; }
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .theme-toggle, nav.toc, .slider, .toast { display: none !important; }
+  main { max-width: none; padding: 0; }
+  body { font-size: 13px; }
+  h2 { break-before: page; margin-top: 0; }
+  .panel, figure, .phone, .widget, table, .sym, .site, pre { break-inside: avoid; }
+  h3 { break-after: avoid; }
+  .mockups { zoom: .8; }
+  .construct { grid-template-columns: 240px 1fr; }
+  .construct svg { max-width: 240px; }
+  .looks { grid-template-columns: repeat(6, 1fr); }
+  .dodont { grid-template-columns: repeat(4, 1fr); }
+  .cover img { width: 200px; }
+}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" type="button">Theme: auto</button>
+<main>
+  <header>
+    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 1 · 26 November 2026</p>
+    <div class="cover">
+      <div>
+        <h1>Eesti Ilm<br>Design Book</h1>
+        <p class="lead" style="margin-top:16px">How the app looks: the app icon, colors, type, weather symbols, screens, widgets, and the App Store and website. Items marked <span class="tag prop">Proposed</span> differ from the app today and need their own tickets.</p>
+      </div>
+      <img src="assets/icon/icon-Default.png" alt="Eesti Ilm app icon: a pale sun behind a white cloud on a plum-to-coral dusk gradient">
+    </div>
+    <div class="principles">
+      <div class="panel"><b>Warm, not blue</b><span class="small muted">Estonian evening light: plum, coral and rust. The opposite of the saturated blue that most weather apps, ILM+ included, use.</span></div>
+      <div class="panel"><b>Calm and simple</b><span class="small muted">Few elements, soft shapes, lots of space. The forecast text is the content; the design stays quiet around it.</span></div>
+      <div class="panel"><b>Readable first</b><span class="small muted">Every text color passes WCAG AA, everything scales with Dynamic Type, and meaning never depends on color alone.</span></div>
+      <div class="panel"><b>Native</b><span class="small muted">System fonts, SF Symbols, standard iOS lists and Liquid Glass. No custom controls where iOS already has one.</span></div>
+    </div>
+    <nav class="toc">
+      <a href="#icon">1 · App icon</a><a href="#color">2 · Color</a><a href="#type">3 · Type</a><a href="#symbols">4 · Weather symbols</a>
+      <a href="#components">5 · Screens and widgets</a><a href="#a11y">6 · Accessibility</a><a href="#store">7 · App Store and website</a><a href="#files">8 · Files</a>
+    </nav>
+  </header>
+
+  <!-- 1 ICON -->
+  <section id="icon">
+    <h2><span class="num">1</span>App icon <span class="tag prop">Proposed</span></h2>
+    <p class="muted">A pale sun setting behind a soft cloud, on a plum-to-coral dusk sky (“Loojang”). Two layers, no text, no rays. It is built in Icon Composer, so iOS adds the Liquid Glass highlights and shadows.</p>
+    <div class="looks">
+      <figure><div class="stage light"><img src="assets/icon/icon-Default.png" alt="Default"></div>Default</figure>
+      <figure><div class="stage dark"><img src="assets/icon/icon-Dark.png" alt="Dark"></div>Dark</figure>
+      <figure><div class="stage dark"><img src="assets/icon/icon-TintedDark.png" alt="Tinted dark"></div>Tinted dark</figure>
+      <figure><div class="stage tl"><img src="assets/icon/icon-TintedLight.png" alt="Tinted light"></div>Tinted light</figure>
+      <figure><div class="stage photo"><img src="assets/icon/icon-ClearLight.png" alt="Clear light"></div>Clear light</figure>
+      <figure><div class="stage dark"><img src="assets/icon/icon-ClearDark.png" alt="Clear dark"></div>Clear dark</figure>
+    </div>
+    <div class="sizes">
+      <figure><img src="assets/icon/icon-Default.png" width="120" height="120" alt="">120</figure>
+      <figure><img src="assets/icon/icon-Default.png" width="60" height="60" alt="">60 · Home Screen</figure>
+      <figure><img src="assets/icon/icon-Default.png" width="40" height="40" alt="">40 · Spotlight</figure>
+      <figure><img src="assets/icon/icon-Default.png" width="29" height="29" alt="">29 · Settings</figure>
+    </div>
+
+    <h3>Construction</h3>
+    <div class="construct">
+      <svg viewBox="0 0 100 100" role="img" aria-label="Icon construction: central 80 percent safe area, sun circle and cloud outline">
+        <circle cx="54.8" cy="38.2" r="21.12" fill="#FFD9A0" opacity=".9"/>
+        <g transform="translate(12.56 41.72) scale(1.364)"><path id="cloudPath" fill="#FFFFFF" opacity=".92" d=""/></g>
+        <rect x="10" y="10" width="80" height="80" fill="none" stroke="#fff" stroke-width=".35" stroke-dasharray="1.5 1.2" opacity=".85"/>
+        <line x1="50" y1="0" x2="50" y2="100" stroke="#fff" stroke-width=".25" opacity=".55"/>
+        <line x1="0" y1="50" x2="100" y2="50" stroke="#fff" stroke-width=".25" opacity=".55"/>
+        <circle cx="54.8" cy="38.2" r="21.12" fill="none" stroke="#3B2C5A" stroke-width=".35"/>
+        <circle cx="54.8" cy="38.2" r=".9" fill="#3B2C5A"/>
+        <rect x="18" y="17" width="63.8" height="60" fill="none" stroke="#3B2C5A" stroke-width=".3" stroke-dasharray="1 1"/>
+        <text x="11.5" y="14.5" font-size="3" fill="#fff" font-family="system-ui">safe area 80%</text>
+        <text x="58" y="33" font-size="3" fill="#3B2C5A" font-family="system-ui">sun r 21.1</text>
+      </svg>
+      <div>
+        <table class="small">
+          <thead><tr><th>Measure (1024 canvas = 100)</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Sun</td><td>circle, centre (54.8, 38.2), radius 21.1</td></tr>
+            <tr><td>Cloud</td><td>one closed outline: three round bumps (radius 10, 13, 9) with 2.5 valley fillets on a flat bottom, scaled 1.364, 63.8 wide</td></tr>
+            <tr><td>Group bounds</td><td>x 18–82, y 17–77, centred left to right, visual weight at (51.6, 51.7)</td></tr>
+            <tr><td>Proportion</td><td>cloud width ÷ sun diameter = 1.52 (close to 1.6)</td></tr>
+            <tr><td>Overlap</td><td>the cloud covers the lower half of the sun</td></tr>
+            <tr><td>Safe area</td><td>all shapes stay inside the central 80% (dashed)</td></tr>
+          </tbody>
+        </table>
+        <p class="small muted" style="margin-top:10px">The cloud must stay one path. Built from overlapping circles, its edge shows seams and a doubled Liquid Glass rim.</p>
+      </div>
+    </div>
+
+    <h3>Icon Composer settings</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Layer</th><th>Default</th><th>Dark</th><th>Tinted</th><th>Glass and effects</th></tr></thead>
+      <tbody>
+        <tr><td><b>Background</b></td><td><span class="sw" style="background:linear-gradient(180deg,#3B2C5A,#F29E7A)"></span><code>#3B2C5A → #F29E7A</code></td><td><span class="sw" style="background:linear-gradient(180deg,#15111F,#4A2C3C)"></span><code>#15111F → #4A2C3C</code></td><td>set by iOS</td><td>linear gradient, top to bottom</td></tr>
+        <tr><td><b>Group 1 · Cloud</b> (top)</td><td><span class="sw" style="background:#FFFFFF"></span><code>#FFFFFF</code>, opacity 90%</td><td><span class="sw" style="background:#E8DDEE"></span><code>#E8DDEE</code>, opacity 90%</td><td><span class="sw" style="background:#FFFFFF"></span><code>#FFFFFF</code>, opacity 100%, Liquid Glass off</td><td>Liquid Glass on, translucency 40%, specular, neutral shadow 50%</td></tr>
+        <tr><td><b>Group 2 · Sun</b></td><td><span class="sw" style="background:#FFD9A0"></span><code>#FFD9A0</code></td><td><span class="sw" style="background:#F7C58A"></span><code>#F7C58A</code></td><td><span class="sw" style="background:#A6A6A6"></span><code>#A6A6A6</code></td><td>specular, neutral shadow 50%, no translucency</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted" style="margin-top:8px">Why the tinted colors: iOS builds tinted icons from brightness only. A white cloud over a light-grey sun keeps the two shapes apart (cloud 4.5 : 1 to the background, 1.8 : 1 to the sun). With the default colors they merge into one blob.</p>
+
+    <h3>Do and don't</h3>
+    <div class="dodont">
+      <figure><div class="stage light"><img src="assets/icon/icon-Default.png" alt=""></div><figcaption><span class="do">Do</span> use the icon as delivered, with the system mask and effects.</figcaption></figure>
+      <figure><div class="stage dark"><img src="assets/dont-tinted.png" alt=""></div><figcaption><span class="dont">Don't</span> ship without the tinted layer colors: the sun and cloud merge.</figcaption></figure>
+      <figure><div class="stage light"><img src="assets/dont-blue.png" alt=""></div><figcaption><span class="dont">Don't</span> recolor it navy and yellow: that is ILM+'s look.</figcaption></figure>
+      <figure><div class="stage light"><img src="assets/dont-rays.png" alt=""></div><figcaption><span class="dont">Don't</span> add rays, raindrops or text: they turn to noise at 29 pt.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 2 COLOR -->
+  <section id="color">
+    <h2><span class="num">2</span>Color · Loojang <span class="tag prop">Proposed</span></h2>
+    <p class="muted">Named colors for the app and the widget, each with a light and a dark value. Add them to the asset catalogs as color sets with these names. Today the app uses only system colors and a default accent. Click a hex value to copy it.</p>
+    <div class="panel table-wrap"><table id="tokens"></table></div>
+    <h3>Contrast (WCAG 2.1, computed)</h3>
+    <div class="panel table-wrap"><table id="contrast"></table></div>
+    <h3>Rules</h3>
+    <ul class="small">
+      <li>Use <b>AccentColor</b> sparingly: the selected tab, buttons, links. Never for large backgrounds.</li>
+      <li>Temperatures below 0° use <b>TemperatureCold</b>, 0° and above use <b>TemperatureWarm</b>. Always keep the minus sign, so the meaning never depends on color.</li>
+      <li>The widget gradient is the only large area of brand color. The app itself stays on neutral backgrounds.</li>
+      <li>The icon colors (sky gradient, pale sun) are for the icon and marketing only, not for UI text.</li>
+    </ul>
+  </section>
+
+  <!-- 3 TYPE -->
+  <section id="type">
+    <h2><span class="num">3</span>Type</h2>
+    <p class="muted">The system font (SF Pro) everywhere, so Dynamic Type, accessibility sizes and Estonian letters (õ ä ö ü š ž) work for free. Temperatures use the rounded design (SF Pro Rounded) with tabular digits, so numbers line up and feel friendly. Sizes are the default (Large) Dynamic Type size.</p>
+    <div class="slider"><label for="dt" class="small">Preview at: <b id="dtLabel">Large (default)</b></label><input id="dt" type="range" min="0" max="5" step="1" value="2"></div>
+    <div class="panel table-wrap"><table class="tscale" id="tscale">
+      <thead><tr><th>Element</th><th>Text style</th><th>Sample</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Screen title</td><td>Large Title, bold (navigation bar)</td><td class="sample" style="font-size:calc(34px*var(--dt,1));font-weight:700">Prognoos</td><td>As today</td></tr>
+        <tr><td>Date section header</td><td>Headline</td><td class="sample" style="font-size:calc(17px*var(--dt,1));font-weight:600">Homme, 27. november</td><td>As today</td></tr>
+        <tr><td>Day part title</td><td>Title 2, semibold</td><td class="sample" style="font-size:calc(22px*var(--dt,1));font-weight:600">Öö</td><td>As today</td></tr>
+        <tr><td>Temperature range</td><td>Title 2, medium, <b>rounded</b>, tabular digits</td><td class="sample" style="font:500 calc(22px*var(--dt,1)) ui-rounded,'SF Pro Rounded',system-ui">−8° | 2°</td><td><span class="tag prop">Proposed</span> rounded</td></tr>
+        <tr><td>Forecast text</td><td>Body</td><td class="sample" style="font-size:calc(17px*var(--dt,1))">Pilves selgimistega, kohati lörtsi.</td><td>As today</td></tr>
+        <tr><td>Town name</td><td>Subheadline</td><td class="sample" style="font-size:calc(15px*var(--dt,1))">Kuressaare</td><td>As today</td></tr>
+        <tr><td>Town temperature</td><td>Subheadline, <b>rounded</b>, tabular digits, temperature color</td><td class="sample" style="font:600 calc(15px*var(--dt,1)) ui-rounded,system-ui;color:#3D5A80">−7°</td><td><span class="tag prop">Proposed</span> rounded + color</td></tr>
+        <tr><td>Widget temperature</td><td>Title 2 (small) / Callout (medium), semibold, rounded</td><td class="sample" style="font:600 calc(22px*var(--dt,1)) ui-rounded,system-ui">2°</td><td><span class="tag prop">Proposed</span> rounded</td></tr>
+        <tr><td>Widget labels</td><td>Caption / Caption 2</td><td class="sample" style="font-size:calc(12px*var(--dt,1))">Tallinn · Öö −8°</td><td>As today</td></tr>
+      </tbody>
+    </table></div>
+    <pre>// UIKit: rounded, tabular temperatures that scale with Dynamic Type
+let base = UIFont.preferredFont(forTextStyle: .title2)
+let rounded = UIFont.monospacedDigitSystemFont(ofSize: base.pointSize, weight: .medium)
+let descriptor = rounded.fontDescriptor.withDesign(.rounded) ?? rounded.fontDescriptor
+label.font = UIFontMetrics(forTextStyle: .title2).scaledFont(for: UIFont(descriptor: descriptor, size: 0))
+label.adjustsFontForContentSizeCategory = true
+
+// SwiftUI (widget)
+Text(temperature).font(.title2.weight(.semibold)).fontDesign(.rounded).monospacedDigit()</pre>
+    <p class="small muted">Write sub-zero temperatures with a real minus sign <code>−</code> (U+2212), not a hyphen.</p>
+  </section>
+
+  <!-- 4 SYMBOLS -->
+  <section id="symbols">
+    <h2><span class="num">4</span>Weather symbols <span class="tag prop">Proposed</span></h2>
+    <p class="muted">SF Symbols from <code>WeatherPhenomenonIcon</code>, in their <b>.fill</b> variants with <b>palette</b> rendering: the cloud in SymbolCloud, the sun in SymbolSun, rain, snow and fog in SymbolPrecipitation. Today the app uses outline symbols in multicolor. In the widget all parts are white except the sun.</p>
+    <h3>Light</h3><div class="symgrid" id="symLight"></div>
+    <h3>Dark</h3><div class="symgrid" id="symDark"></div>
+    <h3>Widget</h3><div class="symgrid" id="symWidget"></div>
+    <pre>// UIKit
+let colors: [UIColor] = [.symbolCloud, .symbolSun]          // cloud.sun.fill, cloud.bolt.fill
+// or [.symbolCloud, .symbolPrecipitation] for rain, snow, sleet, hail, fog
+iconView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(textStyle: .title1)
+    .applying(UIImage.SymbolConfiguration(paletteColors: colors))</pre>
+  </section>
+
+  <!-- 5 COMPONENTS -->
+  <section id="components">
+    <h2><span class="num">5</span>Screens and widgets</h2>
+    <p class="muted">The forecast screen stays a standard inset grouped list. The changes are color and type only: the temperature colors, rounded numbers, palette symbols and the accent.</p>
+    <div class="mockups" id="phones"></div>
+    <h3>Forecast card anatomy (as built today)</h3>
+    <div class="panel table-wrap"><table class="anatomy">
+      <thead><tr><th>Part</th><th>Spec</th></tr></thead>
+      <tbody>
+        <tr><td>Card</td><td>Inset grouped list cell on CardBackground; margins 12 pt top and bottom, 20 pt leading and trailing; vertical stack, 12 pt spacing</td></tr>
+        <tr><td>Title row</td><td>Day part title (Title 2 semibold) takes the free width; symbol (Title 1 size) on the trailing edge; 12 pt spacing</td></tr>
+        <tr><td>Temperature</td><td>Below the title row, 8 pt; Title 2 medium rounded, each bound in its temperature color, divider <code>|</code> in TextSecondary</td></tr>
+        <tr><td>Forecast text</td><td>Body, TextPrimary, unlimited lines</td></tr>
+        <tr><td>Separator</td><td>1 px (hairline), Separator color</td></tr>
+        <tr><td>Town rows</td><td>Name (Subheadline) · symbol (Body size) · temperature (Subheadline rounded); 12 pt between columns, 8 pt between rows</td></tr>
+        <tr><td>Tab bar</td><td>System Liquid Glass tab bar; selected tab in AccentColor</td></tr>
+        <tr><td>Spacing scale</td><td>4 · 8 · 12 · 16 · 20 pt; corners and materials come from the system</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Widgets <span class="tag prop">Proposed</span></h3>
+    <p class="small muted">Loojang gradient background (WidgetGradientTop → WidgetGradientBottom), white text, palette symbols in their widget colors. In tinted and clear Home Screen modes iOS removes the background, so the layout must work as white on any color.</p>
+    <div class="mockups" id="widgets"></div>
+  </section>
+
+  <!-- 6 A11Y -->
+  <section id="a11y">
+    <h2><span class="num">6</span>Accessibility</h2>
+    <div class="grid3">
+      <div class="panel"><b>Contrast</b><p class="small muted">All text tokens pass WCAG AA (4.5 : 1) on their backgrounds in light and dark mode, including white text on the widget gradient.</p></div>
+      <div class="panel"><b>Dynamic Type</b><p class="small muted">Every label uses a text style and <code>adjustsFontForContentSizeCategory</code>. At accessibility sizes the card stacks the title and symbol vertically (already in the app).</p></div>
+      <div class="panel"><b>Not color alone</b><p class="small muted">Temperature colors only add emphasis: the minus sign carries the meaning. Symbols always have a VoiceOver label from <code>WeatherPhenomenonIcon.localizedName(for:)</code>.</p></div>
+      <div class="panel"><b>Icon in every mode</b><p class="small muted">The icon has explicit tinted colors and stays recognisable in Default, Dark, Tinted and Clear.</p></div>
+    </div>
+  </section>
+
+  <!-- 7 STORE & WEB -->
+  <section id="store">
+    <h2><span class="num">7</span>App Store and website</h2>
+    <h3>App Store</h3>
+    <ul class="small">
+      <li><b>Icon:</b> Xcode builds the store icon from <code>EestiIlm.icon</code>. Use <code>icon-1024.png</code> (exported from Icon Composer) only where a flat image is needed.</li>
+      <li><b>Screenshots:</b> plain app screenshots without captions or frames (as in <code>fastlane/screenshots/en-US/</code>): iPhone 6.9" 1320×2868 and iPad 13" 2064×2752, English UI, light mode. A real forecast with a sub-zero night shows both temperature colors.</li>
+      <li><b>Listing:</b> the store page is English only; the brand color shows through the icon and screenshots, not through custom graphics.</li>
+    </ul>
+    <h3>Website · eestiilm.app</h3>
+    <p class="small muted">The same tokens as CSS custom properties, a hero on the Loojang gradient, and the system font stack (no web fonts).</p>
+    <div class="site">
+      <div class="hero"><img src="assets/icon/icon-Default.png" alt=""><div><h4>Eesti Ilm</h4><div style="opacity:.9">The Estonian weather forecast, calm and simple.</div><span class="btn">Download on the App Store</span></div></div>
+      <div class="body">Forecasts from the Estonian Environment Agency. <a href="#">Privacy policy</a> · <a href="#">Support</a></div>
+    </div>
+    <pre id="css"></pre>
+    <ul class="small">
+      <li><b>Favicon and Apple touch icon:</b> from <code>icon-1024.png</code> (180×180 for <code>apple-touch-icon</code>, 32×32 and 16×16 favicons).</li>
+      <li><b>App Store badge:</b> use Apple's official badge artwork unchanged, on the gradient or on the page background.</li>
+      <li><b>Dark mode:</b> switch to the dark token values with <code>prefers-color-scheme</code>; the hero gradient stays the same.</li>
+    </ul>
+  </section>
+
+  <!-- 8 FILES -->
+  <section id="files">
+    <h2><span class="num">8</span>Files</h2>
+    <ul class="files small">
+      <li><code>assets/icon/EestiIlm.icon</code> · the Icon Composer source of the app icon (open with Icon Composer, add to Xcode)</li>
+      <li><code>assets/icon/icon-1024.png</code> · flat 1024 export for the website and marketing</li>
+      <li><code>assets/icon/icon-*.png</code> · renders of each appearance</li>
+      <li><code>assets/symbols/</code> · palette renders of the weather symbols, for reference only (the app draws SF Symbols itself)</li>
+      <li><code>Eesti-Ilm-Design-Book.pdf</code> · this book as a PDF, for sharing</li>
+    </ul>
+    <p class="small muted">Rendered with Xcode 27.2 Icon Composer (ictool). Earlier explorations (other palettes and icon ideas) are kept outside the repo.</p>
+  </section>
+</main>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const CLOUD_PATH = "M14.000 26.000 A10.0 10.0 0 0 1 13.943 6.000 A2.5 2.5 0 0 0 16.198 4.549 A13.0 13.0 0 0 1 40.448 6.252 A2.5 2.5 0 0 0 42.659 8.024 A9.0 9.0 0 0 1 42.000 26.000 Z";
+$('cloudPath').setAttribute('d', CLOUD_PATH);
+
+const TOKENS = [
+  ['AccentColor', 'Selected tab, buttons, links', '#B0452C', '#F2936F'],
+  ['AppBackground', 'Screen background behind the list', '#FAF5F1', '#15121C'],
+  ['CardBackground', 'Forecast cards and list cells', '#FFFFFF', '#201B29'],
+  ['TextPrimary', 'Titles, forecast text, town names', '#1E1A2B', '#F4EEF3'],
+  ['TextSecondary', 'Section headers, dividers, captions', '#625A6E', '#ABA2B5'],
+  ['Separator', 'Hairlines inside cards', '#ECE4DD', '#2E2738'],
+  ['TemperatureCold', 'Temperatures below 0°', '#3D5A80', '#9DB6D8'],
+  ['TemperatureWarm', 'Temperatures 0° and above', '#B0452C', '#F2936F'],
+  ['SymbolSun', 'Sun part of weather symbols', '#EE9A4D', '#F7B26A'],
+  ['SymbolCloud', 'Cloud part of weather symbols', '#8E8699', '#9A92A6'],
+  ['SymbolPrecipitation', 'Rain, snow, sleet, hail, fog', '#3D5A80', '#9DB6D8'],
+  ['WidgetGradientTop', 'Widget background, top', '#3B2C5A', '#3B2C5A'],
+  ['WidgetGradientBottom', 'Widget background, bottom', '#9C4A62', '#9C4A62'],
+];
+const T = Object.fromEntries(TOKENS.map(([n, , l, d]) => [n, { l, d }]));
+function lum(h) { const v = [1, 3, 5].map(i => { let c = parseInt(h.slice(i, i + 2), 16) / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }); return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; }
+function ratio(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+function level(r, nonText) { if (nonText) return r >= 3 ? ['aa', 'Pass (3 : 1)'] : ['fail', 'Fail']; return r >= 7 ? ['aaa', 'AAA'] : r >= 4.5 ? ['aa', 'AA'] : r >= 3 ? ['large', 'Large text only'] : ['fail', 'Fail']; }
+const hexCell = h => `<span class="sw" style="background:${h}"></span><code class="copy" data-hex="${h}" style="cursor:copy">${h}</code>`;
+$('tokens').innerHTML = `<thead><tr><th>Color set</th><th>Use</th><th>Light</th><th>Dark</th></tr></thead><tbody>${TOKENS.map(([n, u, l, d]) => `<tr><td><code>${n}</code></td><td class="small">${u}</td><td>${hexCell(l)}</td><td>${hexCell(d)}</td></tr>`).join('')}</tbody>`;
+const PAIRS = [
+  ['TextPrimary on AppBackground', 'TextPrimary', 'AppBackground'], ['TextPrimary on CardBackground', 'TextPrimary', 'CardBackground'],
+  ['TextSecondary on CardBackground', 'TextSecondary', 'CardBackground'], ['AccentColor on CardBackground', 'AccentColor', 'CardBackground'],
+  ['TemperatureCold on CardBackground', 'TemperatureCold', 'CardBackground'], ['TemperatureWarm on CardBackground', 'TemperatureWarm', 'CardBackground'],
+  ['SymbolCloud on CardBackground (non-text)', 'SymbolCloud', 'CardBackground', true],
+];
+const cell = (f, b, mode, nt) => { const fg = T[f][mode], bg = T[b][mode], r = ratio(fg, bg), [cls, lab] = level(r, nt); return `<td><span class="pair" style="background:${bg};color:${fg}">Aa</span></td><td><b>${r.toFixed(2)}</b> <span class="lvl ${cls}">${lab}</span></td>`; };
+const w = Math.min(ratio('#FFFFFF', '#3B2C5A'), ratio('#FFFFFF', '#9C4A62'));
+$('contrast').innerHTML = `<thead><tr><th>Pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}<tr><td>White text on widget gradient (worst stop)</td><td><span class="pair" style="background:linear-gradient(90deg,#3B2C5A,#9C4A62);color:#fff">Aa</span></td><td colspan="3"><b>${w.toFixed(2)}</b> <span class="lvl ${level(w)[0]}">${level(w)[1]}</span></td></tr></tbody>`;
+
+const SYMS = [['sun.max.fill', 'Clear, Sunny'], ['cloud.sun.fill', 'Few or variable clouds, clear spells'], ['smoke.fill', 'Cloudy, Overcast'], ['cloud.fog.fill', 'Mist, Fog'],
+  ['cloud.drizzle.fill', 'Light rain or shower'], ['cloud.rain.fill', 'Moderate rain or shower'], ['cloud.heavyrain.fill', 'Heavy rain or shower'], ['cloud.snow.fill', 'Snow, snowfall, snowstorm'],
+  ['cloud.sleet.fill', 'Sleet'], ['cloud.hail.fill', 'Hail'], ['cloud.bolt.fill', 'Thunder, thunderstorm'], ['thermometer.snowflake', 'Risk of glaze']];
+const symGrid = (theme, cls, style) => SYMS.map(([s, m]) => `<div class="sym ${cls}" ${style || ''}><img src="assets/symbols/${theme}-${s}.png" alt="${m}"><code>${s}</code><br>${m}</div>`).join('');
+$('symLight').innerHTML = symGrid('light', 'l'); $('symDark').innerHTML = symGrid('dark', 'd');
+$('symWidget').innerHTML = symGrid('widget', '', 'style="background:linear-gradient(160deg,#3B2C5A,#9C4A62);color:#fff;border:0"');
+
+const TAB1 = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.2 19h10.3a4.3 4.3 0 0 0 .6-8.56A6.2 6.2 0 0 0 6.3 11.3 3.85 3.85 0 0 0 7.2 19z"/></svg>';
+const TAB2 = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.8 1.8M16.7 16.7l1.8 1.8M5.5 18.5l1.8-1.8M16.7 7.3l1.8-1.8"/></svg>';
+function phone(mode, L) {
+  const m = mode === 'l' ? 'light' : 'dark', c = k => T[k][mode];
+  const t = v => `<span style="color:${v < 0 ? c('TemperatureCold') : c('TemperatureWarm')}">${v < 0 ? '−' + Math.abs(v) : v}°</span>`;
+  const sym = s => `assets/symbols/${m}-${s}.png`;
+  const place = (n, v, s) => `<div class="place"><span>${n}</span><span class="t"><img src="${sym(s)}" alt="">${t(v)}</span></div>`;
+  return `<div><div class="phone"><div class="screen" style="--m-bg:${c('AppBackground')};--m-surface:${c('CardBackground')};--m-text:${c('TextPrimary')};--m-secondary:${c('TextSecondary')};--m-tint:${c('AccentColor')};--m-line:${c('Separator')};--m-glass:${mode === 'l' ? 'rgba(255,255,255,.8)' : 'rgba(40,34,48,.8)'}">
+    <div class="statusbar"><span>9:41</span><span class="island"></span><span>5G</span></div>
+    <div class="ltitle">${L.title}</div>
+    <div class="shead">${L.date}</div>
+    <div class="mcard"><div class="trow"><span class="title">${L.night}</span><img src="${sym('cloud.snow.fill')}" alt=""></div>
+      <div class="temp">${t(-8)} <span class="sep">|</span> ${t(2)}</div>
+      <div class="desc">${L.text1}</div><div class="hr"></div>
+      ${place('Tallinn', -3, 'cloud.snow.fill')}${place('Tartu', -7, 'smoke.fill')}${place('Kuressaare', 2, 'cloud.rain.fill')}</div>
+    <div class="mcard"><div class="trow"><span class="title">${L.day}</span><img src="${sym('cloud.sun.fill')}" alt=""></div>
+      <div class="temp">${t(-3)} <span class="sep">|</span> ${t(4)}</div>
+      <div class="desc">${L.text2}</div></div>
+    <div class="tabbar"><div class="tab on">${TAB1}${L.tab1}</div><div class="tab">${TAB2}${L.tab2}</div></div>
+  </div></div><div class="mlabel">${mode === 'l' ? 'Light · English' : 'Dark · Estonian'}</div></div>`;
+}
+$('phones').innerHTML = phone('l', { title: 'Forecasts', date: 'Tomorrow, 27 November', night: 'Night', day: 'Day', text1: 'Cloudy with clear spells, in places sleet and snow. On the islands gusts up to 17 m/s. Slippery roads!', text2: 'Cloudy in the south, clearing towards evening. Wind 6–12 m/s.', tab1: 'Forecasts', tab2: 'Settings' })
+  + phone('d', { title: 'Prognoosid', date: 'Homme, 27. november', night: 'Öö', day: 'Päev', text1: 'Pilves selgimistega, kohati lörtsi ja lund. Saartel puhanguti 17 m/s. Teed on libedad!', text2: 'Lõuna pool pilves, õhtu poole selgineb. Tuul 6–12 m/s.', tab1: 'Prognoosid', tab2: 'Seaded' });
+const ws = s => `assets/symbols/widget-${s}.png`;
+const r = v => (v < 0 ? '−' + Math.abs(v) : v) + '°';
+$('widgets').innerHTML = `<div><div class="widget s"><div class="cap">Tallinn</div><img src="${ws('cloud.sun.fill')}" width="46" height="46" alt=""><div class="big">2°</div><div class="cap">Öö −8°</div></div><div class="mlabel">Small</div></div>
+  <div><div class="widget m">${[['R 27', 'cloud.snow.fill', -8, 2], ['L 28', 'smoke.fill', -6, 1], ['P 29', 'sun.max.fill', -9, -2], ['E 30', 'cloud.rain.fill', -1, 5]].map(([d, s, a, b]) => `<div><div class="cap">${d}</div><img src="${ws(s)}" width="38" height="38" alt=""><div class="mid">${r(b)}</div><div class="c2">${r(a)}</div></div>`).join('')}</div><div class="mlabel">Medium · 4 days</div></div>`;
+
+$('css').textContent = `:root {
+  --accent: ${T.AccentColor.l};        /* AccentColor */
+  --bg: ${T.AppBackground.l};            /* AppBackground */
+  --card: ${T.CardBackground.l};          /* CardBackground */
+  --text: ${T.TextPrimary.l};          /* TextPrimary */
+  --text-secondary: ${T.TextSecondary.l}; /* TextSecondary */
+  --line: ${T.Separator.l};          /* Separator */
+  --hero: linear-gradient(160deg, #3B2C5A, #B0566B 60%, #F29E7A);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --accent: ${T.AccentColor.d}; --bg: ${T.AppBackground.d}; --card: ${T.CardBackground.d};
+          --text: ${T.TextPrimary.d}; --text-secondary: ${T.TextSecondary.d}; --line: ${T.Separator.d}; }
+}`;
+
+const sizes = [['xSmall', .82], ['Small', .9], ['Large (default)', 1], ['xLarge', 1.12], ['xxxLarge', 1.35], ['Accessibility 2', 1.75]];
+$('dt').addEventListener('input', e => { const [n, s] = sizes[e.target.value]; $('dtLabel').textContent = n; $('tscale').style.setProperty('--dt', s); });
+const toast = $('toast');
+document.addEventListener('click', async e => { const b = e.target.closest('.copy'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.hex); toast.textContent = 'Copied ' + b.dataset.hex; } catch (_) { toast.textContent = b.dataset.hex; } toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 1400); });
+const btn = $('themeToggle'), order = ['auto', 'light', 'dark']; let cur = 'auto';
+try { cur = localStorage.getItem('ebook-theme') || 'auto'; } catch (_) {}
+if (new URLSearchParams(location.search).has('print')) cur = 'light';
+const apply = () => { if (cur === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', cur); btn.textContent = 'Theme: ' + cur; };
+btn.addEventListener('click', () => { cur = order[(order.indexOf(cur) + 1) % 3]; try { localStorage.setItem('ebook-theme', cur); } catch (_) {} apply(); });
+apply();
+</script>
+</body>
+</html>
