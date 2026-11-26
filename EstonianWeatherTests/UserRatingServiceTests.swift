@@ -145,53 +145,56 @@ final class UserRatingServiceTests {
         #expect(service.lastVersionPromptedForReview == nil)
     }
 
-    @Test func handleAppLaunchCountsOncePerSessionAndPromptsAtThreshold() async {
+    @Test func promptIfEligibleDoesNotRecordLaunches() async {
+        let service = self.makeService(version: "57")
+
+        await service.promptIfEligible(after: .zero) {}
+        await service.promptIfEligible(after: .zero) {}
+
+        #expect(service.launchCount == 0)
+    }
+
+    @Test func promptIfEligiblePromptsAtThresholdOncePerVersion() async {
+        let service = self.makeService(version: "57")
         var reviewRequestCount = 0
 
-        for expectedLaunch in 1 ... 3 {
-            let sessionService = self.makeService(version: "57")
-            let firstResult = await sessionService.handleAppLaunch(delay: .zero) {
+        for _ in 1 ... 3 {
+            service.recordLaunch()
+            let prompted = await service.promptIfEligible(after: .zero) {
                 reviewRequestCount += 1
             }
-            let secondResult = await sessionService.handleAppLaunch(delay: .zero) {
-                reviewRequestCount += 1
-            }
-
-            #expect(!firstResult)
-            #expect(!secondResult)
-            #expect(sessionService.launchCount == expectedLaunch)
+            #expect(!prompted)
         }
 
-        let fourthSessionService = self.makeService(version: "57")
-        let prompted = await fourthSessionService.handleAppLaunch(delay: .zero) {
+        service.recordLaunch()
+        let prompted = await service.promptIfEligible(after: .zero) {
             reviewRequestCount += 1
         }
-        let repeatedInSameSession = await fourthSessionService.handleAppLaunch(delay: .zero) {
+        let promptedAgainInSameProcess = await service.promptIfEligible(after: .zero) {
             reviewRequestCount += 1
         }
 
         #expect(prompted)
-        #expect(!repeatedInSameSession)
-        #expect(fourthSessionService.launchCount == 4)
+        #expect(!promptedAgainInSameProcess)
         #expect(reviewRequestCount == 1)
 
-        let fifthSessionService = self.makeService(version: "57")
-        let fifthPrompted = await fifthSessionService.handleAppLaunch(delay: .zero) {
+        service.recordLaunch()
+        let promptedOnFifthLaunch = await service.promptIfEligible(after: .zero) {
             reviewRequestCount += 1
         }
 
-        #expect(!fifthPrompted)
-        #expect(fifthSessionService.launchCount == 5)
+        #expect(!promptedOnFifthLaunch)
+        #expect(service.launchCount == 5)
         #expect(reviewRequestCount == 1)
     }
 
-    @Test func handleAppLaunchCancellationDoesNotMarkVersionAsPrompted() async {
-        self.userDefaults.set(3, forKey: UserRatingService.DefaultsKey.processCompletedCount)
-        let sessionService = self.makeService(version: "57")
+    @Test func promptIfEligibleCancellationDoesNotMarkVersionAsPrompted() async {
+        self.userDefaults.set(4, forKey: UserRatingService.DefaultsKey.processCompletedCount)
+        let service = self.makeService(version: "57")
         var reviewRequestCount = 0
 
         let task = Task { @MainActor in
-            await sessionService.handleAppLaunch(delay: .seconds(10)) {
+            await service.promptIfEligible(after: .seconds(10)) {
                 reviewRequestCount += 1
             }
         }
@@ -201,18 +204,17 @@ final class UserRatingServiceTests {
         let cancelledResult = await task.value
 
         #expect(!cancelledResult)
-        #expect(sessionService.launchCount == 4)
         #expect(reviewRequestCount == 0)
-        #expect(sessionService.lastVersionPromptedForReview == nil)
+        #expect(service.lastVersionPromptedForReview == nil)
 
-        let resumedResult = await sessionService.handleAppLaunch(delay: .zero) {
+        let resumedResult = await service.promptIfEligible(after: .zero) {
             reviewRequestCount += 1
         }
 
         #expect(resumedResult)
-        #expect(sessionService.launchCount == 4)
+        #expect(service.launchCount == 4)
         #expect(reviewRequestCount == 1)
-        #expect(sessionService.lastVersionPromptedForReview == "57")
+        #expect(service.lastVersionPromptedForReview == "57")
     }
 
     @Test func supportsCustomMinimumLaunchCount() {
@@ -247,7 +249,8 @@ final class UserRatingServiceTests {
         let service = self.makeService(version: "57")
         var reviewRequestCount = 0
 
-        let prompted = await service.handleAppLaunch(delay: .zero) {
+        service.recordLaunch()
+        let prompted = await service.promptIfEligible(after: .zero) {
             reviewRequestCount += 1
         }
 

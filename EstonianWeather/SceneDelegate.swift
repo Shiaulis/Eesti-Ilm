@@ -9,6 +9,7 @@ import UIKit
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
+    private let ratingService = UserRatingService()
     private var ratingPromptTask: Task<Void, Never>?
 
     func scene(
@@ -24,23 +25,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = RootTabBarController()
         window.makeKeyAndVisible()
         self.window = window
+
+        // Counts each time the app window opens, not each return to the foreground.
+        self.ratingService.recordLaunch()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        guard let windowScene = scene as? UIWindowScene,
-              let ratingService = (UIApplication.shared.delegate as? AppDelegate)?.ratingService
-        else {
+        guard let windowScene = scene as? UIWindowScene else {
             return
         }
 
         self.ratingPromptTask?.cancel()
-        self.ratingPromptTask = Task {
-            await ratingService.handleAppLaunch(
-                delay: UserRatingService.defaultPromptDelay,
-                requestReview: {
-                    AppStore.requestReview(in: windowScene)
-                }
-            )
+        self.ratingPromptTask = Task { [ratingService] in
+            await ratingService.promptIfEligible {
+                AppStore.requestReview(in: windowScene)
+            }
         }
     }
 

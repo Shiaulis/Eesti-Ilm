@@ -24,8 +24,6 @@ final class UserRatingService {
         category: "rating"
     )
 
-    private var hasRecordedLaunchForCurrentSession = false
-
     init(
         userDefaults: UserDefaults = .standard,
         minimumLaunchCount: Int = UserRatingService.defaultMinimumLaunchCount,
@@ -95,16 +93,13 @@ final class UserRatingService {
         return true
     }
 
+    /// Waits for `delay`, then requests a review if the app is eligible. Does not record a launch:
+    /// `SceneDelegate` records one with `recordLaunch()` when the app window opens.
     @discardableResult
-    func handleAppLaunch(
-        delay: Duration = UserRatingService.defaultPromptDelay,
+    func promptIfEligible(
+        after delay: Duration = UserRatingService.defaultPromptDelay,
         requestReview: () -> Void
     ) async -> Bool {
-        if !self.hasRecordedLaunchForCurrentSession {
-            self.hasRecordedLaunchForCurrentSession = true
-            self.recordLaunch()
-        }
-
         guard self.currentVersion != nil else {
             self.logger.fault("Expected to find a non-empty CFBundleVersion in the info dictionary")
             return false
