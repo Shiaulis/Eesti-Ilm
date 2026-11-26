@@ -34,19 +34,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(
-        _ application: UIApplication,
-        configurationForConnecting connectingSceneSession: UISceneSession,
-        options: UIScene.ConnectionOptions
-    ) -> UISceneConfiguration {
-        let configuration = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-        configuration.sceneClass = UIWindowScene.self
-        configuration.delegateClass = SceneDelegate.self
-        return configuration
-    }
-
     /// The SwiftUI build persisted its scene sessions with its own delegate class (`SwiftUI.AppSceneDelegate`).
-    /// UIKit restores such sessions without calling `application(_:configurationForConnecting:options:)`
+    /// UIKit restores such sessions with that delegate instead of the scene configuration in `Info.plist`
     /// (and iPhone cannot destroy them), so no `SceneDelegate` is attached and the window stays black.
     /// Attach one by hand.
     @objc private func sceneWillConnect(_ notification: Notification) {
