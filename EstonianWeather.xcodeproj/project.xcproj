@@ -83,13 +83,6 @@
     },
     {
       "kind": "group",
-      "name": "Frameworks",
-      "children": [
-        { "path": "<SDK>/System/Library/Frameworks/WidgetKit.framework" },
-        { "path": "<SDK>/System/Library/Frameworks/SwiftUI.framework" },
-      ],
-    }, {
-      "kind": "group",
       "name": "Products",
       "children": [
         { "path": "<PRODUCTS>/EstonianWeather.app", "id": "A5384D312E173FC5006BE100", "type": "wrapper.application", "index": false },
