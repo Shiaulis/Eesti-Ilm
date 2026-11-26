@@ -30,7 +30,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | `.github/workflows/testflight.yml` | Manual TestFlight upload |
 | `.github/dependabot.yml` | Dependabot version updates |
 | `.swiftformat` | Formatting rules |
-| `crowdin.yml` | Crowdin configuration for `Resources/Localizable.xcstrings` (Crowdin not connected yet, EES-28) |
+| `crowdin.yml` | Crowdin configuration for `Resources/Localizable.xcstrings` (see Localization) |
 
 ## Build, test, format
 
@@ -88,8 +88,13 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   - Text that is not translated (numbers, temperatures, dates, names) uses `Text(verbatim:)` or formatted values (`FormatStyle`), not catalog strings.
   - Use plain `String(localized:)` and `Text`. Use `LocalizedStringResource` only where an API requires it, such as App Intents.
   - Weather phenomenon names come from the feed in English. Show them through `WeatherPhenomenonIcon.localizedName(for:)`, which looks them up in the catalog.
-- `StringCatalogTests` fails when a translatable string in `Resources/Localizable.xcstrings` has no translator comment or no Estonian translation (any state; some Estonian phenomenon names are `needs_review` on purpose).
-- `crowdin.yml` describes the String Catalog for Crowdin (EES-28). Crowdin is not connected yet.
+- `StringCatalogTests` fails when a translatable string in `Resources/Localizable.xcstrings` has no translator comment or no Estonian translation (any state).
+- Translation workflow (Crowdin, connected through its GitHub integration, configured in the Crowdin project; `crowdin.yml` describes the String Catalog for it):
+  - English text is written in Xcode. New English strings reach Crowdin when they land on `master`.
+  - Estonian is translated and approved in Crowdin. Do not edit Estonian values in `Resources/Localizable.xcstrings` by hand.
+  - Crowdin opens or updates one PR from `l10n_master` with new translations. It is merged like any other PR once CI passes; the branch is deleted on merge and Crowdin recreates it.
+  - Crowdin has no "needs review" state: its PRs mark imported translations as `translated`. Review status (approved or not) lives in Crowdin.
+  - Crowdin's PRs are exempt from the PR template (Crowdin writes its own PR body and cannot fill in template sections), so do not edit their descriptions to match it.
 - `Resources/Settings.bundle` is included in the `EstonianWeather` app target only (shows Version and Build in iOS Settings) and stays English only (iOS requires a `.strings` file there).
 - App Store metadata lives in `fastlane/metadata/` and is `en-US` only, because App Store Connect has no Estonian listing. Do not add an `et` metadata folder.
 
@@ -107,7 +112,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 
 - `Networking` and `WeatherCore` are framework targets inside `EstonianWeather.xcodeproj`. They are not versioned or tagged separately: change them in the same PR as the app code that needs the change.
 - Third-party packages, resolved by Swift Package Manager as remote dependencies in `EstonianWeather.xcodeproj`: `SWXMLHash` (`WeatherCore`) and `swift-http-types` (`Networking`, `NetworkingTests`). Pins are in `EstonianWeather.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`.
-- Dependabot version updates are configured in `.github/dependabot.yml`: monthly, one grouped PR per ecosystem, for `github-actions` (keeps the SHA pins and their version comments in the workflow files) and `bundler` (`Gemfile`, `Gemfile.lock`). Dependabot PRs open against `master` and go through the same required checks and `@Shiaulis` review as any other PR. They are exempt from the PR template (Dependabot writes its own PR body and cannot fill in template sections), so do not edit their descriptions to match it.
+- Dependabot version updates are configured in `.github/dependabot.yml`: monthly, one grouped PR per ecosystem, for `github-actions` (keeps the SHA pins and their version comments in the workflow files) and `bundler` (`Gemfile`, `Gemfile.lock`). Dependabot PRs open against `master` and go through the same required checks and `@Shiaulis` review as any other PR. They are exempt from the PR template (Dependabot writes its own PR body and cannot fill in template sections), so do not edit their descriptions to match it. Crowdin's PRs (from `l10n_master`) are exempt for the same reason (see Localization).
 - Dependabot cannot see the Swift packages: its `swift` ecosystem only reads `Package.swift`, and the packages are declared in the Xcode project. Check `SWXMLHash` and `swift-http-types` by hand (for example before each release): compare the pins in `Package.resolved` with the latest releases, then update them in a ticket-scoped PR.
 - Secret scanning and push protection are enabled on the repo (GitHub settings, not files in the repo).
 - App release tags are plain `X.Y.Z`, no `v` prefix. Releases so far: 1.2.0, 1.3.1, 1.4.0, 2.0.0, 2.1.0, 2.1.1, 2.2.0. Version 2.3 is in progress.
@@ -145,7 +150,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   - Explanation: why it was done this way, plus trade-offs, in 1-3 sentences.
   - AI: the agent, model and workflow, in 1 sentence.
   - Testing: only what needs testing on a device, no commands or CI results; if nothing, write "Testing on device not needed."
-- Dependabot PRs are exempt from the template and keep their own description.
+- Dependabot PRs and Crowdin PRs (from `l10n_master`) are exempt from the template and keep their own description: they write their own and cannot fill in template sections.
 - The PR description contains only the template: CodeRabbit's summary is disabled (`high_level_summary: false` in `.coderabbit.yaml`), so it never edits the description.
 - PR descriptions do not end with the "Generated with Claude Code" line.
 - Never push to `master`. Never create or push tags.

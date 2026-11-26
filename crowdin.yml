@@ -1,4 +1,5 @@
-# Crowdin configuration for the app's String Catalog (EES-28). Crowdin is not connected yet.
+# Crowdin configuration for the app's String Catalog (EES-28). Crowdin syncs `master` through its
+# GitHub integration (configured in the Crowdin project, not in this repo).
 #
 # Only Resources/Localizable.xcstrings goes to Crowdin. Settings.bundle (English only)
 # and fastlane/metadata (en-US only) stay out of it.
@@ -6,6 +7,7 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_PERSONAL_TOKEN
 preserve_hierarchy: true
+pull_request_title: "Update translations from Crowdin"
 
 files:
   # A String Catalog is multilingual: one file holds English and every translation,
