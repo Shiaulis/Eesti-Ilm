@@ -60,8 +60,8 @@ jobs:
       - name: Pick newest iPhone simulator
         id: simulator
         run: |
-          name="$(python3 - <<'PY'
-          import json, subprocess
+          python3 - <<'PY'
+          import json, os, subprocess
 
           def simctl(*args):
               return json.loads(subprocess.check_output(["xcrun", "simctl", "list", *args, "-j"]))
@@ -74,33 +74,65 @@ jobs:
           newest = max(version(r["version"]) for r in runtimes)
           newest_ids = {r["identifier"] for r in runtimes if version(r["version"]) == newest}
 
-          devices = simctl("devices", "available")["devices"]
-          available = {d["deviceTypeIdentifier"]
-                       for runtime, items in devices.items() if runtime in newest_ids
-                       for d in items}
+          # One available device per device type on the newest runtime.
+          available = {}
+          for runtime, items in simctl("devices", "available")["devices"].items():
+              if runtime in newest_ids:
+                  for device in items:
+                      available.setdefault(device["deviceTypeIdentifier"], device)
 
           # `simctl list devicetypes` lists the newest models first.
           for device_type in simctl("devicetypes")["devicetypes"]:
               if device_type.get("productFamily") == "iPhone" and device_type["identifier"] in available:
-                  print(device_type["name"])
+                  device = available[device_type["identifier"]]
                   break
           else:
               raise SystemExit("No iPhone simulator found for the newest iOS runtime")
-          PY
-          )"
-          echo "Using simulator: $name"
-          echo "name=$name" >> "$GITHUB_OUTPUT"
 
-      - name: Build and test
+          print(f"Using simulator: {device['name']} ({device['udid']})")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"udid={device['udid']}\n")
+          PY
+
+      # The first boot of a simulator on a fresh runner takes minutes. Start it in the
+      # background so it boots while the app builds. Background processes keep running
+      # after the step ends; the runner stops them when the job finishes.
+      - name: Start booting the simulator
+        env:
+          SIMULATOR_UDID: ${{ steps.simulator.outputs.udid }}
+        run: nohup xcrun simctl bootstatus "$SIMULATOR_UDID" -b > "$RUNNER_TEMP/simulator-boot.log" 2>&1 &
+
+      - name: Build for testing
+        env:
+          SIMULATOR_UDID: ${{ steps.simulator.outputs.udid }}
         run: |
-          xcodebuild test \
+          xcodebuild build-for-testing \
             -project EstonianWeather.xcodeproj \
             -scheme EstonianWeather \
             -testPlan EstonianWeather \
-            -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
-            -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
             -enableCodeCoverage NO \
             CODE_SIGNING_ALLOWED=NO
+
+      # Waits for the boot started above, or boots the simulator if that failed.
+      - name: Wait for the simulator to boot
+        env:
+          SIMULATOR_UDID: ${{ steps.simulator.outputs.udid }}
+        run: |
+          xcrun simctl bootstatus "$SIMULATOR_UDID" -b
+          cat "$RUNNER_TEMP/simulator-boot.log" || true
+
+      - name: Test
+        env:
+          SIMULATOR_UDID: ${{ steps.simulator.outputs.udid }}
+        run: |
+          xcodebuild test-without-building \
+            -project EstonianWeather.xcodeproj \
+            -scheme EstonianWeather \
+            -testPlan EstonianWeather \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
+            -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
+            -enableCodeCoverage NO
 
       - name: Upload test results on failure
         if: failure()

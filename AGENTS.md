@@ -47,7 +47,7 @@ xcodebuild build -project EstonianWeather.xcodeproj -scheme EstonianWeather -des
 xcodebuild test -project EstonianWeather.xcodeproj -scheme EstonianWeather -testPlan EstonianWeather -destination 'platform=iOS Simulator,name=iPhone 18 Pro,OS=latest' CODE_SIGNING_ALLOWED=NO
 ```
 
-CI runs the same test command but picks the newest iPhone simulator available on the runner instead of `iPhone 18 Pro`. Locally, use any installed iPhone simulator.
+CI runs the same test plan but picks the newest iPhone simulator available on the runner instead of `iPhone 18 Pro`, and splits the command into `build-for-testing` and `test-without-building`. Locally, use any installed iPhone simulator.
 
 The `EstonianWeather` test plan runs `EstonianWeatherTests`, `NetworkingTests`, and `WeatherCoreTests`. `WeatherCoreTests` calls the live ilmateenistus.ee feed, so it needs network access.
 
@@ -58,7 +58,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 `.github/workflows/ci.yml` runs on every pull request and on pushes to `master`. It has two jobs:
 
 - `lint` (`macos-latest`): installs `actionlint` with Homebrew to lint workflows, downloads a pinned SwiftFormat release, and runs `swiftformat --lint .` over the whole repo
-- `build-and-test` (GitHub's `xcode-27` image): selects Xcode 27.2 with `xcode-select`, picks the newest available iPhone simulator, and runs the `xcodebuild test` command above (which builds the app, widget, and frameworks, and runs all three test bundles)
+- `build-and-test` (GitHub's `xcode-27` image): selects Xcode 27.2 with `xcode-select` and picks the newest available iPhone simulator by UDID. It starts booting that simulator in the background, because a first boot on a fresh runner takes minutes. Meanwhile it builds the app, widget, frameworks and test bundles with `xcodebuild build-for-testing`. Then it waits for the boot (`simctl bootstatus`) and runs all three test bundles with `xcodebuild test-without-building`
 
 `.github/workflows/testflight.yml` runs only on `workflow_dispatch`, never on pushes or pull requests. It has one job, `upload` (`xcode-27` image): selects Xcode 27.2, sets up Ruby from `.ruby-version` with Bundler caching, and runs `bundle exec fastlane beta` with the `APP_STORE_CONNECT_API_KEY_KEY_ID`, `APP_STORE_CONNECT_API_KEY_ISSUER_ID` and `APP_STORE_CONNECT_API_KEY_KEY` secrets. The job declares `environment: testflight`: the secrets are stored in that GitHub environment (not as repository secrets), and the environment allows only the `master` branch, so the workflow can only run from `master`. Runs need no approval: only accounts with write access can start the workflow. Runs are serialized (`concurrency: testflight`). Agents never trigger this workflow unless the owner asks.
 
