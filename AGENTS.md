@@ -88,10 +88,12 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
   - Text that is not translated (numbers, temperatures, dates, names) uses `Text(verbatim:)` or formatted values (`FormatStyle`), not catalog strings.
   - Use plain `String(localized:)` and `Text`. Use `LocalizedStringResource` only where an API requires it, such as App Intents.
   - Weather phenomenon names come from the feed in English. Show them through `WeatherPhenomenonIcon.localizedName(for:)`, which looks them up in the catalog.
-- `StringCatalogTests` fails when a translatable string in `Resources/Localizable.xcstrings` has no translator comment or no Estonian translation (any state).
+- `StringCatalogTests` fails when a translatable string in `Resources/Localizable.xcstrings` has no translator comment, or has an Estonian translation with an empty value. A missing Estonian translation is allowed (any state counts when present).
 - Translation workflow (Crowdin, connected through its GitHub integration, configured in the Crowdin project; `crowdin.yml` describes the String Catalog for it):
-  - English text is written in Xcode. New English strings reach Crowdin when they land on `master`.
-  - Estonian is translated and approved in Crowdin. Do not edit Estonian values in `Resources/Localizable.xcstrings` by hand.
+  - New strings are added in Xcode with English text and a translator comment only. They reach Crowdin when they land on `master`.
+  - Estonian is translated and approved in Crowdin. Do not add or edit Estonian values in `Resources/Localizable.xcstrings` by hand: Crowdin does not import them, and its next sync may replace or drop them.
+  - Crowdin's PR adds the Estonian values after translation. Until then the app shows English.
+  - Before a release, check in Crowdin that Estonian is fully translated and approved.
   - Crowdin opens or updates one PR from `l10n_master` with new translations. It is merged like any other PR once CI passes; the branch is deleted on merge and Crowdin recreates it.
   - Crowdin has no "needs review" state: its PRs mark imported translations as `translated`. Review status (approved or not) lives in Crowdin.
   - Crowdin's PRs are exempt from the PR template (Crowdin writes its own PR body and cannot fill in template sections), so do not edit their descriptions to match it.

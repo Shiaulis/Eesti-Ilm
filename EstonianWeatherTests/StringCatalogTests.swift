@@ -6,8 +6,12 @@
 import Foundation
 import Testing
 
-/// Checks `Resources/Localizable.xcstrings` from the source tree, so missing translator comments or Estonian
-/// translations fail CI before the catalog reaches translators.
+/// Checks `Resources/Localizable.xcstrings` from the source tree, so missing translator comments fail CI before
+/// the catalog reaches translators.
+///
+/// New strings land in English only. Crowdin adds the Estonian translation through its pull request after merge,
+/// and the app falls back to English until then, so a missing Estonian localization is allowed. An Estonian
+/// localization that exists must not be empty: that guards against Crowdin or a merge writing empty values.
 struct StringCatalogTests {
     @Test func catalogUsesEnglishAsSourceLanguage() throws {
         let catalog = try Self.loadCatalog()
@@ -27,16 +31,18 @@ struct StringCatalogTests {
         #expect(keysWithoutComment.isEmpty, "Strings without a translator comment: \(keysWithoutComment)")
     }
 
-    @Test func everyTranslatableStringHasEstonianTranslation() throws {
+    @Test func estonianTranslationsAreNotEmpty() throws {
         let catalog = try Self.loadCatalog()
 
-        // Any state counts (for example `needs_review`): this checks that a value exists, not that it was reviewed.
-        let keysWithoutEstonian = catalog.translatableKeys.filter { key in
-            let values = catalog.strings[key]?.localizations?["et"]?.allValues ?? []
+        // A missing Estonian localization is fine (see the type's documentation); an empty one is not.
+        let keysWithEmptyEstonian = catalog.translatableKeys.filter { key in
+            guard let estonian = catalog.strings[key]?.localizations?["et"] else { return false }
+
+            let values = estonian.allValues
             return values.isEmpty || values.contains { $0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
         }
 
-        #expect(keysWithoutEstonian.isEmpty, "Strings without an Estonian translation: \(keysWithoutEstonian)")
+        #expect(keysWithEmptyEstonian.isEmpty, "Strings with an empty Estonian translation: \(keysWithEmptyEstonian)")
     }
 
     // MARK: - Private
