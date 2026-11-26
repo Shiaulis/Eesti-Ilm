@@ -3,6 +3,61 @@ require "open3"
 
 default_platform(:ios)
 
+# External TestFlight group that gets every build from the beta lane. It must exist in App Store Connect.
+TESTFLIGHT_EXTERNAL_GROUP = "Testers"
+# TestFlight's limit for the "What to Test" notes, in bytes.
+TESTFLIGHT_NOTES_MAX_BYTES = 4000
+
+# Returns [notes, source] for the build's "What to Test" notes. The notes come from
+# fastlane/testflight_notes.txt when that file changed since the last successful upload (last_upload_sha),
+# or when there is no usable earlier upload. Otherwise they are the commit subjects since that upload,
+# without ticket IDs and PR numbers.
+def testflight_notes(root, last_upload_sha)
+  notes_file = "fastlane/testflight_notes.txt"
+  file_notes = File.read(File.join(root, notes_file))
+
+  if last_upload_sha.empty?
+    UI.message("No earlier successful TestFlight upload found: using #{notes_file}")
+    return [file_notes, notes_file]
+  end
+
+  _, reachable = Open3.capture2e("git", "-C", root, "merge-base", "--is-ancestor", last_upload_sha, "HEAD")
+  unless reachable.success?
+    UI.important("Commit #{last_upload_sha} of the last upload is not reachable from HEAD: using #{notes_file}")
+    return [file_notes, notes_file]
+  end
+
+  # git diff --quiet exits with 0 when the file is unchanged and 1 when it changed.
+  _, diff_status = Open3.capture2e("git", "-C", root, "diff", "--quiet", last_upload_sha, "HEAD", "--", notes_file)
+  UI.user_error!("git diff of #{notes_file} against #{last_upload_sha} failed") unless [0, 1].include?(diff_status.exitstatus)
+  if diff_status.exitstatus == 1
+    UI.message("#{notes_file} changed since the last upload (#{last_upload_sha}): using it")
+    return [file_notes, notes_file]
+  end
+
+  log, log_status = Open3.capture2("git", "-C", root, "log", "--no-merges", "--format=%s", "#{last_upload_sha}..HEAD")
+  UI.user_error!("git log since #{last_upload_sha} failed") unless log_status.success?
+  subjects = log.lines.map { |line| line.strip.sub(/\AEES-\d+: /, "").sub(/ \(#\d+\)\z/, "").strip }.reject(&:empty?)
+  UI.message("#{notes_file} unchanged since the last upload (#{last_upload_sha}): using #{subjects.count} commit subjects")
+  [subjects.map { |subject| "- #{subject}" }.join("\n"), "commit subjects since #{last_upload_sha[0, 7]}"]
+end
+
+# Cuts the notes to TestFlight's limit at a line break, keeping the first lines (the newest commits).
+def truncate_testflight_notes(notes)
+  return notes if notes.bytesize <= TESTFLIGHT_NOTES_MAX_BYTES
+
+  UI.important("What to Test notes are longer than #{TESTFLIGHT_NOTES_MAX_BYTES} bytes: truncating")
+  kept = +""
+  notes.each_line do |line|
+    break if (kept + line).bytesize > TESTFLIGHT_NOTES_MAX_BYTES
+
+    kept << line
+  end
+  # A single line over the limit: cut it at a character boundary instead.
+  kept = notes.byteslice(0, TESTFLIGHT_NOTES_MAX_BYTES).scrub("") if kept.empty?
+  kept
+end
+
 platform :ios do
   desc "Upload App Store metadata from fastlane/metadata (no binary, no screenshots)"
   desc "Pass version:X.Y.Z to create or select that editable App Store version first;"
@@ -49,10 +104,13 @@ platform :ios do
     )
   end
 
-  desc "Archive the EstonianWeather scheme (app + widget) and upload it to TestFlight"
+  desc "Archive the EstonianWeather scheme (app + widget), upload it to TestFlight with What to Test notes,"
+  desc "add it to the external group Testers and submit it for Beta App Review (TestFlight only)"
   desc "Signs with Xcode automatic signing and cloud-managed certificates through the App Store Connect API key"
   desc "(no certificates, profiles or match); the version and build number come from the Xcode project,"
-  desc "and the lane fails before archiving if App Store Connect already has that build"
+  desc "and the lane fails before archiving if App Store Connect already has that build, the Testers group is"
+  desc "missing, or the notes are empty. Notes: fastlane/testflight_notes.txt if it changed since the upload at"
+  desc "TESTFLIGHT_LAST_UPLOAD_SHA (set by the TestFlight workflow), otherwise the commit subjects since then"
   lane :beta do
     key_id = ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY_ID")
     issuer_id = ENV.fetch("APP_STORE_CONNECT_API_KEY_ISSUER_ID")
@@ -103,6 +161,26 @@ platform :ios do
         "Raise CURRENT_PROJECT_VERSION in a PR first (app, widget and frameworks stay in sync), then run again."
       )
     end
+
+    # upload_to_testflight silently skips groups it cannot find, so check the external group before the archive.
+    testers_group = app.get_beta_groups.find { |group| group.name == TESTFLIGHT_EXTERNAL_GROUP }
+    if testers_group.nil?
+      UI.user_error!(
+        "App Store Connect has no TestFlight group named #{TESTFLIGHT_EXTERNAL_GROUP}. " \
+        "Create it as an external group in App Store Connect (TestFlight), then run again."
+      )
+    end
+    if testers_group.is_internal_group
+      UI.user_error!(
+        "The TestFlight group #{TESTFLIGHT_EXTERNAL_GROUP} is an internal group. " \
+        "Builds go to an external group: replace it with an external group of that name, then run again."
+      )
+    end
+
+    notes, notes_source = testflight_notes(root, ENV.fetch("TESTFLIGHT_LAST_UPLOAD_SHA", "").strip)
+    notes = truncate_testflight_notes(notes.strip)
+    UI.user_error!("The What to Test notes are empty (source: #{notes_source}). Add notes to fastlane/testflight_notes.txt.") if notes.empty?
+    UI.message("What to Test notes (#{notes_source}):\n#{notes}")
 
     build_dir = File.join(root, "build")
     archive_path = File.join(build_dir, "EstonianWeather.xcarchive")
@@ -161,15 +239,25 @@ platform :ios do
     ipa_path = Dir[File.join(export_path, "*.ipa")].first
     UI.user_error!("No .ipa found in #{export_path}") if ipa_path.nil?
 
+    # Waits for Apple's processing, sets the notes, submits the build for Beta App Review (submit_beta_review
+    # defaults to true; TestFlight review only, never App Store review) and adds it to the external group.
+    # The review contact and beta description come from App Store Connect's Test Information.
     upload_to_testflight(
       api_key: api_key,
       ipa: ipa_path,
-      skip_waiting_for_build_processing: true
+      changelog: notes,
+      distribute_external: true,
+      groups: [TESTFLIGHT_EXTERNAL_GROUP],
+      notify_external_testers: true
     )
 
     summary_path = ENV["GITHUB_STEP_SUMMARY"]
     unless summary_path.nil? || summary_path.empty?
-      File.open(summary_path, "a") { |file| file.puts("Uploaded to TestFlight: #{version} (#{build_number})") }
+      File.open(summary_path, "a") do |file|
+        file.puts("Uploaded to TestFlight: #{version} (#{build_number})")
+        file.puts
+        file.puts("Sent to #{TESTFLIGHT_EXTERNAL_GROUP} and submitted for Beta App Review. What to Test notes from #{notes_source}.")
+      end
     end
   end
 end
