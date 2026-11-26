@@ -14,6 +14,7 @@ final class ForecastListViewController: UIViewController {
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.makeLayout())
     private lazy var dataSource = self.makeDataSource()
+    private lazy var contentUnavailableView = UIContentUnavailableView(configuration: .empty())
 
     init(
         viewModel: ForecastListViewModel = ForecastListViewModel(),
@@ -92,13 +93,13 @@ final class ForecastListViewController: UIViewController {
         switch self.viewModel.state {
         case .loading:
             self.show(forecasts: [])
-            self.collectionView.backgroundView = UIContentUnavailableView(configuration: self.loadingConfiguration())
+            self.showContentUnavailable(self.loadingConfiguration())
         case let .loaded(forecasts):
             self.show(forecasts: forecasts)
-            self.collectionView.backgroundView = nil
+            self.showContentUnavailable(nil)
         case let .failed(message):
             self.show(forecasts: [])
-            self.collectionView.backgroundView = UIContentUnavailableView(configuration: self.errorConfiguration(message: message))
+            self.showContentUnavailable(self.errorConfiguration(message: message))
         }
     }
 
@@ -128,6 +129,20 @@ final class ForecastListViewController: UIViewController {
             includesDisclaimer: !forecasts.isEmpty && self.disclaimerURL != nil
         )
         self.dataSource.apply(snapshot, animatingDifferences: false)
+    }
+
+    /// Reuses one background view. Attaching a new view on every pass made UIKit re-run `updateProperties()`
+    /// in a loop on Mac, and after detecting the loop UIKit stopped updating the screen (EES-94).
+    private func showContentUnavailable(_ configuration: UIContentUnavailableConfiguration?) {
+        guard let configuration else {
+            self.collectionView.backgroundView = nil
+            return
+        }
+
+        self.contentUnavailableView.configuration = configuration
+        if self.collectionView.backgroundView !== self.contentUnavailableView {
+            self.collectionView.backgroundView = self.contentUnavailableView
+        }
     }
 
     private func loadingConfiguration() -> UIContentUnavailableConfiguration {
