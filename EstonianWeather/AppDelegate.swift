@@ -50,7 +50,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Attach one by hand.
     @objc private func sceneWillConnect(_ notification: Notification) {
         guard let windowScene = notification.object as? UIWindowScene,
-              !(windowScene.delegate is SceneDelegate)
+              Self.shouldAdoptScene(delegate: windowScene.delegate, role: windowScene.session.role)
         else {
             return
         }
@@ -59,6 +59,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.adoptedSceneDelegates[ObjectIdentifier(windowScene)] = sceneDelegate
         windowScene.delegate = sceneDelegate
         sceneDelegate.installWindow(in: windowScene)
+    }
+
+    /// Only app window scenes are adopted. On Mac, UIKit also connects its own menu bar scene without a delegate;
+    /// adopting it built a second, hidden Forecasts screen that requested the forecast again (EES-95).
+    static func shouldAdoptScene(delegate: (any UISceneDelegate)?, role: UISceneSession.Role) -> Bool {
+        role == .windowApplication && !(delegate is SceneDelegate)
     }
 
     @objc private func sceneDidDisconnect(_ notification: Notification) {
