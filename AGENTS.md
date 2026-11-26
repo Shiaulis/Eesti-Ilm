@@ -115,11 +115,19 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 
   Never run any of these lanes, or the `TestFlight` workflow, unless the owner asks.
 
+## Ticket workflow
+
+- Agents work in Orca. The coordinator agent works in the main checkout on `master` and does not implement tickets there.
+- For each Linear ticket, the coordinator starts a separate worker in its own Orca worktree with `orca orchestration worker-start`. The worker's branch is the ticket's git branch name.
+- The ticket reflects the work: it moves to In Progress when the worker starts. Agents may comment on the ticket when useful (worker and workspace, progress, decisions, PR link, blockers).
+- When the ticket is done (PR merged), the coordinator releases the worker, removes the Orca workspace, and moves the ticket to Done.
+- Reach Linear for this repo through the Orca CLI (`orca linear ... --workspace <id>`), not other Linear integrations.
+
 ## Git workflow
 
-- One branch per Linear ticket in the EES team, named with the ticket's git branch name.
+- One branch per Linear ticket in the EES team, named with the ticket's git branch name and worked on in that ticket's Orca worktree (see Ticket workflow).
 - Coding agents commit, push, open PRs, and comment on GitHub as the `telbin-bot` machine account (never approve or directly merge PRs).
-- Open agent PRs against `master` as a draft (`gh pr create --draft`) while iterating on CI or review feedback; mark ready (`gh pr ready`) once checks pass and comments are resolved so `@Shiaulis` gets a single review request via `CODEOWNERS`.
+- Open agent PRs against `master` ready for review (no `--draft`; CodeRabbit skips drafts). `CODEOWNERS` requests `@Shiaulis`'s review when the PR opens. Fix CI failures and CodeRabbit findings with follow-up commits on the same PR and resolve the threads.
 - Enabling squash auto-merge (`gh pr merge --auto --squash`) is allowed only before `@Shiaulis` has approved (when `Protect master` requires `@Shiaulis`'s approval, so GitHub cannot merge immediately); never run `gh pr merge` on an already-approved PR.
 - Every PR, human or agent, follows `.github/pull_request_template.md` exactly: same sections, same order, no other sections. Agents fill them like this:
   - Ticket: the Linear link.
