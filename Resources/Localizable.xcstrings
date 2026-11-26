@@ -47,7 +47,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Selge"
           }
         }
@@ -59,7 +59,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Pilves"
           }
         }
@@ -71,7 +71,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Pilves selgimistega"
           }
         }
@@ -116,7 +116,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Pinnatuisk"
           }
         }
@@ -139,7 +139,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Vähene pilvisus"
           }
         }
@@ -151,7 +151,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Udu"
           }
         }
@@ -185,7 +185,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Rahe"
           }
         }
@@ -197,7 +197,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Tugev vihm"
           }
         }
@@ -209,7 +209,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Tugev hoogvihm"
           }
         }
@@ -221,7 +221,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Tugev lumesadu"
           }
         }
@@ -233,7 +233,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Tugev hooglumi"
           }
         }
@@ -245,7 +245,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Tugev lumesadu"
           }
         }
@@ -257,7 +257,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nõrk vihm"
           }
         }
@@ -269,7 +269,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nõrk hoogvihm"
           }
         }
@@ -281,7 +281,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nõrk lörtsisadu"
           }
         }
@@ -293,7 +293,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nõrk lumesadu"
           }
         }
@@ -305,7 +305,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nõrk hooglumi"
           }
         }
@@ -317,7 +317,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nõrk lumesadu"
           }
         }
@@ -340,7 +340,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Uduvine"
           }
         }
@@ -352,7 +352,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mõõdukas vihm"
           }
         }
@@ -364,7 +364,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mõõdukas hoogvihm"
           }
         }
@@ -376,7 +376,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mõõdukas lörtsisadu"
           }
         }
@@ -388,7 +388,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mõõdukas lumesadu"
           }
         }
@@ -400,7 +400,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mõõdukas hooglumi"
           }
         }
@@ -412,7 +412,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mõõdukas lumesadu"
           }
         }
@@ -457,7 +457,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Lauspilves"
           }
         }
@@ -469,7 +469,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Osaliselt pilves"
           }
         }
@@ -492,7 +492,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Jäiteoht"
           }
         }
@@ -515,7 +515,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Lumetuisk"
           }
         }
@@ -545,7 +545,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Päikesepaisteline"
           }
         }
@@ -557,7 +557,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Äike"
           }
         }
@@ -569,7 +569,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Äikesevihm"
           }
         }
@@ -581,7 +581,7 @@
       "localizations" : {
         "et" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Vahelduv pilvisus"
           }
         }
