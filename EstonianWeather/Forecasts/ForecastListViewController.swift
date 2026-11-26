@@ -10,7 +10,7 @@ final class ForecastListViewController: UIViewController {
     private let viewModel: ForecastListViewModel
     private let disclaimerURL: URL?
     private var forecastsByID = [UUID: ForecastConfiguration]()
-    private var sceneActivationObserver: (any NSObjectProtocol)?
+    private var appActivationObserver: (any NSObjectProtocol)?
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.makeLayout())
     private lazy var dataSource = self.makeDataSource()
@@ -37,8 +37,8 @@ final class ForecastListViewController: UIViewController {
     }
 
     isolated deinit {
-        if let sceneActivationObserver {
-            NotificationCenter.default.removeObserver(sceneActivationObserver)
+        if let appActivationObserver {
+            NotificationCenter.default.removeObserver(appActivationObserver)
         }
     }
 
@@ -63,15 +63,13 @@ final class ForecastListViewController: UIViewController {
         self.view.addSubview(self.collectionView)
 
         // Replaces the SwiftUI `.task(id: scenePhase)`: refresh when the app becomes active on a later day.
-        self.sceneActivationObserver = NotificationCenter.default.addObserver(
-            forName: UIScene.didActivateNotification,
+        self.appActivationObserver = NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
             object: nil,
             queue: .main
-        ) { [weak self] notification in
-            // Only the scene (a main-actor type) leaves the notification, which is not `Sendable`.
-            let scene = notification.object as? UIWindowScene
+        ) { [weak self] _ in
             MainActor.assumeIsolated {
-                self?.sceneDidActivate(scene)
+                self?.appDidBecomeActive()
             }
         }
     }
@@ -105,11 +103,7 @@ final class ForecastListViewController: UIViewController {
 
     // MARK: - State
 
-    private func sceneDidActivate(_ scene: UIWindowScene?) {
-        guard let scene, scene === self.viewIfLoaded?.window?.windowScene else {
-            return
-        }
-
+    private func appDidBecomeActive() {
         Task {
             await self.viewModel.refreshIfStale()
         }

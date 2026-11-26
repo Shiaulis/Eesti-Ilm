@@ -7,11 +7,12 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    /// Shared by all scenes so the launch count is recorded once per process, not once per window.
+    /// Owned by the app, not the scene, so the launch count is recorded once per process
+    /// even when iOS disconnects the window scene in the background and connects it again.
     let ratingService = UserRatingService()
 
-    /// Scene delegates adopted for sessions restored from the SwiftUI build. `UIScene.delegate` is weak.
-    private var adoptedSceneDelegates = [ObjectIdentifier: SceneDelegate]()
+    /// Scene delegate adopted for the session restored from the SwiftUI build. `UIScene.delegate` is weak.
+    private var adoptedSceneDelegate: SceneDelegate?
 
     func application(
         _ application: UIApplication,
@@ -56,7 +57,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         let sceneDelegate = SceneDelegate()
-        self.adoptedSceneDelegates[ObjectIdentifier(windowScene)] = sceneDelegate
+        self.adoptedSceneDelegate = sceneDelegate
         windowScene.delegate = sceneDelegate
         sceneDelegate.installWindow(in: windowScene)
     }
@@ -68,10 +69,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc private func sceneDidDisconnect(_ notification: Notification) {
-        guard let scene = notification.object as? UIScene else {
+        guard let scene = notification.object as? UIScene,
+              let adoptedSceneDelegate,
+              scene.delegate === adoptedSceneDelegate
+        else {
             return
         }
 
-        self.adoptedSceneDelegates[ObjectIdentifier(scene)] = nil
+        self.adoptedSceneDelegate = nil
     }
 }

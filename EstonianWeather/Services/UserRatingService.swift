@@ -25,7 +25,6 @@ final class UserRatingService {
     )
 
     private var hasRecordedLaunchForCurrentSession = false
-    private var isAwaitingPromptDelay = false
 
     init(
         userDefaults: UserDefaults = .standard,
@@ -106,9 +105,6 @@ final class UserRatingService {
             self.recordLaunch()
         }
 
-        guard !self.isAwaitingPromptDelay else {
-            return false
-        }
         guard self.currentVersion != nil else {
             self.logger.fault("Expected to find a non-empty CFBundleVersion in the info dictionary")
             return false
@@ -118,9 +114,6 @@ final class UserRatingService {
         }
 
         if delay > .zero {
-            self.isAwaitingPromptDelay = true
-            defer { self.isAwaitingPromptDelay = false }
-
             do {
                 try await Task.sleep(for: delay)
             }
