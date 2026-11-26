@@ -7,7 +7,6 @@
   "localizations": {
     "development": "en",
     "supported": [
-      "en",
       "et",
     ],
   },
@@ -30,7 +29,9 @@
     {
       "kind": "folder",
       "path": "EstonianWeather",
-      "target-membership": [ "EstonianWeather" ],
+      "target-membership": [
+        "EstonianWeather",
+      ],
       "membership-exceptions": [
         {
           "target": "EstonianWeather",
@@ -39,8 +40,7 @@
           ],
         },
       ],
-    },
-    {
+    }, {
       "kind": "folder",
       "path": "EstonianWeatherWidget",
       "target-membership": [
@@ -62,7 +62,6 @@
     { "kind": "folder", "path": "WeatherCoreTests", "target-membership": [ "WeatherCoreTests" ] },
     {
       "kind": "group",
-      "name": "Resources",
       "path": "Resources",
       "children": [
         {
@@ -72,16 +71,10 @@
             "EstonianWeatherWidgetExtension/resources",
           ],
         },
-        {
-          "path": "Settings.bundle",
-          "target-membership": [
-            "EstonianWeather/resources",
-          ],
-        },
+        { "path": "Settings.bundle", "target-membership": [ "EstonianWeather/resources" ] },
         { "path": "EstonianWeather.xctestplan" },
       ],
-    },
-    {
+    }, {
       "kind": "group",
       "name": "Products",
       "children": [
@@ -262,6 +255,7 @@
       ],
       "build-settings": {
         "APPLICATION_EXTENSION_API_ONLY": "YES",
+        "CODE_SIGN_IDENTITY": "",
         "CODE_SIGN_STYLE": "Automatic",
         "DEVELOPMENT_TEAM": "NFA8F38A32",
         "DYLIB_COMPATIBILITY_VERSION": "1",
@@ -309,6 +303,7 @@
       ],
       "build-settings": {
         "APPLICATION_EXTENSION_API_ONLY": "YES",
+        "CODE_SIGN_IDENTITY": "",
         "CODE_SIGN_STYLE": "Automatic",
         "DEVELOPMENT_TEAM": "NFA8F38A32",
         "DYLIB_COMPATIBILITY_VERSION": "1",
@@ -438,6 +433,7 @@
     "CLANG_WARN__DUPLICATE_METHOD_MATCH": "YES",
     "COPY_PHASE_STRIP": "NO",
     "CURRENT_PROJECT_VERSION": "57",
+    "DEAD_CODE_STRIPPING": "YES",
     "DEBUG_INFORMATION_FORMAT[config=Debug]": "dwarf",
     "DEBUG_INFORMATION_FORMAT[config=Release]": "dwarf-with-dsym",
     "DEVELOPMENT_TEAM": "NFA8F38A32",
@@ -467,11 +463,12 @@
     "MTL_ENABLE_DEBUG_INFO[config=Release]": "NO",
     "MTL_FAST_MATH": "YES",
     "ONLY_ACTIVE_ARCH[config=Debug]": "YES",
+    "STRING_CATALOG_GENERATE_SYMBOLS": "YES",
     "SWIFT_ACTIVE_COMPILATION_CONDITIONS[config=Debug]": "DEBUG $(inherited)",
     "SWIFT_COMPILATION_MODE[config=Release]": "wholemodule",
     "SWIFT_OPTIMIZATION_LEVEL[config=Debug]": "-Onone",
     "SWIFT_VERSION": "6.0",
   },
-  "last-upgrade": "26.0",
+  "last-upgrade": "27.2",
   "last-swift-update": "26.0",
 }
