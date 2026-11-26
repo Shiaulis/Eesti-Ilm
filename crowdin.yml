@@ -8,6 +8,10 @@ project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_PERSONAL_TOKEN
 preserve_hierarchy: true
 pull_request_title: "Update translations from Crowdin"
+# Crowdin's default commit message ends with [ci skip], which stops GitHub Actions on its
+# PRs. A custom message with append_commit_message: false drops the tag, so CI runs.
+commit_message: "Update %language% translations of %original_file_name% from Crowdin"
+append_commit_message: false
 
 files:
   # A String Catalog is multilingual: one file holds English and every translation,
