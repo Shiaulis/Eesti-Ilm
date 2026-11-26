@@ -127,7 +127,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 
 - One branch per Linear ticket in the EES team, named with the ticket's git branch name and worked on in that ticket's Orca worktree (see Ticket workflow).
 - Coding agents commit, push, open PRs, and comment on GitHub as the `telbin-bot` machine account (never approve or directly merge PRs).
-- Open agent PRs against `master` as a draft (`gh pr create --draft`) while iterating on CI or review feedback; mark ready (`gh pr ready`) once checks pass and comments are resolved so `@Shiaulis` gets a single review request via `CODEOWNERS`.
+- Open agent PRs against `master` ready for review (no `--draft`; CodeRabbit skips drafts). `CODEOWNERS` requests `@Shiaulis`'s review when the PR opens. Fix CI failures and CodeRabbit findings with follow-up commits on the same PR and resolve the threads.
 - Enabling squash auto-merge (`gh pr merge --auto --squash`) is allowed only before `@Shiaulis` has approved (when `Protect master` requires `@Shiaulis`'s approval, so GitHub cannot merge immediately); never run `gh pr merge` on an already-approved PR.
 - Every PR, human or agent, follows `.github/pull_request_template.md` exactly: same sections, same order, no other sections. Agents fill them like this:
   - Ticket: the Linear link.
