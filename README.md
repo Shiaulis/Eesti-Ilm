@@ -11,7 +11,7 @@
 </p>
 
 > [!NOTE]
-> **Status:** Eesti Ilm is being revived. Version 2.3 is in development, and the app is temporarily not available on the App Store.
+> **Status:** Eesti Ilm is being revived. Version 2.3 is in development, and the app is temporarily not available on the App Store. You can try the 2.3 beta on [TestFlight](https://testflight.apple.com/join/xlLG9DS9).
 
 ## About
 
