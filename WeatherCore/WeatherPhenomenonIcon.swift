@@ -26,6 +26,14 @@ public enum WeatherPhenomenonIcon {
         return self.phenomenonMap[normalized]?.localizationKey ?? phenomenon
     }
 
+    /// Returns the phenomenon name in the user's language, or the raw phenomenon string if it is not known.
+    ///
+    /// The feed sends phenomena in English in every language. The translations live in the String Catalog
+    /// of the calling app or widget (`Bundle.main`), not in this framework.
+    public static func localizedName(for phenomenon: String) -> String {
+        String(localized: String.LocalizationValue(self.localizationKey(for: phenomenon)), bundle: .main)
+    }
+
     private static func normalize(_ phenomenon: String) -> String {
         phenomenon
             .trimmingCharacters(in: .whitespacesAndNewlines)

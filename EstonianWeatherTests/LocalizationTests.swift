@@ -6,6 +6,7 @@
 @testable import EstonianWeather
 import Foundation
 import Testing
+import WeatherCore
 
 struct LocalizationTests {
     @Test func appAndWidgetShipEnglishAndEstonianStrings() throws {
@@ -30,21 +31,25 @@ struct LocalizationTests {
             #expect(Bundle.main.preferredLocalizations.first == "et")
             #expect(String(localized: "Forecasts") == "Prognoosid")
             #expect(String(localized: "Settings") == "Seaded")
+            #expect(AppTab.forecasts.title == "Prognoosid")
+            #expect(AppTab.settings.title == "Seaded")
             #expect(String(localized: .aboutMeDescription).hasPrefix("Tere"))
             #expect(String(localized: .sourceDisclaimer).contains("Keskkonnaagentuur"))
-            #expect(ForecastFormatter.phenomenonText(for: "Few clouds") == "Vähene pilvisus")
-            #expect(ForecastFormatter.phenomenonText(for: "  heavy rain \n") == "Tugev vihm")
-            #expect(ForecastFormatter.phenomenonText(for: "Volcanic ash") == "Volcanic ash")
+            #expect(WeatherPhenomenonIcon.localizedName(for: "Few clouds") == "Vähene pilvisus")
+            #expect(WeatherPhenomenonIcon.localizedName(for: "  heavy rain \n") == "Tugev vihm")
+            #expect(WeatherPhenomenonIcon.localizedName(for: "Volcanic ash") == "Volcanic ash")
         }
         else {
             #expect(Bundle.main.preferredLocalizations.first == "en")
             #expect(String(localized: "Forecasts") == "Forecasts")
             #expect(String(localized: "Settings") == "Settings")
+            #expect(AppTab.forecasts.title == "Forecasts")
+            #expect(AppTab.settings.title == "Settings")
             #expect(String(localized: .aboutMeDescription).hasPrefix("Hey"))
             #expect(String(localized: .sourceDisclaimer).contains("Estonian Environment Agency"))
-            #expect(ForecastFormatter.phenomenonText(for: "Few clouds") == "Few clouds")
-            #expect(ForecastFormatter.phenomenonText(for: "  heavy rain \n") == "Heavy rain")
-            #expect(ForecastFormatter.phenomenonText(for: "Volcanic ash") == "Volcanic ash")
+            #expect(WeatherPhenomenonIcon.localizedName(for: "Few clouds") == "Few clouds")
+            #expect(WeatherPhenomenonIcon.localizedName(for: "  heavy rain \n") == "Heavy rain")
+            #expect(WeatherPhenomenonIcon.localizedName(for: "Volcanic ash") == "Volcanic ash")
         }
     }
 

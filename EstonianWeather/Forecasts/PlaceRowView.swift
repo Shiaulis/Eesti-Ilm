@@ -35,7 +35,7 @@ final class PlaceRowView: UIView {
         self.iconView.image = UIImage(systemName: WeatherPhenomenonIcon.symbolName(for: place.phenomenon))
         self.iconView.isAccessibilityElement = true
         self.iconView.accessibilityTraits = .image
-        self.iconView.accessibilityLabel = ForecastFormatter.phenomenonText(for: place.phenomenon)
+        self.iconView.accessibilityLabel = WeatherPhenomenonIcon.localizedName(for: place.phenomenon)
         // Only the name wraps. The priorities stay just below required so the icon column cap can still win;
         // `updateIconColumn()` makes the compression resistance required where the cap is lifted.
         self.iconView.setContentHuggingPriority(UILayoutPriority.required - 1, for: .horizontal)

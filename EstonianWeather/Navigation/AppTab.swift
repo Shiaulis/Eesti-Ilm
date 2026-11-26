@@ -15,12 +15,12 @@ nonisolated enum AppTab: String, CaseIterable, Identifiable, Hashable, Sendable 
         self
     }
 
-    var titleResource: LocalizedStringResource {
+    var title: String {
         switch self {
         case .forecasts:
-            LocalizedStringResource("Forecasts")
+            String(localized: "Forecasts")
         case .settings:
-            LocalizedStringResource("Settings")
+            String(localized: "Settings")
         }
     }
 

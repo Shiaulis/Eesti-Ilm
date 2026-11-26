@@ -13,7 +13,7 @@ final class RootTabBarController: UITabBarController {
         self.mode = .tabSidebar
         self.tabs = AppTab.allCases.map { tab in
             UITab(
-                title: String(localized: tab.titleResource),
+                title: tab.title,
                 image: UIImage(systemName: tab.systemImageName),
                 identifier: tab.rawValue
             ) { _ in
