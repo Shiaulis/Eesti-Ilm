@@ -1,0 +1,13 @@
+Eesti Ilm 2.3, rebuilt for iOS 27.
+
+What's new:
+- Refreshed forecast list with day and night forecasts for the coming days
+- Home-screen widget in small and medium sizes
+- Sidebar navigation on iPad
+- Forecasts in English or Estonian, following the app language
+
+What to check:
+- The forecast loads and matches ilmateenistus.ee
+- The widget in small and medium sizes on the home screen
+- On iPad, the sidebar and moving between its sections
+- Changing the app language between English and Estonian in iOS Settings

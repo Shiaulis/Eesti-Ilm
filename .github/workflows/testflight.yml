@@ -1,10 +1,13 @@
 name: TestFlight
 
-# Manual only: archives the app and uploads a build to TestFlight.
+# Manual only: archives the app, uploads a build to TestFlight with What to Test notes, adds it to the
+# external group Testers and submits it for Beta App Review.
 on:
   workflow_dispatch:
 
+# actions: read finds the last successful run of this workflow for the What to Test notes.
 permissions:
+  actions: read
   contents: read
 
 # Two uploads at once would race for the same build number.
@@ -18,10 +21,13 @@ jobs:
     environment: testflight
     # GitHub's Xcode 27 image (public preview). Its default Xcode is 27.1, so 27.2 is selected below.
     runs-on: xcode-27
-    timeout-minutes: 60
+    # Archive and upload take about 10 minutes; waiting for Apple's processing adds more, often 10-30 minutes.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Full history, so the lane can diff and log against the commit of the last successful upload.
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Select Xcode 27.2
@@ -33,9 +39,23 @@ jobs:
         with:
           bundler-cache: true
 
+      # The commit of the newest successful run of this workflow. Empty when there is none: the lane then
+      # uses fastlane/testflight_notes.txt as is.
+      - name: Find the last successful TestFlight upload
+        id: last-upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sha=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/testflight.yml/runs?status=success&per_page=1" \
+            --jq '.workflow_runs[0].head_sha // empty')
+          echo "Last successful upload: ${sha:-none}"
+          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+
       # The lane writes the API key to a temporary file for xcodebuild and deletes it when the build ends.
+      # It waits for Apple's processing before it sets the notes and submits the build for Beta App Review.
       - name: Archive and upload to TestFlight
         env:
+          TESTFLIGHT_LAST_UPLOAD_SHA: ${{ steps.last-upload.outputs.sha }}
           APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
           APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
