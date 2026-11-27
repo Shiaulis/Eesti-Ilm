@@ -242,6 +242,106 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 .touch { width: 90px; height: 90px; display: block; margin: 0 auto 6px; }
 .og-frame { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
 
+/* type (iOS app & widgets) */
+.t-rounded { font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif; }
+.t-sans { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, sans-serif; }
+.t-num { font-variant-numeric: tabular-nums; }
+.t-text { color: var(--ink); }
+.t-sec { color: var(--muted); }
+.t-cold { color: #3D5A80; }
+.t-warm { color: #B0452C; }
+.t-acc { color: var(--accent); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .t-cold { color: #9DB6D8; }
+  :root:not([data-theme="light"]) .t-warm { color: #F2936F; }
+}
+:root[data-theme="dark"] .t-cold { color: #9DB6D8; }
+:root[data-theme="dark"] .t-warm { color: #F2936F; }
+
+.type-specimen { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 24px; }
+.type-specimen .hero-num { font-size: clamp(2rem, 1.3rem + 3.2vw, 3.25rem); font-weight: 700; line-height: 1.06; letter-spacing: -0.02em; }
+.type-specimen .diacritics { font-size: clamp(1.25rem, 1rem + 1.1vw, 1.75rem); font-weight: 600; line-height: 1.2; color: var(--muted); }
+.type-table th { text-wrap: balance; }
+.type-table tbody th { color: var(--ink); font-weight: 600; font-size: inherit; text-transform: none; letter-spacing: normal; }
+.type-table td { overflow-wrap: break-word; }
+.type-group td { background: var(--chip); color: var(--muted); font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; padding: 6px 8px; }
+.spec-sample { display: inline-block; line-height: 1.25; white-space: nowrap; }
+.badge-rec { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; background: var(--accent); color: var(--on-accent); padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: 1px; }
+.ios .badge-rec { background: var(--acc); color: var(--on-acc); }
+
+/* iOS app & widget typography mockups (component-specific light/dark schemes) */
+.ios {
+  --bg: #FAF5F1; --card: #FFFFFF; --text: #1E1A2B; --sec: #625A6E; --sep: #ECE4DD;
+  --acc: #B0452C; --on-acc: #FFFFFF; --cold: #3D5A80; --warm: #B0452C; --sun: #EE9A4D; --cloud: #8E8699; --precip: #3D5A80;
+  color-scheme: only light; container: ios / inline-size; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, sans-serif; line-height: 1.4; text-align: start;
+}
+.ios.d {
+  --bg: #15121C; --card: #201B29; --text: #F4EEF3; --sec: #ABA2B5; --sep: #2E2738;
+  --acc: #F2936F; --on-acc: #15121C; --cold: #9DB6D8; --warm: #F2936F; --sun: #F7B26A; --cloud: #9A92A6; --precip: #9DB6D8;
+  color-scheme: only dark; background: var(--bg); color: var(--text);
+}
+.ios * { box-sizing: border-box; }
+.ios-tag { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--sec); margin: 0 0 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ios-nav-title { font-size: 34px; font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--text); }
+.ios-date { font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--sec); margin: 0 0 8px 4px; }
+.ios-card { background: var(--card); border-radius: 18px; padding: 14px 18px; border: 1px solid var(--sep); }
+.ios-card + .ios-card { margin-top: 12px; }
+.ios-day-row { display: flex; align-items: center; gap: 10px; }
+.ios-day-title { font-size: 22px; font-weight: 600; line-height: 1.25; color: var(--text); flex: 1 1 auto; }
+.ios-temp-lg { font-size: 22px; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ios-temp-lg.plain-wt { font-weight: 500; }
+.ios-dash { color: var(--sec); }
+.ios-cold { color: var(--cold); }
+.ios-warm { color: var(--warm); }
+.ios-desc { font-size: 17px; font-weight: 400; line-height: 1.42; color: var(--text); margin: 10px 0 0; text-wrap: pretty; overflow-wrap: break-word; }
+.ios-sep { height: 1px; background: var(--sep); margin: 12px 0; }
+.ios-places { display: flex; flex-direction: column; gap: 8px; }
+.ios-place { display: flex; align-items: center; gap: 12px; }
+.ios-place-name { font-size: 15px; font-weight: 400; line-height: 1.35; color: var(--text); flex: 1 1 auto; min-width: 0; overflow-wrap: break-word; }
+.ios-place-ic { width: 22px; flex: none; display: inline-flex; justify-content: center; }
+.ios-place-temp { font-size: 15px; font-weight: 500; line-height: 1.35; font-variant-numeric: tabular-nums; min-width: 44px; text-align: end; white-space: nowrap; }
+.ios-place-temp.plain-sec { font-weight: 400; color: var(--sec); }
+.ios-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 11px 0; font-size: 17px; line-height: 1.35; }
+.ios-row + .ios-row { border-top: 1px solid var(--sep); }
+.ios-row .val { color: var(--sec); text-align: end; }
+.ios-row .chev { color: var(--sec); font-weight: 600; }
+.ios-source { text-align: center; padding: 12px 16px; }
+.ios-source p { font-size: 12px; line-height: 1.4; color: var(--sec); margin: 0 0 6px; }
+.ios-source .lnk { font-size: 12px; font-weight: 500; line-height: 1.4; color: var(--acc); text-decoration: none; }
+.ios-btn { display: inline-flex; align-items: center; justify-content: center; min-block-size: 44px; padding: 10px 20px; border-radius: 12px; background: var(--acc); color: var(--on-acc); font-size: 17px; font-weight: 600; line-height: 1.25; }
+
+/* widget typography previews */
+.w-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 12px; align-items: stretch; }
+@container ios (inline-size >= 456px) { .w-grid { grid-template-columns: 158px minmax(0, 1fr); } }
+.w-tile { background: var(--card); border: 1px solid var(--sep); border-radius: 22px; padding: 14px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-block-size: 158px; gap: 4px; }
+.w-date { font-size: 12px; font-weight: 500; line-height: 1.3; color: var(--sec); }
+.w-temp-sm { font-size: 22px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.w-phen-sm { font-size: 12px; font-weight: 400; line-height: 1.3; color: var(--text); }
+.w-med { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--card); border: 1px solid var(--sep); border-radius: 22px; padding: 14px 6px; min-block-size: 158px; }
+.w-col { display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; padding: 0 4px; gap: 4px; }
+.w-col + .w-col { border-left: 1px solid var(--sep); }
+.w-temp-md { font-size: 15px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.w-temp-md .ios-dash { padding: 0 2px; }
+.w-phen-md { font-size: 11px; font-weight: 400; line-height: 1.25; color: var(--text); }
+
+/* Dynamic Type phone preview (390 px iOS canvas scaled via .fit) */
+.dt-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 14px; align-items: start; }
+@media (max-width: 700px) { .dt-pair { grid-template-columns: minmax(0, 1fr); } }
+.dt-pair figure { margin: 0; min-width: 0; }
+.dt-pair figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.ios.phone { width: 390px; border-radius: 24px; padding: 18px 16px; }
+.ios.ax3 .ios-date { font-size: 40px; line-height: 1.15; margin-bottom: 12px; }
+.ios.ax3 .ios-day-title { font-size: 44px; line-height: 1.12; }
+.ios.ax3 .ios-temp-lg { font-size: 44px; line-height: 1.12; display: block; margin-top: 6px; white-space: normal; }
+.ios.ax3 .ios-desc { font-size: 40px; line-height: 1.22; margin-top: 14px; }
+.ios.ax3 .ios-sep { margin: 18px 0; }
+.ios.ax3 .ios-places { gap: 16px; }
+.ios.ax3 .ios-place { flex-wrap: wrap; align-items: center; row-gap: 4px; }
+.ios.ax3 .ios-place-name { font-size: 36px; line-height: 1.18; }
+.ios.ax3 .ios-place-ic { width: auto; }
+.ios.ax3 .ios-place-temp { font-size: 36px; line-height: 1.18; flex-basis: 100%; text-align: start; min-width: 0; }
+
 @page { size: A4; margin: 12mm; }
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -249,7 +349,7 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
   main { max-width: none; padding: 0; }
   body { font-size: 13px; }
   h2 { break-before: page; margin-top: 0; }
-  .panel, figure, table, .swc, .strip { break-inside: avoid; }
+  .panel, figure, table, .swc, .strip, .ios { break-inside: avoid; }
   h3 { break-after: avoid; }
   .construct { grid-template-columns: 240px 1fr; }
   .construct svg { max-width: 240px; }
@@ -268,16 +368,16 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 <button class="theme-toggle" id="themeToggle" type="button">Theme: auto</button>
 <main>
   <header>
-    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 2 · 27 November 2026</p>
+    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 3 · 27 November 2026</p>
     <div class="cover">
       <div>
         <h1>Eesti Ilm<br>Design Book</h1>
-        <p class="lead" style="margin-top:16px">The new look, version 2: the app icon, the color palette and the website. Type, weather symbols, screens, widgets and the App Store come in later versions (see <a href="#next">Next</a>).</p>
+        <p class="lead" style="margin-top:16px">The new look, version 3: the app icon, the color palette, the app type scale and the website. Weather symbols, screens, widgets and the App Store come in later versions (see <a href="#next">Next</a>).</p>
       </div>
       <img src="assets/icon/icon-Default.png" alt="Eesti Ilm app icon: a pale sun behind a white cloud on a plum-to-coral dusk gradient">
     </div>
     <nav class="toc">
-      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#website">4 · Website</a><a href="#next">5 · Next</a>
+      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#type">4 · Type</a><a href="#website">5 · Website</a><a href="#next">6 · Next</a>
     </nav>
   </header>
 
@@ -380,9 +480,398 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
     <div class="panel table-wrap"><table id="contrast"></table></div>
   </section>
 
-  <!-- 4 WEBSITE -->
+  <!-- 4 TYPE -->
+  <section id="type">
+    <h2><span class="num">4</span>Type · iOS app &amp; widgets</h2>
+    <p class="muted">Apple's system fonts, built on iOS Dynamic Type text styles. <b>SF Pro Rounded</b> gives temperatures and key headings Loojang's calm warmth; standard <b>SF Pro</b> keeps descriptions, place lists and Settings crisp and native. Zero bundled font files, full Estonian glyph coverage (õ ä ö ü š ž), and tabular digits on every temperature.</p>
+
+    <h3>Font pairing · SF Pro Rounded + SF Pro</h3>
+    <div class="panel">
+      <div class="type-specimen">
+        <span class="t-rounded hero-num t-num"><span class="t-text">Day </span><span class="t-cold">−3°</span> <span class="t-sec">–</span> <span class="t-warm">4°</span></span>
+        <span class="t-rounded diacritics">Päev · Öö · õ ä ö ü š ž</span>
+      </div>
+      <ul class="small" style="margin-top:12px">
+        <li><b>SF Pro Rounded for temperatures and major headings:</b> screen large titles (<code>Forecasts</code>, <code>Settings</code>), card headers (<code>Day</code>, <code>Night</code>) and every temperature reading across app and widgets. It echoes the soft shapes of the Loojang icon and the website's Nunito headings without adding a third-party font.</li>
+        <li><b>SF Pro for prose and UI chrome:</b> weather descriptions, date section headers, place names, Settings rows, the data source note, and widget date and phenomenon captions stay in standard SF Pro so multi-line text and 11–15 pt labels remain quiet and easy to scan.</li>
+        <li><b>Tabular digits everywhere a temperature appears:</b> fixed-width numerals (<code>monospacedDigit</code>) keep trailing temperatures aligned in place lists and stop numbers jumping when values update.</li>
+        <li><b>True minus sign (<code>−</code>, U+2212) and en dash (<code>–</code>):</b> always keep the minus sign on below-zero temperatures, so sub-zero readings never rely on color alone.</li>
+      </ul>
+    </div>
+
+    <h3>Compare: all SF Pro vs. recommended pairing</h3>
+    <p class="small muted">Same forecast card with Loojang colors. Plain SF Pro feels neutral and utilitarian; adding SF Pro Rounded to card headings and temperatures warms the card without making the description paragraph bubbly. (Weather icons here are simple placeholders until the Weather symbols iteration.)</p>
+    <div class="two-up">
+      <div class="ios l">
+        <div class="ios-tag"><span>All SF Pro · current baseline</span></div>
+        <div class="ios-card">
+          <div class="ios-day-row">
+            <span class="ios-day-title t-sans">Day</span>
+            <span class="ios-temp-lg t-sans plain-wt"><span class="ios-cold">−3°</span> <span class="ios-dash">–</span> <span class="ios-warm">4°</span></span>
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg>
+          </div>
+          <p class="ios-desc t-sans">Cloudy with brief sunny spells. Light rain or sleet on the coast; southwest wind 5–10 m/s.</p>
+          <div class="ios-sep"></div>
+          <div class="ios-places">
+            <div class="ios-place"><span class="ios-place-name t-sans">Tallinn</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-sans plain-sec">1°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Jõhvi</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="9" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg></span><span class="ios-place-temp t-sans plain-sec">−2°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Kuressaare</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="3.5" fill="var(--sun)"/><path d="M6 17h11a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-sans plain-sec">4°</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ios l">
+        <div class="ios-tag"><span>SF Pro Rounded headings &amp; temps + SF Pro prose</span><span class="badge-rec">Recommended</span></div>
+        <div class="ios-card">
+          <div class="ios-day-row">
+            <span class="ios-day-title t-rounded">Day</span>
+            <span class="ios-temp-lg t-rounded"><span class="ios-cold">−3°</span> <span class="ios-dash">–</span> <span class="ios-warm">4°</span></span>
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg>
+          </div>
+          <p class="ios-desc t-sans">Cloudy with brief sunny spells. Light rain or sleet on the coast; southwest wind 5–10 m/s.</p>
+          <div class="ios-sep"></div>
+          <div class="ios-places">
+            <div class="ios-place"><span class="ios-place-name t-sans">Tallinn</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-warm">1°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Jõhvi</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="9" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−2°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Kuressaare</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="3.5" fill="var(--sun)"/><path d="M6 17h11a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-warm">4°</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Type scale</h3>
+    <p class="small muted">Every text element in <code>EstonianWeather</code> and <code>EstonianWeatherWidget</code> maps to a built-in iOS text style. Sizes below are at the default Dynamic Type setting (<code>Large</code>).</p>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="iOS app and widget type scale">
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th scope="col">Element</th>
+            <th scope="col">iOS text style</th>
+            <th scope="col">Default (L)</th>
+            <th scope="col">Font &amp; weight</th>
+            <th scope="col">Color token</th>
+            <th scope="col">Sample</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="type-group"><td colspan="6">App · Forecasts</td></tr>
+          <tr>
+            <th scope="row">Screen title</th>
+            <td><code>largeTitle</code></td>
+            <td>34 pt</td>
+            <td>SF Pro Rounded · Bold</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-rounded t-text" style="font-size:22px;font-weight:700">Forecasts</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Date section header</th>
+            <td><code>headline</code></td>
+            <td>17 pt</td>
+            <td>SF Pro · Semibold</td>
+            <td>Secondary text</td>
+            <td><span class="spec-sample t-sans t-sec" style="font-size:15px;font-weight:600">27. november, reede</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Day / Night header</th>
+            <td><code>title2</code></td>
+            <td>22 pt</td>
+            <td>SF Pro Rounded · Semibold</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-rounded t-text" style="font-size:19px;font-weight:600">Day · Päev · Öö</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Day / Night temperature</th>
+            <td><code>title2</code></td>
+            <td>22 pt</td>
+            <td>SF Pro Rounded · Semibold · tabular</td>
+            <td>Cold / Warm (dash: Secondary)</td>
+            <td><span class="spec-sample t-rounded t-num" style="font-size:19px;font-weight:600"><span class="t-cold">−3°</span> <span class="t-sec">–</span> <span class="t-warm">4°</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Weather description</th>
+            <td><code>body</code></td>
+            <td>17 pt</td>
+            <td>SF Pro · Regular</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-sans t-text" style="font-size:15px;font-weight:400">Mostly cloudy with light rain.</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Place name</th>
+            <td><code>subheadline</code></td>
+            <td>15 pt</td>
+            <td>SF Pro · Regular</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-sans t-text" style="font-size:14px;font-weight:400">Kuressaare · Jõhvi</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Place temperature</th>
+            <td><code>subheadline</code></td>
+            <td>15 pt</td>
+            <td>SF Pro Rounded · Medium · tabular</td>
+            <td>Cold / Warm</td>
+            <td><span class="spec-sample t-rounded t-num" style="font-size:14px;font-weight:500"><span class="t-cold">−2°</span> &nbsp; <span class="t-warm">4°</span></span></td>
+          </tr>
+
+          <tr class="type-group"><td colspan="6">App · Settings, About &amp; shared</td></tr>
+          <tr>
+            <th scope="row">Settings row label</th>
+            <td><code>body</code></td>
+            <td>17 pt</td>
+            <td>SF Pro · Regular</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-sans t-text" style="font-size:15px;font-weight:400">Current language</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Settings row value</th>
+            <td><code>body</code></td>
+            <td>17 pt</td>
+            <td>SF Pro · Regular</td>
+            <td>Secondary text</td>
+            <td><span class="spec-sample t-sans t-sec" style="font-size:15px;font-weight:400">English · Eesti</span></td>
+          </tr>
+          <tr>
+            <th scope="row">About bio · inline nav title</th>
+            <td><code>body</code> · <code>headline</code></td>
+            <td>17 pt</td>
+            <td>SF Pro · Regular / Semibold</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-sans t-text" style="font-size:15px;font-weight:600">About me · Minust</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Loading / error state</th>
+            <td><code>headline</code></td>
+            <td>17 pt</td>
+            <td>SF Pro · Semibold</td>
+            <td>Text</td>
+            <td><span class="spec-sample t-sans t-text" style="font-size:15px;font-weight:600">Loading</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Data source note</th>
+            <td><code>caption1</code></td>
+            <td>12 pt</td>
+            <td>SF Pro · Regular</td>
+            <td>Secondary text</td>
+            <td><span class="spec-sample t-sans t-sec" style="font-size:12px;font-weight:400">Estonian Environment Agency</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Data source link</th>
+            <td><code>caption1</code></td>
+            <td>12 pt</td>
+            <td>SF Pro · Medium</td>
+            <td>Accent</td>
+            <td><span class="spec-sample t-sans t-acc" style="font-size:12px;font-weight:500">ilmateenistus.ee</span></td>
+          </tr>
+
+          <tr class="type-group"><td colspan="6">Widgets · Small &amp; Medium</td></tr>
+          <tr>
+            <th scope="row">Widget date</th>
+            <td><code>caption1</code></td>
+            <td>12 pt</td>
+            <td>SF Pro · Medium</td>
+            <td>Secondary text</td>
+            <td><span class="spec-sample t-sans t-sec" style="font-size:12px;font-weight:500">Today · Sat</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Widget temperature · Small</th>
+            <td><code>title2</code></td>
+            <td>22 pt</td>
+            <td>SF Pro Rounded · Semibold · tabular</td>
+            <td>Cold / Warm</td>
+            <td><span class="spec-sample t-rounded t-num" style="font-size:18px;font-weight:600"><span class="t-cold">−3°</span> <span class="t-sec">–</span> <span class="t-warm">4°</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Widget temperature · Medium</th>
+            <td><code>callout</code></td>
+            <td>16 pt</td>
+            <td>SF Pro Rounded · Semibold · tabular</td>
+            <td>Cold / Warm</td>
+            <td><span class="spec-sample t-rounded t-num" style="font-size:15px;font-weight:600"><span class="t-cold">−3°</span> <span class="t-sec">–</span> <span class="t-warm">4°</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Widget phenomenon · Small / Medium</th>
+            <td><code>caption1</code> · <code>caption2</code></td>
+            <td>12 pt · 11 pt</td>
+            <td>SF Pro · Regular</td>
+            <td>Text (empty: Secondary)</td>
+            <td><span class="spec-sample t-sans t-text" style="font-size:12px;font-weight:400">Light snow · Lörts</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:8px">Note: collapsed inline navigation bar titles (<code>About me</code>, scrolled <code>Forecasts</code>) stay in standard UIKit SF Pro Semibold (<code>headline</code>) so the compact bar feels native to iOS.</p>
+
+    <h3>Color roles in light and dark</h3>
+    <p class="small muted">Every text color comes directly from the Loojang palette. In temperature ranges crossing zero, each bound uses its own color (<code>Cold</code> below 0°, <code>Warm</code> at 0° and above) while the en dash stays in <code>Secondary text</code>. <code>Sun</code>, <code>Cloud</code> and the dusk gradient are never used for text.</p>
+    <div class="two-up">
+      <div class="ios l">
+        <div class="ios-tag"><span>Light · Loojang</span></div>
+        <div class="ios-nav-title t-rounded">Forecasts</div>
+        <div class="ios-date t-sans">November 27, Friday<br>Today</div>
+        <div class="ios-card">
+          <div class="ios-day-row">
+            <span class="ios-day-title t-rounded">Night</span>
+            <span class="ios-temp-lg t-rounded"><span class="ios-cold">−5°</span> <span class="ios-dash">–</span> <span class="ios-cold">−1°</span></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 16Z" fill="var(--cloud)"/></svg>
+          </div>
+          <p class="ios-desc t-sans">Mostly cloudy with occasional snow showers inland. East wind 4–9 m/s.</p>
+          <div class="ios-sep"></div>
+          <div class="ios-places">
+            <div class="ios-place"><span class="ios-place-name t-sans">Tallinn</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 16Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−2°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Tartu</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="10" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−4°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Pärnu</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="3.5" fill="var(--sun)"/><path d="M6 17h11a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-warm">0°</span></div>
+          </div>
+        </div>
+        <div class="ios-card" style="padding:4px 18px">
+          <div class="ios-row"><span>Current language</span><span class="val">English</span></div>
+          <div class="ios-row"><span>About me</span><span class="chev" aria-hidden="true">›</span></div>
+        </div>
+        <div class="ios-card ios-source">
+          <p>The weather information is provided by<br>Estonian Environment Agency</p>
+          <span class="lnk">ilmateenistus.ee</span>
+        </div>
+        <div class="w-grid">
+          <div class="w-tile">
+            <span class="w-date">Today</span>
+            <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg>
+            <div>
+              <div class="w-temp-sm t-rounded"><span class="ios-cold">−3°</span> <span class="ios-dash">–</span> <span class="ios-warm">4°</span></div>
+              <div class="w-phen-sm">Variable clouds</div>
+            </div>
+          </div>
+          <div class="w-med">
+            <div class="w-col"><span class="w-date">Today</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg><span class="w-temp-md t-rounded"><span class="ios-cold">−3°</span><span class="ios-dash">–</span><span class="ios-warm">4°</span></span><span class="w-phen-md">Variable clouds</span></div>
+            <div class="w-col"><span class="w-date">Sat</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="10" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg><span class="w-temp-md t-rounded"><span class="ios-cold">−4°</span><span class="ios-dash">–</span><span class="ios-cold">−1°</span></span><span class="w-phen-md">Light snow</span></div>
+            <div class="w-col"><span class="w-date">Sun</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="var(--sun)"/></svg><span class="w-temp-md t-rounded"><span class="ios-warm">1°</span><span class="ios-dash">–</span><span class="ios-warm">6°</span></span><span class="w-phen-md">Clear</span></div>
+            <div class="w-col"><span class="w-date">Mon</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg><span class="w-temp-md t-rounded"><span class="ios-warm">2°</span><span class="ios-dash">–</span><span class="ios-warm">5°</span></span><span class="w-phen-md">Cloudy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ios d">
+        <div class="ios-tag"><span>Dark · Loojang</span></div>
+        <div class="ios-nav-title t-rounded">Prognoosid</div>
+        <div class="ios-date t-sans">27. november, reede<br>Täna</div>
+        <div class="ios-card">
+          <div class="ios-day-row">
+            <span class="ios-day-title t-rounded">Öö</span>
+            <span class="ios-temp-lg t-rounded"><span class="ios-cold">−5°</span> <span class="ios-dash">–</span> <span class="ios-cold">−1°</span></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 16Z" fill="var(--cloud)"/></svg>
+          </div>
+          <p class="ios-desc t-sans">Pilves selgimistega ilm. Kohati sajab lund ja lörtsi, puhub idatuul 4–9 m/s.</p>
+          <div class="ios-sep"></div>
+          <div class="ios-places">
+            <div class="ios-place"><span class="ios-place-name t-sans">Tallinn</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 16Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−2°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Tartu</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="10" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−4°</span></div>
+            <div class="ios-place"><span class="ios-place-name t-sans">Pärnu</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="3.5" fill="var(--sun)"/><path d="M6 17h11a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-warm">0°</span></div>
+          </div>
+        </div>
+        <div class="ios-card" style="padding:4px 18px">
+          <div class="ios-row"><span>Praegune keel</span><span class="val">Eesti</span></div>
+          <div class="ios-row"><span>Minust</span><span class="chev" aria-hidden="true">›</span></div>
+        </div>
+        <div class="ios-card ios-source">
+          <p>Ilmateabe toob teieni<br>Keskkonnaagentuur</p>
+          <span class="lnk">ilmateenistus.ee</span>
+        </div>
+        <div class="w-grid">
+          <div class="w-tile">
+            <span class="w-date">Täna</span>
+            <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg>
+            <div>
+              <div class="w-temp-sm t-rounded"><span class="ios-cold">−3°</span> <span class="ios-dash">–</span> <span class="ios-warm">4°</span></div>
+              <div class="w-phen-sm">Vahelduv pilvisus</div>
+            </div>
+          </div>
+          <div class="w-med">
+            <div class="w-col"><span class="w-date">Täna</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg><span class="w-temp-md t-rounded"><span class="ios-cold">−3°</span><span class="ios-dash">–</span><span class="ios-warm">4°</span></span><span class="w-phen-md">Pilvisus</span></div>
+            <div class="w-col"><span class="w-date">L</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="10" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg><span class="w-temp-md t-rounded"><span class="ios-cold">−4°</span><span class="ios-dash">–</span><span class="ios-cold">−1°</span></span><span class="w-phen-md">Nõrk lumi</span></div>
+            <div class="w-col"><span class="w-date">P</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="var(--sun)"/></svg><span class="w-temp-md t-rounded"><span class="ios-warm">1°</span><span class="ios-dash">–</span><span class="ios-warm">6°</span></span><span class="w-phen-md">Selge</span></div>
+            <div class="w-col"><span class="w-date">E</span><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg><span class="w-temp-md t-rounded"><span class="ios-warm">2°</span><span class="ios-dash">–</span><span class="ios-warm">5°</span></span><span class="w-phen-md">Pilves</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Dynamic Type scaling</h3>
+    <p class="small muted">App text scales uncapped through iOS <code>UIFontMetrics</code> all the way to <code>AX5</code> (<code>accessibilityExtraExtraExtraLarge</code>), with zero fixed heights and zero forced truncation. Widgets live on fixed Home Screen tiles, so they scale cleanly within a bounded range.</p>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="Dynamic Type point sizes across categories">
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th scope="col">Text style</th>
+            <th scope="col">xSmall</th>
+            <th scope="col">Large (default)</th>
+            <th scope="col">XXXL</th>
+            <th scope="col">AX1</th>
+            <th scope="col">AX3</th>
+            <th scope="col">AX5</th>
+            <th scope="col">App &amp; widget behavior</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row"><code>largeTitle</code></th><td>31</td><td><b>34</b></td><td>40</td><td>44</td><td>52</td><td>60</td><td>Uncapped; collapses into inline bar on scroll</td></tr>
+          <tr><th scope="row"><code>title2</code></th><td>19</td><td><b>22</b></td><td>28</td><td>34</td><td>44</td><td>56</td><td>App: uncapped, temp stacks under title at AX1+. Small widget: capped at AX1 + <code>0.6</code> scale factor</td></tr>
+          <tr><th scope="row"><code>headline</code></th><td>14</td><td><b>17</b></td><td>23</td><td>28</td><td>40</td><td>53</td><td>Uncapped; wraps freely (<code>numberOfLines = 0</code>)</td></tr>
+          <tr><th scope="row"><code>body</code></th><td>14</td><td><b>17</b></td><td>23</td><td>28</td><td>40</td><td>53</td><td>Uncapped; Settings value rows stack automatically at AX1+</td></tr>
+          <tr><th scope="row"><code>callout</code></th><td>13</td><td><b>16</b></td><td>22</td><td>26</td><td>38</td><td>51</td><td>Medium widget temp: capped at XXXL + <code>0.6</code> scale factor</td></tr>
+          <tr><th scope="row"><code>subheadline</code></th><td>12</td><td><b>15</b></td><td>21</td><td>25</td><td>36</td><td>49</td><td>Uncapped; icon cap lifts at AX1+, temp stacks under place name at AX3+</td></tr>
+          <tr><th scope="row"><code>caption1</code></th><td>11</td><td><b>12</b></td><td>18</td><td>22</td><td>32</td><td>43</td><td>App disclaimer: uncapped, wraps. Widgets: capped at XXXL (2 lines max on phenomenon)</td></tr>
+          <tr><th scope="row"><code>caption2</code></th><td>11</td><td><b>11</b></td><td>17</td><td>20</td><td>29</td><td>40</td><td>Medium widget phenomenon: capped at XXXL, up to 3 lines + <code>0.6</code> scale factor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dt-pair">
+      <figure>
+        <div class="fit">
+          <div class="ios l phone" data-w="390">
+            <div class="ios-date t-sans">November 27, Friday<br>Today</div>
+            <div class="ios-card">
+              <div class="ios-day-row">
+                <span class="ios-day-title t-rounded">Day</span>
+                <span class="ios-temp-lg t-rounded"><span class="ios-cold">−3°</span> <span class="ios-dash">–</span> <span class="ios-warm">4°</span></span>
+                <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg>
+              </div>
+              <p class="ios-desc t-sans">Cloudy with brief sunny spells and light coastal sleet.</p>
+              <div class="ios-sep"></div>
+              <div class="ios-places">
+                <div class="ios-place"><span class="ios-place-name t-sans">Väike-Maarja</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="10" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−3°</span></div>
+                <div class="ios-place"><span class="ios-place-name t-sans">Kuressaare</span><span class="ios-place-ic"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="3.5" fill="var(--sun)"/><path d="M6 17h11a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-warm">4°</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Default (Large · 17 pt body) · 390 pt width · single-row header &amp; aligned place columns</figcaption>
+      </figure>
+      <figure>
+        <div class="fit">
+          <div class="ios l phone ax3" data-w="390">
+            <div class="ios-date t-sans">November 27, Friday<br>Today</div>
+            <div class="ios-card">
+              <div class="ios-day-row">
+                <span class="ios-day-title t-rounded">Day</span>
+                <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="4" fill="var(--sun)"/><path d="M7 18h10a4 4 0 0 0 .5-8 5 5 0 0 0-9.6-1A3.5 3.5 0 0 0 7 18Z" fill="var(--cloud)"/></svg>
+              </div>
+              <span class="ios-temp-lg t-rounded"><span class="ios-cold">−3°</span> <span class="ios-dash">–</span> <span class="ios-warm">4°</span></span>
+              <p class="ios-desc t-sans">Cloudy with brief sunny spells and light coastal sleet.</p>
+              <div class="ios-sep"></div>
+              <div class="ios-places">
+                <div class="ios-place"><span class="ios-place-name t-sans">Väike-Maarja</span><span class="ios-place-ic"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15h12a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 15Z" fill="var(--cloud)"/><circle cx="10" cy="19" r="1.2" fill="var(--precip)"/><circle cx="15" cy="19" r="1.2" fill="var(--precip)"/></svg></span><span class="ios-place-temp t-rounded ios-cold">−3°</span></div>
+                <div class="ios-place"><span class="ios-place-name t-sans">Kuressaare</span><span class="ios-place-ic"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><circle cx="15" cy="9" r="3.5" fill="var(--sun)"/><path d="M6 17h11a3.5 3.5 0 0 0 .4-7 4.5 4.5 0 0 0-8.6-.9A3 3 0 0 0 6 17Z" fill="var(--cloud)"/></svg></span><span class="ios-place-temp t-rounded ios-warm">4°</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Accessibility (AX3 · 40 pt body) · 390 pt width · temperature drops under header, place temps stack cleanly</figcaption>
+      </figure>
+    </div>
+
+    <h3>Contrast (WCAG 2.1, computed)</h3>
+    <p class="small muted">Every app and widget text pair passes WCAG AA (4.5 : 1) at normal text size in both light and dark modes — no element relies on the 3 : 1 large-text exception.</p>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="App and widget typography WCAG contrast table"><table id="type-contrast"></table></div>
+  </section>
+
+  <!-- 5 WEBSITE -->
   <section id="website">
-    <h2><span class="num">4</span>Website · eestiilm.app</h2>
+    <h2><span class="num">5</span>Website · eestiilm.app</h2>
     <p class="muted">The design of eestiilm.app: a quiet page in the app's colors that gets people to the App Store, plus support, privacy and 404 pages. The site is built from this section (EES-113).</p>
 
     <h3>Direction · “Quiet paper”</h3>
@@ -431,7 +920,7 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
       <ul class="small" style="margin-top:12px">
         <li>Nunito is <b>self-hosted</b> on eestiilm.app, never loaded from Google Fonts, so the privacy policy needs no third party for fonts. One file, <code>nunito-800.woff2</code>, with the Latin and Latin Extended subsets (they cover õ ä ö ü š ž). This book loads the same file from <code>assets/website/</code>.</li>
         <li>Chrome is the priority browser. Nunito replaces the earlier <code>ui-rounded</code> idea, because <code>ui-rounded</code> only renders in Safari.</li>
-        <li>Type in the app is decided separately. If it ends up different, the site keeps Nunito.</li>
+        <li>The iOS app and widgets use Apple's system fonts (see <a href="#type">Type</a>); the site keeps Nunito.</li>
       </ul>
     </div>
 
@@ -516,12 +1005,11 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
     <div class="panel table-wrap"><table id="web-contrast"></table></div>
   </section>
 
-  <!-- 5 NEXT -->
+  <!-- 6 NEXT -->
   <section id="next">
-    <h2><span class="num">5</span>Next</h2>
+    <h2><span class="num">6</span>Next</h2>
     <p class="muted">Not decided yet; each gets its own iteration before it joins this book.</p>
     <ul class="next small">
-      <li><b>Type:</b> text styles for each element, and whether temperatures use the rounded font.</li>
       <li><b>Weather symbols:</b> SF Symbols style and how the palette colors them.</li>
       <li><b>Screens:</b> how the palette applies to the forecast list and Settings.</li>
       <li><b>Widgets:</b> background, layout and colors of the small and medium widgets.</li>
@@ -568,8 +1056,23 @@ const PAIRS = [['Text on Background', 'Text', 'Background'], ['Text on Card', 'T
 const cell = (f, b, mode, nt) => { const fg = T[f][mode], bg = T[b][mode], r = ratio(fg, bg), [cls, lab] = level(r, nt); return `<td><span class="pair" style="background:${bg};color:${fg}">Aa</span></td><td><b>${r.toFixed(2)}</b> <span class="lvl ${cls}">${lab}</span></td>`; };
 $('contrast').innerHTML = `<thead><tr><th>Pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
 
-// Website: On-accent reuses Card (light) and Background (dark); it is not a palette color of its own.
+// On-accent reuses Card (light) and Background (dark); it is not a palette color of its own.
 T['On-accent'] = { l: T.Card.l, d: T.Background.d };
+const TYPE_PAIRS = [
+  ['Screen title, About bio, empty/error states', 'Text', 'Background'],
+  ['Day / Night header, description, place names, Settings labels, widget phenomenon', 'Text', 'Card'],
+  ['Date section headers', 'Secondary text', 'Background'],
+  ['Settings values, data source note, range dash, widget dates & empty text', 'Secondary text', 'Card'],
+  ['Cold temperature (< 0°) on Background', 'Cold', 'Background'],
+  ['Cold temperature (< 0°) on Card & Widget', 'Cold', 'Card'],
+  ['Warm temperature (≥ 0°) on Background', 'Warm', 'Background'],
+  ['Warm temperature (≥ 0°) on Card & Widget', 'Warm', 'Card'],
+  ['Data source link (ilmateenistus.ee) on Background', 'Accent', 'Background'],
+  ['Data source link (ilmateenistus.ee) on Card', 'Accent', 'Card'],
+  ['Prominent button label (Retry, Contact me)', 'On-accent', 'Accent'],
+];
+$('type-contrast').innerHTML = `<thead><tr><th scope="col">App &amp; widget pair</th><th scope="col" colspan="2">Light</th><th scope="col" colspan="2">Dark</th></tr></thead><tbody>${TYPE_PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
+
 const WEB_PAIRS = [
   ['Body text, headings, wordmark', 'Text', 'Background'],
   ['Eyebrow, lead, FAQ answers, contents list, footer', 'Secondary text', 'Background'],
