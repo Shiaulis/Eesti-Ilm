@@ -86,7 +86,7 @@ CI runs on GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml
 | `Networking/` | Dynamic framework target: HTTP layer used by `WeatherCore` |
 | `NetworkingTests/` | Unit tests for `Networking` (Swift Testing) |
 | `Resources/` | Shared resources: `Localizable.xcstrings`, the `EstonianWeather` test plan, `Settings.bundle` |
-| `ReleaseRelatedInfo/` | README images, app icon sources and App Store screenshots |
+| `ReleaseRelatedInfo/` | README images and app icon sources |
 | `fastlane/` | Release tooling, App Store metadata (`fastlane/metadata/`) and screenshots (`fastlane/screenshots/`) |
 | `.github/workflows/ci.yml` | CI workflow |
 | `.swiftformat` | SwiftFormat configuration |
