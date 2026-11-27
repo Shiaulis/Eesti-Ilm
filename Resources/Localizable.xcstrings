@@ -475,6 +475,9 @@
         }
       }
     },
+    "Privacy Policy" : {
+      "comment" : "Row label in Settings that opens the app privacy policy webpage."
+    },
     "Retry" : {
       "comment" : "Button label allowing users to retry loading forecasts after an error.",
       "localizations" : {
@@ -550,6 +553,9 @@
           }
         }
       }
+    },
+    "Support" : {
+      "comment" : "Row label in Settings that opens the app support webpage."
     },
     "Thunder" : {
       "comment" : "Weather phenomenon name from the forecast. Shown under the weather icon in the widget and read as the icon's accessibility label in the app.",
