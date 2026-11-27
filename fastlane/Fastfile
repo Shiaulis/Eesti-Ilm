@@ -111,6 +111,7 @@ platform :ios do
   desc "and the lane fails before archiving if App Store Connect already has that build, the Testers group is"
   desc "missing, or the notes are empty. Notes: fastlane/testflight_notes.txt if it changed since the upload at"
   desc "TESTFLIGHT_LAST_UPLOAD_SHA (set by the TestFlight workflow), otherwise the commit subjects since then"
+  # Runs only from .github/workflows/testflight.yml on master, not locally.
   lane :beta do
     key_id = ENV.fetch("APP_STORE_CONNECT_API_KEY_KEY_ID")
     issuer_id = ENV.fetch("APP_STORE_CONNECT_API_KEY_ISSUER_ID")
@@ -129,6 +130,7 @@ platform :ios do
     # The uploaded version and build number are the project's own (MARKETING_VERSION and
     # CURRENT_PROJECT_VERSION), so the lane never computes them. Each new upload needs a PR that raises
     # CURRENT_PROJECT_VERSION first.
+    # Build-bump PRs also update fastlane/testflight_notes.txt with notes for testers.
     # Capture stdout only: xcodebuild prints destination warnings to stderr.
     settings_json, settings_status = Open3.capture2(
       "xcodebuild", "-showBuildSettings",

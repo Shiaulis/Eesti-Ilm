@@ -43,6 +43,6 @@ reviews:
 knowledge_base:
   code_guidelines:
     enabled: true
-    filePatterns: ["AGENTS.md"]
+    filePatterns: ["AGENTS.md", "docs/localization.md"]
 chat:
   auto_reply: true
