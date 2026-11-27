@@ -78,7 +78,8 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 /* palette */
 .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 12px; }
 .swc { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); font-size: 12.5px; cursor: copy; }
-.swc .chips { display: flex; height: 56px; } .swc .chips div { flex: 1; }
+.swc .chips { display: flex; height: 56px; } .swc .chips button { flex: 1; border: 0; padding: 0; margin: 0; border-radius: 0; cursor: copy; }
+.swc .chips button:focus-visible { outline: 2px solid transparent; box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 4px var(--ink); }
 .swc .meta { padding: 7px 9px; line-height: 1.35; }
 .swc .meta b { display: block; font-size: 13px; }
 .swc code { background: none; padding: 0; font-size: 11.5px; }
@@ -260,8 +261,8 @@ const COLORS = [
   ['Precipitation', 'Rain, snow, fog', '#3D5A80', '#9DB6D8'],
 ];
 const T = Object.fromEntries(COLORS.map(([n, , l, d]) => [n, { l, d }]));
-$('swatches').innerHTML = COLORS.map(([n, u, l, d]) => `<div class="swc" data-hex="${l}"><div class="chips"><div style="background:${l}" title="Light ${l}"></div><div style="background:${d}" title="Dark ${d}"></div></div><div class="meta"><b>${n}</b>${u}<br><code>${l}</code> · <code>${d}</code></div></div>`).join('')
-  + `<div class="swc" data-hex="#3B2C5A"><div class="chips"><div style="background:linear-gradient(180deg,#3B2C5A,#F29E7A)"></div></div><div class="meta"><b>Dusk gradient</b>Icon and brand<br><code>#3B2C5A</code> → <code>#F29E7A</code></div></div>`;
+$('swatches').innerHTML = COLORS.map(([n, u, l, d]) => `<div class="swc" data-hex="${l}"><div class="chips"><button type="button" data-hex="${l}" style="background:${l}" title="Light ${l}" aria-label="Copy ${n} light ${l}"></button><button type="button" data-hex="${d}" style="background:${d}" title="Dark ${d}" aria-label="Copy ${n} dark ${d}"></button></div><div class="meta"><b>${n}</b>${u}<br><code>${l}</code> · <code>${d}</code></div></div>`).join('')
+  + `<div class="swc" data-hex="#3B2C5A"><div class="chips"><button type="button" data-hex="#3B2C5A" style="background:linear-gradient(180deg,#3B2C5A,#F29E7A)" title="Dusk gradient #3B2C5A → #F29E7A" aria-label="Copy Dusk gradient top color #3B2C5A"></button></div><div class="meta"><b>Dusk gradient</b>Icon and brand<br><code>#3B2C5A</code> → <code>#F29E7A</code></div></div>`;
 function lum(h) { const v = [1, 3, 5].map(i => { let c = parseInt(h.slice(i, i + 2), 16) / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }); return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; }
 function ratio(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
 function level(r, nonText) { if (nonText) return r >= 3 ? ['aa', 'Pass (3 : 1)'] : ['fail', 'Fail']; return r >= 7 ? ['aaa', 'AAA'] : r >= 4.5 ? ['aa', 'AA'] : r >= 3 ? ['large', 'Large text only'] : ['fail', 'Fail']; }
@@ -271,7 +272,7 @@ const cell = (f, b, mode, nt) => { const fg = T[f][mode], bg = T[b][mode], r = r
 $('contrast').innerHTML = `<thead><tr><th>Pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
 
 const toast = $('toast');
-document.addEventListener('click', async e => { const b = e.target.closest('.swc'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.hex); toast.textContent = 'Copied ' + b.dataset.hex; } catch (_) { toast.textContent = b.dataset.hex; } toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 1400); });
+document.addEventListener('click', async e => { const b = e.target.closest('.swc [data-hex], .swc'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.hex); toast.textContent = 'Copied ' + b.dataset.hex; } catch (_) { toast.textContent = b.dataset.hex; } toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 1400); });
 const btn = $('themeToggle'), order = ['auto', 'light', 'dark']; let cur = 'auto';
 try { cur = localStorage.getItem('ebook-theme') || 'auto'; } catch (_) {}
 if (new URLSearchParams(location.search).has('print')) cur = 'light';
