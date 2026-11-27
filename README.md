@@ -22,7 +22,7 @@ Features:
 - A forecast list for the coming days.
 - A home-screen widget (small and medium sizes).
 
-The app is localized in English and Estonian.
+The app is localized in English and Estonian. Learn more at [eestiilm.app](https://eestiilm.app/).
 
 ## Requirements
 
@@ -123,7 +123,7 @@ Versions are tagged as plain `X.Y.Z` (no `v` prefix). Earlier releases: 1.2.0, 1
 
 Ideas and bug reports are welcome as [issues](https://github.com/Shiaulis/Eesti-Ilm/issues), and pull requests are welcome too. Before opening a pull request, run the format check, build and tests above. Project conventions are in [AGENTS.md](AGENTS.md).
 
-To report a security issue, see [SECURITY.md](SECURITY.md). How the app handles data is described in the [Privacy Policy](Privacy%20Policy.md).
+To report a security issue, see [SECURITY.md](SECURITY.md). For user support, visit [eestiilm.app/support](https://eestiilm.app/support/). How the app handles data is described in the [Privacy Policy](https://eestiilm.app/privacy/).
 
 ## License
 
