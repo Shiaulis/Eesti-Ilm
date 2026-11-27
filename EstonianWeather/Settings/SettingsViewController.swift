@@ -3,12 +3,16 @@
 //  EstonianWeather
 //
 
+import SafariServices
 import UIKit
 
 final class SettingsViewController: UIViewController, UICollectionViewDelegate {
     private let locale: Locale
     private let preferredLocalizations: [String]
     private let openURL: ((URL) -> Void)?
+    private let presentWebPage: ((URL) -> Void)?
+    private let supportURL: URL?
+    private let privacyPolicyURL: URL?
     private let disclaimerURL: URL?
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.makeLayout())
@@ -17,11 +21,21 @@ final class SettingsViewController: UIViewController, UICollectionViewDelegate {
     init(
         locale: Locale = .autoupdatingCurrent,
         preferredLocalizations: [String] = Bundle.main.preferredLocalizations,
-        openURL: ((URL) -> Void)? = nil
+        openURL: ((URL) -> Void)? = nil,
+        presentWebPage: ((URL) -> Void)? = nil
     ) {
         self.locale = locale
         self.preferredLocalizations = preferredLocalizations
         self.openURL = openURL
+        self.presentWebPage = presentWebPage
+        self.supportURL = SettingsConfiguration.supportURL(
+            locale: locale,
+            preferredLocalizations: preferredLocalizations
+        )
+        self.privacyPolicyURL = SettingsConfiguration.privacyPolicyURL(
+            locale: locale,
+            preferredLocalizations: preferredLocalizations
+        )
         self.disclaimerURL = SettingsConfiguration.sourceDisclaimerURL(
             locale: locale,
             preferredLocalizations: preferredLocalizations
@@ -85,6 +99,27 @@ final class SettingsViewController: UIViewController, UICollectionViewDelegate {
             cell.accessories = [.disclosureIndicator()]
         }
 
+        let linkRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SettingsItem> { cell, _, item in
+            var configuration = cell.defaultContentConfiguration()
+            switch item {
+            case .support:
+                configuration.text = String(
+                    localized: "Support",
+                    comment: "Row label in Settings that opens the app support webpage."
+                )
+            case .privacyPolicy:
+                configuration.text = String(
+                    localized: "Privacy Policy",
+                    comment: "Row label in Settings that opens the app privacy policy webpage."
+                )
+            case .currentLanguage, .aboutMe, .disclaimer:
+                break
+            }
+            cell.contentConfiguration = configuration
+            cell.accessories = [.disclosureIndicator()]
+            cell.accessibilityTraits.insert(.link)
+        }
+
         let disclaimerRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, SettingsItem> { [weak self] cell, _, _ in
             cell.contentConfiguration = self?.disclaimerURL.map {
                 SourceDisclaimerContentConfiguration(
@@ -102,6 +137,8 @@ final class SettingsViewController: UIViewController, UICollectionViewDelegate {
                 collectionView.dequeueConfiguredReusableCell(using: languageRegistration, for: indexPath, item: item)
             case .aboutMe:
                 collectionView.dequeueConfiguredReusableCell(using: aboutMeRegistration, for: indexPath, item: item)
+            case .support, .privacyPolicy:
+                collectionView.dequeueConfiguredReusableCell(using: linkRegistration, for: indexPath, item: item)
             case .disclaimer:
                 collectionView.dequeueConfiguredReusableCell(using: disclaimerRegistration, for: indexPath, item: item)
             }
@@ -131,6 +168,10 @@ final class SettingsViewController: UIViewController, UICollectionViewDelegate {
             self.openAppSettings()
         case .aboutMe:
             self.showAboutMe()
+        case .support:
+            self.showWebPage(self.supportURL)
+        case .privacyPolicy:
+            self.showWebPage(self.privacyPolicyURL)
         case .disclaimer, nil:
             break
         }
@@ -156,6 +197,21 @@ final class SettingsViewController: UIViewController, UICollectionViewDelegate {
 
     private func showAboutMe() {
         self.navigationController?.pushViewController(AboutMeViewController(), animated: true)
+    }
+
+    private func showWebPage(_ url: URL?) {
+        guard let url else {
+            return
+        }
+
+        if let presentWebPage = self.presentWebPage {
+            presentWebPage(url)
+        }
+        else if self.presentedViewController == nil {
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.modalPresentationStyle = .pageSheet
+            self.present(safariViewController, animated: true)
+        }
     }
 }
 

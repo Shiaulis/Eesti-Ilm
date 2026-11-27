@@ -105,11 +105,15 @@ struct SettingsConfigurationTests {
 
     // MARK: - Contact URL
 
+    @Test func contactEmailUsesSupportAddress() {
+        #expect(SettingsConfiguration.contactEmail == "support@eestiilm.app")
+    }
+
     @Test func defaultContactURLBuildsMailtoLink() throws {
         let url = try #require(SettingsConfiguration.contactURL())
 
         #expect(url.scheme == "mailto")
-        #expect(url.absoluteString == "mailto:\(SettingsConfiguration.contactEmail)")
+        #expect(url.absoluteString == "mailto:support@eestiilm.app")
     }
 
     @Test func contactURLSupportsOptionalSubject() throws {
@@ -129,6 +133,92 @@ struct SettingsConfigurationTests {
     @Test(arguments: ["", "   ", "not-an-email", "user name@example.com"])
     func contactURLRejectsInvalidEmail(email: String) {
         #expect(SettingsConfiguration.contactURL(email: email) == nil)
+    }
+
+    // MARK: - Support & Privacy Policy URLs
+
+    @Test func supportURLUsesEstonianWhenActiveLanguageIsEstonian() throws {
+        let url = try #require(
+            SettingsConfiguration.supportURL(
+                locale: Locale(identifier: "et_EE"),
+                preferredLocalizations: ["et"]
+            )
+        )
+
+        #expect(url.absoluteString == "https://eestiilm.app/et/support/")
+    }
+
+    @Test func supportURLHandlesRegionalEstonianLocalizationAndLocaleFallback() throws {
+        let regionalURL = try #require(
+            SettingsConfiguration.supportURL(
+                locale: Locale(identifier: "en_US"),
+                preferredLocalizations: ["et-EE"]
+            )
+        )
+        let fallbackURL = try #require(
+            SettingsConfiguration.supportURL(
+                locale: Locale(identifier: "et_EE"),
+                preferredLocalizations: []
+            )
+        )
+
+        #expect(regionalURL.absoluteString == "https://eestiilm.app/et/support/")
+        #expect(fallbackURL.absoluteString == "https://eestiilm.app/et/support/")
+    }
+
+    @Test(arguments: ["en", "ru", "de", ""])
+    func supportURLDefaultsToEnglishForNonEstonianLanguages(localization: String) throws {
+        let localizations = localization.isEmpty ? [] : [localization]
+        let url = try #require(
+            SettingsConfiguration.supportURL(
+                locale: Locale(identifier: "en_US"),
+                preferredLocalizations: localizations
+            )
+        )
+
+        #expect(url.absoluteString == "https://eestiilm.app/support/")
+    }
+
+    @Test func privacyPolicyURLUsesEstonianWhenActiveLanguageIsEstonian() throws {
+        let url = try #require(
+            SettingsConfiguration.privacyPolicyURL(
+                locale: Locale(identifier: "et_EE"),
+                preferredLocalizations: ["et"]
+            )
+        )
+
+        #expect(url.absoluteString == "https://eestiilm.app/et/privacy/")
+    }
+
+    @Test func privacyPolicyURLHandlesRegionalEstonianLocalizationAndLocaleFallback() throws {
+        let regionalURL = try #require(
+            SettingsConfiguration.privacyPolicyURL(
+                locale: Locale(identifier: "en_US"),
+                preferredLocalizations: ["et-EE"]
+            )
+        )
+        let fallbackURL = try #require(
+            SettingsConfiguration.privacyPolicyURL(
+                locale: Locale(identifier: "et_EE"),
+                preferredLocalizations: []
+            )
+        )
+
+        #expect(regionalURL.absoluteString == "https://eestiilm.app/et/privacy/")
+        #expect(fallbackURL.absoluteString == "https://eestiilm.app/et/privacy/")
+    }
+
+    @Test(arguments: ["en", "ru", "de", ""])
+    func privacyPolicyURLDefaultsToEnglishForNonEstonianLanguages(localization: String) throws {
+        let localizations = localization.isEmpty ? [] : [localization]
+        let url = try #require(
+            SettingsConfiguration.privacyPolicyURL(
+                locale: Locale(identifier: "en_US"),
+                preferredLocalizations: localizations
+            )
+        )
+
+        #expect(url.absoluteString == "https://eestiilm.app/privacy/")
     }
 
     // MARK: - Source Disclaimer URL

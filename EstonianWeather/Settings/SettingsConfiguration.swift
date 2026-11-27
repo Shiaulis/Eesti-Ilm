@@ -7,8 +7,9 @@ import Foundation
 import UIKit
 
 nonisolated enum SettingsConfiguration {
-    static let contactEmail = "shiaulis@gmail.com"
+    static let contactEmail = "support@eestiilm.app"
     static let sourceDisclaimerHost = "www.ilmateenistus.ee"
+    private static let websiteHost = "eestiilm.app"
 
     /// Publishes the app version and build to the values shown by `Settings.bundle` in iOS Settings.
     static func publishVersionToSettingsBundle(
@@ -86,15 +87,36 @@ nonisolated enum SettingsConfiguration {
         return components.url
     }
 
+    static func supportURL(
+        locale: Locale = .current,
+        preferredLocalizations: [String] = Bundle.main.preferredLocalizations
+    ) -> URL? {
+        self.websiteURL(
+            slug: "support",
+            locale: locale,
+            preferredLocalizations: preferredLocalizations
+        )
+    }
+
+    static func privacyPolicyURL(
+        locale: Locale = .current,
+        preferredLocalizations: [String] = Bundle.main.preferredLocalizations
+    ) -> URL? {
+        self.websiteURL(
+            slug: "privacy",
+            locale: locale,
+            preferredLocalizations: preferredLocalizations
+        )
+    }
+
     static func sourceDisclaimerURL(
         locale: Locale = .current,
         preferredLocalizations: [String] = Bundle.main.preferredLocalizations
     ) -> URL? {
-        let languageCode = self.resolvedLanguageCode(
+        let queryLanguage = self.isEstonian(
             locale: locale,
             preferredLocalizations: preferredLocalizations
-        )
-        let queryLanguage = languageCode == "et" ? "et" : "en"
+        ) ? "et" : "en"
 
         var components = URLComponents()
         components.scheme = "https"
@@ -105,6 +127,33 @@ nonisolated enum SettingsConfiguration {
     }
 
     // MARK: - Private
+
+    private static func websiteURL(
+        slug: String,
+        locale: Locale,
+        preferredLocalizations: [String]
+    ) -> URL? {
+        let isEstonian = self.isEstonian(
+            locale: locale,
+            preferredLocalizations: preferredLocalizations
+        )
+
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = self.websiteHost
+        components.path = isEstonian ? "/et/\(slug)/" : "/\(slug)/"
+        return components.url
+    }
+
+    private static func isEstonian(
+        locale: Locale,
+        preferredLocalizations: [String]
+    ) -> Bool {
+        self.resolvedLanguageCode(
+            locale: locale,
+            preferredLocalizations: preferredLocalizations
+        ) == "et"
+    }
 
     private static func resolvedLanguageCode(
         locale: Locale,
