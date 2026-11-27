@@ -24,7 +24,7 @@ Eesti Ilm is an iOS weather app for Estonia. It shows the forecast from the Esto
 | `WeatherCore/` | Dynamic framework target `WeatherCore` (`WeatherService`, XML parsing via `SWXMLHash`; depends on `Networking`) |
 | `WeatherCoreTests/` | Unit test target `WeatherCoreTests` (Swift Testing) |
 | `Resources/` | `Localizable.xcstrings`, test plan `EstonianWeather.xctestplan`, `Settings.bundle` |
-| `ReleaseRelatedInfo/` | README images, icon sources, App Store screenshots, and the design book (`DesignBook/`: positioning, app icon and color palette; open `index.html`) |
+| `ReleaseRelatedInfo/` | README images, icon sources, and the design book (`DesignBook/`: positioning, app icon and color palette; open `index.html`) |
 | `fastlane/` | Fastfile (lanes `metadata`, `screenshots`, `beta`), App Store metadata (`fastlane/metadata/`), screenshots (`fastlane/screenshots/`) and TestFlight What to Test notes (`fastlane/testflight_notes.txt`) |
 | `.github/workflows/ci.yml` | CI |
 | `.github/workflows/testflight.yml` | Manual TestFlight upload and external distribution |
