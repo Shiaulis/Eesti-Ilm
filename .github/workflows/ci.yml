@@ -91,6 +91,12 @@ jobs:
           echo "Using simulator: $name"
           echo "name=$name" >> "$GITHUB_OUTPUT"
 
+      - name: Cache Swift packages
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/SourcePackages
+          key: swiftpm-xcode-27.2-${{ hashFiles('EstonianWeather.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+
       - name: Build and test
         run: |
           xcodebuild test \
@@ -98,6 +104,7 @@ jobs:
             -scheme EstonianWeather \
             -testPlan EstonianWeather \
             -destination "platform=iOS Simulator,name=${{ steps.simulator.outputs.name }},OS=latest" \
+            -clonedSourcePackagesDirPath "${{ runner.temp }}/SourcePackages" \
             -resultBundlePath "${{ runner.temp }}/TestResults.xcresult" \
             -enableCodeCoverage NO \
             CODE_SIGNING_ALLOWED=NO
