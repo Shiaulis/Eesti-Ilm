@@ -272,7 +272,7 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 /* iOS app & widget typography mockups (component-specific light/dark schemes) */
 .ios {
   --bg: #FAF5F1; --card: #FFFFFF; --text: #1E1A2B; --sec: #625A6E; --sep: #ECE4DD;
-  --acc: #B0452C; --on-acc: #FFFFFF; --cold: #3D5A80; --warm: #B0452C; --sun: #EE9A4D; --cloud: #8E8699; --precip: #3D5A80;
+  --acc: #B0452C; --on-acc: #FFFFFF; --cold: #3D5A80; --warm: #B0452C; --sun: #C9762C; --cloud: #8E8699; --precip: #3D5A80;
   color-scheme: only light; container: ios / inline-size; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 18px;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, sans-serif; line-height: 1.4; text-align: start;
 }
@@ -342,6 +342,71 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 .ios.ax3 .ios-place-ic { width: auto; }
 .ios.ax3 .ios-place-temp { font-size: 36px; line-height: 1.18; flex-basis: 100%; text-align: start; min-width: 0; }
 
+/* weather symbols */
+.sym-modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 12px; }
+.sym-modes figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; }
+.sym-modes figcaption { font-size: 13px; margin-top: 10px; }
+.sym-strip { display: grid; grid-template-columns: 1fr 1fr; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.sym-strip .half { display: flex; align-items: center; justify-content: center; padding: 14px 8px; }
+.sym-strip .half.l { background: #FFFFFF; color: #1E1A2B; color-scheme: light; }
+.sym-strip .half.d { background: #201B29; color: #F4EEF3; color-scheme: dark; }
+.sym-strip .half img { width: 100%; max-width: 118px; height: auto; display: block; }
+.sym-dn { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; margin-top: 12px; }
+.sym-dn-card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
+.sym-dn-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; margin-top: 10px; }
+.sym-dn-pair { display: grid; grid-template-columns: 1fr 1fr; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.sym-dn-pair span { display: flex; align-items: center; justify-content: center; padding: 12px 6px; }
+.sym-dn-pair span.l { background: #FFFFFF; color: #1E1A2B; color-scheme: light; }
+.sym-dn-pair span.d { background: #201B29; color: #F4EEF3; color-scheme: dark; }
+.sym-dn-pair img { width: 38px; height: 38px; display: block; }
+.sym-dn-meta { font-size: 12px; color: var(--muted); text-align: center; margin-top: 6px; }
+.sym-dn-arrow { color: var(--muted); font-size: 16px; text-align: center; }
+.sym-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; }
+.sym-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.sym-card .chips { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+.sym-card .chips span { display: flex; align-items: center; justify-content: center; padding: 14px 8px; }
+.sym-card .chips span.l { background: #FFFFFF; color: #1E1A2B; color-scheme: light; }
+.sym-card .chips span.d { background: #201B29; color: #F4EEF3; color-scheme: dark; }
+.sym-card .chips img { width: 40px; height: 40px; display: block; }
+.sym-card .meta { padding: 10px 12px; font-size: 12.5px; line-height: 1.4; }
+.sym-card .meta .top { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px; }
+.sym-card .meta b { font-size: 13.5px; }
+.sym-card .meta code { font-size: 11.5px; }
+.sym-card .meta p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+.tag { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 600; background: var(--chip); color: var(--ink); white-space: nowrap; }
+.tag.chg { background: var(--accent); color: var(--on-accent); }
+.sym-sizes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 12px; }
+.sym-size-box { border-radius: 18px; border: 1px solid var(--line); padding: 18px; display: flex; align-items: flex-end; justify-content: space-around; gap: 12px; flex-wrap: wrap; }
+.sym-size-box.l { background: #FFFFFF; color: #1E1A2B; color-scheme: light; }
+.sym-size-box.d { background: #201B29; color: #F4EEF3; color-scheme: dark; }
+.sym-size-box figure { margin: 0; text-align: center; font-size: 12px; }
+.sym-size-box.l figure { color: #625A6E; }
+.sym-size-box.d figure { color: #ABA2B5; }
+.sym-size-box img { display: block; margin: 0 auto 6px; }
+.sym-widgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 14px; }
+.sym-widgets figure { margin: 0; font-size: 12.5px; color: var(--muted); }
+.sym-widgets figcaption { margin-top: 6px; }
+.w-stage { border-radius: 18px; padding: 14px; border: 1px solid var(--line); }
+.w-stage.td { background: #14111B; color: #F4EEF3; color-scheme: dark; }
+.w-stage.tl { background: #ECE6E1; color: #1E1A2B; color-scheme: light; }
+.w-stage.cl { background: linear-gradient(155deg, #9AB0BF, #E5B99E 56%, #7E9278); color: #1E1A2B; color-scheme: light; }
+.w-stage.cd { background: linear-gradient(155deg, #241C36, #4C3446 58%, #1C2634); color: #F4EEF3; color-scheme: dark; }
+.w-glass { border-radius: 12px; padding: 10px 8px; }
+.w-stage.td .w-glass { background: rgba(40, 32, 48, 0.92); border: 1px solid rgba(242, 147, 111, 0.25); }
+.w-stage.tl .w-glass { background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(59, 44, 90, 0.16); }
+.w-stage.cl .w-glass { background: rgba(255, 255, 255, 0.42); border: 1px solid rgba(255, 255, 255, 0.55); }
+.w-stage.cd .w-glass { background: rgba(21, 18, 28, 0.48); border: 1px solid rgba(255, 255, 255, 0.18); }
+.w-glass img { width: 100%; height: auto; display: block; }
+.sym-mini { width: 22px; height: 22px; vertical-align: middle; }
+.sym-pill { display: inline-flex; align-items: center; padding: 3px 5px; border-radius: 7px; border: 1px solid var(--line); }
+.sym-pill.l { background: #FFFFFF; color-scheme: light; }
+.sym-pill.d { background: #201B29; color-scheme: dark; }
+.sym-prop-stack { display: flex; flex-direction: column; gap: 6px; }
+.sym-prop { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+#symbols tbody th { color: var(--ink); font-weight: 700; font-size: 13.5px; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+#symbols .nowrap { white-space: nowrap; }
+#symbols li code { overflow-wrap: anywhere; }
+
 @page { size: A4; margin: 12mm; }
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -349,12 +414,13 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
   main { max-width: none; padding: 0; }
   body { font-size: 13px; }
   h2 { break-before: page; margin-top: 0; }
-  .panel, figure, table, .swc, .strip, .ios { break-inside: avoid; }
+  .panel, figure, table, .swc, .strip, .ios, .sym-card, .sym-dn-card { break-inside: avoid; }
   h3 { break-after: avoid; }
   .construct { grid-template-columns: 240px 1fr; }
   .construct svg { max-width: 240px; }
   .looks { grid-template-columns: repeat(6, 1fr); }
-  .dodont { grid-template-columns: repeat(4, 1fr); }
+  .dodont, .sym-modes, .sym-widgets { grid-template-columns: repeat(4, 1fr); }
+  .sym-grid { grid-template-columns: repeat(4, 1fr); }
   .cover img { width: 200px; }
   #position h2 { break-before: auto; margin-top: 30px; }
   .mock-row { grid-template-columns: minmax(0, 1fr) 210px; }
@@ -368,16 +434,16 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 <button class="theme-toggle" id="themeToggle" type="button">Theme: auto</button>
 <main>
   <header>
-    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 3 · 27 November 2026</p>
+    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 4 · 27 November 2026</p>
     <div class="cover">
       <div>
         <h1>Eesti Ilm<br>Design Book</h1>
-        <p class="lead" style="margin-top:16px">The new look, version 3: the app icon, the color palette, the app type scale and the website. Weather symbols, screens, widgets and the App Store come in later versions (see <a href="#next">Next</a>).</p>
+        <p class="lead" style="margin-top:16px">The new look, version 4: the app icon, the color palette, the app type scale, the weather symbols and the website. Screens, widgets and the App Store come in later versions (see <a href="#next">Next</a>).</p>
       </div>
       <img src="assets/icon/icon-Default.png" alt="Eesti Ilm app icon: a pale sun behind a white cloud on a plum-to-coral dusk gradient">
     </div>
     <nav class="toc">
-      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#type">4 · Type</a><a href="#website">5 · Website</a><a href="#next">6 · Next</a>
+      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#type">4 · Type</a><a href="#symbols">5 · Weather symbols</a><a href="#website">6 · Website</a><a href="#next">7 · Next</a>
     </nav>
   </header>
 
@@ -386,7 +452,7 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
     <h2><span class="num">1</span>Positioning</h2>
     <p class="muted">Our main competitor, ILM+ (the Environment Agency's official app), is one saturated ultramarine with a yellow sun and white line art, like most weather apps. Eesti Ilm takes the opposite side: the warm, calm light of an Estonian evening.</p>
     <div class="panel">
-      <div class="strip"><div class="label">Eesti Ilm<span>Loojang</span></div><div class="bar"><div style="background:#FAF5F1"></div><div style="background:#B0452C"></div><div style="background:#3D5A80"></div><div style="background:#EE9A4D"></div><div style="background:#FFD9A0"></div><div class="wide" style="background:linear-gradient(90deg,#3B2C5A,#F29E7A)"></div></div></div>
+      <div class="strip"><div class="label">Eesti Ilm<span>Loojang</span></div><div class="bar"><div style="background:#FAF5F1"></div><div style="background:#B0452C"></div><div style="background:#3D5A80"></div><div style="background:#C9762C"></div><div style="background:#FFD9A0"></div><div class="wide" style="background:linear-gradient(90deg,#3B2C5A,#F29E7A)"></div></div></div>
       <div class="strip"><div class="label">ILM+<span>competitor</span></div><div class="bar"><div style="background:#FFFFFF"></div><div style="background:#000096"></div><div style="background:#000096"></div><div style="background:#FFD200"></div><div style="background:#1E1E1E"></div><div class="wide" style="background:#000096"></div></div></div>
     </div>
     <div class="principles">
@@ -869,9 +935,164 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
     <div class="panel table-wrap" tabindex="0" role="region" aria-label="App and widget typography WCAG contrast table"><table id="type-contrast"></table></div>
   </section>
 
-  <!-- 5 WEBSITE -->
+  <!-- 5 WEATHER SYMBOLS -->
+  <section id="symbols">
+    <h2><span class="num">5</span>Weather symbols</h2>
+    <p class="muted">Filled SF Symbols in palette mode, colored strictly from the Loojang palette. Shared by the app and the widget through <code>WeatherPhenomenonIcon</code>, so every forecast reads the same everywhere.</p>
+
+    <h3>Rendering mode</h3>
+    <p class="small muted">Filled symbols match the soft solid shapes of the app icon. Palette rendering gives each weather element its Loojang color without Apple's bright blue-and-yellow multicolor look.</p>
+    <div class="sym-modes">
+      <figure>
+        <div class="sym-strip">
+          <div class="half l"><img src="assets/symbols/mode-palette-light.png" alt="Partly cloudy, rain and thunder symbols in Loojang palette mode on a light card"></div>
+          <div class="half d"><img src="assets/symbols/mode-palette-dark.png" alt="Partly cloudy, rain and thunder symbols in Loojang palette mode on a dark card"></div>
+        </div>
+        <figcaption><span class="do">Chosen · Full color</span><br>Filled <b>palette</b> mode with Loojang tokens. Used in the app and in full-color widgets.</figcaption>
+      </figure>
+      <figure>
+        <div class="sym-strip">
+          <div class="half l"><img src="assets/symbols/mode-hierarchical-light.png" alt="Partly cloudy, rain and thunder symbols in hierarchical mode on a light card"></div>
+          <div class="half d"><img src="assets/symbols/mode-hierarchical-dark.png" alt="Partly cloudy, rain and thunder symbols in hierarchical mode on a dark card"></div>
+        </div>
+        <figcaption><span class="do">Chosen · Tinted &amp; clear</span><br>Filled <b>hierarchical</b> mode. Keeps cloud and weather layers apart when iOS strips custom colors.</figcaption>
+      </figure>
+      <figure>
+        <div class="sym-strip">
+          <div class="half l"><img src="assets/symbols/mode-multicolor-light.png" alt="Filled SF Symbols in Apple system multicolor on light card where white clouds vanish"></div>
+          <div class="half d"><img src="assets/symbols/mode-multicolor-dark.png" alt="Filled SF Symbols in Apple system multicolor on dark card with bright yellow and cyan"></div>
+        </div>
+        <figcaption><span class="dont">Not used · Multicolour</span><br>Apple's system multicolor draws white clouds that vanish on light cards, plus bright yellow and cyan.</figcaption>
+      </figure>
+      <figure>
+        <div class="sym-strip">
+          <div class="half l"><img src="assets/symbols/mode-outline-light.png" alt="Outline SF Symbols in system blue on a light card"></div>
+          <div class="half d"><img src="assets/symbols/mode-outline-dark.png" alt="Outline SF Symbols in system blue on a dark card"></div>
+        </div>
+        <figcaption><span class="dont">Not used · Outline</span><br>Current app style. Thin line art breaks the “soft solid shapes” principle and falls back to monochrome tint.</figcaption>
+      </figure>
+    </div>
+    <ul class="small" style="margin-top:12px">
+      <li><b>UIKit (app):</b> <code>UIImage.SymbolConfiguration(paletteColors:)</code> with dynamic Loojang colors from the asset catalog, combined with the text-style configuration.</li>
+      <li><b>SwiftUI (widget):</b> <code>.symbolRenderingMode(.palette)</code> with <code>.foregroundStyle(primary, secondary, tertiary)</code> in <code>.fullColor</code>; switch to <code>.symbolRenderingMode(.hierarchical)</code> with <code>.foregroundStyle(.primary)</code> whenever <code>widgetRenderingMode != .fullColor</code>.</li>
+    </ul>
+
+    <h3>Layer colors</h3>
+    <p class="small muted">Every symbol layer uses an existing Loojang token — no new colors are added to the palette.</p>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="Weather symbol semantic layer colors">
+      <table>
+        <thead><tr><th scope="col">Semantic layer</th><th scope="col">Loojang token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Used for</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Sun &amp; stars</th><td><b>Sun</b></td><td class="nowrap"><span class="sw" style="background:#C9762C"></span><code>#C9762C</code></td><td class="nowrap"><span class="sw" style="background:#F7B26A"></span><code>#F7B26A</code></td><td>Sun disc and rays (<code>sun.max.fill</code>, <code>cloud.sun.fill</code>), stars (<code>moon.stars.fill</code>)</td></tr>
+          <tr><th scope="row">Moon (night)</th><td><b>Cold</b></td><td class="nowrap"><span class="sw" style="background:#3D5A80"></span><code>#3D5A80</code></td><td class="nowrap"><span class="sw" style="background:#9DB6D8"></span><code>#9DB6D8</code></td><td>Crescent moon (<code>moon.stars.fill</code>, <code>cloud.moon.fill</code>) — cool twilight slate separates cleanly from Cloud in dark mode</td></tr>
+          <tr><th scope="row">Cloud &amp; wind</th><td><b>Cloud</b></td><td class="nowrap"><span class="sw" style="background:#8E8699"></span><code>#8E8699</code></td><td class="nowrap"><span class="sw" style="background:#9A92A6"></span><code>#9A92A6</code></td><td>All cloud bodies, wind curves (<code>wind.snow</code>), thermometer shell (<code>thermometer.snowflake</code>)</td></tr>
+          <tr><th scope="row">Precipitation &amp; fog</th><td><b>Precipitation</b></td><td class="nowrap"><span class="sw" style="background:#3D5A80"></span><code>#3D5A80</code></td><td class="nowrap"><span class="sw" style="background:#9DB6D8"></span><code>#9DB6D8</code></td><td>Drizzle, rain, heavy rain, snow, sleet raindrops, hail, glaze mercury &amp; snowflake, fog bars</td></tr>
+          <tr><th scope="row">Lightning</th><td><b>Accent</b></td><td class="nowrap"><span class="sw" style="background:#B0452C"></span><code>#B0452C</code></td><td class="nowrap"><span class="sw" style="background:#F2936F"></span><code>#F2936F</code></td><td>Lightning bolt in <code>cloud.bolt.fill</code> — warm terracotta/coral storm accent, passes 5.6 : 1 on light cards without neon yellow</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note small"><b>SF Symbols layer grouping (verified on Xcode 27.2):</b> Two weather symbols share Layer 1 across two elements. In <code>cloud.sleet.fill</code>, Apple places both the cloud and the snowflakes on Layer 1 (<code>Cloud</code>) and the raindrops on Layer 2 (<code>Precipitation</code>). In <code>cloud.bolt.rain.fill</code>, Apple places both the cloud and the bolt on Layer 1 (<code>Cloud</code>) and the raindrops on Layer 2 (<code>Precipitation</code>) — a third palette color is ignored. In <code>thermometer.snowflake</code>, Layer 1 is the mercury, Layer 2 is the snowflake, and Layer 3 is the thermometer shell (<code>[Precipitation, Precipitation, Cloud]</code>).</p>
+
+    <h3>Day and night</h3>
+    <p class="small muted">Each Estonian forecast day has a <b>Night</b> part and a <b>Day</b> part. Clear and partly cloudy phenomena switch between sun and moon symbols; overcast, precipitation, fog, and thunder stay identical day and night.</p>
+    <div class="sym-dn">
+      <div class="sym-dn-card">
+        <b>Clear sky</b> <span class="small muted">· Clear, Sunny</span>
+        <div class="sym-dn-row">
+          <div>
+            <div class="sym-dn-pair">
+              <span class="l"><img src="assets/symbols/sun.max.fill-light.png" alt="sun.max.fill on light card"></span>
+              <span class="d"><img src="assets/symbols/sun.max.fill-dark.png" alt="sun.max.fill on dark card"></span>
+            </div>
+            <div class="sym-dn-meta">Day · <code>sun.max.fill</code></div>
+          </div>
+          <div class="sym-dn-arrow" aria-hidden="true">↔</div>
+          <div>
+            <div class="sym-dn-pair">
+              <span class="l"><img src="assets/symbols/moon.stars.fill-light.png" alt="moon.stars.fill on light card"></span>
+              <span class="d"><img src="assets/symbols/moon.stars.fill-dark.png" alt="moon.stars.fill on dark card"></span>
+            </div>
+            <div class="sym-dn-meta">Night · <code>moon.stars.fill</code></div>
+          </div>
+        </div>
+      </div>
+      <div class="sym-dn-card">
+        <b>Partly cloudy</b> <span class="small muted">· Few / Variable / Partly cloudy, Clear spells</span>
+        <div class="sym-dn-row">
+          <div>
+            <div class="sym-dn-pair">
+              <span class="l"><img src="assets/symbols/cloud.sun.fill-light.png" alt="cloud.sun.fill on light card"></span>
+              <span class="d"><img src="assets/symbols/cloud.sun.fill-dark.png" alt="cloud.sun.fill on dark card"></span>
+            </div>
+            <div class="sym-dn-meta">Day · <code>cloud.sun.fill</code></div>
+          </div>
+          <div class="sym-dn-arrow" aria-hidden="true">↔</div>
+          <div>
+            <div class="sym-dn-pair">
+              <span class="l"><img src="assets/symbols/cloud.moon.fill-light.png" alt="cloud.moon.fill on light card"></span>
+              <span class="d"><img src="assets/symbols/cloud.moon.fill-dark.png" alt="cloud.moon.fill on dark card"></span>
+            </div>
+            <div class="sym-dn-meta">Night · <code>cloud.moon.fill</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:10px">Why <code>moon.stars.fill</code> instead of plain <code>moon.fill</code>: on iOS, a lone crescent reads as Focus or Dark Mode, whereas moon and stars immediately read as a clear night sky. Currently <code>WeatherPhenomenonIcon</code> has no day/night parameter, so the Night forecast shows a sun; adding a day-part argument fixes that in the implementation pass.</p>
+
+    <h3>Full symbol set</h3>
+    <p class="small muted">All 16 SF Symbols that cover the 33 forecast phenomena from <code>ilmateenistus.ee</code> (plus fallback), shown on Light Card (<code>#FFFFFF</code>) and Dark Card (<code>#201B29</code>).</p>
+    <div class="sym-grid" id="sym-grid"></div>
+
+    <h3>Phenomenon mapping</h3>
+    <p class="small muted">Audit of every phenomenon string in <code>WeatherPhenomenonIcon</code> against the proposed mapping. Five deliberate changes replace outline icons, add night variants, fix <code>smoke</code> for clouds, separate blowing snow (<i>tuisk</i>), and separate thunder-rain (<i>äikesevihm</i>). Rain showers keep the three-step drizzle / rain / heavy-rain scale so intensity stays legible at 22 pt.</p>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="Complete ilmateenistus.ee phenomenon to SF Symbol mapping"><table id="sym-map"></table></div>
+
+    <h3>Sizes</h3>
+    <p class="small muted">The four optical sizes used in the app and widget. App symbols scale with Dynamic Type; the 22 pt place-row column cap lifts at accessibility sizes so icons are never clipped.</p>
+    <div class="sym-sizes">
+      <div class="sym-size-box l">
+        <figure><img src="assets/symbols/cloud.sun.fill-light.png" width="22" height="22" alt="">22 · Place row</figure>
+        <figure><img src="assets/symbols/cloud.rain.fill-light.png" width="28" height="28" alt="">28 · Medium widget</figure>
+        <figure><img src="assets/symbols/moon.stars.fill-light.png" width="32" height="32" alt="">32 · Day / Night</figure>
+        <figure><img src="assets/symbols/cloud.bolt.fill-light.png" width="36" height="36" alt="">36 · Small widget</figure>
+      </div>
+      <div class="sym-size-box d">
+        <figure><img src="assets/symbols/cloud.sun.fill-dark.png" width="22" height="22" alt="">22 · Place row</figure>
+        <figure><img src="assets/symbols/cloud.rain.fill-dark.png" width="28" height="28" alt="">28 · Medium widget</figure>
+        <figure><img src="assets/symbols/moon.stars.fill-dark.png" width="32" height="32" alt="">32 · Day / Night</figure>
+        <figure><img src="assets/symbols/cloud.bolt.fill-dark.png" width="36" height="36" alt="">36 · Small widget</figure>
+      </div>
+    </div>
+
+    <h3>Tinted and clear widgets</h3>
+    <p class="small muted">In tinted and clear Home Screen modes, iOS strips custom palette hues. Keeping <code>.palette</code> can collapse two colors of similar brightness into one flat shape — the same failure shown in the app icon's tinted section. Switching to <code>.hierarchical</code> whenever <code>widgetRenderingMode != .fullColor</code> gives iOS automatic two-tone opacity depth (100% cloud, ~50% sun, moon, rain, snow, or bolt), and filled silhouettes stay solid over photographic wallpapers.</p>
+    <div class="sym-widgets">
+      <figure>
+        <div class="w-stage td"><div class="w-glass"><img src="assets/symbols/widget-tinted-dark.png" alt="Six weather symbols in hierarchical coral tint on a tinted dark widget"></div></div>
+        <figcaption><b>Tinted dark</b> · <code>.accented</code>, hierarchical</figcaption>
+      </figure>
+      <figure>
+        <div class="w-stage tl"><div class="w-glass"><img src="assets/symbols/widget-tinted-light.png" alt="Six weather symbols in hierarchical plum tint on a tinted light widget"></div></div>
+        <figcaption><b>Tinted light</b> · <code>.accented</code>, hierarchical</figcaption>
+      </figure>
+      <figure>
+        <div class="w-stage cl"><div class="w-glass"><img src="assets/symbols/widget-clear-light.png" alt="Six weather symbols in dark hierarchical style on a clear light glass widget"></div></div>
+        <figcaption><b>Clear light</b> · <code>.accented</code>, hierarchical</figcaption>
+      </figure>
+      <figure>
+        <div class="w-stage cd"><div class="w-glass"><img src="assets/symbols/widget-clear-dark.png" alt="Six weather symbols in white hierarchical style on a clear dark glass widget"></div></div>
+        <figcaption><b>Clear dark</b> · <code>.accented</code>, hierarchical</figcaption>
+      </figure>
+    </div>
+
+    <h3>Contrast (WCAG 2.1, computed)</h3>
+    <p class="small muted">Weather symbols are non-text graphics (3 : 1 target against Card and Background). Every symbol layer — Cloud, Sun, Precipitation, Moon (Cold), and Lightning (Accent) — passes 3 : 1 on both Card and Background in light and dark modes, and every text label passes WCAG AA. Light Sun was deepened to <code>#C9762C</code> so clear and partly cloudy symbols stay crisp on white cards while remaining distinctly amber next to rust Accent (<code>#B0452C</code>).</p>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="Weather symbol contrast audit table"><table id="sym-contrast"></table></div>
+  </section>
+
+  <!-- 6 WEBSITE -->
   <section id="website">
-    <h2><span class="num">5</span>Website · eestiilm.app</h2>
+    <h2><span class="num">6</span>Website · eestiilm.app</h2>
     <p class="muted">The design of eestiilm.app: a quiet page in the app's colors that gets people to the App Store, plus support, privacy and 404 pages. The site is built from this section (EES-113).</p>
 
     <h3>Direction · “Quiet paper”</h3>
@@ -1002,15 +1223,14 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 
     <h3>Contrast (WCAG 2.1, computed)</h3>
     <p class="small muted">Website text pairs need 4.5 : 1 (AA); the focus ring, the 404 cloud and the icons are non-text and need 3 : 1. The share image uses Accent on Background in light only. The App Store badge is Apple's artwork and is not part of the palette.</p>
-    <div class="panel table-wrap"><table id="web-contrast"></table></div>
+    <div class="panel table-wrap" tabindex="0" role="region" aria-label="Website contrast table"><table id="web-contrast"></table></div>
   </section>
 
-  <!-- 6 NEXT -->
+  <!-- 7 NEXT -->
   <section id="next">
-    <h2><span class="num">6</span>Next</h2>
+    <h2><span class="num">7</span>Next</h2>
     <p class="muted">Not decided yet; each gets its own iteration before it joins this book.</p>
     <ul class="next small">
-      <li><b>Weather symbols:</b> SF Symbols style and how the palette colors them.</li>
       <li><b>Screens:</b> how the palette applies to the forecast list and Settings.</li>
       <li><b>Widgets:</b> background, layout and colors of the small and medium widgets.</li>
       <li><b>App Store:</b> screenshots and how the icon appears in the listing.</li>
@@ -1024,8 +1244,9 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
       <li><code>assets/website/nunito-800.woff2</code> · Nunito ExtraBold, Latin and Latin Extended, the file the site self-hosts</li>
       <li><code>assets/website/Nunito-OFL.txt</code> · the font's SIL Open Font License</li>
       <li><code>assets/website/app-store-badge-{en,et}-{black,white}.svg</code> · Apple's official App Store badges, from Apple's marketing tools</li>
+      <li><code>assets/symbols/*.png</code> · SF Symbol renders for light and dark cards, rendering modes, and tinted/clear widget previews</li>
     </ul>
-    <p class="small muted">Renders made with Xcode 27.2 Icon Composer (ictool).</p>
+    <p class="small muted">Renders made with Xcode 27.2 Icon Composer (ictool) and macOS 27.2 SF Symbols.</p>
   </section>
 </main>
 <div class="toast" id="toast">Copied</div>
@@ -1041,7 +1262,7 @@ const COLORS = [
   ['Separator', 'Hairlines', '#ECE4DD', '#2E2738'],
   ['Cold', 'Temperatures below 0°', '#3D5A80', '#9DB6D8'],
   ['Warm', 'Temperatures 0° and above', '#B0452C', '#F2936F'],
-  ['Sun', 'Sun in weather symbols', '#EE9A4D', '#F7B26A'],
+  ['Sun', 'Sun in weather symbols', '#C9762C', '#F7B26A'],
   ['Cloud', 'Cloud in weather symbols', '#8E8699', '#9A92A6'],
   ['Precipitation', 'Rain, snow, fog', '#3D5A80', '#9DB6D8'],
 ];
@@ -1090,6 +1311,71 @@ const WEB_PAIRS = [
   ['Contact card icons (Accent on Background, non-text)', 'Accent', 'Background', true],
 ];
 $('web-contrast').innerHTML = `<thead><tr><th>Website pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${WEB_PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
+
+// Weather symbols: 16 SF Symbols covering all 33 ilmateenistus.ee phenomena + fallback.
+const SYM_SET = [
+  ['Clear sky', 'sun.max.fill', 'Day', false, 'Clear · Sunny', '[Sun]'],
+  ['Clear night', 'moon.stars.fill', 'Night · New', true, 'Clear (night)', '[Cold, Sun]'],
+  ['Partly cloudy', 'cloud.sun.fill', 'Day', false, 'Few / Variable / Partly cloudy · Clear spells', '[Cloud, Sun]'],
+  ['Partly cloudy night', 'cloud.moon.fill', 'Night · New', true, 'Few / Variable / Partly cloudy · Clear spells (night)', '[Cloud, Cold]'],
+  ['Cloudy & overcast', 'cloud.fill', 'Changed', true, 'Cloudy · Overcast · Unknown fallback', '[Cloud]'],
+  ['Light rain', 'cloud.drizzle.fill', '', false, 'Light rain · Light shower', '[Cloud, Precipitation]'],
+  ['Moderate rain', 'cloud.rain.fill', '', false, 'Moderate rain · Moderate shower', '[Cloud, Precipitation]'],
+  ['Heavy rain', 'cloud.heavyrain.fill', '', false, 'Heavy rain · Heavy shower', '[Cloud, Precipitation]'],
+  ['Snow', 'cloud.snow.fill', '', false, 'Light / Moderate / Heavy snow, snowfall & snow shower (9)', '[Cloud, Precipitation]'],
+  ['Blowing snow', 'wind.snow', 'Changed', true, 'Snowstorm · Drifting snow', '[Cloud, Precipitation]'],
+  ['Sleet', 'cloud.sleet.fill', '', false, 'Light sleet · Moderate sleet', '[Cloud, Precipitation]'],
+  ['Risk of glaze', 'thermometer.snowflake', '', false, 'Risk of glaze', '[Precipitation, Precipitation, Cloud]'],
+  ['Hail', 'cloud.hail.fill', '', false, 'Hail', '[Cloud, Precipitation]'],
+  ['Fog & mist', 'cloud.fog.fill', '', false, 'Mist · Fog', '[Cloud, Precipitation]'],
+  ['Thunder', 'cloud.bolt.fill', '', false, 'Thunder', '[Cloud, Accent]'],
+  ['Thunderstorm', 'cloud.bolt.rain.fill', 'Changed', true, 'Thunderstorm', '[Cloud, Precipitation]'],
+];
+$('sym-grid').innerHTML = SYM_SET.map(([title, sym, badge, isChg, phen, layers]) => `<div class="sym-card">
+  <div class="chips"><span class="l"><img src="assets/symbols/${sym}-light.png" alt="${sym} on light card"></span><span class="d"><img src="assets/symbols/${sym}-dark.png" alt="${sym} on dark card"></span></div>
+  <div class="meta"><div class="top"><b>${title}</b>${badge ? `<span class="tag${isChg ? ' chg' : ''}">${badge}</span>` : ''}</div><code>${sym}</code><p>${phen}<br>${layers}</p></div>
+</div>`).join('');
+
+const prop = s => `<span class="sym-prop"><span class="sym-pill l"><img class="sym-mini" src="assets/symbols/${s}-light.png" alt=""></span><span class="sym-pill d"><img class="sym-mini" src="assets/symbols/${s}-dark.png" alt=""></span><code>${s}</code></span>`;
+const SYM_ROWS = [
+  ['Clear, Sunny', 'Selge, Päikesepaisteline', 'sun.max', 'sun.max.fill', 'moon.stars.fill', 'Day: [Sun] · Night: [Cold, Sun]', 'Filled + night variant', true],
+  ['Few clouds, Variable clouds, Cloudy with clear spells, Partly cloudy', 'Vähene / Vahelduv / Osaliselt pilves, Pilves selgimistega', 'cloud.sun', 'cloud.sun.fill', 'cloud.moon.fill', 'Day: [Cloud, Sun] · Night: [Cloud, Cold]', 'Filled + night variant', true],
+  ['Cloudy, Overcast', 'Pilves, Lauspilves', 'smoke', 'cloud.fill', 'cloud.fill', '[Cloud]', 'Replaces smoke (semantic fix)', true],
+  ['Light rain, Light shower', 'Nõrk vihm, Nõrk hoogvihm', 'cloud.drizzle', 'cloud.drizzle.fill', 'cloud.drizzle.fill', '[Cloud, Precipitation]', 'Filled', false],
+  ['Moderate rain, Moderate shower', 'Mõõdukas vihm, Mõõdukas hoogvihm', 'cloud.rain', 'cloud.rain.fill', 'cloud.rain.fill', '[Cloud, Precipitation]', 'Filled', false],
+  ['Heavy rain, Heavy shower', 'Tugev vihm, Tugev hoogvihm', 'cloud.heavyrain', 'cloud.heavyrain.fill', 'cloud.heavyrain.fill', '[Cloud, Precipitation]', 'Filled', false],
+  ['Light / Moderate / Heavy snow, snowfall & snow shower (9)', 'Nõrk / Mõõdukas / Tugev lumesadu & hooglumi', 'cloud.snow', 'cloud.snow.fill', 'cloud.snow.fill', '[Cloud, Precipitation]', 'Filled', false],
+  ['Snowstorm, Drifting snow', 'Lumetuisk, Pinnatuisk', 'cloud.snow', 'wind.snow', 'wind.snow', '[Cloud, Precipitation]', 'Distinct blowing-snow symbol', true],
+  ['Light sleet, Moderate sleet', 'Nõrk / Mõõdukas lörtsisadu', 'cloud.sleet', 'cloud.sleet.fill', 'cloud.sleet.fill', '[Cloud, Precipitation]', 'Filled (Layer 1: cloud + snow)', false],
+  ['Risk of glaze', 'Jäiteoht', 'thermometer.snowflake', 'thermometer.snowflake', 'thermometer.snowflake', '[Precipitation, Precipitation, Cloud]', 'Loojang 3-layer palette', false],
+  ['Hail', 'Rahe', 'cloud.hail', 'cloud.hail.fill', 'cloud.hail.fill', '[Cloud, Precipitation]', 'Filled', false],
+  ['Mist, Fog', 'Uduvine, Udu', 'cloud.fog', 'cloud.fog.fill', 'cloud.fog.fill', '[Cloud, Precipitation]', 'Filled', false],
+  ['Thunder', 'Äike', 'cloud.bolt', 'cloud.bolt.fill', 'cloud.bolt.fill', '[Cloud, Accent]', 'Filled + coral/rust bolt', false],
+  ['Thunderstorm', 'Äikesevihm', 'cloud.bolt', 'cloud.bolt.rain.fill', 'cloud.bolt.rain.fill', '[Cloud, Precipitation]', 'Matches thunder + rain', true],
+  ['Unknown / blank (fallback)', '—', 'cloud', 'cloud.fill', 'cloud.fill', '[Cloud]', 'Filled', false],
+];
+$('sym-map').innerHTML = `<thead><tr><th scope="col">Phenomena (en · et)</th><th scope="col">Current</th><th scope="col">Proposed (Day / Night)</th><th scope="col">Palette layers</th><th scope="col">Audit note</th></tr></thead><tbody>${SYM_ROWS.map(([en, et, cur, day, night, layers, note, chg]) => `<tr>
+  <td><b>${en}</b><br><span class="small muted">${et}</span></td>
+  <td class="nowrap"><code>${cur}</code></td>
+  <td><div class="sym-prop-stack">${prop(day)}${night !== day ? prop(night) : ''}</div></td>
+  <td class="small">${layers}</td>
+  <td class="small">${chg ? `<span class="tag chg">Changed</span> ` : ''}${note}</td>
+</tr>`).join('')}</tbody>`;
+
+const SYM_CONTRAST = [
+  ['Cloud on Card (non-text)', 'Cloud', 'Card', true],
+  ['Cloud on Background (non-text)', 'Cloud', 'Background', true],
+  ['Precipitation on Card (non-text)', 'Precipitation', 'Card', true],
+  ['Precipitation on Background (non-text)', 'Precipitation', 'Background', true],
+  ['Moon · Cold on Card (non-text)', 'Cold', 'Card', true],
+  ['Lightning · Accent on Card (non-text)', 'Accent', 'Card', true],
+  ['Sun on Card (non-text)', 'Sun', 'Card', true],
+  ['Sun on Background (non-text)', 'Sun', 'Background', true],
+  ['Symbol caption · Secondary text on Card', 'Secondary text', 'Card', false],
+  ['Symbol label · Text on Card', 'Text', 'Card', false],
+  ['Audit badge · On-accent on Accent', 'On-accent', 'Accent', false],
+];
+$('sym-contrast').innerHTML = `<thead><tr><th scope="col">Weather symbol pair</th><th scope="col" colspan="2">Light</th><th scope="col" colspan="2">Dark</th></tr></thead><tbody>${SYM_CONTRAST.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
 
 // Website mockups, following the EES-119 "B" boards. Draft copy; [brackets] mark placeholders.
 // o = { icon, focus }: focus is shown on the footer Support link (home) and the button (404), desktop light only, as on the boards.
