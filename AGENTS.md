@@ -142,7 +142,7 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 ## Ticket workflow
 
 - Agents work in Orca. The coordinator agent works in the main checkout on `master` and does not implement tickets there.
-- For each Linear ticket, the coordinator starts a separate worker in its own Orca worktree with `orca orchestration worker-start`. The worker's branch is the ticket's git branch name.
+- For each agent-executed Linear ticket, the coordinator starts a separate worker in its own Orca worktree with `orca orchestration worker-start`. The worker's branch is the ticket's git branch name.
 - The ticket reflects the work: it moves to In Progress and is assigned to `telbin-bot` when the worker starts. Agents may comment on the ticket when useful (worker and workspace, progress, decisions, PR link, blockers).
 - When the ticket is done (PR merged), the coordinator releases the worker, removes the Orca workspace, and moves the ticket to Done.
 - Linear conventions (full details in the [Linear Conventions](https://linear.app/eestiilm/document/linear-conventions-3ead849b1742) document in Linear, which is the single source of truth):
