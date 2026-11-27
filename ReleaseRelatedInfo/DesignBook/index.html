@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eesti Ilm Design Book</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --page: #FAF5F1; --card: #FFFFFF; --ink: #1E1A2B; --muted: #625A6E; --line: #ECE4DD; --chip: #F3ECE6;
+  --accent: #B0452C; --on-accent: #FFFFFF; --good: #1d7a45; --ok: #8a5a00; --bad: #b42318;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #15121C; --card: #201B29; --ink: #F4EEF3; --muted: #ABA2B5; --line: #2E2738; --chip: #2A2433;
+    --accent: #F2936F; --on-accent: #15121C; --good: #57d38c; --ok: #f2c04b; --bad: #ff8a80;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #15121C; --card: #201B29; --ink: #F4EEF3; --muted: #ABA2B5; --line: #2E2738; --chip: #2A2433;
+  --accent: #F2936F; --on-accent: #15121C; --good: #57d38c; --ok: #f2c04b; --bad: #ff8a80;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, sans-serif; }
+main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 80px; }
+h1 { font: 700 clamp(34px, 6vw, 60px)/1.02 ui-rounded, "SF Pro Rounded", system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; }
+h2 { font: 700 30px/1.15 ui-rounded, "SF Pro Rounded", system-ui, sans-serif; margin: 72px 0 6px; letter-spacing: -0.01em; }
+h3 { font-size: 18px; margin: 26px 0 6px; }
+p { margin: 0 0 12px; }
+.lead { color: var(--muted); font-size: 18px; max-width: 720px; }
+.muted { color: var(--muted); } .small { font-size: 13px; }
+code { font: 13px/1.4 ui-monospace, "SF Mono", Menlo, monospace; background: var(--chip); padding: 1px 5px; border-radius: 5px; }
+.num { display: inline-flex; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--on-accent); align-items: center; justify-content: center; font: 700 15px ui-rounded, system-ui; margin-right: 10px; vertical-align: 4px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; margin-top: 16px; }
+.theme-toggle { position: fixed; top: 12px; right: 12px; z-index: 5; background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+nav.toc a { color: var(--ink); text-decoration: none; background: var(--card); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-size: 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; }
+.table-wrap { overflow-x: auto; }
+.sw { display: inline-block; width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(127,127,127,.3); vertical-align: middle; margin-right: 6px; }
+.pair { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; height: 26px; border-radius: 7px; font-weight: 600; padding: 0 8px; border: 1px solid rgba(127,127,127,.25); }
+.lvl { font-weight: 700; font-size: 11.5px; } .lvl.aaa, .lvl.aa { color: var(--good); } .lvl.large { color: var(--ok); } .lvl.fail { color: var(--bad); }
+
+/* cover and positioning */
+.cover { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; margin-top: 10px; }
+.cover img { width: min(240px, 60vw); height: auto; }
+@media (max-width: 720px) { .cover { grid-template-columns: 1fr; } }
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.principles .panel { margin: 0; padding: 18px; }
+.principles b { display: block; font-size: 16px; margin-bottom: 4px; }
+.strip { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; margin: 8px 0; }
+.strip .label { font-weight: 700; font-size: 14px; }
+.strip .label span { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+.bar { display: flex; height: 48px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.bar div { flex: 1; } .bar div.wide { flex: 2.2; }
+@media (max-width: 600px) { .strip { grid-template-columns: 1fr; gap: 6px; } }
+
+/* icon */
+.looks { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 14px; }
+.looks figure, .sizes figure { margin: 0; text-align: center; font-size: 12px; color: var(--muted); }
+.stage { border-radius: 18px; padding: 10px; }
+.stage img { width: 100%; height: auto; display: block; }
+.stage.light { background: linear-gradient(160deg, #e6e2dc, #f4ece6); } .stage.dark { background: #000; }
+.stage.tl { background: #e9e6e2; } .stage.photo { background: linear-gradient(160deg, #7c8f9e, #c99476 55%, #4c5f45); }
+.sizes { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; margin-top: 14px; }
+.construct { display: grid; grid-template-columns: minmax(240px, 340px) 1fr; gap: 22px; align-items: start; }
+@media (max-width: 760px) { .construct { grid-template-columns: 1fr; } }
+.construct svg { width: 100%; height: auto; border-radius: 22%; background: linear-gradient(180deg, #3B2C5A, #F29E7A); }
+.dodont { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 12px; }
+.dodont figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; }
+.dodont .stage { max-width: 160px; margin: 0 auto 8px; }
+.dodont figcaption { font-size: 13px; }
+.do { color: var(--good); font-weight: 700; } .dont { color: var(--bad); font-weight: 700; }
+
+/* palette */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 12px; }
+.swc { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); font-size: 12.5px; cursor: copy; }
+.swc .chips { display: flex; height: 56px; } .swc .chips button { flex: 1; border: 0; padding: 0; margin: 0; border-radius: 0; cursor: copy; }
+.swc .chips button:focus-visible { outline: 2px solid transparent; box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 4px var(--ink); }
+.swc .meta { padding: 7px 9px; line-height: 1.35; }
+.swc .meta b { display: block; font-size: 13px; }
+.swc code { background: none; padding: 0; font-size: 11.5px; }
+
+.next li { margin: 4px 0; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--page); padding: 8px 14px; border-radius: 999px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.show { opacity: 1; }
+
+@page { size: A4; margin: 12mm; }
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .theme-toggle, nav.toc, .toast { display: none !important; }
+  main { max-width: none; padding: 0; }
+  body { font-size: 13px; }
+  h2 { break-before: page; margin-top: 0; }
+  .panel, figure, table, .swc, .strip { break-inside: avoid; }
+  h3 { break-after: avoid; }
+  .construct { grid-template-columns: 240px 1fr; }
+  .construct svg { max-width: 240px; }
+  .looks { grid-template-columns: repeat(6, 1fr); }
+  .dodont { grid-template-columns: repeat(4, 1fr); }
+  .cover img { width: 200px; }
+  #position h2 { break-before: auto; margin-top: 30px; }
+}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" type="button">Theme: auto</button>
+<main>
+  <header>
+    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 1 · 26 November 2026</p>
+    <div class="cover">
+      <div>
+        <h1>Eesti Ilm<br>Design Book</h1>
+        <p class="lead" style="margin-top:16px">The new look, version 1: the app icon and the color palette. Type, weather symbols, screens, widgets, the App Store and the website come in later versions (see <a href="#next">Next</a>).</p>
+      </div>
+      <img src="assets/icon/icon-Default.png" alt="Eesti Ilm app icon: a pale sun behind a white cloud on a plum-to-coral dusk gradient">
+    </div>
+    <nav class="toc">
+      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#next">4 · Next</a>
+    </nav>
+  </header>
+
+  <!-- 1 POSITIONING -->
+  <section id="position">
+    <h2><span class="num">1</span>Positioning</h2>
+    <p class="muted">Our main competitor, ILM+ (the Environment Agency's official app), is one saturated ultramarine with a yellow sun and white line art, like most weather apps. Eesti Ilm takes the opposite side: the warm, calm light of an Estonian evening.</p>
+    <div class="panel">
+      <div class="strip"><div class="label">Eesti Ilm<span>Loojang</span></div><div class="bar"><div style="background:#FAF5F1"></div><div style="background:#B0452C"></div><div style="background:#3D5A80"></div><div style="background:#EE9A4D"></div><div style="background:#FFD9A0"></div><div class="wide" style="background:linear-gradient(90deg,#3B2C5A,#F29E7A)"></div></div></div>
+      <div class="strip"><div class="label">ILM+<span>competitor</span></div><div class="bar"><div style="background:#FFFFFF"></div><div style="background:#000096"></div><div style="background:#000096"></div><div style="background:#FFD200"></div><div style="background:#1E1E1E"></div><div class="wide" style="background:#000096"></div></div></div>
+    </div>
+    <div class="principles">
+      <div class="panel"><b>Warm, not blue</b><span class="small muted">Plum, coral and rust instead of saturated blue and yellow.</span></div>
+      <div class="panel"><b>Calm and simple</b><span class="small muted">Few elements, soft solid shapes, no rays or line art.</span></div>
+      <div class="panel"><b>Readable first</b><span class="small muted">Every text color passes WCAG AA; the icon stays clear in every iOS appearance.</span></div>
+    </div>
+  </section>
+
+  <!-- 2 ICON -->
+  <section id="icon">
+    <h2><span class="num">2</span>App icon</h2>
+    <p class="muted">A pale sun setting behind a soft cloud, on a plum-to-coral dusk sky (“Loojang”). Two layers, no text. It is built in Icon Composer, so iOS adds the Liquid Glass highlights and shadows.</p>
+    <div class="looks">
+      <figure><div class="stage light"><img src="assets/icon/icon-Default.png" alt="Default"></div>Default</figure>
+      <figure><div class="stage dark"><img src="assets/icon/icon-Dark.png" alt="Dark"></div>Dark</figure>
+      <figure><div class="stage dark"><img src="assets/icon/icon-TintedDark.png" alt="Tinted dark"></div>Tinted dark</figure>
+      <figure><div class="stage tl"><img src="assets/icon/icon-TintedLight.png" alt="Tinted light"></div>Tinted light</figure>
+      <figure><div class="stage photo"><img src="assets/icon/icon-ClearLight.png" alt="Clear light"></div>Clear light</figure>
+      <figure><div class="stage dark"><img src="assets/icon/icon-ClearDark.png" alt="Clear dark"></div>Clear dark</figure>
+    </div>
+    <div class="sizes">
+      <figure><img src="assets/icon/icon-Default.png" width="120" height="120" alt="">120</figure>
+      <figure><img src="assets/icon/icon-Default.png" width="60" height="60" alt="">60 · Home Screen</figure>
+      <figure><img src="assets/icon/icon-Default.png" width="40" height="40" alt="">40 · Spotlight</figure>
+      <figure><img src="assets/icon/icon-Default.png" width="29" height="29" alt="">29 · Settings</figure>
+    </div>
+
+    <h3>Construction</h3>
+    <div class="construct">
+      <svg viewBox="0 0 100 100" role="img" aria-label="Icon construction: central 80 percent safe area, sun circle and cloud outline">
+        <circle cx="54.8" cy="38.2" r="21.12" fill="#FFD9A0" opacity=".9"/>
+        <g transform="translate(12.56 41.72) scale(1.364)"><path fill="#FFFFFF" opacity=".92" d="M14.000 26.000 A10.0 10.0 0 0 1 13.943 6.000 A2.5 2.5 0 0 0 16.198 4.549 A13.0 13.0 0 0 1 40.448 6.252 A2.5 2.5 0 0 0 42.659 8.024 A9.0 9.0 0 0 1 42.000 26.000 Z"/></g>
+        <rect x="10" y="10" width="80" height="80" fill="none" stroke="#fff" stroke-width=".35" stroke-dasharray="1.5 1.2" opacity=".85"/>
+        <line x1="50" y1="0" x2="50" y2="100" stroke="#fff" stroke-width=".25" opacity=".55"/>
+        <line x1="0" y1="50" x2="100" y2="50" stroke="#fff" stroke-width=".25" opacity=".55"/>
+        <circle cx="54.8" cy="38.2" r="21.12" fill="none" stroke="#3B2C5A" stroke-width=".35"/>
+        <circle cx="54.8" cy="38.2" r=".9" fill="#3B2C5A"/>
+        <rect x="18" y="17" width="63.8" height="60" fill="none" stroke="#3B2C5A" stroke-width=".3" stroke-dasharray="1 1"/>
+        <text x="11.5" y="14.5" font-size="3" fill="#fff" font-family="system-ui">safe area 80%</text>
+        <text x="58" y="33" font-size="3" fill="#3B2C5A" font-family="system-ui">sun r 21.1</text>
+      </svg>
+      <div>
+        <table class="small">
+          <thead><tr><th>Measure (1024 canvas = 100)</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Sun</td><td>circle, centre (54.8, 38.2), radius 21.1</td></tr>
+            <tr><td>Cloud</td><td>one closed outline: three round bumps (radius 10, 13, 9) with 2.5 valley fillets on a flat bottom, scaled 1.364, 63.8 wide</td></tr>
+            <tr><td>Group bounds</td><td>x 18–82, y 17–77, centred left to right, visual weight at (51.6, 51.7)</td></tr>
+            <tr><td>Proportion</td><td>cloud width ÷ sun diameter = 1.52 (close to 1.6)</td></tr>
+            <tr><td>Overlap</td><td>the cloud covers the lower half of the sun</td></tr>
+            <tr><td>Safe area</td><td>all shapes stay inside the central 80% (dashed)</td></tr>
+          </tbody>
+        </table>
+        <p class="small muted" style="margin-top:10px">The cloud must stay one path. Built from overlapping circles, its edge shows seams and a doubled Liquid Glass rim.</p>
+      </div>
+    </div>
+
+    <h3>Icon Composer settings</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Layer</th><th>Default</th><th>Dark</th><th>Tinted</th><th>Glass and effects</th></tr></thead>
+      <tbody>
+        <tr><td><b>Background</b></td><td><span class="sw" style="background:linear-gradient(180deg,#3B2C5A,#F29E7A)"></span><code>#3B2C5A → #F29E7A</code></td><td><span class="sw" style="background:linear-gradient(180deg,#15111F,#4A2C3C)"></span><code>#15111F → #4A2C3C</code></td><td>set by iOS</td><td>linear gradient, top to bottom</td></tr>
+        <tr><td><b>Group 1 · Cloud</b> (top)</td><td><span class="sw" style="background:#FFFFFF"></span><code>#FFFFFF</code>, opacity 90%</td><td><span class="sw" style="background:#E8DDEE"></span><code>#E8DDEE</code>, opacity 90%</td><td><span class="sw" style="background:#FFFFFF"></span><code>#FFFFFF</code>, opacity 100%, Liquid Glass off</td><td>Liquid Glass on, translucency 40%, specular, neutral shadow 50%</td></tr>
+        <tr><td><b>Group 2 · Sun</b></td><td><span class="sw" style="background:#FFD9A0"></span><code>#FFD9A0</code></td><td><span class="sw" style="background:#F7C58A"></span><code>#F7C58A</code></td><td><span class="sw" style="background:#A6A6A6"></span><code>#A6A6A6</code></td><td>specular, neutral shadow 50%, no translucency</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted" style="margin-top:8px">Why the tinted colors: iOS builds tinted icons from brightness only. A white cloud over a light-grey sun keeps the two shapes apart (cloud 4.5 : 1 to the background, 1.8 : 1 to the sun). With the default colors they merge into one blob.</p>
+
+    <h3>Do and don't</h3>
+    <div class="dodont">
+      <figure><div class="stage light"><img src="assets/icon/icon-Default.png" alt=""></div><figcaption><span class="do">Do</span> use the icon as delivered, with the system mask and effects.</figcaption></figure>
+      <figure><div class="stage dark"><img src="assets/dont-tinted.png" alt=""></div><figcaption><span class="dont">Don't</span> ship without the tinted layer colors: the sun and cloud merge.</figcaption></figure>
+      <figure><div class="stage light"><img src="assets/dont-blue.png" alt=""></div><figcaption><span class="dont">Don't</span> recolor it navy and yellow: that is ILM+'s look.</figcaption></figure>
+      <figure><div class="stage light"><img src="assets/dont-rays.png" alt=""></div><figcaption><span class="dont">Don't</span> add rays, raindrops or text: they turn to noise at 29 pt.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 3 PALETTE -->
+  <section id="palette">
+    <h2><span class="num">3</span>Palette · Loojang</h2>
+    <p class="muted">The colors and their roles, each with a light and a dark value. Click a color to copy its hex value. How they are applied to screens and widgets is decided in a later version.</p>
+    <div class="swatches" id="swatches"></div>
+    <h3>Rules</h3>
+    <ul class="small">
+      <li>Use the accent sparingly: selected states, buttons, links. Never for large backgrounds.</li>
+      <li>Temperatures below 0° use the cold color, 0° and above the warm color. Always keep the minus sign, so the meaning never depends on color.</li>
+      <li>The dusk gradient and the pale sun belong to the icon and the brand, not to UI text.</li>
+    </ul>
+    <h3>Contrast (WCAG 2.1, computed)</h3>
+    <div class="panel table-wrap"><table id="contrast"></table></div>
+  </section>
+
+  <!-- 4 NEXT -->
+  <section id="next">
+    <h2><span class="num">4</span>Next</h2>
+    <p class="muted">Not decided yet; each gets its own iteration before it joins this book.</p>
+    <ul class="next small">
+      <li><b>Type:</b> text styles for each element, and whether temperatures use the rounded font.</li>
+      <li><b>Weather symbols:</b> SF Symbols style and how the palette colors them.</li>
+      <li><b>Screens:</b> how the palette applies to the forecast list and Settings.</li>
+      <li><b>Widgets:</b> background, layout and colors of the small and medium widgets.</li>
+      <li><b>App Store:</b> screenshots and how the icon appears in the listing.</li>
+      <li><b>Website (eestiilm.app):</b> how the icon and palette carry over to the site.</li>
+    </ul>
+    <h3>Files</h3>
+    <ul class="small">
+      <li><code>assets/icon/EestiIlm.icon</code> · the Icon Composer source of the app icon</li>
+      <li><code>assets/icon/icon-1024.png</code> · flat 1024 export</li>
+      <li><code>assets/icon/icon-*.png</code> · renders of each appearance</li>
+    </ul>
+    <p class="small muted">Renders made with Xcode 27.2 Icon Composer (ictool).</p>
+  </section>
+</main>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const COLORS = [
+  ['Accent', 'Selected states, buttons, links', '#B0452C', '#F2936F'],
+  ['Background', 'Behind lists and content', '#FAF5F1', '#15121C'],
+  ['Card', 'Cards and list cells', '#FFFFFF', '#201B29'],
+  ['Text', 'Titles and body text', '#1E1A2B', '#F4EEF3'],
+  ['Secondary text', 'Headers, captions', '#625A6E', '#ABA2B5'],
+  ['Separator', 'Hairlines', '#ECE4DD', '#2E2738'],
+  ['Cold', 'Temperatures below 0°', '#3D5A80', '#9DB6D8'],
+  ['Warm', 'Temperatures 0° and above', '#B0452C', '#F2936F'],
+  ['Sun', 'Sun in weather symbols', '#EE9A4D', '#F7B26A'],
+  ['Cloud', 'Cloud in weather symbols', '#8E8699', '#9A92A6'],
+  ['Precipitation', 'Rain, snow, fog', '#3D5A80', '#9DB6D8'],
+];
+const T = Object.fromEntries(COLORS.map(([n, , l, d]) => [n, { l, d }]));
+$('swatches').innerHTML = COLORS.map(([n, u, l, d]) => `<div class="swc" data-hex="${l}"><div class="chips"><button type="button" data-hex="${l}" style="background:${l}" title="Light ${l}" aria-label="Copy ${n} light ${l}"></button><button type="button" data-hex="${d}" style="background:${d}" title="Dark ${d}" aria-label="Copy ${n} dark ${d}"></button></div><div class="meta"><b>${n}</b>${u}<br><code>${l}</code> · <code>${d}</code></div></div>`).join('')
+  + `<div class="swc" data-hex="#3B2C5A"><div class="chips"><button type="button" data-hex="#3B2C5A" style="background:linear-gradient(180deg,#3B2C5A,#F29E7A)" title="Dusk gradient #3B2C5A → #F29E7A" aria-label="Copy Dusk gradient top color #3B2C5A"></button></div><div class="meta"><b>Dusk gradient</b>Icon and brand<br><code>#3B2C5A</code> → <code>#F29E7A</code></div></div>`;
+function lum(h) { const v = [1, 3, 5].map(i => { let c = parseInt(h.slice(i, i + 2), 16) / 255; return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }); return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; }
+function ratio(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+function level(r, nonText) { if (nonText) return r >= 3 ? ['aa', 'Pass (3 : 1)'] : ['fail', 'Fail']; return r >= 7 ? ['aaa', 'AAA'] : r >= 4.5 ? ['aa', 'AA'] : r >= 3 ? ['large', 'Large text only'] : ['fail', 'Fail']; }
+const PAIRS = [['Text on Background', 'Text', 'Background'], ['Text on Card', 'Text', 'Card'], ['Secondary text on Card', 'Secondary text', 'Card'],
+  ['Accent on Card', 'Accent', 'Card'], ['Cold on Card', 'Cold', 'Card'], ['Warm on Card', 'Warm', 'Card'], ['Cloud symbol on Card (non-text)', 'Cloud', 'Card', true]];
+const cell = (f, b, mode, nt) => { const fg = T[f][mode], bg = T[b][mode], r = ratio(fg, bg), [cls, lab] = level(r, nt); return `<td><span class="pair" style="background:${bg};color:${fg}">Aa</span></td><td><b>${r.toFixed(2)}</b> <span class="lvl ${cls}">${lab}</span></td>`; };
+$('contrast').innerHTML = `<thead><tr><th>Pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
+
+const toast = $('toast');
+document.addEventListener('click', async e => { const b = e.target.closest('.swc [data-hex], .swc'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.hex); toast.textContent = 'Copied ' + b.dataset.hex; } catch (_) { toast.textContent = b.dataset.hex; } toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 1400); });
+const btn = $('themeToggle'), order = ['auto', 'light', 'dark']; let cur = 'auto';
+try { cur = localStorage.getItem('ebook-theme') || 'auto'; } catch (_) {}
+if (new URLSearchParams(location.search).has('print')) cur = 'light';
+const apply = () => { if (cur === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', cur); btn.textContent = 'Theme: ' + cur; };
+btn.addEventListener('click', () => { cur = order[(order.indexOf(cur) + 1) % 3]; try { localStorage.setItem('ebook-theme', cur); } catch (_) {} apply(); });
+apply();
+</script>
+</body>
+</html>
