@@ -142,10 +142,15 @@ To fix formatting, run `swiftformat .` and commit the result separately from oth
 ## Ticket workflow
 
 - Agents work in Orca. The coordinator agent works in the main checkout on `master` and does not implement tickets there.
-- For each Linear ticket, the coordinator starts a separate worker in its own Orca worktree with `orca orchestration worker-start`. The worker's branch is the ticket's git branch name.
-- The ticket reflects the work: it moves to In Progress when the worker starts. Agents may comment on the ticket when useful (worker and workspace, progress, decisions, PR link, blockers).
+- For each agent-executed Linear ticket, the coordinator starts a separate worker in its own Orca worktree with `orca orchestration worker-start`. The worker's branch is the ticket's git branch name.
+- The ticket reflects the work: it moves to In Progress and is assigned to `telbin-bot` when the worker starts. Agents may comment on the ticket when useful (worker and workspace, progress, decisions, PR link, blockers).
 - When the ticket is done (PR merged), the coordinator releases the worker, removes the Orca workspace, and moves the ticket to Done.
-- Reach Linear for this repo through the Orca CLI (`orca linear ... --workspace <id>`), not other Linear integrations.
+- Linear conventions (full details in the [Linear Conventions](https://linear.app/eestiilm/document/linear-conventions-3ead849b1742) document in Linear, which is the single source of truth):
+  - Titles: plain sentence-case phrases with no colon prefixes (`App:`, `Website:`, `Widget:`, `CI:`, `Docs:`, etc.) and no emoji or `You:` prefixes.
+  - Assignees: assign only manual owner-action tickets to the owner (`andrius`); assign agent-executed tickets to `telbin-bot` once work starts (`In Progress`, `In Review`, and `Done`); leave agent-executable tickets in `Backlog` or `Todo`, parent epics, and canceled tickets unassigned.
+  - Labels: lowercase only; every ticket requires an area label (`app`, `website`, or both for shared brand/design work) plus optional type labels (`bug`, `feature`, `improvement`, `ci/cd`, `admin`, `design`). Do not create new labels without owner approval.
+  - Projects: version-based `<Area> <major.minor>` with no `v` prefix (for example `App 2.3`, `Website 1.0`); do not create separate side-projects for migrations or refactors that ship inside a release.
+  - Access: reach Linear through the Orca CLI (`orca linear ... --workspace <id>`), or the Linear MCP plugin when explicitly connected to the `EestiIlm` workspace.
 
 ## Git workflow
 
