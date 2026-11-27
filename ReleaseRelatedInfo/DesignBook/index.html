@@ -88,6 +88,160 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--page); padding: 8px 14px; border-radius: 999px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
 .toast.show { opacity: 1; }
 
+/* website: the book loads the same self-hosted file the site uses */
+@font-face { font-family: "Nunito"; font-style: normal; font-weight: 800; font-display: swap; src: url("assets/website/nunito-800.woff2") format("woff2"); }
+.nunito { font-family: "Nunito", ui-rounded, system-ui, sans-serif; font-weight: 800; }
+.web-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 16px; }
+.web-specs .panel { margin: 0; }
+.web-specs ul, .panel ul { margin: 6px 0 0; padding-left: 18px; }
+.web-specs li, .panel li { margin: 4px 0; }
+.horizon-sw { display: block; height: 4px; border-radius: 2px; background: linear-gradient(90deg, #3B2C5A, #F29E7A); margin: 10px 0 4px; }
+.specimen { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+.specimen .big { font-size: clamp(36px, 7vw, 64px); line-height: 1.05; letter-spacing: -0.01em; }
+.note { border-left: 3px solid var(--accent); padding: 4px 0 4px 12px; margin: 14px 0; }
+.two-up { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 12px; }
+.two-up > * { min-width: 0; }
+
+/* website mockups: real CSS pixels, scaled to fit with zoom (see script). Sizes follow the EES-119 "B" boards. */
+.mock-page { margin-top: 18px; }
+.mock-row { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 16px; align-items: start; margin-top: 12px; }
+@media (max-width: 760px) { .mock-row { grid-template-columns: minmax(0, 1fr); } }
+.mock-row figure { margin: 0; min-width: 0; }
+.mock-row figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.fit { overflow: hidden; }
+.site {
+  --bg: #FAF5F1; --card: #FFFFFF; --text: #1E1A2B; --sec: #625A6E; --sep: #ECE4DD;
+  --acc: #B0452C; --on-acc: #FFFFFF; --cold: #3D5A80; --warm: #B0452C; --cloud: #8E8699;
+  color-scheme: light; width: 1280px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-align: left;
+}
+.site.d { --bg: #15121C; --card: #201B29; --text: #F4EEF3; --sec: #ABA2B5; --sep: #2E2738; --acc: #F2936F; --on-acc: #15121C; --cold: #9DB6D8; --warm: #F2936F; --cloud: #9A92A6; color-scheme: dark; }
+.site.phone { width: 390px; }
+.site * { box-sizing: border-box; }
+.site h1, .site h2, .site h3, .site .wm, .site .temps, .site .ct { font-family: "Nunito", ui-rounded, system-ui, sans-serif; font-weight: 800; }
+.site h1 { font-size: 48px; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 14px; }
+.site h2 { font-size: 28px; line-height: 1.2; letter-spacing: -0.01em; }
+.site p { margin: 0; }
+.site a { color: var(--acc); text-decoration: underline 1px; text-underline-offset: 3px; }
+.site a.hover { text-decoration-thickness: 2px; }
+.site .mt { color: var(--sec); }
+.site .w { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+.site .horizon { height: 4px; background: linear-gradient(90deg, #3B2C5A, #F29E7A); }
+/* header */
+.site .hdr { display: flex; align-items: center; justify-content: space-between; height: 76px; border-bottom: 1px solid var(--sep); }
+.site .wm { display: flex; align-items: center; gap: 10px; font-size: 19px; color: var(--text); text-decoration: none; }
+.site .wm img { width: 32px; height: 32px; display: block; }
+.site .nav { display: flex; align-items: center; gap: 26px; font-size: 15px; }
+.site .nav a { color: var(--text); text-decoration: none; }
+.site .nav a.cur { color: var(--acc); font-weight: 600; }
+.site .lang { display: inline-flex; border: 1px solid var(--sep); border-radius: 999px; padding: 2px; background: var(--card); line-height: 1.5; }
+.site .lang span { padding: 3px 11px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--sec); }
+.site .lang span.on { background: var(--text); color: var(--bg); }
+/* shared bits */
+.site .btn { display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 12px; background: var(--acc); color: var(--on-acc); font-size: 16px; font-weight: 600; text-decoration: none; }
+.site .focus { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: 4px; }
+.site .btn.focus { border-radius: 12px; }
+.site .ic { width: 46px; height: 46px; border-radius: 14px; background: var(--card); color: var(--acc); display: flex; align-items: center; justify-content: center; }
+.site .card .ic { width: 42px; height: 42px; border-radius: 12px; background: var(--bg); margin-bottom: 12px; }
+/* footer */
+.site .foot { margin-top: 56px; border-top: 1px solid var(--sep); padding: 32px 0 44px; display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 14px; text-align: center; }
+.site .foot nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+.site .foot nav a { color: var(--text); text-decoration: none; }
+.site .foot .credit { max-width: 640px; color: var(--sec); font-size: 15px; }
+.site .foot .copy { color: var(--sec); font-size: 13px; }
+.site .foot.home { margin-top: 72px; } .site .foot.support { margin-top: 64px; } .site .foot.privacy { margin-top: 80px; } .site .foot.nf-foot { margin-top: 0; }
+/* home */
+.site .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 88px 0 80px; }
+.site .hero img { width: 156px; height: 156px; display: block; }
+.site .eyebrow { margin: 28px 0 0; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--sec); }
+.site .hero h1 { font-size: 64px; line-height: 1.03; max-width: 820px; margin: 12px 0 20px; }
+.site .pitch { font-size: 19px; line-height: 1.55; color: var(--sec); max-width: 600px; margin: 0 0 34px; }
+.site .cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 22px; }
+.site .badge { display: inline-flex; }
+.site .badge img { height: 52px; width: auto; display: block; }
+.site .feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 72px 0; }
+.site .feats > div { padding: 0 36px; border-left: 1px solid var(--sep); }
+.site .feats > div:first-child { padding-left: 0; border-left: 0; }
+.site .temps { display: flex; align-items: baseline; gap: 14px; font-size: 44px; line-height: 1; }
+.site .temps .c { color: var(--cold); } .site .temps .h { color: var(--warm); }
+.site .feats h3 { font-size: 21px; line-height: 1.25; margin: 18px 0 6px; }
+.site .shots { display: flex; align-items: center; justify-content: center; text-align: center; height: 380px; border: 1.5px dashed var(--sec); border-radius: 24px; color: var(--sec); font-size: 15px; padding: 0 24px; }
+/* support */
+.site .sup { max-width: 760px; margin: 0 auto; padding-top: 72px; }
+.site .lead { font-size: 19px; color: var(--sec); margin: 0 0 36px; }
+.site .contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.site .card { background: var(--card); border: 1px solid var(--sep); border-radius: 20px; padding: 22px 24px; }
+.site .ct { font-size: 19px; margin: 0 0 4px; }
+.site .sup h2 { margin: 64px 0 16px; }
+.site .faq { border-top: 1px solid var(--sep); }
+.site details { border-bottom: 1px solid var(--sep); }
+.site summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; font-size: 18px; font-weight: 600; }
+.site summary::-webkit-details-marker { display: none; }
+.site summary svg { flex: none; color: var(--sec); }
+.site details[open] summary svg { transform: rotate(180deg); }
+.site details p { color: var(--sec); margin: -4px 0 20px; }
+/* privacy */
+.site .legal { display: grid; grid-template-columns: 220px minmax(0, 680px); column-gap: 72px; justify-content: center; padding-top: 72px; }
+.site .toc-web { font-size: 14px; padding-top: 8px; }
+.site .toc-web p { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--sec); margin: 0 0 12px; }
+.site .toc-web ol { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--sep); display: flex; flex-direction: column; gap: 9px; }
+.site .toc-web a { color: var(--sec); text-decoration: none; }
+.site .toc-web a.on { color: var(--acc); font-weight: 600; }
+.site .legal h1 { margin-bottom: 10px; }
+.site .updated { color: var(--sec); font-size: 15px; margin: 0 0 32px; }
+.site .summary { background: var(--card); border: 1px solid var(--sep); border-radius: 20px; padding: 22px 24px; margin: 0 0 8px; }
+.site .summary b { display: block; margin-bottom: 6px; }
+.site .summary ul { margin: 0; padding-left: 20px; color: var(--sec); }
+.site .art h2 { font-size: 26px; margin: 48px 0 12px; }
+.site .art p, .site .art > ul { margin: 0 0 16px; }
+.site .art > ul { padding-left: 22px; }
+.site .art li { margin: 0 0 6px; }
+/* 404 */
+.site .nf { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 110px 0 120px; }
+.site .nf svg { width: 150px; height: auto; display: block; }
+.site .nf .code { margin: 24px 0 0; font-size: 14px; font-weight: 700; letter-spacing: .08em; color: var(--sec); }
+.site .nf h1 { margin: 8px 0 12px; }
+.site .nf .body { color: var(--sec); max-width: 440px; margin: 0 0 30px; }
+/* phone layout */
+.site.phone .w { padding: 0 20px; }
+.site.phone .hdr { height: 64px; }
+.site.phone .nav .tl { display: none; }
+.site.phone h1 { font-size: 36px; }
+.site.phone .foot { align-items: flex-start; text-align: left; }
+.site.phone .foot nav { flex-direction: column; gap: 12px; }
+.site.phone .foot.home { margin-top: 44px; } .site.phone .foot.support { margin-top: 44px; } .site.phone .foot.privacy { margin-top: 48px; }
+.site.phone .hero { padding: 48px 0; }
+.site.phone .hero img { width: 116px; height: 116px; }
+.site.phone .hero h1 { font-size: 38px; }
+.site.phone .pitch, .site.phone .lead { font-size: 17px; }
+.site.phone .feats { grid-template-columns: minmax(0, 1fr); padding: 44px 0; row-gap: 34px; }
+.site.phone .feats > div { padding: 0; border-left: 0; }
+.site.phone .shots { height: 240px; }
+.site.phone .sup { padding-top: 40px; }
+.site.phone .contact { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.site.phone h2 { font-size: 24px; }
+.site.phone .sup h2 { margin-top: 44px; }
+.site.phone .legal { grid-template-columns: minmax(0, 1fr); padding-top: 40px; }
+.site.phone .toc-web { display: none; }
+.site.phone .art h2 { font-size: 22px; margin-top: 40px; }
+.site.phone .nf { padding: 72px 0 80px; }
+.site.phone .nf svg { width: 116px; }
+/* small specimens: components and the share image */
+.site.spec { width: auto; padding: 22px; border-radius: 18px; }
+.spec-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+.spec-row + .spec-row { margin-top: 18px; }
+.spec-row .lbl { display: block; font-size: 11.5px; color: var(--sec); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.og { position: relative; width: 1200px; height: 630px; display: flex; align-items: center; gap: 64px; padding: 0 96px; border-radius: 0; border: 0; }
+.og img { width: 260px; height: 260px; flex: none; }
+.og .wm-big { font-size: 104px; line-height: 1; letter-spacing: -0.02em; margin: 0 0 26px; }
+.og .url { font-size: 26px; color: var(--acc); font-weight: 600; }
+.og .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 12px; }
+.fav-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 22px; }
+.fav-row figure { margin: 0; text-align: center; font-size: 12px; color: var(--muted); }
+.fav-row svg { display: block; margin: 0 auto 6px; }
+.touch { width: 90px; height: 90px; display: block; margin: 0 auto 6px; }
+.og-frame { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+
 @page { size: A4; margin: 12mm; }
 @media print {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -103,6 +257,10 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
   .dodont { grid-template-columns: repeat(4, 1fr); }
   .cover img { width: 200px; }
   #position h2 { break-before: auto; margin-top: 30px; }
+  .mock-row { grid-template-columns: minmax(0, 1fr) 210px; }
+  .mock-row figure, .web-specs .panel { break-inside: avoid; }
+  .mock-page > h3 { break-before: page; }
+  .mock-page:first-of-type > h3 { break-before: auto; }
 }
 </style>
 </head>
@@ -110,16 +268,16 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 <button class="theme-toggle" id="themeToggle" type="button">Theme: auto</button>
 <main>
   <header>
-    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 1 · 26 November 2026</p>
+    <p class="muted small" style="margin:0 0 10px">Eesti Ilm · Design Book · “Loojang” · version 2 · 27 November 2026</p>
     <div class="cover">
       <div>
         <h1>Eesti Ilm<br>Design Book</h1>
-        <p class="lead" style="margin-top:16px">The new look, version 1: the app icon and the color palette. Type, weather symbols, screens, widgets, the App Store and the website come in later versions (see <a href="#next">Next</a>).</p>
+        <p class="lead" style="margin-top:16px">The new look, version 2: the app icon, the color palette and the website. Type, weather symbols, screens, widgets and the App Store come in later versions (see <a href="#next">Next</a>).</p>
       </div>
       <img src="assets/icon/icon-Default.png" alt="Eesti Ilm app icon: a pale sun behind a white cloud on a plum-to-coral dusk gradient">
     </div>
     <nav class="toc">
-      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#next">4 · Next</a>
+      <a href="#position">1 · Positioning</a><a href="#icon">2 · App icon</a><a href="#palette">3 · Palette</a><a href="#website">4 · Website</a><a href="#next">5 · Next</a>
     </nav>
   </header>
 
@@ -222,9 +380,145 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
     <div class="panel table-wrap"><table id="contrast"></table></div>
   </section>
 
-  <!-- 4 NEXT -->
+  <!-- 4 WEBSITE -->
+  <section id="website">
+    <h2><span class="num">4</span>Website · eestiilm.app</h2>
+    <p class="muted">The design of eestiilm.app: a quiet page in the app's colors that gets people to the App Store, plus support, privacy and 404 pages. The site is built from this section (EES-113).</p>
+
+    <h3>Direction · “Quiet paper”</h3>
+    <div class="web-specs">
+      <div class="panel">
+        <b>Warm paper, one line of dusk</b>
+        <ul class="small">
+          <li>The page is the warm Background color, with no large gradient areas.</li>
+          <li>A thin <b>dusk horizon line</b> sits under the header and under the home page hero: 4 px tall, a horizontal gradient from <code>#3B2C5A</code> to <code>#F29E7A</code>, the same in light and dark. It is the only gradient in the page layout.</li>
+        </ul>
+        <span class="horizon-sw" role="img" aria-label="Dusk horizon line"></span>
+      </div>
+      <div class="panel">
+        <b>Home page</b>
+        <ul class="small">
+          <li>A centred hero: the app icon (156 px desktop, 116 px phone), an eyebrow line, the H1 pitch, a short paragraph, then the App Store badge on its own, centred, with clear space of at least a quarter of its height.</li>
+          <li>“Source code on GitHub” is only in the footer, not in the hero (owner decision, 27 November 2026, replacing the ticket's hero link). The support page keeps its “Report a problem” card and the source code question.</li>
+          <li>Three features in columns divided by hairlines, one column on phone. One feature shows temperatures in Cold and Warm (−3° / 4°), always with the minus sign.</li>
+          <li>The screenshots area is a placeholder until the app screens iteration and the landing visuals ticket.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <b>Not chosen</b>
+        <ul class="small">
+          <li>A · Dusk hero: rejected.</li>
+          <li>C · Sky window: rejected.</li>
+          <li>The site must not look like ILM+ or suggest it is official. The data source is credited, never presented as a partner.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Typography</h3>
+    <div class="panel">
+      <div class="specimen"><span class="nunito big">Eesti Ilm</span><span class="nunito" style="font-size:28px">õ ä ö ü š ž −3°</span></div>
+      <p class="small muted" style="margin-top:8px">Nunito ExtraBold (800) for headings and the “Eesti Ilm” wordmark. Body text in the system font: <code>system-ui, -apple-system, "Segoe UI", Roboto, sans-serif</code>.</p>
+      <div class="table-wrap"><table class="small">
+        <thead><tr><th>Style</th><th>Desktop</th><th>Phone</th><th>Font</th></tr></thead>
+        <tbody>
+          <tr><td>H1, home page</td><td>64 px</td><td>38 px</td><td>Nunito 800</td></tr>
+          <tr><td>H1, other pages</td><td>48 px</td><td>36 px</td><td>Nunito 800</td></tr>
+          <tr><td>H2</td><td>26–28 px</td><td>22–24 px</td><td>Nunito 800</td></tr>
+          <tr><td>Feature titles · card titles</td><td>21 px · 19 px</td><td>21 px · 19 px</td><td>Nunito 800</td></tr>
+          <tr><td>Body</td><td colspan="2">17 px, line height 1.6</td><td>System</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="small" style="margin-top:12px">
+        <li>Nunito is <b>self-hosted</b> on eestiilm.app, never loaded from Google Fonts, so the privacy policy needs no third party for fonts. One file, <code>nunito-800.woff2</code>, with the Latin and Latin Extended subsets (they cover õ ä ö ü š ž). This book loads the same file from <code>assets/website/</code>.</li>
+        <li>Chrome is the priority browser. Nunito replaces the earlier <code>ui-rounded</code> idea, because <code>ui-rounded</code> only renders in Safari.</li>
+        <li>Type in the app is decided separately. If it ends up different, the site keeps Nunito.</li>
+      </ul>
+    </div>
+
+    <h3>Layout</h3>
+    <div class="web-specs">
+      <div class="panel"><b>Width</b><ul class="small"><li>Content 1080 px wide with 40 px side padding on desktop.</li><li>20 px side padding on phone.</li></ul></div>
+      <div class="panel"><b>Header</b><ul class="small"><li>The icon (32 px) and “Eesti Ilm” as text, links to Support and Privacy, and an EN / ET switch.</li><li>The active language is a filled pill in the Text color.</li><li>On phone the text links are hidden; they are also in the footer.</li></ul></div>
+      <div class="panel"><b>Footer</b><ul class="small"><li>Links to Privacy policy, Support and Source code on GitHub, the data credit, and “© 2026 Eesti Ilm”.</li><li>Centred on desktop, left-aligned on phone.</li><li>Data credit: “Forecast data comes from the Estonian Environment Agency (ilmateenistus.ee). Eesti Ilm is an independent app and is not affiliated with the agency.”</li></ul></div>
+    </div>
+
+    <h3>Links, buttons, focus</h3>
+    <div class="two-up">
+      <div class="site spec l" inert id="spec-l"></div>
+      <div class="site spec d" inert id="spec-d"></div>
+    </div>
+    <ul class="small" style="margin-top:12px">
+      <li>Links in text: Accent, 1 px underline, 2 px on hover.</li>
+      <li>Navigation and footer links: Text color, no underline until hover. The current page in the navigation is Accent and semibold.</li>
+      <li>Buttons: Accent fill with On-accent text, 12 px radius, 48 px tall. On-accent is not a new color: it is Card (<code>#FFFFFF</code>) in light and Background (<code>#15121C</code>) in dark, as on this book's own number badges.</li>
+      <li>Focus: a 2 px Accent outline with a 3 px offset.</li>
+      <li>Icons in features and contact cards: 22 px line icons in Accent on a rounded square (46 px, 14 px radius; 42 px, 12 px radius in cards). The square is Card on the page and Background inside a card.</li>
+    </ul>
+
+    <h3>App Store badge</h3>
+    <div class="panel">
+      <div class="spec-row" style="gap:14px 22px">
+        <span style="background:#FAF5F1;padding:12px;border-radius:12px;border:1px solid var(--line)"><img src="assets/website/app-store-badge-en-black.svg" alt="Download on the App Store, black badge" style="height:40px;display:block"></span>
+        <span style="background:#15121C;padding:12px;border-radius:12px;border:1px solid var(--line)"><img src="assets/website/app-store-badge-en-white.svg" alt="Download on the App Store, white badge" style="height:40px;display:block"></span>
+        <span style="background:#FAF5F1;padding:12px;border-radius:12px;border:1px solid var(--line)"><img src="assets/website/app-store-badge-et-black.svg" alt="Estonian App Store badge, black" style="height:40px;display:block"></span>
+        <span style="background:#15121C;padding:12px;border-radius:12px;border:1px solid var(--line)"><img src="assets/website/app-store-badge-et-white.svg" alt="Estonian App Store badge, white" style="height:40px;display:block"></span>
+      </div>
+      <p class="small muted" style="margin:12px 0 0">The site uses Apple's official “Download on the App Store” badge, unmodified, as the App Store marketing guidelines ask: black in light mode, white in dark mode, at least 40 px tall (52 px in the hero), with clear space of at least a quarter of its height. The Estonian pages use Apple's Estonian badge (the two on the right). The SVGs come from Apple's marketing tools and are in <code>assets/website/</code>.</p>
+    </div>
+
+    <h3>Pages</h3>
+    <p class="muted">Every page has the same header, horizon line and footer, and follows the system light or dark setting. The mockups follow the EES-119 prototype boards, drawn at 1280 px (desktop) and 390 px (phone) and scaled to fit.</p>
+    <ul class="small">
+      <li><b>Support:</b> H1, a lead line, two contact cards (“Email”, and “Report a problem” on GitHub), and a FAQ of native disclosure rows with no JavaScript.</li>
+      <li><b>Privacy policy:</b> a 680 px text column, a “Last updated” line and a short summary card. H2s have 48 px of space above them. Desktop adds an “On this page” list on the left; phone hides it.</li>
+      <li><b>404:</b> a centred cloud (the icon's cloud shape, in the Cloud color), the “404” label, “Page not found”, the body text from <code>en.json</code>, and a “Go to the home page” button.</li>
+    </ul>
+    <p class="note small">The mockup copy is the draft from the prototypes and still needs the owner's check, including the hero, the three features, and “places across Estonia”. The support answers and the privacy text are sample text that shows the layout, not the real content. <b>[Bracketed text]</b> is a placeholder. On the site all English text comes from <code>src/i18n/en.json</code> through Crowdin, never hard-coded.</p>
+    <div class="mock-page" data-page="home"><h3>Home</h3></div>
+    <div class="mock-page" data-page="support"><h3>Support</h3></div>
+    <div class="mock-page" data-page="privacy"><h3>Privacy policy</h3></div>
+    <div class="mock-page" data-page="notfound"><h3>404</h3></div>
+
+    <h3>Icons and share image</h3>
+    <div class="panel">
+      <div class="fav-row">
+        <figure><svg width="96" height="96" viewBox="0 0 100 100" aria-hidden="true"><use href="#favicon"/></svg>96</figure>
+        <figure><svg width="48" height="48" viewBox="0 0 100 100" aria-hidden="true"><use href="#favicon"/></svg>48</figure>
+        <figure><svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><use href="#favicon"/></svg>32</figure>
+        <figure><svg width="16" height="16" viewBox="0 0 100 100" aria-hidden="true"><use href="#favicon"/></svg>16</figure>
+        <figure><img class="touch" src="assets/icon/icon-1024.png" alt="">apple-touch-icon</figure>
+      </div>
+      <ul class="small" style="margin-top:14px">
+        <li><code>favicon.svg</code>: the dusk gradient square (22% corner radius) with the sun and cloud from the icon's shapes. It reads at 16 px, so it needs no simplified version.</li>
+        <li><code>favicon.ico</code>: a 32 × 32 fallback.</li>
+        <li><code>apple-touch-icon.png</code>: 180 × 180 square from <code>icon-1024.png</code>. iOS rounds the corners itself.</li>
+        <li><code>og-image.png</code>, 1200 × 630, <b>one image for both languages</b>: Background, the icon on the left, “Eesti Ilm” in Nunito and “eestiilm.app” in Accent, with the horizon line along the bottom edge. No pitch sentence, so nothing in it needs translating. Light only, because link previews do not follow dark mode.</li>
+      </ul>
+    </div>
+    <figure class="mock-row" style="grid-template-columns:minmax(0,1fr); margin:14px 0 0">
+      <div class="fit og-frame"><div class="site og l" inert data-w="1200"><img src="assets/icon/icon-Default.png" alt=""><div><div class="wm wm-big">Eesti Ilm</div><div class="url">eestiilm.app</div></div><div class="horizon"></div></div></div>
+      <figcaption>og-image.png · 1200 × 630 · light only</figcaption>
+    </figure>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2C5A"/><stop offset="1" stop-color="#F29E7A"/></linearGradient>
+        <path id="cloud-path" d="M14.000 26.000 A10.0 10.0 0 0 1 13.943 6.000 A2.5 2.5 0 0 0 16.198 4.549 A13.0 13.0 0 0 1 40.448 6.252 A2.5 2.5 0 0 0 42.659 8.024 A9.0 9.0 0 0 1 42.000 26.000 Z"/>
+        <symbol id="favicon" viewBox="0 0 100 100">
+          <rect width="100" height="100" rx="22" fill="url(#dusk)"/>
+          <circle cx="54.8" cy="38.2" r="21.12" fill="#FFD9A0"/>
+          <use href="#cloud-path" fill="#FFFFFF" transform="translate(12.56 41.72) scale(1.364)"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <h3>Contrast (WCAG 2.1, computed)</h3>
+    <p class="small muted">Website text pairs need 4.5 : 1 (AA); the focus ring, the 404 cloud and the icons are non-text and need 3 : 1. The share image uses Accent on Background in light only. The App Store badge is Apple's artwork and is not part of the palette.</p>
+    <div class="panel table-wrap"><table id="web-contrast"></table></div>
+  </section>
+
+  <!-- 5 NEXT -->
   <section id="next">
-    <h2><span class="num">4</span>Next</h2>
+    <h2><span class="num">5</span>Next</h2>
     <p class="muted">Not decided yet; each gets its own iteration before it joins this book.</p>
     <ul class="next small">
       <li><b>Type:</b> text styles for each element, and whether temperatures use the rounded font.</li>
@@ -232,13 +526,16 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
       <li><b>Screens:</b> how the palette applies to the forecast list and Settings.</li>
       <li><b>Widgets:</b> background, layout and colors of the small and medium widgets.</li>
       <li><b>App Store:</b> screenshots and how the icon appears in the listing.</li>
-      <li><b>Website (eestiilm.app):</b> how the icon and palette carry over to the site.</li>
+      <li><b>Website screenshots:</b> the home page screenshots area, after the app screens iteration.</li>
     </ul>
     <h3>Files</h3>
     <ul class="small">
       <li><code>assets/icon/EestiIlm.icon</code> · the Icon Composer source of the app icon</li>
       <li><code>assets/icon/icon-1024.png</code> · flat 1024 export</li>
       <li><code>assets/icon/icon-*.png</code> · renders of each appearance</li>
+      <li><code>assets/website/nunito-800.woff2</code> · Nunito ExtraBold, Latin and Latin Extended, the file the site self-hosts</li>
+      <li><code>assets/website/Nunito-OFL.txt</code> · the font's SIL Open Font License</li>
+      <li><code>assets/website/app-store-badge-{en,et}-{black,white}.svg</code> · Apple's official App Store badges, from Apple's marketing tools</li>
     </ul>
     <p class="small muted">Renders made with Xcode 27.2 Icon Composer (ictool).</p>
   </section>
@@ -270,6 +567,96 @@ const PAIRS = [['Text on Background', 'Text', 'Background'], ['Text on Card', 'T
   ['Accent on Card', 'Accent', 'Card'], ['Cold on Card', 'Cold', 'Card'], ['Warm on Card', 'Warm', 'Card'], ['Cloud symbol on Card (non-text)', 'Cloud', 'Card', true]];
 const cell = (f, b, mode, nt) => { const fg = T[f][mode], bg = T[b][mode], r = ratio(fg, bg), [cls, lab] = level(r, nt); return `<td><span class="pair" style="background:${bg};color:${fg}">Aa</span></td><td><b>${r.toFixed(2)}</b> <span class="lvl ${cls}">${lab}</span></td>`; };
 $('contrast').innerHTML = `<thead><tr><th>Pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
+
+// Website: On-accent reuses Card (light) and Background (dark); it is not a palette color of its own.
+T['On-accent'] = { l: T.Card.l, d: T.Background.d };
+const WEB_PAIRS = [
+  ['Body text, headings, wordmark', 'Text', 'Background'],
+  ['Eyebrow, lead, FAQ answers, contents list, footer', 'Secondary text', 'Background'],
+  ['Text in cards', 'Text', 'Card'],
+  ['Secondary text in cards, summary list, inactive language', 'Secondary text', 'Card'],
+  ['Links in text, current page, “eestiilm.app”', 'Accent', 'Background'],
+  ['Links in cards', 'Accent', 'Card'],
+  ['Button label (On-accent on Accent)', 'On-accent', 'Accent'],
+  ['Active language pill (Background on Text)', 'Background', 'Text'],
+  ['Cold temperature (−3°)', 'Cold', 'Background'],
+  ['Warm temperature (4°)', 'Warm', 'Background'],
+  ['Focus ring (non-text)', 'Accent', 'Background', true],
+  ['404 cloud (non-text)', 'Cloud', 'Background', true],
+  ['Feature icons (Accent on Card, non-text)', 'Accent', 'Card', true],
+  ['Contact card icons (Accent on Background, non-text)', 'Accent', 'Background', true],
+];
+$('web-contrast').innerHTML = `<thead><tr><th>Website pair</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead><tbody>${WEB_PAIRS.map(([n, f, b, nt]) => `<tr><td>${n}</td>${cell(f, b, 'l', nt)}${cell(f, b, 'd', nt)}</tr>`).join('')}</tbody>`;
+
+// Website mockups, following the EES-119 "B" boards. Draft copy; [brackets] mark placeholders.
+// o = { icon, focus }: focus is shown on the footer Support link (home) and the button (404), desktop light only, as on the boards.
+const SVG = d => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const CHEVRON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
+const header = (o, cur) => `<div class="w"><header class="hdr"><a class="wm" href="#"><img src="${o.icon}" alt="">Eesti Ilm</a><nav class="nav"><a class="tl${cur === 'support' ? ' cur' : ''}" href="#">Support</a><a class="tl${cur === 'privacy' ? ' cur' : ''}" href="#">Privacy</a><span class="lang"><span class="on">EN</span><span>ET</span></span></nav></header></div>`;
+const footer = (cls, focusSupport) => `<div class="w"><footer class="foot ${cls}"><nav><a href="#">Privacy policy</a><a href="#"${focusSupport ? ' class="focus"' : ''}>Support</a><a href="#">Source code on GitHub</a></nav><p class="credit">Forecast data comes from the Estonian Environment Agency (<a href="#">ilmateenistus.ee</a>). Eesti Ilm is an independent app and is not affiliated with the agency.</p><p class="copy">© 2026 Eesti Ilm</p></footer></div>`;
+const PAGES = {
+  home: o => `${header(o, '')}
+    <div class="w"><section class="hero"><img src="${o.icon}" alt=""><p class="eyebrow">iPhone weather app for Estonia</p><h1>The Estonian forecast, calm and clear.</h1><p class="pitch">Eesti Ilm shows the forecast for places across Estonia in a simple, warm app. Few elements, easy to read, in English and Estonian.</p><div class="cta"><a class="badge" href="#"><img src="${o.badge}" alt="Download on the App Store"></a></div></section></div>
+    <div class="horizon"></div>
+    <div class="w"><section class="feats">
+      <div><div class="temps"><span class="c">−3°</span><span class="h">4°</span></div><h3>Readable at a glance</h3><p class="mt">Below zero in blue, zero and above in warm red. The minus sign is always there.</p></div>
+      <div><div class="ic">${SVG('<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/>')}</div><h3>Widgets</h3><p class="mt">Check the weather from your Home Screen without opening the app.</p></div>
+      <div><div class="ic">${SVG('<path d="M4 5h9M8.5 3v2M6 5c.8 3.5 3.5 6.5 7 8M11 5c-.8 3.5-3.5 6.5-7 8"/><path d="M13 21l4-9 4 9M14.5 18h5"/>')}</div><h3>English and Estonian</h3><p class="mt">The app follows your iPhone's language.</p></div>
+    </section>
+    <div class="shots">[App screenshots go here (later ticket, after the screens iteration)]</div></div>
+    ${footer('home', o.focus)}`,
+  support: o => `${header(o, 'support')}<div class="horizon"></div>
+    <div class="w"><div class="sup"><h1>Support</h1><p class="lead">Questions about Eesti Ilm, or something not working? Get in touch, or check the answers below.</p>
+      <div class="contact">
+        <div class="card"><div class="ic">${SVG('<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/>')}</div><p class="ct">Email</p><p class="mt">Write to <a href="#">[support email]</a>.</p></div>
+        <div class="card"><div class="ic">${SVG('<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/>')}</div><p class="ct">Report a problem</p><p class="mt">Open an issue <a href="#">on GitHub</a>.</p></div>
+      </div>
+      <h2>Questions</h2>
+      <div class="faq">
+        <details open><summary>Where does the forecast come from?${CHEVRON}</summary><p>From the Estonian Environment Agency (Keskkonnaagentuur), which publishes it on <a href="#">ilmateenistus.ee</a>. Eesti Ilm is an independent app and is not affiliated with the agency.</p></details>
+        <details><summary>How do I switch the app to Estonian?${CHEVRON}</summary><p>[Answer text.]</p></details>
+        <details><summary>How do I add a widget?${CHEVRON}</summary><p>[Answer text.]</p></details>
+        <details><summary>Is the source code available?${CHEVRON}</summary><p>[Answer text.]</p></details>
+      </div></div></div>
+    ${footer('support')}`,
+  privacy: o => `${header(o, 'privacy')}<div class="horizon"></div>
+    <div class="w"><div class="legal">
+      <nav class="toc-web"><p>On this page</p><ol><li><a class="on" href="#">Summary</a></li><li><a href="#">Data the app uses</a></li><li><a href="#">Location</a></li><li><a href="#">Forecast requests</a></li><li><a href="#">Analytics and crashes</a></li><li><a href="#">This website</a></li><li><a href="#">Your rights</a></li><li><a href="#">Changes</a></li><li><a href="#">Contact</a></li></ol></nav>
+      <article class="art"><h1>Privacy policy</h1><p class="updated">Last updated [date]</p>
+        <div class="summary"><b>In short</b><ul><li>[Short summary point one.]</li><li>[Short summary point two.]</li><li>[Short summary point three.]</li></ul></div>
+        <h2>Data the app uses</h2><p>This section is sample text that shows how a long policy reads on the page. It is not the real policy. Each paragraph stays short, and the line length stays around 70 characters so the text is easy to follow on a large screen.</p><p>A list keeps related points apart:</p><ul><li>[What the app stores on the device.]</li><li>[What, if anything, leaves the device.]</li><li>[How long it is kept.]</li></ul>
+        <h2>Location</h2><p>[How the app uses location, if it does, and how to turn it off in Settings.] A second sentence shows how a paragraph wraps across several lines in the body size, with links such as <a href="#">Apple's location settings</a> in the accent colour.</p>
+        <h2>Forecast requests</h2><p>The forecast comes from the Estonian Environment Agency (Keskkonnaagentuur) through <a href="#">ilmateenistus.ee</a>. [What the request contains and what the agency's own terms say.]</p>
+        <h2>Analytics and crashes</h2><p>[Whether the app collects analytics or crash reports, and through which service.]</p>
+        <h2>This website</h2><p>[Whether eestiilm.app uses cookies or analytics, and what the hosting provider logs.]</p>
+        <h2>Your rights</h2><p>[Rights under the GDPR, and how to use them.] This paragraph is a little longer to show a denser block of text: the spacing between paragraphs stays at 16 pixels, and headings get 48 pixels above them so each section starts clearly.</p>
+        <h2>Changes</h2><p>[How changes to this policy are announced.]</p>
+        <h2>Contact</h2><p>Questions about privacy: <a href="#">[support email]</a>.</p>
+      </article></div></div>
+    ${footer('privacy')}`,
+  notfound: o => `${header(o, '')}<div class="horizon"></div>
+    <div class="w"><div class="nf"><svg viewBox="12 44 76 40" aria-hidden="true"><use href="#cloud-path" fill="var(--cloud)" transform="translate(12.56 41.72) scale(1.364)"/></svg><p class="code">404</p><h1>Page not found</h1><p class="body">The page you are looking for does not exist or has moved.</p><a class="btn${o.focus ? ' focus' : ''}" href="#">Go to the home page</a></div></div>
+    ${footer('nf-foot')}`,
+};
+const LABEL = { home: 'Home', support: 'Support', privacy: 'Privacy policy', notfound: '404' };
+const FOCUS_NOTE = { home: ' · focus shown on the footer Support link', notfound: ' · focus shown on the button' };
+const frame = (page, mode, device) => {
+  const desk = device === 'desk', o = { icon: mode === 'l' ? 'assets/icon/icon-Default.png' : 'assets/icon/icon-Dark.png', badge: `assets/website/app-store-badge-en-${mode === 'l' ? 'black' : 'white'}.svg`, focus: desk && mode === 'l' };
+  return `<figure><div class="fit"><div class="site ${mode} ${device}" inert data-w="${desk ? 1280 : 390}">${PAGES[page](o)}</div></div><figcaption>${LABEL[page]} · ${desk ? 'desktop 1280 px' : 'phone 390 px'} · ${mode === 'l' ? 'light' : 'dark'}${o.focus && FOCUS_NOTE[page] ? FOCUS_NOTE[page] : ''}</figcaption></figure>`;
+};
+document.querySelectorAll('.mock-page').forEach(el => {
+  const p = el.dataset.page;
+  el.insertAdjacentHTML('beforeend', ['l', 'd'].map(m => `<div class="mock-row">${frame(p, m, 'desk')}${frame(p, m, 'phone')}</div>`).join(''));
+});
+const spec = `<div class="spec-row"><span><span class="lbl">Link in text</span>Read the <a href="#">privacy policy</a>.</span><span><span class="lbl">Hover</span><a class="hover" href="#">privacy policy</a></span></div>
+  <div class="spec-row"><span><span class="lbl">Navigation</span><span class="nav"><a href="#">Support</a><a href="#" class="cur">Privacy</a></span></span><span><span class="lbl">Language</span><span class="lang"><span class="on">EN</span><span>ET</span></span></span></div>
+  <div class="spec-row"><span><span class="lbl">Button</span><a class="btn" href="#">Go to the home page</a></span><span><span class="lbl">Focus</span><a class="btn focus" href="#">Go to the home page</a></span></div>`;
+$('spec-l').innerHTML = spec; $('spec-d').innerHTML = spec;
+
+// Scale each mockup to its column with CSS zoom, keeping real pixel sizes inside.
+const fitAll = () => document.querySelectorAll('.fit').forEach(box => { const s = box.firstElementChild; s.style.zoom = Math.min(1, box.clientWidth / Number(s.dataset.w)); });
+addEventListener('resize', fitAll); addEventListener('beforeprint', fitAll); addEventListener('afterprint', fitAll);
+fitAll();
 
 const toast = $('toast');
 document.addEventListener('click', async e => { const b = e.target.closest('.swc [data-hex], .swc'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.hex); toast.textContent = 'Copied ' + b.dataset.hex; } catch (_) { toast.textContent = b.dataset.hex; } toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 1400); });
