@@ -273,7 +273,7 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 .ios {
   --bg: #FAF5F1; --card: #FFFFFF; --text: #1E1A2B; --sec: #625A6E; --sep: #ECE4DD;
   --acc: #B0452C; --on-acc: #FFFFFF; --cold: #3D5A80; --warm: #B0452C; --sun: #EE9A4D; --cloud: #8E8699; --precip: #3D5A80;
-  color-scheme: only light; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 18px;
+  color-scheme: only light; container: ios / inline-size; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 22px; padding: 18px;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, sans-serif; line-height: 1.4; text-align: start;
 }
 .ios.d {
@@ -312,8 +312,8 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
 .ios-btn { display: inline-flex; align-items: center; justify-content: center; min-block-size: 44px; padding: 10px 20px; border-radius: 12px; background: var(--acc); color: var(--on-acc); font-size: 17px; font-weight: 600; line-height: 1.25; }
 
 /* widget typography previews */
-.w-grid { display: grid; grid-template-columns: 158px minmax(0, 1fr); gap: 12px; margin-top: 12px; align-items: stretch; }
-@media (max-width: 520px) { .w-grid { grid-template-columns: 1fr; } }
+.w-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 12px; align-items: stretch; }
+@container ios (inline-size >= 456px) { .w-grid { grid-template-columns: 158px minmax(0, 1fr); } }
 .w-tile { background: var(--card); border: 1px solid var(--sep); border-radius: 22px; padding: 14px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; min-block-size: 158px; gap: 4px; }
 .w-date { font-size: 12px; font-weight: 500; line-height: 1.3; color: var(--sec); }
 .w-temp-sm { font-size: 22px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; white-space: nowrap; }
