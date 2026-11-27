@@ -260,7 +260,7 @@ th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: u
   .mock-row { grid-template-columns: minmax(0, 1fr) 210px; }
   .mock-row figure, .web-specs .panel { break-inside: avoid; }
   .mock-page > h3 { break-before: page; }
-  .mock-page:first-of-type > h3 { break-before: auto; }
+  .mock-page[data-page="home"] > h3 { break-before: auto; }
 }
 </style>
 </head>
